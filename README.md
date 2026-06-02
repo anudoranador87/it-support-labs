@@ -1,73 +1,100 @@
-🖥️ it-support-labs
-Documentación práctica de labs reales para la certificación CompTIA A+ y el Google IT Support Professional Certificate.
+# 🖥️ it-support-labs
 
-**Quién soy**
-Desarrollador web autodidacta (HTML, CSS, JavaScript) con 6 meses de experiencia en Frontend.
-Proyecto principal: EquiShift — algoritmo de gestión de turnos en JS.
-Actualmente cursando el Google IT Support Professional Certificate con el objetivo de obtener la CompTIA A+ y trabajar en un puesto híbrido IT Support + Frontend.
+> Practical lab documentation for **CompTIA A+** certification and the **Google IT Support Professional Certificate**.
 
-**Qué es este repositorio**
-Labs prácticos documentados con fotos y vídeos.
-Hardware real. Máquinas virtuales reales. Problemas reales.
-No es teoría — es lo que hago con las manos.
+---
 
-**Estructura**
+## Who I am
+
+Self-taught web developer (HTML, CSS, JavaScript) with 6 months of Frontend experience.  
+Main project: [EquiShift](https://github.com/anudoranador87) — shift scheduling algorithm in JS.
+
+Currently studying the **Google IT Support Professional Certificate**, working toward **CompTIA A+** and a hybrid **IT Support + Frontend** role.
+
+---
+
+## What this repository is
+
+Hands-on labs documented with photos and videos.  
+Real hardware. Real virtual machines. Real problems.
+
+Not theory — this is what I do with my hands.
+
+---
+
+## Structure
 
 ```
 it-support-labs/
-  README.md
-  /hardware-labs
-    lab-01-inventario-componentes.md
-  
-  /os-labs
-  /vm-labs
-  /networking-labs
-  /troubleshooting-labs
+├── README.md
+├── hardware-labs/
+│   ├── lab-01-inventario-componentes.md
+├── os-labs/
+├── vm-labs/
+├── networking-labs/
+└── troubleshooting-labs/
 ```
 
-**Labs planificados**
+---
+
+## Planned Labs
 
 ### 🔧 Hardware
+| Lab | Title | Status |
+|-----|-------|--------|
+| [01](hardware-labs/lab-001-inventario-componentes.md) | Component inventory — real desktop tower | ✅ Done |
+| 02 | Disassembly and reassembly — tower | 🔄 Pending |
+| 03 | Laptop diagnosis: heat and keyboard | 🔄 Pending |
+| 04 | Cleaning with compressed air | 🔄 Pending |
+| 05 | Thermal paste replacement — laptop | 🔄 Pending |
+| 06 | RAM install / uninstall | 🔄 Pending |
+| 07 | Hard drive replacement | 🔄 Pending |
 
-| Lab | Título | Estado |
-|---|---|---|
-| 01 | Inventario de componentes — torre real | ✅ Completado |
-| 02 | Desmontaje y montaje — torre | 🔄 Pendiente |
-| 03 | Diagnóstico portátil: calor y teclado | 🔄 Pendiente |
-| 04 | Limpieza con aire comprimido | 🔄 Pendiente |
-| 05 | Cambio de pasta térmica — portátil | 🔄 Pendiente |
-| 06 | Instalación/desinstalación RAM | 🔄 Pendiente |
-| 07 | Cambio de disco duro | 🔄 Pendiente |
+### 💻 Operating System
+| Lab | Title | Status |
+|-----|-------|--------|
+| 08 | Windows installation on VM | 🔄 Pending |
+| 09 | Linux installation on VM | 🔄 Pending |
+| 10 | User and permissions management | 🔄 Pending |
 
-### 💻 Sistema Operativo
-
-| Lab | Título | Estado |
-|---|---|---|
-| 08 | Instalación Windows en VM | 🔄 Pendiente |
-| 09 | Instalación Linux en VM | 🔄 Pendiente |
-| 10 | Gestión de usuarios y permisos | 🔄 Pendiente |
-
-### 🌐 Redes
-
-| Lab | Título | Estado |
-|---|---|---|
-| 11 | Configuración red doméstica | 🔄 Pendiente |
-| 12 | Diagnóstico de conectividad | 🔄 Pendiente |
+### 🌐 Networking
+| Lab | Title | Status |
+|-----|-------|--------|
+| 11 | Home network configuration | 🔄 Pending |
+| 12 | Connectivity diagnosis | 🔄 Pending |
 
 ### 🛠️ Troubleshooting
+| Lab | Title | Status |
+|-----|-------|--------|
+| 13 | Failed boot diagnosis on VM | 🔄 Pending |
+| 14 | System recovery | 🔄 Pending |
 
-| Lab | Título | Estado |
-|---|---|---|
-| 13 | Diagnóstico arranque fallido en VM | 🔄 Pendiente |
-| 14 | Recuperación de sistema | 🔄 Pendiente |
+---
 
-**Formato de cada lab**
-Markdown
+## Lab Format
 
-**Herramientas**
-VirtualBox — máquinas virtuales
-OBS Studio — grabación de pantalla y vídeo
-GitHub — documentación y control de versiones
+```markdown
+# Lab XX — Title
+## Objective
+## Hardware/Software Used
+## Steps Performed
+## Issues Found
+## Solution
+## Result
+## Time Spent
+## Photos/Video
+```
 
-**Contacto**
+---
 
+## Tools
+
+- **VirtualBox** — virtual machines
+- **OBS Studio** — screen and video recording
+- **GitHub** — documentation and version control
+
+---
+
+## Contact
+
+<!-- Add your LinkedIn and personal GitHub here -->
