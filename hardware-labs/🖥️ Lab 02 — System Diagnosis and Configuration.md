@@ -33,13 +33,13 @@
 
 - **Action:** Powered on the machine with the dedicated graphics card installed in the PCIe x16 slot.  
 - **Result:** System boots electrically (fans active), but **no video signal** from any connector.  
-- 📸 `img/foto_01_gpu_dedicada_instalada.jpg`
+![Dedicated GPU installed](img/foto_01_gpu_dedicada_instalada.jpg)
 
 ### Step 2 — Cross-test with projector
 
 - **Action:** Connected a projector to the VGA output of the dedicated GPU as an alternative test peripheral.  
 - **Result:** No video signal. Monitor ruled out as the cause. **Failure confirmed on dedicated GPU** or BIOS primary display setting.  
-- 📸 `img/foto_02_error_boot_proyectado.jpg`
+![Boot error on projector](img/foto_02_error_boot_proyectado.jpg)
 
 ### Step 3 — Switch to integrated GPU and thermal diagnosis
 
@@ -59,7 +59,7 @@
 - **Estimated age:** 13–15 years without replacement (since manufacture ~2009).  
 - **Technical consequence:** Minimal heat transfer → CPU temperature rises → sensor triggers throttling → fan runs at 100% RPM to compensate.  
 - **Required action:** Replace thermal paste before any extended use of the machine.  
-- 📸 `img/foto_03_pasta_termica_degradada.jpg`
+![Degraded thermal paste](img/foto_03_pasta_termica_degradada.jpg)
 
 ---
 
@@ -79,8 +79,8 @@
 | File system | FAT32 (default) | Required for BIOS/UEFI legacy boot |
 | Cluster size | 8192 bytes (default) | Standard for this use case |
 
-- 📸 `img/foto_04_rufus_sin_iso.png` — Rufus initial state before selecting image  
-- 📸 `img/foto_05_rufus_configurado_listo.png` — Final configuration before execution
+![Rufus — initial state](img/foto_04_rufus_sin_iso.png)  
+![Rufus — final configuration](img/foto_05_rufus_configurado_listo.png)
 
 > **Result:** Live-USB created successfully. Ready for deployment on any compatible machine.
 
