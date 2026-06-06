@@ -1,5 +1,4 @@
 # 🖥️ it-support-labs
-
 > Practical lab documentation for **CompTIA A+** certification and the **Google IT Support Professional Certificate**.
 
 ---
@@ -28,7 +27,9 @@ Not theory — this is what I do with my hands.
 it-support-labs/
 ├── README.md
 ├── hardware-labs/
-│   ├── lab-01-inventario-componentes.md
+│   ├── img/
+│   ├── lab-001-inventario-componentes.md
+│   └── lab-002-system-diagnostics.md
 ├── os-labs/
 ├── vm-labs/
 ├── networking-labs/
@@ -40,34 +41,39 @@ it-support-labs/
 ## Planned Labs
 
 ### 🔧 Hardware
+
 | Lab | Title | Status |
 |-----|-------|--------|
 | [01](hardware-labs/lab-001-inventario-componentes.md) | Component inventory — real desktop tower | ✅ Done |
-| 02 | Disassembly and reassembly — tower | 🔄 Pending |
-| 03 | Laptop diagnosis: heat and keyboard | 🔄 Pending |
-| 04 | Cleaning with compressed air | 🔄 Pending |
-| 05 | Thermal paste replacement — laptop | 🔄 Pending |
-| 06 | RAM install / uninstall | 🔄 Pending |
-| 07 | Hard drive replacement | 🔄 Pending |
+| [02](hardware-labs/lab-002-system-diagnostics.md) | System diagnosis and configuration — Live-USB + USB controller failure | ✅ Done |
+| 03 | Disassembly and reassembly — tower | 🔄 Pending |
+| 04 | Laptop diagnosis: heat and keyboard | 🔄 Pending |
+| 05 | Cleaning with compressed air | 🔄 Pending |
+| 06 | Thermal paste replacement — laptop | 🔄 Pending |
+| 07 | RAM install / uninstall | 🔄 Pending |
+| 08 | Hard drive replacement | 🔄 Pending |
 
 ### 💻 Operating System
+
 | Lab | Title | Status |
 |-----|-------|--------|
-| 08 | Windows installation on VM | 🔄 Pending |
-| 09 | Linux installation on VM | 🔄 Pending |
-| 10 | User and permissions management | 🔄 Pending |
+| 09 | Windows installation on VM | 🔄 Pending |
+| 10 | Linux installation on VM | 🔄 Pending |
+| 11 | User and permissions management | 🔄 Pending |
 
 ### 🌐 Networking
+
 | Lab | Title | Status |
 |-----|-------|--------|
-| 11 | Home network configuration | 🔄 Pending |
-| 12 | Connectivity diagnosis | 🔄 Pending |
+| 12 | Home network configuration | 🔄 Pending |
+| 13 | Connectivity diagnosis | 🔄 Pending |
 
 ### 🛠️ Troubleshooting
+
 | Lab | Title | Status |
 |-----|-------|--------|
-| 13 | Failed boot diagnosis on VM | 🔄 Pending |
-| 14 | System recovery | 🔄 Pending |
+| 14 | Failed boot diagnosis on VM | 🔄 Pending |
+| 15 | System recovery | 🔄 Pending |
 
 ---
 
@@ -92,9 +98,3 @@ it-support-labs/
 - **VirtualBox** — virtual machines
 - **OBS Studio** — screen and video recording
 - **GitHub** — documentation and version control
-
----
-
-## Contact
-
-<!-- Add your LinkedIn and personal GitHub here -->
