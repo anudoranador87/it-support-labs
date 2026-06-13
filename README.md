@@ -111,3 +111,4 @@ it-support-labs/
 | Reddit r/CompTIA | Comunidad, apuntes, experiencias | [reddit.com/r/CompTIA](https://www.reddit.com/r/CompTIA/) |
 | Professor Messer YouTube | Vídeos gratuitos por objetivo | [youtube.com/@professormesser](https://www.youtube.com/@professormesser) |
 | ExamenesGratis — CompTIA A+ en Español | 200 preguntas + explicaciones + IA | [examenesgratis.com](https://examenesgratis.com/practica/comptia-a-plus-espanol) |
+| Shehan's CompTIA A+ 220-1201 Notes | Apuntes completos Core 1 por dominio | [shehan-fdo.github.io](https://shehan-fdo.github.io/CompTIA-A-220-1201-Notes/) |
