@@ -98,3 +98,15 @@ it-support-labs/
 - **VirtualBox** — virtual machines
 - **OBS Studio** — screen and video recording
 - **GitHub** — documentation and version control
+
+---
+## Study Resources
+
+| Resource | Tipo | Enlace |
+|----------|------|--------|
+| Professor Messer 220-1201 Course Notes | Notas + Quiz + Escenarios | [xjmilian.github.io/messer](https://xjmilian.github.io/messer/) |
+| StationX A+ Cheat Sheet | Cheat sheet Core 1 + Core 2 | [stationx.net/comptia-a-plus-cheat-sheet](https://www.stationx.net/comptia-a-plus-cheat-sheet/) |
+| CertBlaster A+ Study Guide | Guía gratuita por dominios (1101/1102) | [certblaster.com](https://certblaster.com/a-plus-study-guide-1101-1102/) |
+| Quizlet — Flashcards 220-1201 | Flashcards comunidad | [quizlet.com](https://quizlet.com/1024593451/comptia-a-1200-series-220-1201-220-1202-flash-cards/) |
+| Reddit r/CompTIA | Comunidad, apuntes, experiencias | [reddit.com/r/CompTIA](https://www.reddit.com/r/CompTIA/) |
+| Professor Messer YouTube | Vídeos gratuitos por objetivo | [youtube.com/@professormesser](https://www.youtube.com/@professormesser) |
