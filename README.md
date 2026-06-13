@@ -110,3 +110,4 @@ it-support-labs/
 | Quizlet — Flashcards 220-1201 | Flashcards comunidad | [quizlet.com](https://quizlet.com/1024593451/comptia-a-1200-series-220-1201-220-1202-flash-cards/) |
 | Reddit r/CompTIA | Comunidad, apuntes, experiencias | [reddit.com/r/CompTIA](https://www.reddit.com/r/CompTIA/) |
 | Professor Messer YouTube | Vídeos gratuitos por objetivo | [youtube.com/@professormesser](https://www.youtube.com/@professormesser) |
+| ExamenesGratis — CompTIA A+ en Español | 200 preguntas + explicaciones + IA | [examenesgratis.com](https://examenesgratis.com/practica/comptia-a-plus-espanol) |
