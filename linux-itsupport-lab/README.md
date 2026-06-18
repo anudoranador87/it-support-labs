@@ -7,15 +7,14 @@ Hands-on Linux command reference for IT Support, documented with real cases.
 
 ---
 
-## Modules
+## Labs
 
-| Module | Description |
-|--------|-------------|
-| [01 - System Info](./01-system-info/commands.md) | `uname`, `uptime`, `whoami`, `hostname` |
-| [02 - Disk & Memory](./02-disk-memory/commands.md) | `df`, `free`, `lsblk` |
-| [03 - Processes](./03-processes/commands.md) | `top`, `ps`, `kill` |
-| [04 - Networking](./04-networking/commands.md) | `ip a`, `ping`, `nmcli`, `ss` |
-| [05 - Drivers](./05-drivers/rtl8821ae-fix.md) | Real case: Realtek RTL8821AE WiFi fix |
+| Lab | Title | Description |
+|-----|-------|-------------|
+| [01](./🖥️%20Lab%2001%20—%20Meet%20the%20Machine.md) | 🖥️ Lab 01 — Meet the Machine | Identity, Uptime, Disk and RAM |
+| 02 | [Processes](./03-processes/commands.md) | `top`, `ps`, `kill` |
+| 03 | [Networking](./04-networking/commands.md) | `ip a`, `ping`, `nmcli`, `ss` |
+| 04 | [Drivers](./05-drivers/rtl8821ae-fix.md) | Real case: Realtek RTL8821AE WiFi fix |
 
 ---
 

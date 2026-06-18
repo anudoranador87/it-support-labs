@@ -28,68 +28,56 @@ it-support-labs/
 ├── README.md
 ├── hardware-labs/
 │   ├── img/
-│   ├── lab-001-inventario-componentes.md
-│   └── lab-002-system-diagnostics.md
-├── os-labs/
-├── vm-labs/
-├── networking-labs/
-└── troubleshooting-labs/
+│   ├── 🖥️ Lab 01 — Hardware Inventory.md
+│   ├── 🖥️ Lab 02 — System Diagnosis and Configuration.md
+│   └── 🖥️ Lab 03 — Preventive Maintenance.md
+└── linux-itsupport-lab/
+    ├── 🖥️ Lab 01 — Meet the Machine.md
+    ├── 🖥️ Lab 02 — Processes and Performance.md
+    ├── 🖥️ Lab 03 — Network Connectivity.md
+    └── 🖥️ Lab 04 — Driver Troubleshooting (Real Case).md
 ```
 
 ---
 
-## Planned Labs
+## Completed Labs
 
-### 🔧 Hardware
+### 🔧 Hardware (Physical Labs)
 
 | Lab | Title | Status |
 |-----|-------|--------|
-| [01](hardware-labs/lab-001-inventario-componentes.md) | Component inventory — real desktop tower | ✅ Done |
-| [02](hardware-labs/lab-002-system-diagnostics.md) | System diagnosis and configuration — Live-USB + USB controller failure | ✅ Done |
-| 03 | Disassembly and reassembly — tower | 🔄 Pending |
-| 04 | Laptop diagnosis: heat and keyboard | 🔄 Pending |
+| [01](hardware-labs/🖥️%20Lab%2001%20—%20Hardware%20Inventory.md) | Hardware Inventory — Desktop Tower | ✅ Done |
+| [02](hardware-labs/🖥️%20Lab%2002%20—%20System%20Diagnosis%20and%20Configuration.md) | System Diagnosis — USB Controller Failure | ✅ Done |
+| [03](hardware-labs/🖥️%20Lab%2003%20—%20Preventive%20Maintenance.md) | Preventive Maintenance — Laptop Heat/Keyboard | ✅ Done |
+| 04 | Disassembly and reassembly — tower | 🔄 Pending |
 | 05 | Cleaning with compressed air | 🔄 Pending |
 | 06 | Thermal paste replacement — laptop | 🔄 Pending |
 | 07 | RAM install / uninstall | 🔄 Pending |
 | 08 | Hard drive replacement | 🔄 Pending |
 
-### 💻 Operating System
+### 💻 Operating System (Linux)
 
 | Lab | Title | Status |
 |-----|-------|--------|
-| 09 | Windows installation on VM | 🔄 Pending |
-| 10 | Linux installation on VM | 🔄 Pending |
-| 11 | User and permissions management | 🔄 Pending |
-
-### 🌐 Networking
-
-| Lab | Title | Status |
-|-----|-------|--------|
-| 12 | Home network configuration | 🔄 Pending |
-| 13 | Connectivity diagnosis | 🔄 Pending |
-
-### 🛠️ Troubleshooting
-
-| Lab | Title | Status |
-|-----|-------|--------|
-| 14 | Failed boot diagnosis on VM | 🔄 Pending |
-| 15 | System recovery | 🔄 Pending |
+| [01](linux-itsupport-lab/🖥️%20Lab%2001%20—%20Meet%20the%20Machine.md) | Meet the Machine — Basic Specs | ✅ Done |
+| [02](linux-itsupport-lab/🖥️%20Lab%2002%20—%20Processes%20and%20Performance.md) | Processes and Performance — Monitoring | 🟡 In progress |
+| [03](linux-itsupport-lab/🖥️%20Lab%2003%20—%20Network%20Connectivity.md) | Network Connectivity — Troubleshooting | 🟡 In progress |
+| [04](linux-itsupport-lab/🖥️%20Lab%2004%20—%20Driver%20Troubleshooting%20(Real%20Case).md) | Driver Troubleshooting — WiFi Fix | 🟡 In progress |
+| 05 | Windows installation on VM | 🔄 Pending |
+| 06 | User and permissions management | 🔄 Pending |
 
 ---
 
 ## Lab Format
 
-```markdown
-# Lab XX — Title
-## Objective
-## Hardware/Software Used
-## Steps Performed
-## Issues Found
-## Solution
-## Result
-## Time Spent
-## Photos/Video
-```
+Each lab follows a standard senior-level documentation format:
+- **Scenario:** The real-world problem or ticket description.
+- **Commands/Tools:** Reference table of what was used.
+- **Walkthrough/Procedures:** Step-by-step actions taken.
+- **🔬 Real Results:** Actual output and screenshots from the machine.
+- **Key Concepts:** Theory behind the practice.
+- **Notes:** Personal technical observations.
+- **Part of:** Link back to this main repository.
 
 ---
 

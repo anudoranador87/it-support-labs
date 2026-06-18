@@ -161,12 +161,13 @@ hardware-labs/
 │   ├── foto_03_pasta_termica_degradada.jpg
 │   ├── foto_04_rufus_sin_iso.png
 │   └── foto_05_rufus_configurado_listo.png
-├── lab-001-inventario-componentes.md
-├── lab-002-system-diagnostics.md      ← This document
+├── 🖥️ Lab 01 — Hardware Inventory.md
+├── 🖥️ Lab 02 — System Diagnosis and Configuration.md      ← This document
 └── README.md
 ```
 
 ---
 
-*Lab documented as part of the CompTIA A+ preparation process (220-1201 / 220-1202)*  
-*Real hardware — Home lab environment*
+## Part of
+
+[`it-support-labs`](https://github.com/anudoranador87/it-support-labs) — Documenting my journey from hotel management to IT support. Google IT Support Certificate + CompTIA A+ in progress.
