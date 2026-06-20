@@ -3,7 +3,7 @@
 > Mini app built while studying the **Storage Devices** domain of the CompTIA A+ certification.
 > Mini-aplicación construida mientras estudiaba el dominio de **Dispositivos de Almacenamiento** de la certificación CompTIA A+.
 
-🔗 Live demo: *[will add link here]*
+🔗 Live demo: *[https://codepen.io/Jose-Aparicio-the-encoder/pen/zxNopvV]*
 
 ---
 
