@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAID Calculator</title>
+  <link rel="stylesheet" href="index.cs">
+</head>
+<body>
+
+  <header>
+    <h1>RAID Calculator</h1>
+    <p>Calcula espacio útil, eficiencia y tolerancia a fallos</p>
+  </header>
+
+  <main>
+
+    <section class="inputs">
+      <div class="field">
+        <label for="num-drives">Número de discos</label>
+        <input type="number" id="num-drives" min="2" value="4">
+      </div>
+
+      <div class="field">
+        <label for="drive-size">Tamaño por disco</label>
+        <input type="number" id="drive-size" min="1" value="1">
+        <select id="unit">
+          <option value="GB">GB</option>
+          <option value="TB" selected>TB</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="raid-level">RAID Level</label>
+        <select id="raid-level">
+          <option value="0">RAID 0 — Striping</option>
+          <option value="1">RAID 1 — Mirroring</option>
+          <option value="5" selected>RAID 5 — Distributed Parity</option>
+          <option value="6">RAID 6 — Double Parity</option>
+          <option value="10">RAID 10 — Stripe of Mirrors</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="results">
+      <div class="stat">
+        <span class="stat-label">Espacio útil</span>
+        <span class="stat-value" id="usable-space">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Espacio total raw</span>
+        <span class="stat-value" id="total-space">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Eficiencia</span>
+        <span class="stat-value" id="efficiency">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Discos que pueden fallar</span>
+        <span class="stat-value" id="fault-tolerance">—</span>
+      </div>
+    </section>
+
+    <section class="description">
+      <p id="raid-description">Selecciona un RAID level para ver la descripción.</p>
+    </section>
+
+    <section class="diagram">
+      <div id="disk-visual"></div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
