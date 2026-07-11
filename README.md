@@ -44,13 +44,22 @@ These labs simulate real Help Desk / IT Support tickets on actual hardware and L
 | **02** | [Hardware Diagnosis](Lab-02-Hardware-Diagnosis/README.md) | USB Controller Troubleshooting | 1.3-1.4 | ✅ Complete | 45m |
 | **03** | [Preventive Maintenance](Lab-03-Preventive-Maintenance/README.md) | Thermal/Keyboard Issues | 1.5 | ✅ Complete | 40m |
 | **05** | [Linux Basics](Lab-05-Linux-Basics/README.md) | File System Navigation | 1.7-1.8 | ✅ Complete | 30m |
-| **06** | [Linux Monitoring](Lab-06-Linux-Monitoring/README.md) | Processes & Performance | 1.9 | 🔄 In Progress | 45m |
-| **07** | [Linux Network](Lab-07-Linux-Network/README.md) | Connectivity & Troubleshooting | 2.0 | 🔄 In Progress | 50m |
-| **08** | [Linux Drivers](Lab-08-Linux-Drivers/README.md) | WiFi Driver Fix (Real Case) | 1.6 | 🔄 In Progress | 60m |
+| **06** | [Linux Monitoring](Lab-06-Linux-Monitoring/README.md) | Processes & Performance | 1.9 | ✅ Complete | 45m |
+| **07** | [Linux Network](Lab-07-Linux-Network/README.md) | Connectivity & Troubleshooting | 2.0 | ✅ Complete | 50m |
+| **08** | [Linux Drivers](Lab-08-Linux-Drivers/README.md) | WiFi Driver Fix (Real Case) | 1.6 | ✅ Complete | 60m |
+| **09** | [Windows Server AD](Lab-09-Windows-AD-Setup/README.md) | Active Directory Setup | 1.0 / 2.0 | 📋 Planned | 60m |
+| **10** | [AD User Management](Lab-10-AD-User-Management/README.md) | OUs, Users, Passwords | 2.0 | 📋 Planned | 45m |
+| **11** | [GPO & Permissions](Lab-11-GPO-Permissions/README.md) | Group Policy & Sharing | 3.0 | 📋 Planned | 60m |
+| **12** | [Network Connect](Lab-12-Network-Connectivity/README.md) | Ping, Trace, DNS | 2.1-2.3 | 📋 Planned | 45m |
+| **13** | [DHCP & DNS Config](Lab-13-DHCP-DNS/README.md) | IP Assignment | 2.2-2.3 | 📋 Planned | 50m |
+| **14** | [Network Firewall](Lab-14-Network-Firewall/README.md) | Segmentation & Rules | 2.4 | 📋 Planned | 45m |
+| **15** | [Endpoint Security](Lab-15-Endpoint-Security/README.md) | Malware & Defender | 3.1 | 📋 Planned | 40m |
+| **16** | [Access Control](Lab-16-Access-Control/README.md) | Roles & Best Practices | 3.2-3.4 | 📋 Planned | 40m |
+| **17** | [Ticketing System](Lab-17-Ticketing-System/README.md) | osTicket / Help Desk | 5.0 | 📋 Planned | 60m |
 
-**Total labs:** 7 documented  
-**Total time:** ~300 minutes (~5 hours)  
-**Next:** Networking labs (domains 2.0-2.5)
+**Total labs:** 7 documented, 9 planned  
+**Total time:** ~800 minutes  
+**Next:** Windows & Active Directory (Domains 1.0/2.0)
 
 ---
 
@@ -82,11 +91,11 @@ These labs simulate real Help Desk / IT Support tickets on actual hardware and L
 
 Labs map to official exam domains (220-1201):
 
-- **Domain 1:** Operating Systems & Hardware (Labs 01-08) — ~40%
-- **Domain 2:** Networking (coming soon) — ~20%
-- **Domain 3:** Security (coming soon) — ~15%
-- **Domain 4:** Virtualization & Cloud (coming soon) — ~15%
-- **Domain 5:** Troubleshooting (ALL labs) — ~10%
+- **Domain 1:** Operating Systems & Hardware (Labs 01-08) — ~30%
+- **Domain 2:** Networking & Windows (Labs 09-14) — ~30%
+- **Domain 3:** Security (Labs 15-16) — ~15%
+- **Domain 4:** Virtualization & Cloud — ~15%
+- **Domain 5:** Troubleshooting (ALL labs + Lab 17) — ~10%
 
 ---
 
