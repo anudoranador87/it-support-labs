@@ -117,7 +117,6 @@ This document tracks the full roadmap for IT Support labs aligned to CompTIA A+ 
 Every lab follows this structure:
 📁 Lab-XX-Topic/
 ├── README.md (primary lab documentation)
-├── LEARNING.md (personal reflection - ES + EN)
 ├── screenshots/
 
 Each README includes:
@@ -129,7 +128,6 @@ Each README includes:
 - Video link (YouTube)
 - Key concepts
 - Checklist
-- Lessons learned
 
 ---
 

@@ -15,7 +15,6 @@ These labs simulate real Help Desk / IT Support tickets on actual hardware and L
 - **Screenshots:** Before/after evidence
 - **Key concepts:** Theory + CompTIA alignment
 - **Checklist:** Verify you've learned it
-- **Learning log:** Personal reflection (Spanish + English)
 
 **Goal:** Entry-level IT Support / Help Desk readiness for CompTIA A+ certification (Sept 2026)
 
@@ -71,7 +70,6 @@ These labs simulate real Help Desk / IT Support tickets on actual hardware and L
 4. **Follow the scenario** step-by-step
 5. **Check screenshots** for reference
 6. **Complete the checklist** to verify learning
-7. **Read LEARNING.md** for personal notes
 
 ---
 
