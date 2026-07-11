@@ -1,0 +1,39 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Temp files
+*~
+*.tmp
+.#*
+
+# Screenshots (keep versioned, but ignore temp)
+*.bak
+
+# Node/npm
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Build
+dist/
+build/
+
+# Misc
+.env
+.env.local
+*.zip
+*.rar

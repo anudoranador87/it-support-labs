@@ -1,102 +1,151 @@
-# 🖥️ it-support-labs
-> Practical lab documentation for **CompTIA A+** certification and the **Google IT Support Professional Certificate**.
+# 🔧 IT Support Labs — CompTIA A+ Core 1 Hands-On
+
+**Documented troubleshooting labs for CompTIA A+ 220-1201 certification prep**
+
+Built on real hardware, VMs, and Android. Documented in English + Spanish.
 
 ---
 
-## Who I am
+## 🎯 Purpose
 
-Self-taught web developer (HTML, CSS, JavaScript) with 6 months of Frontend experience.  
-Main project: [EquiShift](https://github.com/anudoranador87) — shift scheduling algorithm in JS.
+These labs simulate real Help Desk / IT Support tickets on actual hardware and Linux environments. Each lab covers one CompTIA A+ domain with:
 
-Currently studying the **Google IT Support Professional Certificate**, working toward **CompTIA A+** and a hybrid **IT Support + Frontend** role.
+- **Real scenario:** Actual problems from hospitality ops + lab troubleshooting
+- **Step-by-step walkthrough:** Commands, output, screenshots
+- **Screenshots:** Before/after evidence
+- **Key concepts:** Theory + CompTIA alignment
+- **Checklist:** Verify you've learned it
+- **Learning log:** Personal reflection (Spanish + English)
 
----
-
-## What this repository is
-
-Hands-on labs documented with photos and videos.  
-Real hardware. Real virtual machines. Real problems.
-
-Not theory — this is what I do with my hands.
+**Goal:** Entry-level IT Support / Help Desk readiness for CompTIA A+ certification (Sept 2026)
 
 ---
 
-## Structure
+## 👤 Who Built This
 
-```
-it-support-labs/
-├── README.md
-├── hardware-labs/
-│   ├── img/
-│   ├── 🖥️ Lab 01 — Hardware Inventory.md
-│   ├── 🖥️ Lab 02 — System Diagnosis and Configuration.md
-│   └── 🖥️ Lab 03 — Preventive Maintenance.md
-└── linux-itsupport-lab/
-    ├── 🖥️ Lab 01 — Meet the Machine.md
-    ├── 🖥️ Lab 02 — Processes and Performance.md
-    ├── 🖥️ Lab 03 — Network Connectivity.md
-    └── 🖥️ Lab 04 — Driver Troubleshooting (Real Case).md
-```
+**José María Aparicio Portillo**
+
+- 🏨 **8+ years Hospitality Operations:** Hotel Reception & Duty Manager (Málaga & UK)
+- 🇪🇸 **Bilingual:** Spanish (Native) + English (C1+ from UK work)
+- 📍 **Based in:** Málaga, Spain
+- 🎓 **Certifications in progress:** CompTIA A+ Core 1 (Sept 2026)
+- 🔗 **Learning journey:** [Mi Camino Web 365](https://anudoranador87.github.io)
+- 💼 **GitHub:** [@anudoranador87](https://github.com/anudoranador87)
+
+**Why this differentiates:** 8 years managing hotel ops + IT troubleshooting = natural fit for hospitality tech support roles (Mews, Apaleo, Cloudbeds, Paraty Tech). These labs prove I can troubleshoot under pressure.
 
 ---
 
-## Completed Labs
+## 📚 Labs Roadmap
 
-### 🔧 Hardware (Physical Labs)
+| # | Lab | Topic | CompTIA Domain | Status | Time |
+|---|-----|-------|-----------------|--------|------|
+| **01** | [Hardware Basics](Lab-01-Hardware-Basics/README.md) | Desktop Inventory & Specs | 1.1-1.2 | ✅ Complete | 30m |
+| **02** | [Hardware Diagnosis](Lab-02-Hardware-Diagnosis/README.md) | USB Controller Troubleshooting | 1.3-1.4 | ✅ Complete | 45m |
+| **03** | [Preventive Maintenance](Lab-03-Preventive-Maintenance/README.md) | Thermal/Keyboard Issues | 1.5 | ✅ Complete | 40m |
+| **05** | [Linux Basics](Lab-05-Linux-Basics/README.md) | File System Navigation | 1.7-1.8 | ✅ Complete | 30m |
+| **06** | [Linux Monitoring](Lab-06-Linux-Monitoring/README.md) | Processes & Performance | 1.9 | 🔄 In Progress | 45m |
+| **07** | [Linux Network](Lab-07-Linux-Network/README.md) | Connectivity & Troubleshooting | 2.0 | 🔄 In Progress | 50m |
+| **08** | [Linux Drivers](Lab-08-Linux-Drivers/README.md) | WiFi Driver Fix (Real Case) | 1.6 | 🔄 In Progress | 60m |
 
-| Lab | Title | Status |
-|-----|-------|--------|
-| [01](hardware-labs/🖥️%20Lab%2001%20—%20Hardware%20Inventory.md) | Hardware Inventory — Desktop Tower | ✅ Done |
-| [02](hardware-labs/🖥️%20Lab%2002%20—%20System%20Diagnosis%20and%20Configuration.md) | System Diagnosis — USB Controller Failure | ✅ Done |
-| [03](hardware-labs/🖥️%20Lab%2003%20—%20Preventive%20Maintenance.md) | Preventive Maintenance — Laptop Heat/Keyboard | ✅ Done |
-| 04 | Disassembly and reassembly — tower | 🔄 Pending |
-| 05 | Cleaning with compressed air | 🔄 Pending |
-| 06 | Thermal paste replacement — laptop | 🔄 Pending |
-| 07 | RAM install / uninstall | 🔄 Pending |
-| 08 | Hard drive replacement | 🔄 Pending |
-
-### 💻 Operating System (Linux)
-
-| Lab | Title | Status |
-|-----|-------|--------|
-| [01](linux-itsupport-lab/🖥️%20Lab%2001%20—%20Meet%20the%20Machine.md) | Meet the Machine — Basic Specs | ✅ Done |
-| [02](linux-itsupport-lab/🖥️%20Lab%2002%20—%20Processes%20and%20Performance.md) | Processes and Performance — Monitoring | 🟡 In progress |
-| [03](linux-itsupport-lab/🖥️%20Lab%2003%20—%20Network%20Connectivity.md) | Network Connectivity — Troubleshooting | 🟡 In progress |
-| [04](linux-itsupport-lab/🖥️%20Lab%2004%20—%20Driver%20Troubleshooting%20(Real%20Case).md) | Driver Troubleshooting — WiFi Fix | 🟡 In progress |
-| 05 | Windows installation on VM | 🔄 Pending |
-| 06 | User and permissions management | 🔄 Pending |
+**Total labs:** 7 documented  
+**Total time:** ~300 minutes (~5 hours)  
+**Next:** Networking labs (domains 2.0-2.5)
 
 ---
 
-## Lab Format
+## 🚀 How to Use
 
-Each lab follows a standard senior-level documentation format:
-- **Scenario:** The real-world problem or ticket description.
-- **Commands/Tools:** Reference table of what was used.
-- **Walkthrough/Procedures:** Step-by-step actions taken.
-- **🔬 Real Results:** Actual output and screenshots from the machine.
-- **Key Concepts:** Theory behind the practice.
-- **Notes:** Personal technical observations.
-- **Part of:** Link back to this main repository.
+1. **Pick a lab** from the table above
+2. **Open the lab folder** (e.g., `Lab-01-Hardware-Basics/`)
+3. **Read README.md** inside that folder
+4. **Follow the scenario** step-by-step
+5. **Check screenshots** for reference
+6. **Complete the checklist** to verify learning
+7. **Read LEARNING.md** for personal notes
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Details |
+|-----------|---------|
+| **Hardware** | Desktop (i7-8700K, RX 6750 XT) + Laptop (ASUS X550JF) |
+| **VM** | VirtualBox (Ubuntu 24.04 LTS) |
+| **Mobile Lab** | Termux on Android (proot-distro Ubuntu) |
+| **Recording** | OBS Studio |
+| **Version Control** | Git + GitHub |
 
 ---
 
-## Tools
+## 📖 CompTIA A+ Alignment
 
-- **VirtualBox** — virtual machines
-- **OBS Studio** — screen and video recording
-- **GitHub** — documentation and version control
+Labs map to official exam domains (220-1201):
+
+- **Domain 1:** Operating Systems & Hardware (Labs 01-08) — ~40%
+- **Domain 2:** Networking (coming soon) — ~20%
+- **Domain 3:** Security (coming soon) — ~15%
+- **Domain 4:** Virtualization & Cloud (coming soon) — ~15%
+- **Domain 5:** Troubleshooting (ALL labs) — ~10%
 
 ---
-## Study Resources
 
-| Resource | Tipo | Enlace |
-|----------|------|--------|
-| Professor Messer 220-1201 Course Notes | Notas + Quiz + Escenarios | [xjmilian.github.io/messer](https://xjmilian.github.io/messer/) |
-| StationX A+ Cheat Sheet | Cheat sheet Core 1 + Core 2 | [stationx.net/comptia-a-plus-cheat-sheet](https://www.stationx.net/comptia-a-plus-cheat-sheet/) |
-| CertBlaster A+ Study Guide | Guía gratuita por dominios (1101/1102) | [certblaster.com](https://certblaster.com/a-plus-study-guide-1101-1102/) |
-| Quizlet — Flashcards 220-1201 | Flashcards comunidad | [quizlet.com](https://quizlet.com/1024593451/comptia-a-1200-series-220-1201-220-1202-flash-cards/) |
-| Reddit r/CompTIA | Comunidad, apuntes, experiencias | [reddit.com/r/CompTIA](https://www.reddit.com/r/CompTIA/) |
-| Professor Messer YouTube | Vídeos gratuitos por objetivo | [youtube.com/@professormesser](https://www.youtube.com/@professormesser) |
-| ExamenesGratis — CompTIA A+ en Español | 200 preguntas + explicaciones + IA | [examenesgratis.com](https://examenesgratis.com/practica/comptia-a-plus-espanol) |
-| Shehan's CompTIA A+ 220-1201 Notes | Apuntes completos Core 1 por dominio | [shehan-fdo.github.io](https://shehan-fdo.github.io/CompTIA-A-220-1201-Notes/) |
+## 🎬 Video Walkthroughs
+
+Each lab has a screencast (coming soon):
+- Platform: YouTube
+- Format: Terminal recording + voice explanation
+- Length: 5-10 minutes per lab
+- Languages: English (Spanish subtitles TBA)
+
+---
+
+## 📝 Study Resources
+
+| Resource | Type | Link |
+|----------|------|------|
+| Dion Training | Practice Exams | diontraining.com |
+| Professor Messer | Video Lectures | youtube.com/@professormesser |
+| CompTIA Study App | Mobile App | Depth gym (Security/Networking focus) |
+| Google IT Support | Coursera | coursera.org |
+
+---
+
+## 💡 Key Takeaways
+
+**These labs prove:**
+- ✅ Hands-on troubleshooting ability
+- ✅ Documentation & communication skills
+- ✅ Methodical problem-solving (CompTIA framework)
+- ✅ Real hardware vs. theory-only learning
+- ✅ Bilingual technical fluency (ES/EN)
+- ✅ Self-directed learning in public
+
+**For recruiters:** This is proof I can take a Help Desk ticket, troubleshoot it systematically, document it, and explain it clearly.
+
+---
+
+## 🔗 Related
+
+- **Main GitHub:** https://github.com/anudoranador87
+- **Learning Diary (365 days):** https://anudoranador87.github.io
+- **Portfolio projects:** LostDesk (React), Campus & Crema (React)
+
+---
+
+## 📄 License
+
+MIT License — Use freely for learning & teaching. Attribution appreciated.
+
+See [LICENSE](LICENSE) file for details.
+
+---
+
+**Last Updated:** July 11, 2026  
+**Next Update:** Lab 06 completion (Mid-July 2026)
+
+---
+
+### ⭐ If this helps your IT Support journey, star the repo!
+
+Questions? Open an issue or reach out via GitHub.
