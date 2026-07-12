@@ -1,8 +1,15 @@
 # Lab 00 — Fundamentos de gestión de archivos en Linux
 
-**Entorno:** Termux (Android)
-**Duración del video:** ~9:40 min
+**Entorno:** Termux (Android)  
+**Duración del video:** ~9:40 min  
 **Objetivo:** Practicar el ciclo básico de creación, edición, verificación y organización de archivos desde terminal, como base de los labs de diagnóstico de sistema (Lab 01 en adelante).
+
+---
+
+## 🎬 Video Walkthrough
+
+Puedes ver la resolución paso a paso de este laboratorio aquí:
+[**Ver vídeo del laboratorio (lab-00-file-management.mp4)**](./lab-00-file-management.mp4)
 
 ---
 
