@@ -9,7 +9,7 @@
 ## 🎬 Video Walkthrough
 
 Puedes ver la resolución paso a paso de este laboratorio aquí:
-[**Ver vídeo del laboratorio (lab-00-file-management.mp4)**](./lab-00-file-management.mp4)
+[**Ver vídeo del laboratorio en YouTube**](https://youtu.be/qiBuNdF3TzM?is=Ak-Bcx61I6HoVrM0)
 
 ---
 
