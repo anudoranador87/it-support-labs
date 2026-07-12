@@ -11,6 +11,7 @@ Hands-on Linux command reference for IT Support, documented with real cases.
 
 | Lab | Title | Description |
 |-----|-------|-------------|
+| 00 | [File Management](./00-file-management/README.md) | `touch`, `nano`, `cat`, `echo >>`, `mv` — fundamentals |
 | [01](./🖥️%20Lab%2001%20—%20Meet%20the%20Machine.md) | 🖥️ Lab 01 — Meet the Machine | Identity, Uptime, Disk and RAM |
 | 02 | [Processes](./03-processes/commands.md) | `top`, `ps`, `kill` |
 | 03 | [Networking](./04-networking/commands.md) | `ip a`, `ping`, `nmcli`, `ss` |
