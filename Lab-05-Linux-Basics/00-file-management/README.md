@@ -9,7 +9,8 @@
 ## 🎬 Video Walkthrough
 
 Puedes ver la resolución paso a paso de este laboratorio aquí:
-[**Ver vídeo del laboratorio en YouTube**](https://youtu.be/qiBuNdF3TzM?is=Ak-Bcx61I6HoVrM0)
+[![Lab 00 Walkthrough](https://img.youtube.com/vi/qiBuNdF3TzM/maxresdefault.jpg)](https://youtu.be/qiBuNdF3TzM)
+*Haz clic en la imagen de arriba para ver el vídeo del laboratorio.*
 
 ---
 
