@@ -29,6 +29,7 @@ This document tracks the full roadmap for IT Support labs aligned to CompTIA A+ 
 | **01** | Hardware Basics — Desktop Inventory | ✅ Done | 1.1-1.2 |
 | **02** | Hardware Diagnosis — USB Troubleshooting | ✅ Done | 1.3-1.4 |
 | **03** | Preventive Maintenance — Thermal/Keyboard | ✅ Done | 1.5 |
+| **04** | System Info Gathering — Termux/CLI | ✅ Done | 1.7 / 5.0 |
 
 ### Operating Systems / Linux (4 labs)
 
