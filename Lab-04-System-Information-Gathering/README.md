@@ -60,7 +60,8 @@ cat systeminfo.txt
 > [!TIP]
 > This lab was recorded as a screencast demonstrating the efficiency of mobile terminal environments for quick IT diagnostics.
 
-[Watch the Lab Walkthrough on YouTube](https://youtu.be/rkRuyRalGOE?is=q-aRKb8JTs8xTTYE)
+[![Lab 04 Walkthrough](https://img.youtube.com/vi/rkRuyRalGOE/maxresdefault.jpg)](https://youtu.be/rkRuyRalGOE)
+*Haz clic en la imagen de arriba para ver el vídeo del laboratorio.*
 
 ## 🧠 Key Concepts
 - **Baseline:** A set of data representing the normal or initial state of a system.
