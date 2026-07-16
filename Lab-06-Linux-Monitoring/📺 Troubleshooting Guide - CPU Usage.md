@@ -2,7 +2,7 @@
 
 A step-by-step guide showing how to diagnose a sluggish Linux server, locate the process consuming CPU, and fix it using the command line.
 
-The video **[IT Support CPU usage](https://youtu.be/2mHf1uUctw0)** shows the full workflow. Screenshots below are checkpoints at each step.
+Watch the video **[IT Support CPU usage](https://youtu.be/2mHf1uUctw0)** to see the full workflow.
 
 ---  
 
@@ -14,133 +14,80 @@ The video **[IT Support CPU usage](https://youtu.be/2mHf1uUctw0)** shows the ful
 
 ## 🧭 The Lab
 
-### Step 1: System Baseline
-
-Check memory, disk, and load average first.
-
-| Step | Command | What you see |
-|------|---------|--------------|
-| Memory | `free -h` | RAM usage, swap | 
-| Disk | `df -h /` | Partition space |
-| Load | `top -b -n 1 \| head -n 15` | System overview + CPU breakdown |
-
-Screenshots: [1](assets/screenshots/screenshot_001.png) [2](assets/screenshots/screenshot_002.png) [3](assets/screenshots/screenshot_003.png)
-
----
-
-### Step 2: Find the Culprit
-
-Open `top` and look for the process consuming CPU.
+### Step 1: Check System Health
 
 ```bash
-top
-```
-
-In this lab: **PID 9944** running `cat` uses **98.7% CPU**. That's the problem.
-
-Screenshot: [interactive top](assets/screenshots/screenshot_006.png)
-
-Alternatively with `ps`:
-```bash
-ps -eo pid,comm,%cpu --sort=-%cpu | head -n 5
-```
-
----
-
-### Step 3: Fix It
-
-You have two choices.
-
-#### Option A: Kill the process (remove it)
-
-```bash
-sudo kill 9944
-```
-
-The process stops immediately.
-
-**Before:** 250 tasks, load high, 98.7% CPU  
-**After:** 248 tasks, load normal, 19.9% CPU  
-
-Screenshots: [kill](assets/screenshots/screenshot_007.png) [result](assets/screenshots/screenshot_008.png)
-
-#### Option B: Lower its priority (keep it running but slower)
-
-```bash
-sudo renice +10 -p 9944
-```
-
-The process still runs but doesn't hog CPU. Other tasks can use it.
-
-Screenshots: [renice](assets/screenshots/screenshot_010.png) [result](assets/screenshots/screenshot_011.png)
-
----
-
-## Commands
-
-### Diagnostics
-```bash
-free -h              # RAM + swap
+free -h              # memory usage
 df -h /              # disk space
-top -b -n 1          # snapshot
-vmstat 1 3           # memory stats
 ```
 
-### Find processes
+### Step 2: Monitor CPU
+
 ```bash
-top                  # interactive, sorted by CPU
-ps -eo pid,comm,%cpu --sort=-%cpu | head -10
-ps aux | grep <name>
+top                  # see all processes
 ```
 
-### Control processes
+Look for the process with highest %CPU. In this lab: **PID 9944** running `cat` at **99.7% CPU**.
+
+### Step 3: Check if Process is Really There
+
 ```bash
-kill <PID>           # stop it
-kill -9 <PID>        # force stop
-renice +10 -p <PID>  # lower priority (higher number = lower priority)
-nice -n 5 <command>  # start with lower priority
+ps -p 9944           # confirm PID 9944 exists
 ```
 
-### Info
+### Step 4: Kill It
+
 ```bash
-uptime               # load average
-nproc                # CPU count
-cat /proc/cpuinfo    # CPU details
+kill 9944
+```
+
+### Step 5: Verify It's Gone
+
+```bash
+ps -p 9944           # should return nothing
+top                  # check CPU dropped
+```
+
+### Step 6: Alternative - Lower Priority Instead
+
+Instead of killing, you can slow it down:
+
+```bash
+renice +10 -p 9944   # lower priority but keep it running
 ```
 
 ---
 
-## When to use what
+## When to Use What
 
 **Use `kill`:**
-- Process is broken/unwanted
-- Need immediate relief
+- Process is broken or unwanted
 - It's consuming resources for nothing
+- Need immediate relief
 
 **Use `renice`:**
 - Process is important but can wait
 - Want to slow it down, not remove it
-- Testing if it's really the problem
+- Testing if it's really the culprit
 
 ---
 
 ## Success
 
-After the lab, you should be able to:
-- Check if system is healthy (memory, disk, CPU)
-- Find what's consuming CPU
-- Decide whether to kill or renice it
-- Verify the problem is fixed
+After the lab:
+- ✓ System feels responsive again
+- ✓ CPU usage is normal
+- ✓ Know when to `kill` vs `renice`
 
 ---
 
-## Manual testing
+## Practice
 
-Want to practice? Create a CPU hog:
+Make a CPU hog and fix it:
 
 ```bash
-yes > /dev/null &
+yes > /dev/null &    # start background process consuming CPU
+top                  # find it
+kill %1              # kill it by job number
 ```
-
-Then diagnose and kill it. Same as the lab.
 
