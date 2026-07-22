@@ -1,0 +1,578 @@
+/* ==========================================================================
+   CSS Custom Properties & Design System
+   ========================================================================== */
+:root {
+  --font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Color Palette */
+  --bg-gradient: linear-gradient(135deg, #090d16 0%, #111827 100%);
+  --panel-bg: rgba(17, 24, 39, 0.7);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  
+  --primary: #38bdf8;
+  --primary-glow: rgba(56, 189, 248, 0.15);
+  --secondary: #6366f1;
+  --secondary-glow: rgba(99, 102, 241, 0.15);
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  
+  /* State Colors */
+  --color-success: #10b981;
+  --color-success-bg: rgba(16, 185, 129, 0.1);
+  --color-warning: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.1);
+  --color-danger: #ef4444;
+  --color-danger-bg: rgba(239, 68, 68, 0.15);
+  
+  /* Blocks Color-Coding */
+  --block-data: #3b82f6;
+  --block-mirror: #818cf8;
+  --block-parity-p: #ec4899;
+  --block-parity-q: #a855f7;
+  --block-empty: #475569;
+  
+  /* Animations */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Typography & Headers
+   ========================================================================== */
+header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  position: relative;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Lang Switcher */
+.lang-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 9999px;
+  padding: 0.25rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lang-btn.active {
+  background: var(--primary);
+  color: #0f172a;
+}
+
+/* ==========================================================================
+   Layout Containers
+   ========================================================================== */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   Inputs Section
+   ========================================================================== */
+.inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.field {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: border-color var(--transition-normal);
+}
+
+.field:focus-within {
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.size-input {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.size-input input {
+  flex: 3;
+}
+
+.size-input select {
+  flex: 1.5;
+  min-width: 90px;
+}
+
+/* ==========================================================================
+   Alerts & Warnings
+   ========================================================================== */
+.warning-banner {
+  background: var(--color-danger-bg);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #fca5a5;
+  font-weight: 500;
+  transition: all var(--transition-normal);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.warning-banner.hidden {
+  display: none !important;
+}
+
+.warning-banner svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  fill: var(--color-danger);
+}
+
+/* ==========================================================================
+   Metrics / Results Grid
+   ========================================================================== */
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  padding: 1.75rem;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all var(--transition-normal);
+}
+
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  opacity: 0.7;
+}
+
+.stat:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.stat-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  font-feature-settings: "tnum";
+}
+
+/* Error/Warning metric state */
+.stat.error-state::before {
+  background: var(--color-danger);
+}
+.stat.error-state .stat-value {
+  color: var(--color-danger);
+}
+
+/* ==========================================================================
+   Description Block
+   ========================================================================== */
+.description {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 5px solid var(--secondary);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.description p {
+  color: #e2e8f0;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Visual Diagram (Array & Disks)
+   ========================================================================== */
+.diagram {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  padding: 2.5rem 1.5rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.diagram-header {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1rem;
+}
+
+.diagram-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Legend of Blocks */
+.diagram-legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.legend-color.data { background: var(--block-data); }
+.legend-color.mirror { background: var(--block-mirror); }
+.legend-color.parity-p { background: var(--block-parity-p); }
+.legend-color.parity-q { background: var(--block-parity-q); }
+
+#disk-visual {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  perspective: 1000px;
+}
+
+/* Sub-group mirroring wrapper for RAID 10 */
+.disk-group {
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.disk-group:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  background: rgba(99, 102, 241, 0.03);
+}
+
+.disk-group::after {
+  content: attr(data-group-label);
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Physical HDD Simulation Card */
+.disk {
+  width: 110px;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  border: 2px solid #334155;
+  border-radius: 16px;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    inset 0 1px 3px rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.disk:hover {
+  transform: translateY(-8px) scale(1.03);
+  border-color: var(--primary);
+  box-shadow: 
+    0 15px 35px rgba(56, 189, 248, 0.25),
+    inset 0 1px 3px rgba(255, 255, 255, 0.25);
+}
+
+.disk.warning-state {
+  opacity: 0.4;
+  border-color: var(--color-danger);
+  filter: grayscale(1);
+}
+
+/* Disk physical parts */
+.disk-plate {
+  height: 6px;
+  background: #475569;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.disk-plate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: 60%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.disk-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.disk-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.disk-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 8px var(--color-success);
+  transition: background var(--transition-fast);
+}
+
+.disk.warning-state .disk-status {
+  background: var(--color-danger);
+  box-shadow: 0 0 8px var(--color-danger);
+}
+
+/* Disk internal blocks storage representation */
+.disk-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.35rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.block {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.5rem 0.25rem;
+  border-radius: 6px;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+
+.block.data {
+  background: var(--block-data);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.block.mirror {
+  background: var(--block-mirror);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.block.parity-p {
+  background: var(--block-parity-p);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.block.parity-q {
+  background: var(--block-parity-q);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.block.empty {
+  background: var(--block-empty);
+  border: 1px dotted rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+.block:hover {
+  filter: brightness(1.2);
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Responsive Adaptability
+   ========================================================================== */
+@media (max-width: 768px) {
+  body {
+    padding: 1.5rem 1rem;
+  }
+
+  header h1 {
+    font-size: 2.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+  }
+
+  .inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .disk {
+    width: 90px;
+  }
+
+  .block {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.2rem;
+  }
+}

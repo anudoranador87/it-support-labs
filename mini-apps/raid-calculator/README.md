@@ -41,10 +41,11 @@ I kept getting RAID levels confused when studying for CompTIA A+ — specificall
 - Dynamically building DOM nodes with `createElement` / `classList` / `appendChild` (`pintarDiscos()`)
 - Running the render function once on load so the UI isn't empty before the first user interaction
 
-### Known limitations / next steps
-- No input validation yet for RAID 10 (requires an even number of drives)
-- Empty or invalid number inputs currently produce `NaN%` in the efficiency field instead of a friendly message
-- The RAID level is currently checked in two separate `switch` statements (one in `calcular()` for the math, one in `actualizar()` for the description text) — candidate for refactor into a single source of truth (e.g. a lookup object) so adding a new RAID level only requires one change
+### Key Features Implemented
+- **Full CompTIA Validation:** Checks drive requirements (e.g., RAID 5 min 3, RAID 6 min 4, RAID 10 min 4 & even) with active warning alerts.
+- **Advanced Block Visualization:** Renders physical drives with real block mapping (Stripes, Mirrors, and rotating Parity P/Q blocks) to visually explain how data is stored.
+- **Bilingual Interface:** Toggle interface instantly between Spanish and English.
+- **Clean Architecture:** Refactored business calculations and UI rendering to use a single configuration lookup object as a single source of truth.
 
 ---
 
@@ -82,7 +83,8 @@ Me costaba diferenciar los niveles RAID estudiando para CompTIA A+ — sobre tod
 - Construcción dinámica de nodos del DOM con `createElement` / `classList` / `appendChild` (`pintarDiscos()`)
 - Ejecutar la función de render una vez al cargar la página, para que la UI no esté vacía antes de la primera interacción
 
-### Limitaciones conocidas / próximos pasos
-- Todavía no hay validación para RAID 10 (requiere número par de discos)
-- Los inputs numéricos vacíos o inválidos producen actualmente `NaN%` en el campo de eficiencia, en vez de un mensaje claro
-- El nivel RAID se comprueba ahora mismo en dos sentencias `switch` separadas (una en `calcular()` para las matemáticas, otra en `actualizar()` para el texto de descripción) — candidato a refactor hacia una única fuente de verdad (ej. un objeto de búsqueda), para que añadir un nuevo nivel RAID solo requiera un cambio
+### Características Clave Implementadas
+- **Validación Completa CompTIA:** Comprobación automática de requisitos (RAID 5 mín. 3, RAID 6 mín. 4, RAID 10 mín. 4 y par) con alertas interactivas.
+- **Diagrama de Bloques Avanzado:** Muestra los discos físicos con la distribución real de bloques (bandas de datos, réplicas espejo y paridades rotativas P/Q) para entender gráficamente el almacenamiento.
+- **Interfaz Bilingüe:** Cambio instantáneo entre español e inglés.
+- **Arquitectura Limpia:** Refactorización completa utilizando un único objeto de configuración como fuente de verdad para cálculos y descripciones.

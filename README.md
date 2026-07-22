@@ -148,8 +148,8 @@ See [LICENSE](LICENSE) file for details.
 
 ---
 
-**Last Updated:** July 11, 2026  
-**Next Update:** Lab 06 completion (Mid-July 2026)
+**Last Updated:** July 22, 2026  
+**Next Update:** Lab 09 Windows Server Active Directory Setup (Late July 2026)
 
 ---
 

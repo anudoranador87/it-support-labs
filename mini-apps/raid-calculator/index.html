@@ -3,35 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RAID Calculator</title>
-  <link rel="stylesheet" href="index.cs">
+  <title>RAID Calculator — CompTIA A+ Storage Study Tool</title>
+  <!-- Google Fonts for Outfit and Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
   <header>
-    <h1>RAID Calculator</h1>
-    <p>Calcula espacio útil, eficiencia y tolerancia a fallos</p>
+    <div class="lang-toggle">
+      <button id="btn-es" class="lang-btn active">ES</button>
+      <button id="btn-en" class="lang-btn">EN</button>
+    </div>
+    <h1 id="header-title">RAID Calculator</h1>
+    <p id="header-subtitle">Calcula espacio útil, eficiencia y tolerancia a fallos</p>
   </header>
 
   <main>
 
+    <!-- Validation Warning Banner -->
+    <div id="warning-banner" class="warning-banner hidden">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      </svg>
+      <span id="warning-text">La configuración seleccionada no es válida.</span>
+    </div>
+
     <section class="inputs">
       <div class="field">
-        <label for="num-drives">Número de discos</label>
-        <input type="number" id="num-drives" min="2" value="4">
+        <label for="num-drives" id="label-num-drives">Número de discos</label>
+        <input type="number" id="num-drives" min="1" value="4">
       </div>
 
       <div class="field">
-        <label for="drive-size">Tamaño por disco</label>
-        <input type="number" id="drive-size" min="1" value="1">
-        <select id="unit">
-          <option value="GB">GB</option>
-          <option value="TB" selected>TB</option>
-        </select>
+        <label for="drive-size" id="label-drive-size">Tamaño por disco</label>
+        <div class="size-input">
+          <input type="number" id="drive-size" min="1" value="1">
+          <select id="unit">
+            <option value="GB">GB</option>
+            <option value="TB" selected>TB</option>
+          </select>
+        </div>
       </div>
 
       <div class="field">
-        <label for="raid-level">RAID Level</label>
+        <label for="raid-level" id="label-raid-level">Nivel RAID</label>
         <select id="raid-level">
           <option value="0">RAID 0 — Striping</option>
           <option value="1">RAID 1 — Mirroring</option>
@@ -43,29 +61,50 @@
     </section>
 
     <section class="results">
-      <div class="stat">
-        <span class="stat-label">Espacio útil</span>
+      <div class="stat" id="stat-usable">
+        <span class="stat-label" id="label-usable-space">Espacio útil</span>
         <span class="stat-value" id="usable-space">—</span>
       </div>
-      <div class="stat">
-        <span class="stat-label">Espacio total raw</span>
+      <div class="stat" id="stat-total">
+        <span class="stat-label" id="label-total-space">Espacio total raw</span>
         <span class="stat-value" id="total-space">—</span>
       </div>
-      <div class="stat">
-        <span class="stat-label">Eficiencia</span>
+      <div class="stat" id="stat-efficiency">
+        <span class="stat-label" id="label-efficiency">Eficiencia</span>
         <span class="stat-value" id="efficiency">—</span>
       </div>
-      <div class="stat">
-        <span class="stat-label">Discos que pueden fallar</span>
+      <div class="stat" id="stat-fault">
+        <span class="stat-label" id="label-fault-tolerance">Discos que pueden fallar</span>
         <span class="stat-value" id="fault-tolerance">—</span>
       </div>
     </section>
 
     <section class="description">
-      <p id="raid-description">Selecciona un RAID level para ver la descripción.</p>
+      <p id="raid-description">Selecciona un nivel RAID para ver la descripción.</p>
     </section>
 
     <section class="diagram">
+      <div class="diagram-header">
+        <span class="diagram-title" id="diagram-title">Estructura del Array</span>
+        <div class="diagram-legend">
+          <div class="legend-item">
+            <div class="legend-color data"></div>
+            <span id="legend-data">Datos (Stripe)</span>
+          </div>
+          <div class="legend-item" id="legend-mirror-item">
+            <div class="legend-color mirror"></div>
+            <span id="legend-mirror">Espejo (Mirror)</span>
+          </div>
+          <div class="legend-item" id="legend-parity-p-item">
+            <div class="legend-color parity-p"></div>
+            <span id="legend-parity-p">Paridad P</span>
+          </div>
+          <div class="legend-item" id="legend-parity-q-item">
+            <div class="legend-color parity-q"></div>
+            <span id="legend-parity-q">Paridad Q</span>
+          </div>
+        </div>
+      </div>
       <div id="disk-visual"></div>
     </section>
 
