@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP Subnet Calculator — CompTIA A+ Networking Tool</title>
+  <!-- Google Fonts for Outfit and Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <header>
+    <div class="lang-toggle">
+      <button id="btn-es" class="lang-btn active">ES</button>
+      <button id="btn-en" class="lang-btn">EN</button>
+    </div>
+    <h1 id="header-title">Subnet Calculator</h1>
+    <p id="header-subtitle">Visualiza bits de red, host y calcula rangos de IPs</p>
+  </header>
+
+  <main>
+
+    <!-- Validation Error Alert -->
+    <div id="warning-banner" class="warning-banner hidden">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      </svg>
+      <span id="warning-text">Dirección IP inválida. Debe tener el formato X.X.X.X (0-255).</span>
+    </div>
+
+    <!-- Inputs Section -->
+    <section class="inputs-grid">
+      <div class="field">
+        <label for="ip-address" id="label-ip-address">Dirección IP</label>
+        <input type="text" id="ip-address" value="192.168.100.15" placeholder="e.g. 192.168.1.1">
+      </div>
+
+      <div class="field">
+        <label for="cidr-prefix" id="label-cidr-prefix">Prefijo de Subred (CIDR)</label>
+        <div class="cidr-control">
+          <input type="range" id="cidr-slider" min="1" max="32" value="24">
+          <select id="cidr-select"></select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Cards -->
+    <section class="results-grid">
+      <div class="stat" id="stat-net">
+        <span class="stat-label" id="label-net-ip">Dirección de Red</span>
+        <span class="stat-value" id="net-ip">—</span>
+      </div>
+      <div class="stat" id="stat-broadcast">
+        <span class="stat-label" id="label-broadcast-ip">Dirección de Broadcast</span>
+        <span class="stat-value" id="broadcast-ip">—</span>
+      </div>
+      <div class="stat" id="stat-mask">
+        <span class="stat-label" id="label-subnet-mask">Máscara Decimal</span>
+        <span class="stat-value" id="subnet-mask">—</span>
+      </div>
+      <div class="stat" id="stat-range">
+        <span class="stat-label" id="label-host-range">Rango de Hosts Útiles</span>
+        <span class="stat-value" id="host-range">—</span>
+      </div>
+      <div class="stat" id="stat-hosts">
+        <span class="stat-label" id="label-total-hosts">Hosts Utilizables</span>
+        <span class="stat-value" id="total-hosts">—</span>
+      </div>
+      <div class="stat" id="stat-class">
+        <span class="stat-label" id="label-ip-class">Clase de IP / Info</span>
+        <span class="stat-value" id="ip-class">—</span>
+      </div>
+    </section>
+
+    <!-- Binary Visualization -->
+    <section class="visualizer-card">
+      <div class="visualizer-header">
+        <span class="visualizer-title" id="visualizer-title">Visualización de Bits (Binario)</span>
+        <div class="visualizer-legend">
+          <div class="legend-item">
+            <div class="legend-color net"></div>
+            <span id="legend-net">Bits de Red (Net)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color host"></div>
+            <span id="legend-host">Bits de Host</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IP Address Binary -->
+      <div class="binary-section">
+        <div class="binary-label">
+          <span id="label-bin-ip">Dirección IP en Binario:</span>
+        </div>
+        <div class="octets-container" id="ip-binary-container">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+
+      <!-- Subnet Mask Binary -->
+      <div class="binary-section">
+        <div class="binary-label">
+          <span id="label-bin-mask">Máscara de Subred en Binario:</span>
+        </div>
+        <div class="octets-container" id="mask-binary-container">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

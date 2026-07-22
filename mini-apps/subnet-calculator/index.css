@@ -1,0 +1,474 @@
+/* ==========================================================================
+   CSS Custom Properties & Design System
+   ========================================================================== */
+:root {
+  --font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Color Palette */
+  --bg-gradient: linear-gradient(135deg, #070a13 0%, #0f172a 100%);
+  --panel-bg: rgba(30, 41, 59, 0.45);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  
+  --primary: #38bdf8;
+  --primary-glow: rgba(56, 189, 248, 0.15);
+  --secondary: #a855f7;
+  --secondary-glow: rgba(168, 85, 247, 0.15);
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  
+  /* State Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-danger-bg: rgba(239, 68, 68, 0.12);
+  
+  /* Bits Color Coding */
+  --bit-net-bg: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  --bit-net-border: #38bdf8;
+  --bit-host-bg: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  --bit-host-border: #fbbf24;
+  --bit-empty-bg: #334155;
+  --bit-empty-border: #475569;
+  
+  /* Animations */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Header & Lang Selector
+   ========================================================================== */
+header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  position: relative;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  background: linear-gradient(to right, #38bdf8, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Lang Switcher */
+.lang-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 9999px;
+  padding: 0.25rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lang-btn.active {
+  background: var(--primary);
+  color: #0f172a;
+}
+
+/* ==========================================================================
+   Layout Containers
+   ========================================================================== */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   Inputs Section
+   ========================================================================== */
+.inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.field {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: border-color var(--transition-normal);
+}
+
+.field:focus-within {
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.field input[type="text"] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  font-size: 1.1rem;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.field input[type="text"]:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+/* CIDR Double Controls */
+.cidr-control {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.cidr-control input[type="range"] {
+  flex: 1;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.cidr-control select {
+  width: 85px;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  font-size: 1.05rem;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Alert Banners
+   ========================================================================== */
+.warning-banner {
+  background: var(--color-danger-bg);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #fca5a5;
+  font-weight: 500;
+  animation: slideDown 0.3s ease-out;
+}
+
+.warning-banner.hidden {
+  display: none !important;
+}
+
+.warning-banner svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  fill: var(--color-danger);
+}
+
+/* ==========================================================================
+   Metrics Grid
+   ========================================================================== */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  padding: 1.5rem 1.75rem;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all var(--transition-normal);
+}
+
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  opacity: 0.6;
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.stat-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  word-break: break-all;
+}
+
+/* Stat error state override */
+.stat.error-state::before {
+  background: var(--color-danger);
+}
+.stat.error-state .stat-value {
+  color: var(--color-danger);
+}
+
+/* ==========================================================================
+   Visualizer Panel (Binary Bits Grid)
+   ========================================================================== */
+.visualizer-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.visualizer-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.visualizer-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Legend */
+.visualizer-legend {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.legend-color.net { background: var(--bit-net-border); }
+.legend-color.host { background: var(--bit-host-border); }
+
+/* Binary visualization sections */
+.binary-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.binary-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.octets-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+/* 8-bit octet grouping */
+.octet {
+  display: flex;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Octet divider dot */
+.octet-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  opacity: 0.5;
+  align-self: center;
+}
+
+/* Individual bit representation */
+.bit {
+  width: 28px;
+  height: 34px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: white;
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+
+.bit.net-bit {
+  background: var(--bit-net-bg);
+  border: 1px solid var(--bit-net-border);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+}
+
+.bit.host-bit {
+  background: var(--bit-host-bg);
+  border: 1px solid var(--bit-host-border);
+  box-shadow: 0 0 10px rgba(217, 119, 6, 0.15);
+}
+
+.bit.empty-bit {
+  background: var(--bit-empty-bg);
+  border: 1px solid var(--bit-empty-border);
+  color: var(--text-muted);
+}
+
+.bit:hover {
+  transform: scale(1.15) translateY(-2px);
+  filter: brightness(1.2);
+  z-index: 10;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Responsive Adaptability
+   ========================================================================== */
+@media (max-width: 768px) {
+  body {
+    padding: 1.5rem 1rem;
+  }
+
+  header h1 {
+    font-size: 2.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .octets-container {
+    justify-content: center;
+  }
+
+  .octet-dot {
+    display: none; /* Hide dots on mobile if they wrap */
+  }
+
+  .octet {
+    padding: 4px;
+  }
+
+  .bit {
+    width: 24px;
+    height: 30px;
+    font-size: 0.85rem;
+  }
+}

@@ -62,6 +62,15 @@ These labs simulate real Help Desk / IT Support tickets on actual hardware and L
 
 ---
 
+## 🧮 Mini-Apps & Interactive Study Tools
+
+These interactive calculators were built in vanilla HTML/CSS/JS to master complex CompTIA A+ concepts and calculations:
+
+*   **[RAID Calculator](mini-apps/raid-calculator/README.md):** Calculate raw capacity, usable storage, fault-tolerance, and efficiency for RAID 0, 1, 5, 6, and 10 with interactive physical block diagrams mapping stripes, mirrors, and rotating parities (P/Q).
+*   **[IP Subnet Calculator](mini-apps/subnet-calculator/README.md):** Parse IPv4 addresses and CIDR prefixes to calculate decimal masks, network/broadcast IDs, host counts, and IP classes. Includes a live 32-bit binary visualizer highlighting network vs. host bits.
+
+---
+
 ## 🚀 How to Use
 
 1. **Pick a lab** from the table above
