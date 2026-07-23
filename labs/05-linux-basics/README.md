@@ -12,10 +12,10 @@ Hands-on Linux command reference for IT Support, documented with real cases.
 | Lab | Title | Description |
 |-----|-------|-------------|
 | 00 | [File Management](./00-file-management/README.md) | `touch`, `nano`, `cat`, `echo >>`, `mv` — fundamentals |
-| [01](./🖥️%20Lab%2001%20—%20Meet%20the%20Machine.md) | 🖥️ Lab 01 — Meet the Machine | Identity, Uptime, Disk and RAM |
-| 02 | [Processes](./03-processes/commands.md) | `top`, `ps`, `kill` |
-| 03 | [Networking](./04-networking/commands.md) | `ip a`, `ping`, `nmcli`, `ss` |
-| 04 | [Drivers](./05-drivers/rtl8821ae-fix.md) | Real case: Realtek RTL8821AE WiFi fix |
+| [01](./01-meet-the-machine/🖥️%20Lab%2001%20—%20Meet%20the%20Machine.md) | 🖥️ Lab 01 — Meet the Machine | Identity, Uptime, Disk and RAM |
+| [02](./02-processes-performance/🖥️%20Lab%2002%20—%20Processes%20and%20Performance.md) | 🖥️ Lab 02 — Processes and Performance | `top`, `ps`, `kill` |
+| [03](./03-network-connectivity/🖥️%20Lab%2003%20—%20Network%20Connectivity.md) | 🖥️ Lab 03 — Network Connectivity | `ip a`, `ping`, `nmcli`, `ss` |
+| [04](./04-driver-troubleshooting/🖥️%20Lab%2004%20—%20Driver%20Troubleshooting%20(Real%20Case).md) | 🖥️ Lab 04 — Driver Troubleshooting (Real Case) | Real case: Realtek RTL8821AE WiFi fix |
 
 ---
 

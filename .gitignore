@@ -37,3 +37,4 @@ build/
 .env.local
 *.zip
 *.rar
+.aider*
