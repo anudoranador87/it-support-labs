@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Permissions Visualizer</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="title-section">
+          <h1 id="header-title">Visualizador de Permisos de Linux</h1>
+          <p id="header-subtitle">Entiende y visualiza los permisos de archivos en notación octal y simbólica</p>
+        </div>
+        <div class="language-buttons">
+          <button id="btn-es" class="lang-btn active">ES</button>
+          <button id="btn-en" class="lang-btn">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Left Sidebar -->
+      <aside class="sidebar">
+        <div class="info-box">
+          <h3 id="info-title">¿Qué son los permisos?</h3>
+          <p id="info-description">Los permisos de Linux controlan quién puede leer, escribir o ejecutar un archivo. Existen 3 categorías de usuarios: propietario, grupo y otros.</p>
+        </div>
+
+        <div class="permission-values">
+          <h4 id="perm-values-title">Valores de Permisos</h4>
+          <div class="perm-value">
+            <span id="perm-read-label">r (lectura)</span>
+            <span class="value">=</span>
+            <span class="number">4</span>
+          </div>
+          <div class="perm-value">
+            <span id="perm-write-label">w (escritura)</span>
+            <span class="value">=</span>
+            <span class="number">2</span>
+          </div>
+          <div class="perm-value">
+            <span id="perm-exec-label">x (ejecución)</span>
+            <span class="value">=</span>
+            <span class="number">1</span>
+          </div>
+          <div class="perm-total">
+            <span id="perm-total-label">Total</span>
+            <span class="value">=</span>
+            <span class="number" id="total-value">0</span>
+          </div>
+        </div>
+
+        <div class="quick-presets">
+          <h4 id="presets-title">Presets Comunes</h4>
+          <button class="preset-btn" data-octal="644" id="preset-644">644 (rw-r--r--)</button>
+          <button class="preset-btn" data-octal="755" id="preset-755">755 (rwxr-xr-x)</button>
+          <button class="preset-btn" data-octal="777" id="preset-777">777 (rwxrwxrwx)</button>
+          <button class="preset-btn" data-octal="600" id="preset-600">600 (rw-------)</button>
+          <button class="preset-btn" data-octal="700" id="preset-700">700 (rwx------)</button>
+        </div>
+      </aside>
+
+      <!-- Center Content -->
+      <section class="center-content">
+        <!-- Permission Controls -->
+        <div class="controls-section">
+          <h2 id="controls-title">Controles de Permisos</h2>
+          
+          <div class="permission-grid">
+            <!-- Owner Permissions -->
+            <div class="permission-card">
+              <div class="card-header">
+                <span class="icon">👤</span>
+                <h3 id="owner-title">Propietario</h3>
+              </div>
+              <p id="owner-desc">Permisos del propietario</p>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" class="perm-checkbox" data-category="owner" data-perm="read">
+                  <span id="read-label">Lectura (r)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="perm-checkbox" data-category="owner" data-perm="write">
+                  <span id="write-label">Escritura (w)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="perm-checkbox" data-category="owner" data-perm="exec">
+                  <span id="exec-label">Ejecución (x)</span>
+                </label>
+              </div>
+              <div class="octal-display" id="owner-octal">0</div>
+            </div>
+
+            <!-- Group Permissions -->
+            <div class="permission-card">
+              <div class="card-header">
+                <span class="icon">👥</span>
+                <h3 id="group-title">Grupo</h3>
+              </div>
+              <p id="group-desc">Permisos del grupo</p>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" class="perm-checkbox" data-category="group" data-perm="read">
+                  <span id="read-label">Lectura (r)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="perm-checkbox" data-category="group" data-perm="write">
+                  <span id="write-label">Escritura (w)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="perm-checkbox" data-category="group" data-perm="exec">
+                  <span id="exec-label">Ejecución (x)</span>
+                </label>
+              </div>
+              <div class="octal-display" id="group-octal">0</div>
+            </div>
+
+            <!-- Others Permissions -->
+            <div class="permission-card">
+              <div class="card-header">
+                <span class="icon">🌐</span>
+                <h3 id="others-title">Otros</h3>
+              </div>
+              <p id="others-desc">Permisos de otros usuarios</p>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" class="perm-checkbox" data-category="others" data-perm="read">
+                  <span id="read-label">Lectura (r)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="perm-checkbox" data-category="others" data-perm="write">
+                  <span id="write-label">Escritura (w)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="perm-checkbox" data-category="others" data-perm="exec">
+                  <span id="exec-label">Ejecución (x)</span>
+                </label>
+              </div>
+              <div class="octal-display" id="others-octal">0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+          <h2 id="results-title">Resultados</h2>
+          
+          <div class="result-cards">
+            <!-- Octal Notation -->
+            <div class="result-card">
+              <h3 id="octal-title">Notación Octal</h3>
+              <div class="result-value" id="octal-result">000</div>
+              <p id="octal-desc">Representación numérica de los permisos</p>
+            </div>
+
+            <!-- Symbolic Notation -->
+            <div class="result-card">
+              <h3 id="symbolic-title">Notación Simbólica</h3>
+              <div class="result-value" id="symbolic-result">---------</div>
+              <p id="symbolic-desc">Representación textual de los permisos</p>
+            </div>
+
+            <!-- chmod Command -->
+            <div class="result-card">
+              <h3 id="chmod-title">Comando chmod</h3>
+              <div class="result-value command" id="chmod-result">chmod 000 filename</div>
+              <p id="chmod-desc">Comando para aplicar estos permisos</p>
+            </div>
+          </div>
+
+          <!-- File Preview -->
+          <div class="file-preview">
+            <h3 id="preview-title">Vista Previa del Archivo</h3>
+            <div class="preview-content">
+              <div class="file-icon" id="file-icon">📄</div>
+              <div class="preview-info">
+                <p id="preview-filename">filename.txt</p>
+                <p id="preview-perms" class="preview-perms">---------</p>
+                <p id="preview-meaning" class="preview-meaning">Sin permisos asignados</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Sidebar -->
+      <aside class="sidebar-right">
+        <div class="summary-box">
+          <h3 id="summary-title">Resumen de Permisos</h3>
+          <div class="summary-item">
+            <span id="summary-owner-label">Propietario:</span>
+            <span id="summary-owner-value" class="summary-value">---</span>
+          </div>
+          <div class="summary-item">
+            <span id="summary-group-label">Grupo:</span>
+            <span id="summary-group-value" class="summary-value">---</span>
+          </div>
+          <div class="summary-item">
+            <span id="summary-others-label">Otros:</span>
+            <span id="summary-others-value" class="summary-value">---</span>
+          </div>
+          <button id="reset-btn" class="reset-button">Reiniciar</button>
+        </div>
+
+        <div class="help-box">
+          <h4 id="help-title">Ejemplos Comunes</h4>
+          <div class="example">
+            <p><strong>755:</strong> <span id="ex-755">Ejecutable por todos, escribible solo por propietario</span></p>
+          </div>
+          <div class="example">
+            <p><strong>644:</strong> <span id="ex-644">Archivo de texto, legible por todos, escribible solo por propietario</span></p>
+          </div>
+          <div class="example">
+            <p><strong>777:</strong> <span id="ex-777">Permiso completo para todos (no recomendado)</span></p>
+          </div>
+          <div class="example">
+            <p><strong>600:</strong> <span id="ex-600">Privado, solo accesible por el propietario</span></p>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
