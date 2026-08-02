@@ -128,8 +128,10 @@ Next steps: None required
 
 ---
 
-## 🔗 Related
+## 📖 Theoretical Reference
+*   **[🖥️ Domain 3: Hardware](../reference/comptia-a-plus-core-1/03-hardware.md)** - Detailed notes on storage, motherboards, CPU, and RAM.
 
+## 🔗 Related
 - Lab 02: Hardware Diagnosis (next)
 - Lab 03: Preventive Maintenance
 - CompTIA A+ Domain 1.1-1.5

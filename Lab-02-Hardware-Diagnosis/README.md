@@ -111,6 +111,10 @@ Based on evidence:
 3. **BIOS settings** can disable ports (always check)
 4. **Event Viewer** tells the truth about hardware
 
+## 📖 Theoretical Reference
+*   **[🖥️ Domain 3: Hardware](../reference/comptia-a-plus-core-1/03-hardware.md)** - USB standards and motherboard connectors.
+*   **[🛠️ Domain 5: Troubleshooting](../reference/comptia-a-plus-core-1/05-troubleshooting.md)** - Hardware diagnosis methodology and error codes.
+
 ---
 
 **Author:** José María Aparicio Portillo  

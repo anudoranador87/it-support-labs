@@ -81,6 +81,10 @@
 - DNS (Domain Name System) Role
 - ICMP (Internet Control Message Protocol) used by ping
 
+## 📖 Theoretical Reference
+*   **[🌐 Domain 2: Networking](../reference/comptia-a-plus-core-1/02-networking.md)** - IP addressing, DNS, and network protocols.
+*   **[🛠️ Domain 5: Troubleshooting](../reference/comptia-a-plus-core-1/05-troubleshooting.md)** - Network troubleshooting methodology.
+
 ---
 
 **Author:** José María Aparicio Portillo  

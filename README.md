@@ -62,6 +62,20 @@ These labs simulate real Help Desk / IT Support tickets on actual hardware and L
 
 ---
 
+## 📖 Comprehensive Study Notes (CompTIA A+ Core 1)
+
+Detailed theoretical reference reorganized by exam objectives. Each topic follows: **what it is → terms → exam data → trap**.
+
+*   **[📚 Full Reference Index](reference/comptia-a-plus-core-1/README.md)**
+*   **[⚡ Pre-Exam Checklist](reference/comptia-a-plus-core-1/00-exam-checklist.md)**
+*   **[📱 Domain 1: Mobile Devices](reference/comptia-a-plus-core-1/01-mobile-devices.md)**
+*   **[🌐 Domain 2: Networking](reference/comptia-a-plus-core-1/02-networking.md)**
+*   **[🖥️ Domain 3: Hardware](reference/comptia-a-plus-core-1/03-hardware.md)**
+*   **[☁️ Domain 4: Virtualization & Cloud](reference/comptia-a-plus-core-1/04-virtualization-cloud.md)**
+*   **[🛠️ Domain 5: Troubleshooting](reference/comptia-a-plus-core-1/05-troubleshooting.md)**
+
+---
+
 ## 🧮 Mini-Apps & Interactive Study Tools
 
 These interactive calculators were built in vanilla HTML/CSS/JS to master complex CompTIA A+ concepts and calculations:
