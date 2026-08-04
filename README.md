@@ -1,181 +1,127 @@
-# 🔧 IT Support Labs — CompTIA A+ Core 1 Hands-On
+# 🔧 IT Support Labs — CompTIA A+ Hands-On Troubleshooting
 
-**Documented troubleshooting labs for CompTIA A+ 220-1201 certification prep**
-
-Built on real hardware, VMs, and Android. Documented in English + Spanish.
+**6 real-world troubleshooting labs. No fluff. Documented for production.**
 
 ---
 
-## 🎯 Purpose
+## 📊 Quick Stats
 
-These labs simulate real Help Desk / IT Support tickets on actual hardware and Linux environments. Each lab covers one CompTIA A+ domain with:
-
-- **Real scenario:** Actual problems from hospitality ops + lab troubleshooting
-- **Step-by-step walkthrough:** Commands, output, screenshots
-- **Screenshots:** Before/after evidence
-- **Key concepts:** Theory + CompTIA alignment
-- **Checklist:** Verify you've learned it
-
-**Goal:** Entry-level IT Support / Help Desk readiness for CompTIA A+ certification (Sept 2026)
+- **Labs completed:** 6 core labs
+- **Average complexity:** Medium → High  
+- **Documentation:** English + Spanish
+- **Hardware:** Windows 11 (i7-8700K), Ubuntu (ASUS X550JF)
+- **Status:** Active (Updated Aug 2026)
 
 ---
 
-## 👤 Who Built This
+## 🎯 What This Is
+
+Not a collection of "here's how to run these commands" tutorials.
+
+Each lab is **a real problem I debugged, solved, and documented**. 
+This is proof I can:
+- ✅ Take a broken system
+- ✅ Diagnose it systematically  
+- ✅ Find the root cause (not obvious)
+- ✅ Fix it
+- ✅ Explain the WHY
+
+---
+
+## 👨‍💼 Who I Am
 
 **José María Aparicio Portillo**
+- 8+ years hospitality operations (Málaga & UK)
+- Transitioning to IT Support specialist
+- CompTIA A+ candidate (Sept 2026)
+- Python automation + domain expertise
+- GitHub: [@anudoranador87](https://github.com/anudoranador87)
 
-- 🏨 **8+ years Hospitality Operations:** Hotel Reception & Duty Manager (Málaga & UK)
-- 🇪🇸 **Bilingual:** Spanish (Native) + English (C1+ from UK work)
-- 📍 **Based in:** Málaga, Spain
-- 🎓 **Certifications in progress:** CompTIA A+ Core 1 (Sept 2026)
-- 🔗 **Learning journey:** [Mi Camino Web 365](https://anudoranador87.github.io)
-- 💼 **GitHub:** [@anudoranador87](https://github.com/anudoranador87)
-
-**Why this differentiates:** 8 years managing hotel ops + IT troubleshooting = natural fit for hospitality tech support roles (Mews, Apaleo, Cloudbeds, Paraty Tech). These labs prove I can troubleshoot under pressure.
-
----
-
-## 📚 Labs Roadmap
-
-| # | Lab | Topic | CompTIA Domain | Status | Time |
-|---|-----|-------|-----------------|--------|------|
-| **01** | [Hardware Basics](Lab-01-Hardware-Basics/README.md) | Desktop Inventory & Specs | 1.1-1.2 | ✅ Complete | 30m |
-| **02** | [Hardware Diagnosis](Lab-02-Hardware-Diagnosis/README.md) | USB Controller Troubleshooting | 1.3-1.4 | ✅ Complete | 45m |
-| **03** | [Preventive Maintenance](Lab-03-Preventive-Maintenance/README.md) | Thermal/Keyboard Issues | 1.5 | ✅ Complete | 40m |
-| **05** | [Linux Basics](Lab-05-Linux-Basics/README.md) | File System Navigation | 1.7-1.8 | ✅ Complete | 30m |
-| **06** | [Linux Monitoring](Lab-06-Linux-Monitoring/README.md) | Processes & Performance | 1.9 | ✅ Complete | 45m |
-| **07** | [Linux Network](Lab-07-Linux-Network/README.md) | Connectivity & Troubleshooting | 2.0 | ✅ Complete | 50m |
-| **08** | [Linux Drivers](Lab-08-Linux-Drivers/README.md) | WiFi Driver Fix (Real Case) | 1.6 | ✅ Complete | 60m |
-| **09** | [Windows Server AD](Lab-09-Windows-AD-Setup/README.md) | Active Directory Setup | 1.0 / 2.0 | 📋 Planned | 60m |
-| **10** | [AD User Management](Lab-10-AD-User-Management/README.md) | OUs, Users, Passwords | 2.0 | 📋 Planned | 45m |
-| **11** | [GPO & Permissions](Lab-11-GPO-Permissions/README.md) | Group Policy & Sharing | 3.0 | 📋 Planned | 60m |
-| **12** | [Network Connect](Lab-12-Network-Connectivity/README.md) | Ping, Trace, DNS | 2.1-2.3 | 📋 Planned | 45m |
-| **13** | [DHCP & DNS Config](Lab-13-DHCP-DNS/README.md) | IP Assignment | 2.2-2.3 | 📋 Planned | 50m |
-| **14** | [Network Firewall](Lab-14-Network-Firewall/README.md) | Segmentation & Rules | 2.4 | 📋 Planned | 45m |
-| **15** | [Endpoint Security](Lab-15-Endpoint-Security/README.md) | Malware & Defender | 3.1 | 📋 Planned | 40m |
-| **16** | [Access Control](Lab-16-Access-Control/README.md) | Roles & Best Practices | 3.2-3.4 | 📋 Planned | 40m |
-| **17** | [Ticketing System](Lab-17-Ticketing-System/README.md) | osTicket / Help Desk | 5.0 | 📋 Planned | 60m |
-
-**Total labs:** 7 documented, 9 planned  
-**Total time:** ~800 minutes  
-**Next:** Windows & Active Directory (Domains 1.0/2.0)
+Why this matters: I troubleshoot under pressure. I document what I learn. 
+I ship what works.
 
 ---
 
-## 📖 Comprehensive Study Notes (CompTIA A+ Core 1)
+## 📚 The 6 Core Labs
 
-Detailed theoretical reference reorganized by exam objectives. Each topic follows: **what it is → terms → exam data → trap**.
-
-*   **[📚 Full Reference Index](reference/comptia-a-plus-core-1/README.md)**
-*   **[⚡ Pre-Exam Checklist](reference/comptia-a-plus-core-1/00-exam-checklist.md)**
-*   **[📱 Domain 1: Mobile Devices](reference/comptia-a-plus-core-1/01-mobile-devices.md)**
-*   **[🌐 Domain 2: Networking](reference/comptia-a-plus-core-1/02-networking.md)**
-*   **[🖥️ Domain 3: Hardware](reference/comptia-a-plus-core-1/03-hardware.md)**
-*   **[☁️ Domain 4: Virtualization & Cloud](reference/comptia-a-plus-core-1/04-virtualization-cloud.md)**
-*   **[🛠️ Domain 5: Troubleshooting](reference/comptia-a-plus-core-1/05-troubleshooting.md)**
-
----
-
-## 🧮 Mini-Apps & Interactive Study Tools
-
-These interactive calculators were built in vanilla HTML/CSS/JS to master complex CompTIA A+ concepts and calculations:
-
-*   **[RAID Calculator](mini-apps/raid-calculator/README.md):** Calculate raw capacity, usable storage, fault-tolerance, and efficiency for RAID 0, 1, 5, 6, and 10 with interactive physical block diagrams mapping stripes, mirrors, and rotating parities (P/Q).
-*   **[IP Subnet Calculator](mini-apps/subnet-calculator/README.md):** Parse IPv4 addresses and CIDR prefixes to calculate decimal masks, network/broadcast IDs, host counts, and IP classes. Includes a live 32-bit binary visualizer highlighting network vs. host bits.
+| Lab | Problem | Complexity | Impression |
+|-----|---------|-----------|-----------|
+| [**Lab 01**](CORE-LABS/Lab-01-Linux-WiFi-Driver-Fix) | WiFi driver completely broken on Ubuntu | ⭐⭐⭐ | 10/10 |
+| [**Lab 02**](CORE-LABS/Lab-02-SSH-Windows-to-Ubuntu) | SSH setup Windows → Linux laptop | ⭐⭐ | 9/10 |
+| [**Lab 03**](CORE-LABS/Lab-03-Python-System-Health-Checker) | Automated health monitoring script | ⭐⭐⭐ | 8/10 |
+| [**Lab 04**](CORE-LABS/Lab-04-Windows-Update-Failure-Diagnosis) | Windows Update cryptic failure | ⭐⭐⭐ | 9/10 |
+| [**Lab 05**](CORE-LABS/Lab-05-AD-Offline-Logon-Cache-Issue) | AD logon fails offline | ⭐⭐ | 8/10 |
+| [**Lab 06**](CORE-LABS/Lab-06-DNS-Resolution-Poisoning-Debug) | DNS points to wrong IP | ⭐⭐⭐ | 9/10 |
 
 ---
 
-## 🚀 How to Use
+## 🚀 How to Navigate
 
-1. **Pick a lab** from the table above
-2. **Open the lab folder** (e.g., `Lab-01-Hardware-Basics/`)
-3. **Read README.md** inside that folder
-4. **Follow the scenario** step-by-step
-5. **Check screenshots** for reference
-6. **Complete the checklist** to verify learning
+1. **Pick a lab** from the table
+2. **Open Lab folder** → `README.md`
+3. **Follow the scenario** with screenshots
+4. **See the solution** with verification
 
----
-
-## 🛠️ Tech Stack
-
-| Component | Details |
-|-----------|---------|
-| **Hardware** | Desktop (i7-8700K, RX 6750 XT) + Laptop (ASUS X550JF) |
-| **VM** | VirtualBox (Ubuntu 24.04 LTS) |
-| **Mobile Lab** | Termux on Android (proot-distro Ubuntu) |
-| **Recording** | OBS Studio |
-| **Version Control** | Git + GitHub |
+Each lab has:
+- Real problem statement
+- Investigation process (NOT just answers)
+- Root cause identification
+- Fix applied + verified
+- Lessons learned
 
 ---
 
-## 📖 CompTIA A+ Alignment
+## 📖 Study Materials
 
-Labs map to official exam domains (220-1201):
-
-- **Domain 1:** Operating Systems & Hardware (Labs 01-08) — ~30%
-- **Domain 2:** Networking & Windows (Labs 09-14) — ~30%
-- **Domain 3:** Security (Labs 15-16) — ~15%
-- **Domain 4:** Virtualization & Cloud — ~15%
-- **Domain 5:** Troubleshooting (ALL labs + Lab 17) — ~10%
+- **[CompTIA A+ Reference](reference/comptia-a-plus-core-1/)** — Organized by exam domain
+- **[Exam Checklist](reference/comptia-a-plus-core-1/00-exam-checklist.md)** — What to know
+- **[Weak Areas Analysis](study-notes/weak-areas.md)** — DNS, SSL/TLS, AD specifics
 
 ---
 
-## 🎬 Video Walkthroughs
+## 🧮 Interactive Tools
 
-Each lab has a screencast (coming soon):
-- Platform: YouTube
-- Format: Terminal recording + voice explanation
-- Length: 5-10 minutes per lab
-- Languages: English (Spanish subtitles TBA)
+- **[RAID Calculator](tools/raid-calculator/)** — Visual RAID capacity/fault tolerance
+- **[Subnet Calculator](tools/subnet-calculator/)** — IPv4 CIDR → network/host breakdown
 
 ---
 
-## 📝 Study Resources
+## 💡 Why This Portfolio Works
 
-| Resource | Type | Link |
-|----------|------|------|
-| Dion Training | Practice Exams | diontraining.com |
-| Professor Messer | Video Lectures | youtube.com/@professormesser |
-| CompTIA Study App | Mobile App | Depth gym (Security/Networking focus) |
-| Google IT Support | Coursera | coursera.org |
+**For general IT Support recruiters:**
+- Proves troubleshooting methodology
+- Shows Linux + Windows depth
+- Automation (Python) = bonus
 
----
+**For hospitality tech recruiters (Mews, Apaleo, etc.):**
+- Same core IT skills
+- PLUS 8 years domain knowledge
+- Natural fit for tech support roles
 
-## 💡 Key Takeaways
-
-**These labs prove:**
-- ✅ Hands-on troubleshooting ability
-- ✅ Documentation & communication skills
-- ✅ Methodical problem-solving (CompTIA framework)
-- ✅ Real hardware vs. theory-only learning
-- ✅ Bilingual technical fluency (ES/EN)
-- ✅ Self-directed learning in public
-
-**For recruiters:** This is proof I can take a Help Desk ticket, troubleshoot it systematically, document it, and explain it clearly.
+**For any manager:**
+- "This person debugs, documents, and ships"
+- Not just theory; real hardware
+- Bilingual (ES/EN)
 
 ---
 
-## 🔗 Related
+## 🔗 Other Work
 
-- **Main GitHub:** https://github.com/anudoranador87
-- **Learning Diary (365 days):** https://anudoranador87.github.io
-- **Portfolio projects:** LostDesk (React), Campus & Crema (React)
-
----
-
-## 📄 License
-
-MIT License — Use freely for learning & teaching. Attribution appreciated.
-
-See [LICENSE](LICENSE) file for details.
+- **Learning Diary (365 days):** [Mi Camino Web 365](https://anudoranador87.github.io)
+- **Portfolio Projects:** LostDesk (React), Campus & Crema (React)
+- **Main GitHub:** [@anudoranador87](https://github.com/anudoranador87)
 
 ---
 
-**Last Updated:** July 22, 2026  
-**Next Update:** Lab 09 Windows Server Active Directory Setup (Late July 2026)
+## 📝 Next
+
+- Lab 07: TBD (investigating real problem)
+- CompTIA A+ Core 1 exam: September 2026
 
 ---
 
-### ⭐ If this helps your IT Support journey, star the repo!
+**Last Updated:** August 2026
 
-Questions? Open an issue or reach out via GitHub.
+---
+
+*If this helps your IT journey, star the repo.* ⭐
