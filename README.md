@@ -79,6 +79,12 @@ Each lab has:
 
 ---
 
+## 🏗️ Infrastructure Analysis
+
+Analizo y propongo mejoras para infraestructuras de IT en diversos escenarios empresariales.
+- [Ver Análisis de Infraestructura](infrastructure-analysis/README.md)
+
+---
 ## 🧮 Interactive Tools
 
 - **[RAID Calculator](tools/raid-calculator/)** — Visual RAID capacity/fault tolerance
