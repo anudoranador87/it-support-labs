@@ -1,90 +1,139 @@
 # 🔧 IT Support Labs — CompTIA A+ Hands-On Troubleshooting
 
-**6 real-world troubleshooting labs. No fluff. Documented for production.**
+**Hands-on IT Support portfolio focused on troubleshooting, Windows, Linux, networking and systems administration fundamentals.**
 
 ---
 
 ## 📊 Quick Stats
 
-- **Labs completed:** 6 core labs
-- **Average complexity:** Medium → High  
+- **Core labs completed:** 6
+- **Focus:** IT Support / Help Desk / Desktop Support
 - **Documentation:** English + Spanish
-- **Hardware:** Windows 11 (i7-8700K), Ubuntu (ASUS X550JF)
-- **Status:** Active (Updated Aug 2026)
+- **Platforms:** Windows 11 + Ubuntu
+- **Status:** Active — preparing for CompTIA A+ Core 1 & Core 2 (October 2026)
 
 ---
 
-## 🎯 What This Is
+## 🎯 What This Repository Demonstrates
 
-Not a collection of "here's how to run these commands" tutorials.
+This is not a collection of command tutorials. Each core lab is structured around a practical troubleshooting workflow:
 
-Each lab is **a real problem I debugged, solved, and documented**. 
-This is proof I can:
-- ✅ Take a broken system
-- ✅ Diagnose it systematically  
-- ✅ Find the root cause (not obvious)
-- ✅ Fix it
-- ✅ Explain the WHY
+**Scenario → Symptoms → Investigation → Root Cause → Fix → Verification → Lessons Learned**
+
+The portfolio is designed to demonstrate that I can:
+
+- Diagnose technical problems systematically
+- Use command-line and operating-system tools
+- Identify root causes rather than only symptoms
+- Apply and verify technical fixes
+- Document troubleshooting clearly
+- Build repeatable IT Support procedures
 
 ---
 
-## 👨‍💼 Who I Am
+## 👨‍💻 About Me
 
 **José María Aparicio Portillo**
-- 8+ years hospitality operations (Málaga & UK)
-- Transitioning to IT Support specialist
-- CompTIA A+ candidate (Sept 2026)
-- Python automation + domain expertise
-- GitHub: [@anudoranador87](https://github.com/anudoranador87)
 
-Why this matters: I troubleshoot under pressure. I document what I learn. 
-I ship what works.
+- Transitioning into IT Support
+- 8+ years of hospitality operations experience (Málaga & UK)
+- CompTIA A+ Core 1 & Core 2 candidate — October 2026
+- Python automation experience
+- English B2
 
----
-
-## 📚 The 6 Core Labs
-
-| Lab | Problem | Complexity | Impression |
-|-----|---------|-----------|-----------|
-| [**Lab 01**](CORE-LABS/Lab-01-Linux-WiFi-Driver-Fix) | WiFi driver completely broken on Ubuntu | ⭐⭐⭐ | 10/10 |
-| [**Lab 02**](CORE-LABS/Lab-02-SSH-Windows-to-Ubuntu) | SSH setup Windows → Linux laptop | ⭐⭐ | 9/10 |
-| [**Lab 03**](CORE-LABS/Lab-03-Python-System-Health-Checker) | Automated health monitoring script | ⭐⭐⭐ | 8/10 |
-| [**Lab 04**](CORE-LABS/Lab-04-Windows-Update-Failure-Diagnosis) | Windows Update cryptic failure | ⭐⭐⭐ | 9/10 |
-| [**Lab 05**](CORE-LABS/Lab-05-AD-Offline-Logon-Cache-Issue) | AD logon fails offline | ⭐⭐ | 8/10 |
-| [**Lab 06**](CORE-LABS/Lab-06-DNS-Resolution-Poisoning-Debug) | DNS points to wrong IP | ⭐⭐⭐ | 9/10 |
+GitHub: [@anudoranador87](https://github.com/anudoranador87)
 
 ---
 
-## 🚀 How to Navigate
+## 🧪 Core Labs Completed
 
-1. **Pick a lab** from the table
-2. **Open Lab folder** → `README.md`
-3. **Follow the scenario** with screenshots
-4. **See the solution** with verification
-
-Each lab has:
-- Real problem statement
-- Investigation process (NOT just answers)
-- Root cause identification
-- Fix applied + verified
-- Lessons learned
+| Lab | Scenario | Main Skills |
+|-----|----------|-------------|
+| [**Lab 01**](CORE-LABS/Lab-01-Linux-WiFi-Driver-Fix) | Ubuntu Wi-Fi driver failure | Linux, drivers, troubleshooting |
+| [**Lab 02**](CORE-LABS/Lab-02-SSH-Windows-to-Ubuntu) | Windows → Ubuntu SSH setup | SSH, networking, remote access |
+| [**Lab 03**](CORE-LABS/Lab-03-Python-System-Health-Checker) | Automated system health check | Python, monitoring, automation |
+| [**Lab 04**](CORE-LABS/Lab-04-Windows-Update-Failure-Diagnosis) | Windows Update failure | Windows, services, logs, troubleshooting |
+| [**Lab 05**](CORE-LABS/Lab-05-AD-Offline-Logon-Cache-Issue) | Active Directory offline logon issue | AD, authentication, Windows |
+| [**Lab 06**](CORE-LABS/Lab-06-DNS-Resolution-Poisoning-Debug) | DNS resolution failure | DNS, Windows networking, diagnosis |
 
 ---
 
-## 📖 Study Materials
+## 🗺️ Next Labs — Priority Order
 
-- **[CompTIA A+ Reference](reference/comptia-a-plus-core-1/)** — Organized by exam domain
-- **[Exam Checklist](reference/comptia-a-plus-core-1/00-exam-checklist.md)** — What to know
-- **[Weak Areas Analysis](study-notes/weak-areas.md)** — DNS, SSL/TLS, AD specifics
+The next phase focuses on the highest-value skills for entry-level IT Support and CompTIA A+ preparation.
+
+### 🔴 P1 — Core IT Support
+
+1. **AD Domain Setup & Domain Join**
+2. **AD Users, Groups & OU Management**
+3. **GPO Troubleshooting**
+4. **NTFS + Shared Permissions**
+5. **DHCP Failure & APIPA Troubleshooting**
+6. **Complete Windows Network Troubleshooting**
+7. **Windows Firewall Troubleshooting**
+8. **Windows Defender / Malware Incident**
+9. **Account Lockout Investigation**
+
+### 🟠 P2 — Automation & ITSM
+
+10. **PowerShell IT Support Toolkit**
+11. **ITSM / Help Desk Ticket Simulation**
+
+### 🟡 Phase 2 — After A+
+
+12. **Microsoft 365 Support**
+13. **Entra ID Fundamentals**
+14. **Intune / Endpoint Management**
+
+These are deliberately sequenced after the A+ core rather than treated as prerequisites for the October exams.
 
 ---
 
-## 🏗️ Infrastructure Analysis
+## 🧰 Skills Covered
 
-Analizo y propongo mejoras para infraestructuras de IT en diversos escenarios empresariales.
-- [Ver Análisis de Infraestructura](infrastructure-analysis/README.md)
+### Operating Systems
+- Windows 11
+- Ubuntu / Linux
+- System configuration
+- Services and processes
+- Drivers
+- Updates
+
+### Networking
+- TCP/IP
+- DNS
+- DHCP
+- SSH
+- Connectivity troubleshooting
+- Windows Firewall
+
+### Identity & Access
+- Active Directory
+- Users and groups
+- OUs
+- Group Policy
+- NTFS permissions
+- Account lockout
+
+### Security
+- Windows Defender
+- Firewall
+- Malware troubleshooting
+- Access control
+
+### Automation
+- Python
+- PowerShell
+
+### IT Support Process
+- Incident troubleshooting
+- Root-cause analysis
+- Verification
+- Documentation
+- Ticketing / ITSM
 
 ---
+
 ## 🧮 Interactive Tools
 
 - **[RAID Calculator](tools/raid-calculator/)** — Visual RAID capacity/fault tolerance
@@ -92,42 +141,43 @@ Analizo y propongo mejoras para infraestructuras de IT en diversos escenarios em
 
 ---
 
-## 💡 Why This Portfolio Works
+## 📚 Study Materials
 
-**For general IT Support recruiters:**
-- Proves troubleshooting methodology
-- Shows Linux + Windows depth
-- Automation (Python) = bonus
+- **[CompTIA A+ Reference](reference/comptia-a-plus-core-1/)**
+- **[Exam Checklist](reference/comptia-a-plus-core-1/00-exam-checklist.md)**
+- **[Weak Areas Analysis](study-notes/weak-areas.md)**
+- **[Labs Roadmap](LABS-ROADMAP.md)**
 
-**For hospitality tech recruiters (Mews, Apaleo, etc.):**
-- Same core IT skills
-- PLUS 8 years domain knowledge
-- Natural fit for tech support roles
+---
 
-**For any manager:**
-- "This person debugs, documents, and ships"
-- Not just theory; real hardware
-- Bilingual (ES/EN)
+## 🏗️ Infrastructure Analysis
+
+- [Infrastructure Analysis](infrastructure-analysis/README.md)
+
+---
+
+## 📈 Portfolio Strategy
+
+The repository prioritizes **depth over volume**. A lab is considered portfolio-ready when it contains a reproducible scenario, investigation evidence, root cause, remediation and verification.
+
+The goal is not to claim experience with a technology before it has been practiced. New technologies are added to the demonstrated-skills list only after a corresponding lab or project is completed.
 
 ---
 
 ## 🔗 Other Work
 
 - **Learning Diary (365 days):** [Mi Camino Web 365](https://anudoranador87.github.io)
-- **Portfolio Projects:** LostDesk (React), Campus & Crema (React)
+- **Frontend projects:** LostDesk, Campus & Crema, and other web-development work
 - **Main GitHub:** [@anudoranador87](https://github.com/anudoranador87)
 
 ---
 
-## 📝 Next
+## 🎓 Certification Goal
 
-- Lab 07: TBD (investigating real problem)
-- CompTIA A+ Core 1 exam: September 2026
+**CompTIA A+ Core 1 + Core 2 — October 2026**
+
+The lab roadmap is being used as practical reinforcement for the certification objectives while building evidence for IT Support applications.
 
 ---
 
 **Last Updated:** August 2026
-
----
-
-*If this helps your IT journey, star the repo.* ⭐
