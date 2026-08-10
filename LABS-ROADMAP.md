@@ -1,136 +1,143 @@
-# 📋 Labs Roadmap & Study Plan
+# 📋 IT Support Labs Roadmap — CompTIA A+ + Help Desk
 
-This document tracks the full roadmap for IT Support labs aligned to CompTIA A+ Core 1 (220-1201) and Help Desk real-world skills.
-
----
-
-## 🎯 Overall Strategy
-
-**Timeframe:** July - September 2026  
-**Goal:** Pass CompTIA A+ Core 1 (Sept 2026) & Build an Entry-Level IT Support Portfolio  
-**Method:** Hands-on labs + Dion Training practice + theory study
-
-**Progression:**
-1. **Hardware fundamentals** (Existing: Labs 01-03)
-2. **Operating Systems (Linux)** (Existing: Labs 05-08)
-3. **Windows & Active Directory** (Planned: Labs 09-11)
-4. **Networking** (Planned: Labs 12-14)
-5. **Security** (Planned: Labs 15-16)
-6. **Ticketing & ITSM** (Planned: Lab 17)
+This roadmap tracks the hands-on labs used to build an entry-level IT Support portfolio while preparing for **CompTIA A+ Core 1 and Core 2 — October 2026**.
 
 ---
 
-## ✅ Completed & In Progress Labs
+## 🎯 Strategy
 
-### Hardware (3 labs)
+**Goal:** Build practical evidence for IT Support / Help Desk / Desktop Support while preparing for both A+ exams.
 
-| Lab | Title | Date Complete | Domain |
-|-----|-------|----------------|--------|
-| **01** | Hardware Basics — Desktop Inventory | ✅ Done | 1.1-1.2 |
-| **02** | Hardware Diagnosis — USB Troubleshooting | ✅ Done | 1.3-1.4 |
-| **03** | Preventive Maintenance — Thermal/Keyboard | ✅ Done | 1.5 |
-| **04** | System Info Gathering — Termux/CLI | ✅ Done | 1.7 / 5.0 |
+**Method:**
 
-### Operating Systems / Linux (4 labs)
+1. Study the certification objective
+2. Reproduce the technology in a lab
+3. Break something deliberately where appropriate
+4. Troubleshoot systematically
+5. Document root cause and remediation
+6. Verify the result
+7. Publish the evidence in GitHub
 
-| Lab | Title | Status | Domain |
-|-----|-------|--------|--------|
-| **05** | Linux Basics — File System Navigation | ✅ Complete | 1.7-1.8 |
-| **06** | Linux Monitoring — Processes & Performance | ✅ Complete | 1.9 |
-| **07** | Linux Network — Connectivity | ✅ Complete | 2.0 |
-| **08** | Linux Drivers — WiFi Fix (Real Case) | ✅ Complete | 1.6 |
+**Priority:** Troubleshooting depth > number of labs.
 
 ---
 
-## 📋 Planned Labs (Q3 2026)
+## ✅ Completed Core Labs
 
-### Windows & Active Directory (Labs 09-11) — Late July
-*Crucial for Help Desk / IT Support roles.*
-
-| Lab | Topic | Domain | Complexity |
-|-----|-------|--------|------------|
-| **09** | Windows Server AD Setup — Domain Creation | 1.0/2.0 | High |
-| **10** | AD User Management — OUs & Passwords | 2.0 | Medium |
-| **11** | GPO & NTFS Permissions — Shares & Policies | 3.0 | High |
-
-### Networking (Labs 12-14) — August
-
-| Lab | Topic | Domain | Complexity |
-|-----|-------|--------|------------|
-| **12** | Network Connectivity — Ping, Trace, DNS | 2.1-2.3 | Medium |
-| **13** | DHCP & DNS Configuration — IP Assignment | 2.2-2.3 | Medium |
-| **14** | Network Firewall — Segmentation & Rules | 2.4 | High |
-
-### Security & ITSM (Labs 15-17) — August/September
-
-| Lab | Topic | Domain | Complexity |
-|-----|-------|--------|------------|
-| **15** | Endpoint Security — Malware & Defender | 3.1 | Medium |
-| **16** | Access Control — Roles & Best Practices | 3.2-3.4 | Medium |
-| **17** | ITSM / Ticketing — osTicket Help Desk Sim | 5.0 | High |
+| Lab | Title | Main Skills | Status |
+|---|---|---|---|
+| 01 | Linux Wi-Fi Driver Fix | Linux, drivers, troubleshooting | ✅ |
+| 02 | SSH Windows → Ubuntu | SSH, networking, remote access | ✅ |
+| 03 | Python System Health Checker | Python, monitoring, automation | ✅ |
+| 04 | Windows Update Failure Diagnosis | Windows, services, logs | ✅ |
+| 05 | AD Offline Logon Cache Issue | Active Directory, authentication | ✅ |
+| 06 | DNS Resolution Debug | DNS, Windows networking | ✅ |
 
 ---
 
-## 🎬 Screencast Schedule
+# 🔴 Phase 1 — Core IT Support Labs
 
-| Lab | Status | YouTube Link |
-|-----|--------|--------------|
-| Lab 01-08 | ✅ | [YouTube Playlist] |
-| Lab 09-11 | 📋 Planned July 30 | — |
-| Lab 12-17 | 📋 Planned Aug/Sept | — |
+These are the highest-priority labs before the October A+ exams.
 
----
-
-## 📊 Progress Tracking
-
-**Labs by Domain:**
-- Domain 1 (OS/Hardware): 100% complete
-- Domain 2 (Networking): 25% complete (Linux done, Windows/General pending)
-- Domain 3 (Security): 0% complete - Starting August
-- Domain 4 (Virtualization): Integrated in AD labs
-- Domain 5 (Troubleshooting): Integrated in all labs
+| Lab | Topic | Key Evidence | Status |
+|---|---|---|---|
+| 07 | AD Domain Setup & Domain Join | DC, DNS, client join | 📋 Planned |
+| 08 | AD Users, Groups & OUs | User lifecycle, groups, OU | 📋 Planned |
+| 09 | GPO Troubleshooting | GPO, gpupdate, gpresult | 📋 Planned |
+| 10 | NTFS + Shared Permissions | Share vs NTFS, inheritance | 📋 Planned |
+| 11 | DHCP Failure + APIPA | DHCP, leases, 169.254.x.x | 📋 Planned |
+| 12 | Windows Network Troubleshooting | ipconfig, ping, tracert, DNS, route | 📋 Planned |
+| 13 | Windows Firewall Troubleshooting | Rules, ports, verification | 📋 Planned |
+| 14 | Windows Defender / Malware Incident | Defender, isolation, remediation | 📋 Planned |
+| 15 | Account Lockout Investigation | AD, Event Viewer, event 4740 | 📋 Planned |
 
 ---
 
-## 🎓 CompTIA A+ Study Integration
+# 🟠 Phase 2 — Automation & ITSM
 
-**This lab series complements:**
-- Dion Training practice exams (77-86% current)
-- Google IT Support Certificate (Courses 2-3 in progress)
-- CompTIA study app (Security/Networking depth focus)
-- Professor Messer video lectures
-
----
-
-## 🏁 Final Exam Prep (Sept 1-15)
-
-- [ ] All 16+ labs completed & reviewed
-- [ ] Dion Training: 87%+ on all practice exams
-- [ ] CompTIA study app: 80%+ on Security & Networking
-- [ ] Final review: Weak areas (Security, Network ports)
-- [ ] Mock exam: Last week before exam
-- [ ] **Exam:** September 15, 2026
+| Lab | Topic | Key Evidence | Status |
+|---|---|---|---|
+| 16 | PowerShell IT Support Toolkit | System, network, services, logs | 📋 Planned |
+| 17 | ITSM / Help Desk Simulation | Incident, priority, SLA, RCA | 📋 Planned |
 
 ---
 
-## 📝 Template: How Each Lab is Documented
+# 🟡 Phase 3 — After A+
 
-Every lab follows this structure:
-📁 Lab-XX-Topic/
-├── README.md (primary lab documentation)
-├── screenshots/
+These skills are valuable for progressing beyond entry-level support but are not prerequisites for the October exam goal.
 
-Each README includes:
-- Scenario
-- Objective
-- Tools/Technology
-- Step-by-step walkthrough
-- Screenshots
-- Video link (YouTube)
-- Key concepts
-- Checklist
+| Lab | Topic | Key Evidence | Status |
+|---|---|---|---|
+| 18 | Microsoft 365 Support | Users, licenses, Outlook/Teams troubleshooting | 📋 Planned |
+| 19 | Entra ID Fundamentals | Cloud identity, groups, MFA | 📋 Planned |
+| 20 | Intune / Endpoint Management | Device enrollment, policies, software | 📋 Planned |
 
 ---
 
-**Status:** On track for September exam ✅  
-**Last updated:** July 22, 2026
+## 📊 Portfolio Coverage
+
+| Area | Current | Target |
+|---|---:|---:|
+| Hardware | 🟢 | 🟢 |
+| Windows | 🟢 | 🟢 |
+| Linux | 🟢 | 🟢 |
+| Troubleshooting | 🟢 | 🟢 |
+| DNS | 🟢 | 🟢 |
+| SSH | 🟢 | 🟢 |
+| Active Directory | 🟡 | 🟢 |
+| GPO | 🔴 | 🟢 |
+| NTFS Permissions | 🔴 | 🟢 |
+| DHCP | 🟡 | 🟢 |
+| Windows Networking | 🟡 | 🟢 |
+| Firewall | 🔴 | 🟢 |
+| Security | 🔴 | 🟢 |
+| PowerShell | 🔴 | 🟢 |
+| ITSM | 🔴 | 🟢 |
+| Microsoft 365 | 🔴 | 🟡 |
+| Entra ID | 🔴 | 🟡 |
+| Intune | 🔴 | 🟡 |
+
+---
+
+## 🧪 Lab Quality Standard
+
+Every portfolio-ready lab should contain:
+
+```text
+Scenario
+Objective
+Environment
+Symptoms
+Investigation
+Commands / Tools
+Root Cause
+Fix
+Verification
+Lessons Learned
+Screenshots / Evidence
+```
+
+A technology should only be listed as **demonstrated** after the corresponding practical work has been completed.
+
+---
+
+## 🎓 CompTIA A+ Integration
+
+The labs reinforce the A+ objectives through hands-on practice. They are not a replacement for exam preparation.
+
+Before October:
+
+- [ ] Complete priority Windows / AD labs
+- [ ] Complete priority networking labs
+- [ ] Complete security labs
+- [ ] Complete PowerShell fundamentals
+- [ ] Complete ITSM simulation
+- [ ] Review weak exam domains
+- [ ] Complete final practice exams
+- [ ] Sit Core 1
+- [ ] Sit Core 2
+
+---
+
+**Target:** CompTIA A+ Core 1 + Core 2 — October 2026  
+**Last updated:** August 2026
