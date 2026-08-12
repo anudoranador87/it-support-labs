@@ -1,6 +1,6 @@
 # 🔧 IT Support Labs — CompTIA A+ Hands-On Troubleshooting
 
-**Hands-on IT Support portfolio focused on troubleshooting, Windows, Linux, networking and systems administration fundamentals.**
+**Hands-on IT Support study repository focused on troubleshooting, Windows, Linux, networking and systems administration fundamentals.**
 
 ## 🎯 Portfolio objective
 
@@ -10,57 +10,64 @@ The working method is:
 
 **Scenario → Symptoms → Investigation → Root Cause → Fix → Verification → Lessons Learned**
 
-The repository prioritizes **troubleshooting depth over lab count**.
+> **Important:** A planned lab is not presented as demonstrated experience. A skill moves to "demonstrated" only after the lab has actually been completed and documented.
 
-## 📊 Current focus
+## 📊 Current status
 
-- Windows 11 and Windows Server fundamentals
-- Ubuntu / Linux
-- TCP/IP, DNS, DHCP and SSH
-- Active Directory, users, groups and authentication
-- GPO and permissions
-- Windows services, logs and networking tools
-- Security and endpoint troubleshooting
-- Python and PowerShell automation
-- ITSM / Help Desk workflows
+| Status | Meaning |
+|---|---|
+| 🟢 Completed | Lab executed and documented with practical evidence |
+| 🟡 In progress | Work has started but is not complete |
+| 🔴 Planned | Scenario/structure exists, but the lab has not been completed |
+| ⚪ Legacy | Earlier study material kept for reference |
 
-## 🧪 Core labs
+### Current core labs
 
-| Lab | Scenario | Main skills |
+| Lab | Scenario | Status |
 |---|---|---|
-| [Lab 01](CORE-LABS/Lab-01-Linux-WiFi-Driver-Fix) | Ubuntu Wi-Fi driver failure | Linux, drivers, troubleshooting |
-| [Lab 02](CORE-LABS/Lab-02-SSH-Windows-to-Ubuntu) | Windows → Ubuntu SSH | SSH, networking, remote access |
-| [Lab 03](CORE-LABS/Lab-03-Python-System-Health-Checker) | Automated system health check | Python, monitoring, automation |
-| [Lab 04](CORE-LABS/Lab-04-Windows-Update-Failure-Diagnosis) | Windows Update failure | Windows, services, logs |
-| [Lab 05](CORE-LABS/Lab-05-AD-Offline-Logon-Cache-Issue) | AD offline logon issue | Active Directory, authentication |
-| [Lab 06](CORE-LABS/Lab-06-DNS-Resolution-Poisoning-Debug) | DNS resolution failure | DNS, Windows networking |
+| [Lab 01](CORE-LABS/Lab-01-Linux-WiFi-Driver-Fix) | Ubuntu Wi-Fi driver troubleshooting | 🟡 In progress |
+| [Lab 02](CORE-LABS/Lab-02-SSH-Windows-to-Ubuntu) | Windows → Ubuntu SSH | 🔴 Planned |
+| [Lab 03](CORE-LABS/Lab-03-Python-System-Health-Checker) | Python system health checker | 🔴 Planned |
+| [Lab 04](CORE-LABS/Lab-04-Windows-Update-Failure-Diagnosis) | Windows Update failure | 🔴 Planned |
+| [Lab 05](CORE-LABS/Lab-05-AD-Offline-Logon-Cache-Issue) | AD offline logon issue | 🔴 Planned |
+| [Lab 06](CORE-LABS/Lab-06-DNS-Resolution-Poisoning-Debug) | DNS resolution troubleshooting | 🔴 Planned |
 
-Additional Windows, Active Directory and networking work is being developed in the numbered lab directories.
+The six directories above are **not counted as completed labs** unless their practical work has been carried out and documented.
+
+## 🗂️ Existing practical / legacy work
+
+Earlier hands-on material is retained under [`legacy-labs/`](legacy-labs/) rather than being mixed with the new core-lab progression. This includes hardware, system-information and Linux study work. It represents previous practice and is separate from the current A+ lab roadmap.
 
 ## 🗺️ Priority roadmap
 
 ### 🔴 Phase 1 — Core IT Support
 
-1. AD Domain Setup & Domain Join
-2. AD Users, Groups & OU Management
-3. GPO Troubleshooting
-4. NTFS + Shared Permissions
-5. DHCP Failure & APIPA Troubleshooting
-6. Complete Windows Network Troubleshooting
-7. Windows Firewall Troubleshooting
-8. Windows Defender / Malware Incident
-9. Account Lockout Investigation
+1. Linux Wi-Fi Driver Fix — finish
+2. SSH Windows → Ubuntu
+3. Python System Health Checker
+4. Windows Update Failure Diagnosis
+5. AD Offline Logon Cache Issue
+6. DNS Resolution Debug
+7. AD Domain Setup & Domain Join
+8. AD Users, Groups & OU Management
+9. GPO Troubleshooting
+10. NTFS + Shared Permissions
+11. DHCP Failure & APIPA Troubleshooting
+12. Windows Network Troubleshooting
+13. Windows Firewall Troubleshooting
+14. Windows Defender / Malware Incident
+15. Account Lockout Investigation
 
 ### 🟠 Phase 2 — Automation & ITSM
 
-10. PowerShell IT Support Toolkit
-11. ITSM / Help Desk Ticket Simulation
+16. PowerShell IT Support Toolkit
+17. ITSM / Help Desk Ticket Simulation
 
 ### 🟡 Phase 3 — After A+
 
-12. Microsoft 365 Support
-13. Entra ID Fundamentals
-14. Intune / Endpoint Management
+18. Microsoft 365 Support
+19. Entra ID Fundamentals
+20. Intune / Endpoint Management
 
 ## 🎫 ITSM ticket format
 
@@ -101,11 +108,10 @@ Root Cause
 Fix
 Verification
 Lessons Learned
+Screenshots / Evidence
 ```
 
-A technology is only listed as **demonstrated** after corresponding practical work has been completed.
-
-## 🧰 Skills demonstrated
+## 🧰 Technical areas being studied
 
 ### Operating systems
 - Windows 11
@@ -130,12 +136,6 @@ A technology is only listed as **demonstrated** after corresponding practical wo
 - NTFS permissions
 - Account lockout
 
-### Security
-- Windows Defender
-- Firewall
-- Malware troubleshooting
-- Access control
-
 ### Automation
 - Python
 - PowerShell
@@ -146,6 +146,8 @@ A technology is only listed as **demonstrated** after corresponding practical wo
 - Verification
 - Documentation
 - Ticketing / ITSM
+
+These are **study/roadmap areas unless supported by a completed lab**.
 
 ## 🧮 Interactive tools
 
@@ -164,7 +166,7 @@ A technology is only listed as **demonstrated** after corresponding practical wo
 
 **José María Aparicio Portillo**
 
-Transitioning into IT Support with 8+ years of hospitality operations experience in Málaga and the UK. Practical work is documented here alongside CompTIA A+ preparation.
+Transitioning into IT Support with 8+ years of hospitality operations experience in Málaga and the UK. Practical work is being documented here alongside CompTIA A+ preparation.
 
 - GitHub: [@anudoranador87](https://github.com/anudoranador87)
 - Frontend work: LostDesk, Campus & Crema and other projects
