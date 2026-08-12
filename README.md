@@ -2,102 +2,117 @@
 
 **Hands-on IT Support portfolio focused on troubleshooting, Windows, Linux, networking and systems administration fundamentals.**
 
----
+## 🎯 Portfolio objective
 
-## 📊 Quick Stats
+Build practical evidence for **IT Support, Help Desk, Desktop Support and Technical Support** roles while preparing for CompTIA A+ Core 1 and Core 2.
 
-- **Core labs completed:** 6
-- **Focus:** IT Support / Help Desk / Desktop Support
-- **Documentation:** English + Spanish
-- **Platforms:** Windows 11 + Ubuntu
-- **Status:** Active — preparing for CompTIA A+ Core 1 & Core 2 (October 2026)
-
----
-
-## 🎯 What This Repository Demonstrates
-
-This is not a collection of command tutorials. Each core lab is structured around a practical troubleshooting workflow:
+The working method is:
 
 **Scenario → Symptoms → Investigation → Root Cause → Fix → Verification → Lessons Learned**
 
-The portfolio is designed to demonstrate that I can:
+The repository prioritizes **troubleshooting depth over lab count**.
 
-- Diagnose technical problems systematically
-- Use command-line and operating-system tools
-- Identify root causes rather than only symptoms
-- Apply and verify technical fixes
-- Document troubleshooting clearly
-- Build repeatable IT Support procedures
+## 📊 Current focus
 
----
-
-## 👨‍💻 About Me
-
-**José María Aparicio Portillo**
-
-- Transitioning into IT Support
-- 8+ years of hospitality operations experience (Málaga & UK)
-- CompTIA A+ Core 1 & Core 2 candidate — October 2026
-- Python automation experience
-- English B2
-
-GitHub: [@anudoranador87](https://github.com/anudoranador87)
-
----
-
-## 🧪 Core Labs Completed
-
-| Lab | Scenario | Main Skills |
-|-----|----------|-------------|
-| [**Lab 01**](CORE-LABS/Lab-01-Linux-WiFi-Driver-Fix) | Ubuntu Wi-Fi driver failure | Linux, drivers, troubleshooting |
-| [**Lab 02**](CORE-LABS/Lab-02-SSH-Windows-to-Ubuntu) | Windows → Ubuntu SSH setup | SSH, networking, remote access |
-| [**Lab 03**](CORE-LABS/Lab-03-Python-System-Health-Checker) | Automated system health check | Python, monitoring, automation |
-| [**Lab 04**](CORE-LABS/Lab-04-Windows-Update-Failure-Diagnosis) | Windows Update failure | Windows, services, logs, troubleshooting |
-| [**Lab 05**](CORE-LABS/Lab-05-AD-Offline-Logon-Cache-Issue) | Active Directory offline logon issue | AD, authentication, Windows |
-| [**Lab 06**](CORE-LABS/Lab-06-DNS-Resolution-Poisoning-Debug) | DNS resolution failure | DNS, Windows networking, diagnosis |
-
----
-
-## 🗺️ Next Labs — Priority Order
-
-The next phase focuses on the highest-value skills for entry-level IT Support and CompTIA A+ preparation.
-
-### 🔴 P1 — Core IT Support
-
-1. **AD Domain Setup & Domain Join**
-2. **AD Users, Groups & OU Management**
-3. **GPO Troubleshooting**
-4. **NTFS + Shared Permissions**
-5. **DHCP Failure & APIPA Troubleshooting**
-6. **Complete Windows Network Troubleshooting**
-7. **Windows Firewall Troubleshooting**
-8. **Windows Defender / Malware Incident**
-9. **Account Lockout Investigation**
-
-### 🟠 P2 — Automation & ITSM
-
-10. **PowerShell IT Support Toolkit**
-11. **ITSM / Help Desk Ticket Simulation**
-
-### 🟡 Phase 2 — After A+
-
-12. **Microsoft 365 Support**
-13. **Entra ID Fundamentals**
-14. **Intune / Endpoint Management**
-
-These are deliberately sequenced after the A+ core rather than treated as prerequisites for the October exams.
-
----
-
-## 🧰 Skills Covered
-
-### Operating Systems
-- Windows 11
+- Windows 11 and Windows Server fundamentals
 - Ubuntu / Linux
-- System configuration
+- TCP/IP, DNS, DHCP and SSH
+- Active Directory, users, groups and authentication
+- GPO and permissions
+- Windows services, logs and networking tools
+- Security and endpoint troubleshooting
+- Python and PowerShell automation
+- ITSM / Help Desk workflows
+
+## 🧪 Core labs
+
+| Lab | Scenario | Main skills |
+|---|---|---|
+| [Lab 01](CORE-LABS/Lab-01-Linux-WiFi-Driver-Fix) | Ubuntu Wi-Fi driver failure | Linux, drivers, troubleshooting |
+| [Lab 02](CORE-LABS/Lab-02-SSH-Windows-to-Ubuntu) | Windows → Ubuntu SSH | SSH, networking, remote access |
+| [Lab 03](CORE-LABS/Lab-03-Python-System-Health-Checker) | Automated system health check | Python, monitoring, automation |
+| [Lab 04](CORE-LABS/Lab-04-Windows-Update-Failure-Diagnosis) | Windows Update failure | Windows, services, logs |
+| [Lab 05](CORE-LABS/Lab-05-AD-Offline-Logon-Cache-Issue) | AD offline logon issue | Active Directory, authentication |
+| [Lab 06](CORE-LABS/Lab-06-DNS-Resolution-Poisoning-Debug) | DNS resolution failure | DNS, Windows networking |
+
+Additional Windows, Active Directory and networking work is being developed in the numbered lab directories.
+
+## 🗺️ Priority roadmap
+
+### 🔴 Phase 1 — Core IT Support
+
+1. AD Domain Setup & Domain Join
+2. AD Users, Groups & OU Management
+3. GPO Troubleshooting
+4. NTFS + Shared Permissions
+5. DHCP Failure & APIPA Troubleshooting
+6. Complete Windows Network Troubleshooting
+7. Windows Firewall Troubleshooting
+8. Windows Defender / Malware Incident
+9. Account Lockout Investigation
+
+### 🟠 Phase 2 — Automation & ITSM
+
+10. PowerShell IT Support Toolkit
+11. ITSM / Help Desk Ticket Simulation
+
+### 🟡 Phase 3 — After A+
+
+12. Microsoft 365 Support
+13. Entra ID Fundamentals
+14. Intune / Endpoint Management
+
+## 🎫 ITSM ticket format
+
+Future ticket simulations will use a repeatable support workflow:
+
+```text
+Ticket ID
+User / Device
+Category
+Priority
+Reported issue
+Impact
+Initial checks
+Investigation
+Root cause
+Resolution
+Verification
+User communication
+Status
+Knowledge-base reference
+```
+
+This connects the technical lab work to the workflow used in Help Desk and Service Desk environments.
+
+## 🧪 Lab quality standard
+
+Every portfolio-ready lab should contain:
+
+```text
+Scenario
+Objective
+Environment
+Symptoms
+Investigation
+Commands / Tools
+Evidence
+Root Cause
+Fix
+Verification
+Lessons Learned
+```
+
+A technology is only listed as **demonstrated** after corresponding practical work has been completed.
+
+## 🧰 Skills demonstrated
+
+### Operating systems
+- Windows 11
+- Windows Server fundamentals
+- Ubuntu / Linux
 - Services and processes
-- Drivers
-- Updates
+- Drivers and updates
 
 ### Networking
 - TCP/IP
@@ -107,7 +122,7 @@ These are deliberately sequenced after the A+ core rather than treated as prereq
 - Connectivity troubleshooting
 - Windows Firewall
 
-### Identity & Access
+### Identity & access
 - Active Directory
 - Users and groups
 - OUs
@@ -125,59 +140,40 @@ These are deliberately sequenced after the A+ core rather than treated as prereq
 - Python
 - PowerShell
 
-### IT Support Process
+### IT Support process
 - Incident troubleshooting
 - Root-cause analysis
 - Verification
 - Documentation
 - Ticketing / ITSM
 
----
+## 🧮 Interactive tools
 
-## 🧮 Interactive Tools
+- [RAID Calculator](tools/raid-calculator/) — visual RAID capacity and fault tolerance
+- [Subnet Calculator](tools/subnet-calculator/) — IPv4 CIDR network/host breakdown
 
-- **[RAID Calculator](tools/raid-calculator/)** — Visual RAID capacity/fault tolerance
-- **[Subnet Calculator](tools/subnet-calculator/)** — IPv4 CIDR → network/host breakdown
+## 📚 Study materials
 
----
-
-## 📚 Study Materials
-
-- **[CompTIA A+ Reference](reference/comptia-a-plus-core-1/)**
-- **[Exam Checklist](reference/comptia-a-plus-core-1/00-exam-checklist.md)**
-- **[Weak Areas Analysis](study-notes/weak-areas.md)**
-- **[Labs Roadmap](LABS-ROADMAP.md)**
-
----
-
-## 🏗️ Infrastructure Analysis
-
+- [CompTIA A+ Reference](reference/comptia-a-plus-core-1/)
+- [Exam Checklist](reference/comptia-a-plus-core-1/00-exam-checklist.md)
+- [Weak Areas Analysis](study-notes/weak-areas.md)
+- [Labs Roadmap](LABS-ROADMAP.md)
 - [Infrastructure Analysis](infrastructure-analysis/README.md)
 
----
+## 👨‍💻 About
 
-## 📈 Portfolio Strategy
+**José María Aparicio Portillo**
 
-The repository prioritizes **depth over volume**. A lab is considered portfolio-ready when it contains a reproducible scenario, investigation evidence, root cause, remediation and verification.
+Transitioning into IT Support with 8+ years of hospitality operations experience in Málaga and the UK. Practical work is documented here alongside CompTIA A+ preparation.
 
-The goal is not to claim experience with a technology before it has been practiced. New technologies are added to the demonstrated-skills list only after a corresponding lab or project is completed.
+- GitHub: [@anudoranador87](https://github.com/anudoranador87)
+- Frontend work: LostDesk, Campus & Crema and other projects
+- Learning diary: [Mi Camino Web 365](https://anudoranador87.github.io/Mi-Camino-Web-365/)
 
----
-
-## 🔗 Other Work
-
-- **Learning Diary (365 days):** [Mi Camino Web 365](https://anudoranador87.github.io)
-- **Frontend projects:** LostDesk, Campus & Crema, and other web-development work
-- **Main GitHub:** [@anudoranador87](https://github.com/anudoranador87)
-
----
-
-## 🎓 Certification Goal
+## 🎓 Certification goal
 
 **CompTIA A+ Core 1 + Core 2 — October 2026**
 
-The lab roadmap is being used as practical reinforcement for the certification objectives while building evidence for IT Support applications.
+The labs reinforce certification objectives through practical scenarios; they are not a replacement for exam preparation.
 
----
-
-**Last Updated:** August 2026
+**Last updated:** August 2026
