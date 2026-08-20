@@ -1,175 +1,51 @@
-# 📋 IT Support Labs Roadmap — CompTIA A+ + Help Desk
+# Labs Roadmap
 
-This roadmap tracks the hands-on work used to build an entry-level IT Support portfolio while preparing for **CompTIA A+ Core 1 and Core 2 — October 2026**.
+Este roadmap organiza el portfolio por una progresión práctica de soporte técnico, sistemas, redes, seguridad y operaciones. El número del laboratorio representa su posición en la ruta, no necesariamente su estado actual.
 
----
+## Estados
 
-## 🎯 Strategy
+| Estado | Significado |
+|---|---|
+| ✅ Completed | Ejecutado, verificado y documentado con evidencia. |
+| 🟡 In progress | Trabajo iniciado con alguna validación todavía pendiente. |
+| 🔴 Planned | Escenario preparado, pero aún no presentado como práctica completada. |
+| ⚪ Legacy | Material anterior conservado como referencia. |
 
-**Goal:** Build practical evidence for IT Support / Help Desk / Desktop Support while preparing for both A+ exams.
+## Estado actual
 
-**Method:**
-
-1. Study the certification objective
-2. Reproduce the technology in a lab
-3. Break something deliberately where appropriate
-4. Troubleshoot systematically
-5. Document root cause and remediation
-6. Verify the result
-7. Publish the evidence in GitHub
-
-**Rule:** Planned work is not counted as completed experience.
-
----
-
-## 📊 Current core-lab status
-
-| Lab | Title | Status |
-|---|---|---|
-| 01 | Linux Wi-Fi Driver Fix | 🟡 In progress |
-| 02 | SSH Windows → Ubuntu | 🔴 Planned |
-| 03 | Python System Health Checker | 🔴 Planned |
-| 04 | Windows Update Failure Diagnosis | 🔴 Planned |
-| 05 | AD Offline Logon Cache Issue | 🔴 Planned |
-| 06 | DNS Resolution Debug | 🔴 Planned |
-| 07 | Windows Server UEFI/GPT + AD DS | 🟢 Completed |
-
-The README files for Labs 02–06 currently act as placeholders/scenario definitions. Lab 07 is documented with practical evidence and is counted as completed.
-
----
-
-## 🗂️ Existing legacy material
-
-Previous study material remains under [`legacy-labs/`](legacy-labs/). It contains earlier hardware, system-information and Linux work. Legacy material is kept separate so that the new core progression does not overstate current progress.
-
----
-
-# 🔴 Phase 1 — Core IT Support
-
-These are the highest-priority practical labs before the October A+ exams.
-
-| Order | Topic | Key Evidence | Status |
+| Lab | Título | Estado | Ubicación |
 |---:|---|---|---|
-| 1 | Linux Wi-Fi Driver Fix | hardware identification, kernel logs, modules, driver verification | 🟡 In progress |
-| 2 | SSH Windows → Ubuntu | remote access, authentication, connectivity | 🔴 Planned |
-| 3 | Python System Health Checker | system information, monitoring, automation | 🔴 Planned |
-| 4 | Windows Update Failure Diagnosis | services, logs, remediation, verification | 🔴 Planned |
-| 5 | AD Offline Logon Cache Issue | authentication, cached credentials, diagnosis | 🔴 Planned |
-| 6 | DNS Resolution Debug | DNS queries, cache, records, verification | 🔴 Planned |
-| 7 | Windows Server UEFI/GPT + AD DS | UEFI/GPT troubleshooting, server installation, domain controller | 🟢 Completed |
-| 8 | AD Users, Groups & OUs | identity lifecycle, groups, OUs | 🔴 Planned |
-| 9 | GPO Troubleshooting | gpupdate, gpresult, policy diagnosis | 🔴 Planned |
-| 10 | NTFS + Shared Permissions | permissions, inheritance, shares | 🔴 Planned |
-| 11 | DHCP Failure + APIPA | leases, DHCP, 169.254.x.x diagnosis | 🔴 Planned |
-| 12 | Windows Network Troubleshooting | ipconfig, ping, tracert, DNS, route | 🔴 Planned |
-| 13 | Windows Firewall Troubleshooting | rules, ports, verification | 🔴 Planned |
-| 14 | Windows Defender / Malware Incident | detection, isolation, remediation | 🔴 Planned |
-| 15 | Account Lockout Investigation | AD, Event Viewer, event 4740 | 🔴 Planned |
+| 01 | Linux Wi-Fi Driver Fix | 🟡 In progress | [`labs/in-progress/01-linux-wifi-driver-fix/`](labs/in-progress/01-linux-wifi-driver-fix/) |
+| 02 | SSH Windows → Ubuntu | 🔴 Planned | [`labs/planned/02-ssh-windows-to-ubuntu/`](labs/planned/02-ssh-windows-to-ubuntu/) |
+| 03 | Python System Health Checker | 🔴 Planned | [`labs/planned/03-python-system-health-checker/`](labs/planned/03-python-system-health-checker/) |
+| 04 | Windows Update Failure Diagnosis | 🔴 Planned | [`labs/planned/04-windows-update-failure-diagnosis/`](labs/planned/04-windows-update-failure-diagnosis/) |
+| 05 | Active Directory Offline Logon Cache Issue | 🔴 Planned | [`labs/planned/05-ad-offline-logon-cache-issue/`](labs/planned/05-ad-offline-logon-cache-issue/) |
+| 06 | DNS Resolution Troubleshooting | 🔴 Planned | [`labs/planned/06-dns-resolution-debug/`](labs/planned/06-dns-resolution-debug/) |
+| 07 | Windows Server UEFI/GPT + Active Directory | ✅ Completed | [`labs/completed/07-windows-server-uefi-gpt-ad-ds/`](labs/completed/07-windows-server-uefi-gpt-ad-ds/) |
+| 08 | Windows Server Active Directory Domain Setup | 🔴 Planned | [`labs/planned/08-windows-ad-domain-setup/`](labs/planned/08-windows-ad-domain-setup/) |
+| 09 | Active Directory Users, Groups y OUs | 🔴 Planned | [`labs/planned/09-ad-users-groups-ou-management/`](labs/planned/09-ad-users-groups-ou-management/) |
+| 10 | Group Policy y NTFS Permissions | 🔴 Planned | [`labs/planned/10-gpo-permissions/`](labs/planned/10-gpo-permissions/) |
+| 11 | Windows Network Connectivity Troubleshooting | 🔴 Planned | [`labs/planned/11-network-connectivity/`](labs/planned/11-network-connectivity/) |
+| 12 | DHCP y DNS Configuration | 🔴 Planned | [`labs/planned/12-dhcp-dns/`](labs/planned/12-dhcp-dns/) |
+| 13 | Windows Network Firewall | 🔴 Planned | [`labs/planned/13-network-firewall/`](labs/planned/13-network-firewall/) |
+| 14 | Endpoint Security y Windows Defender | 🔴 Planned | [`labs/planned/14-endpoint-security/`](labs/planned/14-endpoint-security/) |
+| 15 | Access Control | 🔴 Planned | [`labs/planned/15-access-control/`](labs/planned/15-access-control/) |
+| 16 | ITSM y Ticketing | 🔴 Planned | [`labs/planned/16-ticketing-system/`](labs/planned/16-ticketing-system/) |
 
----
+## Secuencia recomendada
 
-# 🟠 Phase 2 — Automation & ITSM
+La ruta empieza con troubleshooting de sistemas y acceso remoto, continúa con Windows y Active Directory, y después avanza hacia redes, seguridad y operaciones ITSM.
 
-| Lab | Topic | Key Evidence | Status |
-|---|---|---|---|
-| 16 | PowerShell IT Support Toolkit | system, network, services and logs | 🔴 Planned |
-| 17 | ITSM / Help Desk Simulation | incident, priority, SLA, RCA | 🔴 Planned |
-
----
-
-# 🟡 Phase 3 — After A+
-
-| Lab | Topic | Key Evidence | Status |
-|---|---|---|---|
-| 18 | Microsoft 365 Support | users, licenses, Outlook/Teams troubleshooting | 🔴 Planned |
-| 19 | Entra ID Fundamentals | cloud identity, groups, MFA | 🔴 Planned |
-| 20 | Intune / Endpoint Management | device enrollment, policies, software | 🔴 Planned |
-
----
-
-## 🧪 Lab quality standard
-
-A lab can only move to **🟢 Completed** when the practical work has actually been performed and documented.
-
-Every portfolio-ready lab should contain:
-
-```text
-Scenario
-Objective
-Environment
-Symptoms
-Investigation
-Commands / Tools
-Evidence
-Root Cause
-Fix
-Verification
-Lessons Learned
-Screenshots / Evidence
-```
-
-For troubleshooting labs, the final documentation should also include the equivalent of a support ticket:
-
-```text
-Ticket ID
-User / Device
-Category
-Priority
-Reported issue
-Impact
-Initial checks
-Investigation
-Root cause
-Resolution
-Verification
-User communication
-Status
-Knowledge-base reference
-```
-
----
-
-## 📊 Coverage tracking
-
-| Area | Current evidence | Target |
+| Fase | Laboratorios | Objetivo |
 |---|---|---|
-| Hardware | 🟢 Legacy material | 🟢 |
-| Linux | 🟢 Legacy material + Lab 01 in progress | 🟢 |
-| Windows | 🟡 Study / planned labs | 🟢 |
-| Networking | 🟡 Legacy material + planned core labs | 🟢 |
-| DNS | 🟡 Study / planned lab | 🟢 |
-| DHCP | 🔴 Planned | 🟢 |
-| Active Directory | 🔴 Planned current labs | 🟢 |
-| GPO | 🔴 Planned | 🟢 |
-| NTFS Permissions | 🔴 Planned | 🟢 |
-| Firewall | 🔴 Planned | 🟢 |
-| Security | 🔴 Planned | 🟢 |
-| PowerShell | 🔴 Planned | 🟢 |
-| ITSM | 🔴 Planned | 🟢 |
-| Microsoft 365 | 🔴 Planned | 🟡 |
-| Entra ID | 🔴 Planned | 🟡 |
-| Intune | 🔴 Planned | 🟡 |
+| 1. Fundamentos de soporte | 01–04 | Hardware, Linux, acceso remoto, automatización y troubleshooting de Windows. |
+| 2. Identidad y servicios Windows | 05–10 | AD, dominio, usuarios, OUs, GPO y permisos. |
+| 3. Redes y seguridad | 11–15 | Conectividad, DHCP, DNS, firewall, endpoint security y control de acceso. |
+| 4. Operaciones | 16 | Simulación de tickets, priorización, resolución y documentación ITSM. |
 
----
+## Regla de portfolio
 
-## 🎓 CompTIA A+ Integration
+La carpeta y el índice deben reflejar el estado real del trabajo. Un laboratorio planificado puede tener documentación preliminar, pero solo se marca como completado cuando existe una ejecución verificable y evidencia suficiente para explicarlo en una entrevista.
 
-The labs reinforce A+ objectives through hands-on practice. They are not a replacement for exam preparation.
-
-Before October:
-
-- [ ] Finish Lab 01
-- [ ] Complete priority Windows / AD labs
-- [ ] Complete priority networking labs
-- [ ] Complete security labs
-- [ ] Complete PowerShell fundamentals
-- [ ] Complete ITSM simulation
-- [ ] Review weak exam domains
-- [ ] Complete final practice exams
-- [ ] Sit Core 1
-- [ ] Sit Core 2
-
----
-
-**Target:** CompTIA A+ Core 1 + Core 2 — October 2026  
-**Last updated:** August 2026
+**Objetivo de estudio:** CompTIA A+ Core 1 y Core 2 — octubre de 2026.
+**Última actualización:** Agosto de 2026

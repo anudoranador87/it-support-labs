@@ -1,23 +1,26 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project are documented in this file.
+
+## [1.1.0] - 2026-08-20
+
+### Changed
+
+- Reorganized all labs under `labs/`, separated into `completed`, `in-progress`, `planned` and `legacy`.
+- Replaced the previous mixed `CORE-LABS`, top-level `Lab-*` and `legacy-labs` layout with one consistent portfolio structure.
+- Renumbered the active roadmap so Lab 07 is the completed Windows Server UEFI/GPT and Active Directory lab.
+- Normalized the visible headings of the active lab READMEs to match their canonical numbers.
+- Corrected relative links and replaced missing screenshot references with explicit pending-evidence notes.
+- Rewrote the root `README.md` and `LABS-ROADMAP.md` to make the repository navigable by status and learning phase.
 
 ## [1.0.0] - 2026-08-04
 
 ### Added
-- New `CORE-LABS` structure focusing on high-impact troubleshooting scenarios.
-- Placeholder for Lab 02: SSH Windows to Ubuntu.
-- Placeholder for Lab 03: Python System Health Checker.
-- Placeholder for Lab 04: Windows Update Failure Diagnosis.
-- Placeholder for Lab 05: AD Offline Logon Cache Issue.
-- Placeholder for Lab 06: DNS Resolution Poisoning Debug.
-- New `study-notes` directory with initial analysis files.
-- `legacy-labs` directory to archive previous introductory labs.
+
+- Initial troubleshooting scenarios for SSH, Python system health, Windows Update, Active Directory and DNS.
+- Initial study notes, documentation, tools and legacy practice material.
 - `CHANGELOG.md` to track project evolution.
 
 ### Changed
-- Major repository restructuring for a professional portfolio narrative.
-- Renamed `mini-apps` to `tools`.
-- Migrated Lab 08 (Linux Drivers) to `CORE-LABS/Lab-01-Linux-WiFi-Driver-Fix`.
-- Updated main `README.md` with a new professional narrative.
-- Reorganized `docs` into `study-notes` and `tools`.
+
+- Established the repository as a practical portfolio for IT Support, Help Desk, Desktop Support and systems administration fundamentals.
