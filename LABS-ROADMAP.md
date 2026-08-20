@@ -32,8 +32,9 @@ This roadmap tracks the hands-on work used to build an entry-level IT Support po
 | 04 | Windows Update Failure Diagnosis | 🔴 Planned |
 | 05 | AD Offline Logon Cache Issue | 🔴 Planned |
 | 06 | DNS Resolution Debug | 🔴 Planned |
+| 07 | Windows Server UEFI/GPT + AD DS | 🟢 Completed |
 
-The README files for Labs 02–06 currently act as placeholders/scenario definitions. They are not counted as completed practical labs.
+The README files for Labs 02–06 currently act as placeholders/scenario definitions. Lab 07 is documented with practical evidence and is counted as completed.
 
 ---
 
@@ -55,7 +56,7 @@ These are the highest-priority practical labs before the October A+ exams.
 | 4 | Windows Update Failure Diagnosis | services, logs, remediation, verification | 🔴 Planned |
 | 5 | AD Offline Logon Cache Issue | authentication, cached credentials, diagnosis | 🔴 Planned |
 | 6 | DNS Resolution Debug | DNS queries, cache, records, verification | 🔴 Planned |
-| 7 | AD Domain Setup & Domain Join | domain controller, DNS, client join | 🔴 Planned |
+| 7 | Windows Server UEFI/GPT + AD DS | UEFI/GPT troubleshooting, server installation, domain controller | 🟢 Completed |
 | 8 | AD Users, Groups & OUs | identity lifecycle, groups, OUs | 🔴 Planned |
 | 9 | GPO Troubleshooting | gpupdate, gpresult, policy diagnosis | 🔴 Planned |
 | 10 | NTFS + Shared Permissions | permissions, inheritance, shares | 🔴 Planned |

@@ -31,8 +31,9 @@ The working method is:
 | [Lab 04](CORE-LABS/Lab-04-Windows-Update-Failure-Diagnosis) | Windows Update failure | 🔴 Planned |
 | [Lab 05](CORE-LABS/Lab-05-AD-Offline-Logon-Cache-Issue) | AD offline logon issue | 🔴 Planned |
 | [Lab 06](CORE-LABS/Lab-06-DNS-Resolution-Poisoning-Debug) | DNS resolution troubleshooting | 🔴 Planned |
+| [Lab 07](CORE-LABS/Lab-07-Windows-Server-UEFI-GPT-Deployment) | Windows Server UEFI/GPT + Active Directory | 🟢 Completed |
 
-The six directories above are **not counted as completed labs** unless their practical work has been carried out and documented.
+Labs 01–06 remain subject to their existing status. Lab 07 is marked completed because the installation, troubleshooting process, AD DS deployment and visual evidence are documented in full.
 
 ## 🗂️ Existing practical / legacy work
 
@@ -48,7 +49,7 @@ Earlier hands-on material is retained under [`legacy-labs/`](legacy-labs/) rathe
 4. Windows Update Failure Diagnosis
 5. AD Offline Logon Cache Issue
 6. DNS Resolution Debug
-7. AD Domain Setup & Domain Join
+7. Windows Server UEFI/GPT Deployment + AD DS
 8. AD Users, Groups & OU Management
 9. GPO Troubleshooting
 10. NTFS + Shared Permissions
