@@ -1,68 +1,78 @@
 # IT Support Labs
 
-Repositorio de práctica técnica orientado a **IT Support, Help Desk, Desktop Support y administración de sistemas**. Los laboratorios tienen rutas permanentes; su estado se registra dentro de cada README y no modifica la URL cuando avanzan.
+> **A practical portfolio of troubleshooting, systems administration and technical support work.**
 
-## Estructura
+This repository documents hands-on IT Support practice through realistic scenarios, reproducible investigations and evidence-based conclusions. Each case study focuses on the reasoning behind the fix: what happened, how the issue was isolated, what changed and how the result was verified.
 
-| Ubicación | Contenido |
+The work is aligned with my transition into **IT Support, Technical Support, Help Desk and Desktop Support**, building on 8+ years of experience handling incidents, priorities and people under pressure in hospitality operations.
+
+## What this portfolio demonstrates
+
+| Capability | Evidence in the repository |
 |---|---|
-| [`labs/`](labs/) | Los 16 laboratorios numerados del portfolio, cada uno con una ruta permanente. |
-| [`archive/legacy-labs/`](archive/legacy-labs/) | Material histórico de hardware, Linux y mantenimiento. |
-| [`docs/`](docs/) | Guías generales y documentación de configuración. |
-| [`templates/`](templates/) | Plantilla común para crear nuevos laboratorios. |
-| [`study-notes/`](study-notes/) | Apuntes de estudio y análisis de formación. |
-| [`reference/`](reference/) | Material de referencia de CompTIA A+. |
-| [`tools/`](tools/) | Herramientas desarrolladas durante el aprendizaje. |
-| [`infrastructure-analysis/`](infrastructure-analysis/) | Análisis de escenarios e infraestructura. |
+| **Troubleshooting** | Structured diagnosis of Windows, Linux, networking and authentication issues. |
+| **Systems administration** | Windows Server, Active Directory, users, groups, OUs, policies and permissions. |
+| **Networking** | DNS, DHCP, TCP/IP, SSH, connectivity and firewall investigation. |
+| **Security awareness** | Endpoint protection, access control and least-privilege concepts. |
+| **Automation** | Python and PowerShell used to inspect systems and reduce repetitive work. |
+| **Support communication** | Clear incident summaries, root-cause explanations, verification steps and lessons learned. |
 
-## Portfolio actual
+## Selected case studies
 
-| Lab | Tema | Estado | Evidencia o siguiente paso |
-|---:|---|---|---|
-| [01](labs/01-linux-wifi-driver-fix/) | Linux Wi-Fi Driver Fix | 🟡 En progreso | Cerrar verificación final y consolidar evidencia |
-| [02](labs/02-ssh-windows-to-ubuntu/) | Windows → Ubuntu SSH | 🔴 Planificado | Escenario y notas de troubleshooting |
-| [03](labs/03-python-system-health-checker/) | Python System Health Checker | 🔴 Planificado | Código y escenario de automatización |
-| [04](labs/04-windows-update-failure-diagnosis/) | Windows Update Failure Diagnosis | 🔴 Planificado | Flujo diagnóstico y procedimiento |
-| [05](labs/05-ad-offline-logon-cache-issue/) | AD Offline Logon Cache Issue | 🔴 Planificado | Diagnóstico de autenticación |
-| [06](labs/06-dns-resolution-debug/) | DNS Resolution Troubleshooting | 🔴 Planificado | Análisis y trazas DNS |
-| [07](labs/07-windows-server-uefi-gpt-ad-ds/) | Windows Server UEFI/GPT + Active Directory | ✅ Completado | Capturas, comandos, instalación y verificación |
-| [08](labs/08-ad-domain-setup-and-client-join/) | AD Client Join and Authentication | 🔴 Planificado | Unir cliente, verificar DNS y probar login |
-| [09](labs/09-ad-users-groups-and-ous/) | AD Users, Groups y OUs | 🔴 Planificado | Administración de identidades |
-| [10](labs/10-gpo-and-ntfs-permissions/) | GPO y permisos NTFS | 🔴 Planificado | Políticas, herencia y recursos compartidos |
-| [11](labs/11-windows-network-connectivity/) | Windows Network Connectivity | 🔴 Planificado | Conectividad y diagnóstico de red |
-| [12](labs/12-dhcp-and-dns/) | DHCP y DNS | 🔴 Planificado | Servicios de red |
-| [13](labs/13-windows-network-firewall/) | Windows Network Firewall | 🔴 Planificado | Reglas, puertos y verificación |
-| [14](labs/14-endpoint-security/) | Endpoint Security y Defender | 🔴 Planificado | Detección, aislamiento y remediación |
-| [15](labs/15-access-control/) | Access Control | 🔴 Planificado | Roles y privilegios |
-| [16](labs/16-itsm-ticketing/) | ITSM y Ticketing | 🔴 Planificado | Simulación de soporte y SLA |
+These are the strongest examples for a recruiter reviewing the portfolio first:
 
-## Cómo funciona el estado
+| Case study | What it shows | Evidence |
+|---|---|---|
+| [Windows Server and Active Directory setup](labs/07-windows-server-uefi-gpt-ad-ds/) | Installation troubleshooting, UEFI/GPT configuration, static networking, AD DS deployment and domain verification. | Screenshots, commands and final validation |
+| [DNS resolution troubleshooting](labs/06-dns-resolution-debug/) | Layered network diagnosis using DNS tools, traces and documented analysis. | Command output and resolution analysis |
+| [Python system health checker](labs/03-python-system-health-checker/) | Basic automation for collecting system information and producing a structured report. | Python script and sample CSV report |
+| [SSH from Windows to Ubuntu](labs/02-ssh-windows-to-ubuntu/) | Remote access setup, connectivity checks and practical troubleshooting notes. | Procedure and troubleshooting evidence |
+| [Linux Wi-Fi driver fix](labs/01-linux-wifi-driver-fix/) | Hardware and operating-system troubleshooting with a clear verification step. | Investigation notes and outcome |
 
-Cada README de laboratorio comienza con metadatos como estos:
+## Technical areas covered
 
-```yaml
----
-lab: 07
-status: completed
-area: windows-server
-level: intermediate
-evidence: screenshots, commands, verification
----
-```
+- Windows 11 and Windows Server fundamentals.
+- Linux / Ubuntu administration and troubleshooting.
+- TCP/IP, DNS, DHCP, SSH and Windows Firewall.
+- Active Directory: domain services, client joins, users, groups, OUs, Group Policy and permissions.
+- Endpoint security, access control and Defender fundamentals.
+- Python and PowerShell for support-oriented automation.
+- ITSM concepts, ticket quality, prioritisation and service-focused communication.
 
-El estado puede cambiar de `planned` a `in-progress` y después a `completed`, pero la carpeta y la URL permanecen estables.
+## My troubleshooting approach
 
-## Progresión recomendada
+Every completed case study aims to make the reasoning visible rather than presenting only a list of commands:
 
-La ruta técnica avanza desde troubleshooting de sistemas y acceso remoto, pasa por Windows Server y Active Directory, continúa con redes y seguridad, y termina con operaciones ITSM. La progresión de Active Directory es deliberadamente secuencial: **Lab 07 instala y prepara el dominio; Lab 08 une un cliente y prueba autenticación; Lab 09 administra usuarios, grupos y OUs; Lab 10 aplica políticas y permisos**.
+1. **Define the impact and reproduce the issue.**
+2. **Collect evidence** from symptoms, logs, configuration and user context.
+3. **Test hypotheses** and narrow the problem to its root cause.
+4. **Apply the smallest appropriate fix.**
+5. **Verify the original failure is resolved.**
+6. **Document the result** so another technician can understand and repeat the work.
 
-## Método de documentación
+## Repository navigation
 
-Cada laboratorio debe seguir el patrón:
+| Area | Purpose |
+|---|---|
+| [`labs/`](labs/) | Main portfolio case studies. |
+| [`tools/`](tools/) | Small support-oriented utilities, including subnet and permissions calculators. |
+| [`infrastructure-analysis/`](infrastructure-analysis/) | Scenario-based infrastructure and operational analysis. |
+| [`docs/`](docs/) | Supporting technical notes and scripts. |
+| [`archive/`](archive/) | Earlier practice retained as historical work. |
+| [`reference/`](reference/) | CompTIA A+ study reference material, separate from the portfolio case studies. |
 
-> **Objetivo → escenario → síntomas → herramientas → procedimiento → causa raíz → solución → verificación → evidencias → lecciones aprendidas → siguiente paso**
+## Current learning
 
-La plantilla reutilizable está disponible en [`templates/lab-template.md`](templates/lab-template.md).
+I am currently preparing for **CompTIA A+ Core 1 and Core 2**, with a target of October 2026. This repository is not a study guide: it is the practical evidence of how I investigate, solve and document technical problems while developing that knowledge.
 
-**Objetivo de estudio:** CompTIA A+ Core 1 y Core 2 — octubre de 2026.
-**Última actualización:** Agosto de 2026
+## About the author
+
+I am Jose Aparicio, an aspiring IT Support professional based in Málaga, Spain. My background in hospitality operations has trained me to prioritise incidents, communicate clearly, stay calm under pressure and follow problems through to resolution.
+
+- [GitHub profile](https://github.com/anudoranador87)
+- [LinkedIn](https://www.linkedin.com/in/joseaparicio87/)
+- [Interactive portfolio](https://anudoranador87.github.io/JoseMaria-Frontend-Portfolio/)
+- [365-Day Dev Journey](https://anudoranador87.github.io/Mi-Camino-Web-365/)
+- [Email](mailto:josemaparicio87@gmail.com)
+
+> Open to IT Support, Technical Support, Help Desk and Desktop Support opportunities — Málaga, hybrid or remote.

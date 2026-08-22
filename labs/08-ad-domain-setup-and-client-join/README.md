@@ -4,37 +4,32 @@ title: Active Directory Client Join and Authentication
 status: planned
 area: active-directory
 level: advanced
-evidence: guide awaiting hands-on evidence
+evidence: hands-on evidence pending
 ---
 
 # Lab 08: Active Directory Client Join and Authentication
 
-**Prerequisite:** [Lab 07 — Windows Server UEFI/GPT y Active Directory](../07-windows-server-uefi-gpt-ad-ds/)
-**Scenario:** unir un cliente Windows a `lab.local`, comprobar la resolución DNS y validar el inicio de sesión de un usuario estándar.
+> **Planned case study for validating domain connectivity, DNS resolution and standard-user authentication from a Windows client.**
 
-## Objetivo
+## Scenario
 
-Completar la parte cliente del entorno AD creado en el Lab 07. El resultado esperado es un equipo Windows unido al dominio, capaz de localizar el controlador de dominio mediante DNS y permitir el inicio de sesión de `LAB\\JoseAparicio`.
+This case study extends the [Lab 07 Windows Server and Active Directory setup](../07-windows-server-uefi-gpt-ad-ds/). The goal is to connect a Windows client to the `lab.local` domain, verify that it can locate the domain controller through DNS and test the `LAB\\JoseAparicio` account from a separate client device.
 
-## Topología del laboratorio
+## Lab topology
 
-| Equipo | Función | Configuración esperada |
+| Device | Role | Expected configuration |
 |---|---|---|
-| `WINSERVER-JOSE` | Controlador de dominio y DNS | `192.168.1.200`, dominio `lab.local` |
-| Cliente Windows | Equipo unido al dominio | IP de la misma red, DNS apuntando a `192.168.1.200` |
-| Usuario | Cuenta estándar de prueba | `LAB\\JoseAparicio` |
+| `WINSERVER-JOSE` | Domain controller and DNS server | `192.168.1.200`, domain `lab.local` |
+| Windows client | Domain-joined workstation | Same network, DNS pointing to `192.168.1.200` |
+| Test user | Standard domain account | `LAB\\JoseAparicio` |
 
-> [!WARNING]
-> El cliente debe utilizar como DNS preferido la IP del controlador de dominio. No se debe configurar un DNS público como servidor principal para localizar un dominio Active Directory.
+> **Important:** the client must use the domain controller as its preferred DNS server. A public DNS server should not be configured as the primary resolver for locating an Active Directory domain.
 
-## Procedimiento
+## Validation plan
 
-### Paso 1 — Preparar el cliente
+### 1. Verify client connectivity
 
-1. Conectar el cliente a la misma red física o virtual que `WINSERVER-JOSE`.
-2. Confirmar que el cliente recibe una dirección de la misma subred.
-3. Configurar como DNS preferido `192.168.1.200`.
-4. Comprobar conectividad básica:
+The client must be connected to the same physical or virtual network as `WINSERVER-JOSE`. Initial checks will confirm the address, route, reachability and DNS response:
 
 ```powershell
 ipconfig /all
@@ -42,19 +37,13 @@ ping 192.168.1.200
 nslookup lab.local 192.168.1.200
 ```
 
-**Criterio:** el cliente debe alcanzar el servidor y resolver `lab.local` utilizando el DNS del controlador de dominio.
+### 2. Join the domain
 
-### Paso 2 — Unir el cliente al dominio
+The client will be joined to `lab.local` through the Windows system properties or Settings interface. An authorised account will be used to complete the join, followed by a client restart.
 
-1. Abrir `sysdm.cpl` o **Settings → System → About → Domain or workgroup**.
-2. Seleccionar **Change settings** y después **Change**.
-3. Elegir **Domain** e introducir `lab.local`.
-4. Proporcionar credenciales de una cuenta autorizada para unir equipos al dominio.
-5. Reiniciar el cliente cuando Windows lo solicite.
+### 3. Verify domain membership
 
-### Paso 3 — Validar la pertenencia al dominio
-
-Después del reinicio:
+After restarting, the following commands will confirm that the client recognises the domain and can locate its domain controller:
 
 ```powershell
 whoami
@@ -62,47 +51,46 @@ systeminfo | findstr /B /C:"Domain"
 nltest /dsgetdc:lab.local
 ```
 
-El equipo debe identificar `lab.local` como dominio y localizar `WINSERVER-JOSE` como controlador de dominio.
+### 4. Test standard-user authentication
 
-### Paso 4 — Probar el inicio de sesión del usuario
+The test will use **Other user** at the Windows sign-in screen and the `LAB\\JoseAparicio` or `JoseAparicio@lab.local` format. The temporary password created in Lab 07 should be changed at first logon, and the user profile should be created successfully.
 
-1. En la pantalla de inicio de sesión elegir **Other user**.
-2. Introducir `LAB\\JoseAparicio` o `JoseAparicio@lab.local`.
-3. Utilizar la contraseña temporal creada en el Lab 07.
-4. Cambiar la contraseña cuando Windows lo solicite.
-5. Comprobar que el perfil se crea correctamente.
+### 5. Verify from the domain controller
 
-### Paso 5 — Verificación desde el controlador de dominio
+The final checks will confirm that the client appears in the `Computers` container, the user retains standard permissions, the client DNS records are registered and no authentication errors are present in Event Viewer.
 
-En `WINSERVER-JOSE` comprobar que el equipo aparece en el contenedor `Computers` de ADUC, que el usuario mantiene sus permisos estándar, que los registros DNS del cliente se registran correctamente y que no aparecen errores de autenticación en Event Viewer.
+## Evidence to collect
 
-## Evidencia
+This case study will be marked complete after collecting and reviewing:
 
-Cuando se ejecute el laboratorio, añadir capturas dentro de `evidence/` y referenciarlas aquí:
+- Client IP configuration and DNS settings.
+- Connectivity and `nslookup` output.
+- Successful domain-join confirmation.
+- `nltest` domain-controller discovery output.
+- Successful standard-user sign-in.
+- Client visibility in Active Directory Users and Computers.
+- Any troubleshooting steps required during the process.
 
-```markdown
-![Configuración DNS del cliente](evidence/01-client-dns.png)
-![Cliente unido a lab.local](evidence/02-domain-join.png)
-![Inicio de sesión de JoseAparicio](evidence/03-domain-login.png)
-![Cliente visible en ADUC](evidence/04-aduc-client.png)
-```
+## Failure modes to investigate
 
-## Causa raíz que se debe validar
+Authentication may fail if the client uses a DNS server that cannot resolve the `lab.local` zone, if the client is on an unreachable subnet, or if the system clock is sufficiently out of sync to affect Kerberos authentication. These conditions will be tested and documented if encountered.
 
-El cliente no podrá autenticarse correctamente si utiliza un DNS que no conoce la zona `lab.local`, si está en una subred distinta sin conectividad con el controlador o si la hora del sistema está demasiado desincronizada para Kerberos.
+## Completion checklist
 
-## Checklist final
+- [ ] Client reaches `192.168.1.200`.
+- [ ] Preferred DNS points to the domain controller.
+- [ ] `nslookup lab.local` responds through the domain-controller DNS.
+- [ ] Client joins `lab.local` successfully.
+- [ ] `nltest /dsgetdc:lab.local` locates the domain controller.
+- [ ] `LAB\\JoseAparicio` signs in from the client.
+- [ ] Temporary password is changed.
+- [ ] Client appears in Active Directory Users and Computers.
+- [ ] Evidence and troubleshooting notes are documented.
 
-- [ ] El cliente alcanza `192.168.1.200`.
-- [ ] El DNS preferido del cliente apunta al controlador de dominio.
-- [ ] `nslookup lab.local` responde desde el DNS del DC.
-- [ ] El cliente está unido a `lab.local`.
-- [ ] `nltest /dsgetdc:lab.local` localiza el controlador.
-- [ ] `LAB\\JoseAparicio` puede iniciar sesión desde el cliente.
-- [ ] El usuario cambia la contraseña temporal.
-- [ ] El equipo aparece en ADUC.
-- [ ] Se documentan capturas y cualquier incidencia encontrada.
+## Status
 
-## Siguiente paso
+This case study is currently **planned**. It will be linked from the portfolio as completed only after the second-client validation and evidence review are finished.
 
-Continuar con el [Lab 09 — Active Directory Users, Groups y OUs](../09-ad-users-groups-and-ous/), ampliando la administración de identidades más allá del usuario inicial.
+---
+
+[Back to the IT Support Labs portfolio](../../README.md)

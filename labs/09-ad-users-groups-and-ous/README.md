@@ -7,7 +7,7 @@ level: intermediate
 evidence: scenario and checklist
 ---
 
-# Lab 09: Active Directory Users, Groups y OUs
+# Lab 09: Active Directory Users, Groups and OUs
 
 **CompTIA A+ Domain:** 220-1201, Domain 2.0  
 **Level:** Intermediate  

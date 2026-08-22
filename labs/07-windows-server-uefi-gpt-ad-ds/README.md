@@ -7,65 +7,43 @@ level: intermediate
 evidence: screenshots, commands, verification
 ---
 
-# Lab 07: Windows Server — UEFI/GPT Troubleshooting y Active Directory
+# Lab 07: Windows Server and Active Directory Setup
 
-**Área:** Windows Server, firmware UEFI/BIOS, particionado GPT/MBR y Active Directory Domain Services  
-**Nivel:** Intermedio  
-**Estado:** ✅ Completado y documentado  
-**Autor:** José María Aparicio Portillo  
-**Fecha:** Agosto de 2026  
-**Hardware:** Placa base Gigabyte y USB Kingston DataTraveler 2.0 de 16 GB  
-**Sistema:** Windows Server 2022 Standard Evaluation, Desktop Experience
+> **A complete troubleshooting case study covering UEFI/GPT boot configuration, Windows Server installation and initial Active Directory deployment.**
 
-## Objetivo
+| Field | Detail |
+|---|---|
+| **Status** | Completed and documented |
+| **Environment** | Windows Server 2022 Standard Evaluation, Desktop Experience |
+| **Focus** | UEFI/BIOS, GPT/MBR, Windows Server, AD DS and verification |
+| **Hardware** | Gigabyte motherboard · Kingston DataTraveler 2.0 USB, 16 GB |
+| **Date** | August 2026 |
 
-Instalar Windows Server desde un pendrive USB, resolver un conflicto de arranque Legacy/UEFI relacionado con discos GPT y dejar operativo un primer controlador de dominio con Active Directory Domain Services (AD DS).
+## Executive summary
 
-El laboratorio sigue el flujo:
+The Windows Server installation repeatedly failed with a GPT partition-style error. The issue was not a defective target disk: the installation media had been created in MBR/Legacy mode while the internal disks used GPT. After the boot mode, installation media and target disk were aligned to UEFI/GPT, Windows Server installed successfully alongside the existing Windows 11 system.
 
-> **Síntoma → investigación por capas → causa raíz → corrección → verificación → lecciones aprendidas**
+The server was then renamed, configured with a static IP address and promoted to a domain controller for the `lab.local` forest. Active Directory Domain Services was verified through Active Directory Users and Computers, including the creation of the `Empleados` OU and the `JoseAparicio` domain user.
 
-## Resultado final
+## Problem and impact
 
-El equipo quedó con Windows Server 2022 instalado en arranque dual junto al Windows 11 existente. El medio de instalación, la BIOS y el disco de destino quedaron alineados en modo UEFI/GPT. Después se configuró una IP estática, se instaló AD DS, se creó el bosque `lab.local`, se promocionó el servidor a controlador de dominio y se creó la OU `Empleados` con el usuario `JoseAparicio`.
-
-> [!WARNING]
-> Este laboratorio se realizó sobre un equipo con varios discos y un sistema operativo existente. Antes de seleccionar una partición o utilizar `diskpart`, hay que identificar con precisión el disco de destino y disponer de una copia de seguridad. Un comando como `clean` elimina la tabla de particiones del disco seleccionado.
-
-## Parte 1 — Troubleshooting de instalación y arranque
-
-### Síntoma inicial
-
-Durante la instalación, cualquier disco seleccionado mostraba:
+The installer displayed the following message for every selected disk:
 
 > Windows cannot be installed to this disk. The selected disk is of the GPT partition style.
 
-El mismo mensaje aparecía al cambiar de disco, lo que indicaba que el problema no estaba necesariamente en la partición seleccionada. La hipótesis inicial fue una incompatibilidad entre un instalador arrancado en Legacy/BIOS y discos internos particionados en GPT.
+Changing the selected disk did not resolve the error. This indicated a configuration mismatch between the installer boot mode and the partition style of the target disk rather than a problem with one particular disk.
 
-### 1. Primer intento: forzar UEFI desde la BIOS
+## Investigation and resolution
 
-Se accedió a la BIOS Gigabyte con `Del` y se desactivó **CSM Support**, que permite el arranque Legacy. Al hacerlo, el equipo quedó detenido en el logo de arranque y el teclado USB dejó de responder durante el POST.
+### 1. Isolate the boot-mode mismatch
 
-La incidencia mostró que un cambio de CSM puede afectar también a la inicialización de periféricos antes de que arranque el sistema operativo. En un equipo de producción conviene preparar previamente un plan de reversión, como un reseteo de CMOS.
+The initial hypothesis was that the installer had booted in Legacy/BIOS mode while the internal disks used GPT. CSM Support was disabled in the Gigabyte BIOS to force UEFI mode. This temporarily caused the system to stop at the boot logo and the USB keyboard to become unavailable during POST.
 
-### 2. Recuperación de la BIOS mediante CMOS
+A CMOS reset restored the BIOS defaults and recovered access to the `Del` and `F12` boot controls. This reinforced the importance of having a rollback path when changing firmware settings.
 
-Se apagó el equipo, se desconectó la corriente, se retiró la pila CR2032 durante unos minutos y se volvió a colocar. La BIOS recuperó sus valores predeterminados y el acceso a `Del` y `F12` volvió a funcionar.
+### 2. Verify the installation media instead of trusting the selected options
 
-### 3. Configuración UEFI coherente
-
-Con el acceso recuperado, se configuraron las siguientes opciones:
-
-| Opción | Valor |
-|---|---|
-| CSM Support | **Disabled** |
-| Storage Boot Option Control | **UEFI** |
-| LAN PXE Boot Option ROM | **UEFI** |
-| Boot Option #1 | KingstonDataTraveler 2.0PMAP |
-
-### 4. Verificación del medio de instalación
-
-El error persistió incluso con la BIOS en UEFI puro. Por eso se verificó el formato real del pendrive en lugar de confiar únicamente en la configuración seleccionada en Rufus:
+The USB was inspected with `diskpart`:
 
 ```powershell
 diskpart
@@ -74,203 +52,121 @@ select disk X
 detail disk
 ```
 
-El resultado indicó que el USB seguía utilizando **MBR**. El intento anterior de grabación no había llegado realmente al estado `LISTO`.
+The output showed that the USB was still using **MBR**, despite the previous Rufus configuration. The media was recreated with the following settings:
 
-### 5. Regrabado del USB con Rufus
-
-Se volvió a crear el medio con esta configuración:
-
-| Campo | Valor |
+| Setting | Value |
 |---|---|
-| Imagen | ISO de Windows Server 2022 Evaluation |
-| Esquema de partición | **GPT** |
-| Sistema de destino | **UEFI (no CSM)** |
-| Sistema de archivos | **NTFS** |
+| Image | Windows Server 2022 Evaluation ISO |
+| Partition scheme | **GPT** |
+| Target system | **UEFI (non-CSM)** |
+| File system | **NTFS** |
 
-La barra de progreso se dejó terminar completamente antes de retirar el pendrive. La verificación del formato real fue más importante que la selección visual de opciones.
+The process was allowed to finish completely before removing the USB. The actual disk format was then verified rather than inferred from the graphical options.
 
-### 6. Refresco de la entrada de arranque
+### 3. Refresh the boot entry
 
-Al arrancar el USB regrabado apareció el aviso:
+The re-created USB displayed:
 
 > ERROR: BIOS/LEGACY BOOT OF UEFI-ONLY MEDIA
 
-El aviso confirmó que el medio ya era UEFI-only, pero el equipo todavía estaba intentando utilizar una entrada Legacy anterior. En las prioridades de arranque aparecían dos referencias para el pendrive. Se seleccionó nuevamente la entrada específica del Kingston y se guardó la configuración para que la BIOS redetectara el medio.
+This confirmed that the USB was now UEFI-only, but the firmware was still selecting an older Legacy entry. The specific Kingston UEFI boot entry was selected from the boot priorities, allowing the installation to proceed.
 
-### 7. Instalación de Windows Server y dual boot
+### 4. Install Windows Server safely
 
-Después de alinear BIOS, pendrive y disco de destino, la instalación avanzó normalmente. Se seleccionó **Windows Server 2022 Standard Evaluation (Desktop Experience)** y se instaló en `Drive 2 Partition 3`, de 50 GB, evitando el disco con Windows 11 y la partición de datos personales.
+Windows Server 2022 Standard Evaluation with Desktop Experience was installed on `Drive 2 Partition 3`, a 50 GB partition. The existing Windows 11 disk and personal data partition were deliberately avoided.
 
-Tras el reinicio apareció Windows Boot Manager con dos entradas: **Windows Server** y **Windows 11**. Esto confirmó que el sistema anterior permanecía intacto y que ambos sistemas arrancaban en modo UEFI.
+After the restart, Windows Boot Manager showed both **Windows Server** and **Windows 11**, confirming that the existing operating system had been preserved and that both systems were using UEFI boot.
 
-## Evidencia visual — instalación y troubleshooting
+## Active Directory configuration
 
-### Server Manager y comienzo de la instalación del rol
+The server was renamed to `WINSERVER-JOSE` before the AD DS promotion. A static network configuration was applied after the initial DHCP assignment:
 
-![Inicio de Add Roles and Features desde Server Manager](img/01-1000075702.jpg)
-
-*Inicio del asistente para añadir roles y características al servidor local.*
-
-### Selección del tipo de instalación
-
-![Selección de instalación basada en roles](img/02-1000075703.jpg)
-
-*Se selecciona la instalación basada en roles o características para trabajar sobre el servidor local.*
-
-![Configuración del servidor local en Server Manager](img/03-1000075704.jpg)
-
-*Vista del servidor y de los roles disponibles antes de completar la configuración.*
-
-### Configuración del servidor y AD DS
-
-![Asistente de configuración del servidor](img/04-1000075705.jpg)
-
-*Paso intermedio del asistente utilizado para preparar el servidor.*
-
-![Selección del rol Active Directory Domain Services](img/05-1000075706.jpg)
-
-*Selección del rol AD DS y aceptación de las herramientas de administración asociadas.*
-
-![Opciones del asistente de AD DS](img/06-1000075707.jpg)
-
-*Configuración del asistente antes de la promoción del servidor.*
-
-![Pantalla adicional del asistente de configuración](img/07-1000075708.jpg)
-
-*Continuación de la configuración previa a la promoción del controlador de dominio.*
-
-## Parte 2 — Configuración inicial de AD DS
-
-### 8. Renombrado del servidor
-
-Antes de instalar AD DS se cambió el nombre predeterminado del equipo a:
-
-```text
-WINSERVER-JOSE
-```
-
-Renombrar el equipo antes de promocionarlo evita la complejidad de cambiar el nombre de un controlador de dominio ya operativo.
-
-### 9. IP estática
-
-Los datos iniciales obtenidos con `ipconfig` fueron:
-
-| Parámetro | Valor inicial |
+| Parameter | Value |
 |---|---|
-| IPv4 asignada por DHCP | `192.168.1.142` |
-| Máscara | `255.255.255.0` |
-| Puerta de enlace | `192.168.1.1` |
+| Initial DHCP IPv4 | `192.168.1.142` |
+| Target static IPv4 | `192.168.1.200` |
+| Subnet mask | `255.255.255.0` |
+| Gateway | `192.168.1.1` |
 
-La IP objetivo fue `192.168.1.200`. Como la configuración gráfica no persistía, se utilizó `netsh`:
+The configuration was applied and verified with `ipconfig`, `netsh` and a connectivity/resolution test with `ping google.com`.
 
-```powershell
-netsh interface show interface
-netsh interface ip set address name="Ethernet" static 192.168.1.200 255.255.255.0 192.168.1.1
-netsh interface ip set dns name="Ethernet" static 192.168.1.1
-netsh interface ip add dns name="Ethernet" 8.8.8.8 index=2
-```
+Active Directory Domain Services was installed through **Server Manager → Add Roles and Features**, and the server was promoted using **Promote this server to a domain controller**.
 
-La configuración se verificó con `ipconfig` y mediante una prueba de resolución y conectividad con `ping google.com`.
-
-### 10. Instalación y promoción de AD DS
-
-Desde **Server Manager → Add roles and features** se instaló **Active Directory Domain Services**. Después se utilizó la notificación **Promote this server to a domain controller**.
-
-Los valores principales fueron:
-
-| Paso | Valor |
+| Configuration | Value |
 |---|---|
-| Deployment Configuration | **Add a new forest** |
-| Root domain name | **`lab.local`** |
-| DNS delegation | No crear delegación |
+| Deployment | Add a new forest |
+| Root domain | `lab.local` |
 | NetBIOS name | `LAB` |
-| DSRM password | Distinta de la contraseña de Administrator |
+| DNS delegation | Not created for this isolated lab forest |
+| Domain controller | `WINSERVER-JOSE` |
 
-El asistente indicó que todas las comprobaciones previas se habían superado correctamente. Las advertencias sobre delegación DNS no requerían acción en este bosque de laboratorio aislado.
+The `lab.local/Empleados` organisational unit was created with accidental-deletion protection enabled. The `JoseAparicio` domain user was then created with a password change required at next logon.
 
-![Comprobación de requisitos previos de la promoción](img/15-1000075694.jpg)
+## Evidence
 
-*Todas las comprobaciones previas aparecen superadas; también se documentan las advertencias esperables sobre delegación DNS y reinicio automático.*
+### Server Manager and role installation
 
-### 11. Verificación del dominio
+![Starting Add Roles and Features from Server Manager](img/01-1000075702.jpg)
 
-Después del reinicio, el inicio de sesión pasó a utilizar `LAB\Administrator`. En **Active Directory Users and Computers** apareció el dominio `lab.local` con sus contenedores predeterminados, incluido `Domain Controllers`.
+![Role-based installation selection](img/02-1000075703.jpg)
 
-![Creación de una nueva OU desde Active Directory Users and Computers](img/16-1000075692.jpg)
+![Local server configuration in Server Manager](img/03-1000075704.jpg)
 
-*Menú contextual para crear una nueva unidad organizativa dentro del dominio.*
+### AD DS configuration
 
-### 12. Creación de la OU `Empleados`
+![Server configuration wizard](img/04-1000075705.jpg)
 
-Se creó la unidad organizativa:
+![Active Directory Domain Services role selection](img/05-1000075706.jpg)
 
-```text
-lab.local/Empleados
-```
+![AD DS configuration wizard options](img/06-1000075707.jpg)
 
-La opción **Protect container from accidental deletion** se mantuvo activada.
+![Additional configuration wizard screen](img/07-1000075708.jpg)
 
-### 13. Creación del usuario de dominio
+![Prerequisite checks before domain controller promotion](img/15-1000075694.jpg)
 
-Dentro de `Empleados` se creó el usuario:
+### Identity and domain verification
 
-| Campo | Valor |
-|---|---|
-| Nombre | Jose |
-| Apellido | Aparicio |
-| UPN | `JoseAparicio@lab.local` |
-| Nombre pre-Windows 2000 | `LAB\JoseAparicio` |
-| Cambio de contraseña | Obligatorio en el próximo inicio de sesión |
+![Creating a new organisational unit](img/16-1000075692.jpg)
 
-![Formulario de creación del usuario Jose Aparicio](img/17-1000075690.jpg)
+![Creating the Jose Aparicio domain user](img/17-1000075690.jpg)
 
-*Datos de identidad y nombres de inicio de sesión del usuario de dominio.*
+![Temporary password configuration](img/18-1000075689.jpg)
 
-![Configuración de contraseña temporal](img/18-1000075689.jpg)
+## Root cause
 
-*Se marca `User must change password at next logon` para obligar al usuario a sustituir la contraseña temporal.*
+The failure resulted from a chain mismatch across three layers:
 
-## Causa raíz
+1. The installation USB was created in **MBR/Legacy** mode.
+2. The internal disks used **GPT**.
+3. The firmware boot mode and the selected USB boot entry were not aligned.
 
-El problema original fue una incompatibilidad en cadena entre las capas de arranque:
+The resolution was to verify and align the BIOS configuration, USB media format and target disk partition style independently.
 
-1. El pendrive estaba grabado en **MBR/Legacy**.
-2. Los discos internos utilizaban **GPT**.
-3. La BIOS se alternó entre Legacy y UEFI durante las pruebas.
-4. El medio fue regrabado, pero la entrada de arranque anterior seguía seleccionándose.
-5. La solución consistió en verificar y alinear por separado BIOS, medio de instalación y disco de destino.
+> **Key lesson:** a GPT installation error does not automatically mean that the target disk is faulty. Verify the actual boot mode, the USB partition scheme and the target disk before changing or cleaning any disk.
 
-> **Lección central:** cuando aparece un error de GPT durante la instalación, no hay que asumir que el disco está defectuoso. Hay que comprobar el modo real de arranque, el esquema del USB y el estilo de partición del disco de destino.
+## Verification checklist
 
-## Verificación final
+- [x] Windows Server 2022 installed with Desktop Experience.
+- [x] Existing Windows 11 installation preserved in dual boot.
+- [x] BIOS configured for UEFI with CSM disabled.
+- [x] Rufus media created with GPT and UEFI non-CSM.
+- [x] Server renamed to `WINSERVER-JOSE`.
+- [x] Static IP configured as `192.168.1.200`.
+- [x] AD DS installed and promoted.
+- [x] `lab.local` forest created and operational.
+- [x] Domain controller verified in Active Directory Users and Computers.
+- [x] `Empleados` OU created.
+- [x] `JoseAparicio` domain user created with a mandatory password change.
+- [ ] Normal-user logon tested from a second domain-joined client.
 
-- [x] Windows Server 2022 instalado en Desktop Experience.
-- [x] Windows 11 anterior conservado en arranque dual.
-- [x] BIOS configurada en UEFI sin CSM.
-- [x] Medio Rufus creado con GPT y UEFI no CSM.
-- [x] Servidor renombrado como `WINSERVER-JOSE`.
-- [x] IP estática configurada como `192.168.1.200`.
-- [x] Rol AD DS instalado.
-- [x] Bosque `lab.local` creado y operativo.
-- [x] Controlador de dominio verificado en ADUC.
-- [x] OU `Empleados` creada.
-- [x] Usuario `JoseAparicio` creado con cambio de contraseña obligatorio.
-- [ ] Probar el inicio de sesión del usuario normal desde un segundo equipo unido al dominio.
+## Tools used
 
-## Herramientas utilizadas
+`diskpart` · PowerShell · `netsh` · `ipconfig` · `ping` · Gigabyte BIOS · CMOS reset · Rufus · Server Manager · Active Directory Users and Computers · AD DS configuration wizard
 
-- Rufus 4.15.
-- `diskpart` y PowerShell.
-- `netsh` e `ipconfig`.
-- BIOS Gigabyte.
-- Reseteo físico de CMOS.
-- Server Manager, ADUC y el asistente de configuración de AD DS.
+## Next validation
 
-## Siguiente paso recomendado
-
-Unir una segunda máquina física o virtual al dominio `lab.local` y probar el inicio de sesión de `JoseAparicio` desde ese cliente. En un controlador de dominio no conviene utilizar el propio servidor como estación de trabajo para validar el flujo normal de un usuario estándar.
+The remaining validation is to join a second physical or virtual client to `lab.local` and test `JoseAparicio` authentication from that client. This separates the domain-user workflow from the domain controller itself and provides a more realistic support scenario.
 
 ---
 
-**Última actualización:** Agosto de 2026  
-**Repositorio:** [IT Support Labs](https://github.com/anudoranador87/it-support-labs)
+[Back to the IT Support Labs portfolio](../../README.md)
