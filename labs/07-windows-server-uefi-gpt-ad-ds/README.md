@@ -169,4 +169,77 @@ The remaining validation is to join a second physical or virtual client to `lab.
 
 ---
 
+## Lab 07 evidence: Active Directory, GPO and DNS
+
+The following evidence extends this case study with the completed Active Directory structure, security-group membership, a Group Policy linked to the employees OU, password-policy settings and DNS host-record configuration.
+
+### 1. Organizational units and test users
+
+The `Empleados` organizational unit contains three test users. The `Equipos` and `Grupos` organizational units are also visible in the domain hierarchy. This structure separates employees, computer accounts and groups so that permissions and policies can be managed according to their purpose.
+
+![Active Directory Users and Computers showing the Empleados OU and three test users](img/lab07-gpo-dns/01-ous-y-usuarios.png)
+
+### 2. Reception_Staff security group
+
+The `Reception_Staff` security group contains the three test users from `Empleados`. This represents a practical onboarding workflow in which access is assigned through group membership rather than individually to each user.
+
+![Reception_Staff group showing its three members](img/lab07-gpo-dns/02-grupo-reception-staff-miembros.png)
+
+### 3. GPO linked to the Empleados OU
+
+A new Group Policy Object was created and linked directly to the `Empleados` OU. Limiting the link to the relevant OU avoids applying the policy unnecessarily to the whole domain and follows a least-privilege approach.
+
+![Creating and linking a new GPO to the Empleados OU](img/lab07-gpo-dns/03-gpo-crear-y-vincular-ou.png)
+
+The Group Policy Management console confirms that the link is enabled and that the GPO is applied to `Empleados`.
+
+![GPO linked to Empleados with Link Enabled set to Yes](img/lab07-gpo-dns/04-gpo-vinculada-empleados.png)
+
+### 4. Password-policy configuration
+
+The policy was edited under `Computer Configuration → Policies → Windows Settings → Security Settings → Account Policies`. The evidence shows a minimum password length of **10 characters** and a maximum password age of **30 days**.
+
+![Account Policies section in the Group Policy Management Editor](img/lab07-gpo-dns/05-account-policies.png)
+
+![Password Policy showing a 10-character minimum and 30-day maximum age](img/lab07-gpo-dns/06-password-policy.png)
+
+Password complexity requirements were enabled so that passwords must meet Windows complexity rules instead of accepting simple passwords.
+
+![Password complexity requirements enabled](img/lab07-gpo-dns/07-complejidad-contrasena.png)
+
+### 5. DNS Host (A) record
+
+A Host (A) record was created in the `lab.local` forward lookup zone. The record maps `PC01.lab.local` to the test address `192.168.1.50`.
+
+![DNS Manager showing the lab.local zone and the New Host option](img/lab07-gpo-dns/08-dns-zona-lab-local.png)
+
+![PC01 Host A record mapped to 192.168.1.50](img/lab07-gpo-dns/09-registro-pc01.png)
+
+The final operational verification should be performed from Command Prompt:
+
+```cmd
+nslookup pc01.lab.local
+```
+
+A successful result should return `192.168.1.50`. The command-output screenshot can be added to this section when available so the DNS configuration is documented from creation through end-to-end verification.
+
+### Evidence status
+
+| Requirement | Evidence |
+|---|---|
+| `Empleados` OU with three users | Documented above with an embedded screenshot |
+| `Equipos` and `Grupos` OUs | Visible in the ADUC hierarchy screenshot |
+| `Reception_Staff` security group | Documented above with an embedded membership screenshot |
+| GPO linked to `Empleados` | Documented above with embedded Group Policy Management screenshots |
+| Minimum password length of 10 characters | Shown in the embedded Password Policy screenshot |
+| Maximum password age of 30 days | Shown in the embedded Password Policy screenshot |
+| Password complexity enabled | Shown in the embedded policy-settings screenshot |
+| DNS Host (A) record for `PC01` | Documented above with embedded DNS screenshots |
+| `nslookup pc01.lab.local` verification | Pending command-output screenshot |
+| Account lockout after five failed attempts | Not visible in the supplied screenshots; add evidence after verification |
+
+> The screenshots are embedded with relative Markdown image paths, so GitHub renders them directly inside this README rather than displaying them as ordinary text links.
+
+---
+
 [Back to the IT Support Labs portfolio](../../README.md)
