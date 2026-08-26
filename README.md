@@ -1,78 +1,146 @@
 # IT Support Labs
 
-> **A practical portfolio of troubleshooting, systems administration and technical support work.**
+Hands-on IT Support practice focused on troubleshooting, Windows, Linux, networking, Active Directory, security and IT service management.
 
-This repository documents hands-on IT Support practice through realistic scenarios, reproducible investigations and evidence-based conclusions. Each case study focuses on the reasoning behind the fix: what happened, how the issue was isolated, what changed and how the result was verified.
+This repository documents practical work through **real scenarios, troubleshooting steps, commands, evidence and verification**.
 
-The work is aligned with my transition into **IT Support, Technical Support, Help Desk and Desktop Support**, building on 8+ years of experience handling incidents, priorities and people under pressure in hospitality operations.
+## 🟢 Portfolio
 
-## What this portfolio demonstrates
+### Lab 07 — Windows Server & Active Directory Environment
 
-| Capability | Evidence in the repository |
-|---|---|
-| **Troubleshooting** | Structured diagnosis of Windows, Linux, networking and authentication issues. |
-| **Systems administration** | Windows Server, Active Directory, users, groups, OUs, policies and permissions. |
-| **Networking** | DNS, DHCP, TCP/IP, SSH, connectivity and firewall investigation. |
-| **Security awareness** | Endpoint protection, access control and least-privilege concepts. |
-| **Automation** | Python and PowerShell used to inspect systems and reduce repetitive work. |
-| **Support communication** | Clear incident summaries, root-cause explanations, verification steps and lessons learned. |
+The main infrastructure project in this repository.
 
-## Selected case studies
+It documents:
 
+- Windows Server 2022 installation
+- UEFI / GPT troubleshooting
+- BIOS and boot configuration
+- Static IP configuration
+- DNS
+- Active Directory Domain Services (AD DS)
+- Domain Controller configuration
+- Organizational Units
+- Users and security groups
+- Group Policy and password policy
+- NTFS permissions
+- DNS host records
+- Ubuntu integration with Active Directory
+- Kerberos / SSSD domain integration
+- Troubleshooting and verification
 
+➡️ **[Open Lab 07 →](labs/07-windows-server-uefi-gpt-ad-ds/)**
 
-| Case study | What it shows | Evidence |
-|---|---|---|
-| [Windows Server and Active Directory setup](labs/07-windows-server-uefi-gpt-ad-ds/) | Installation troubleshooting, UEFI/GPT configuration, static networking, AD DS deployment and domain verification. | Screenshots, commands and final validation |
-| [DNS resolution troubleshooting](labs/06-dns-resolution-debug/) | Layered network diagnosis using DNS tools, traces and documented analysis. | Command output and resolution analysis |
-| [Python system health checker](labs/03-python-system-health-checker/) | Basic automation for collecting system information and producing a structured report. | Python script and sample CSV report |
-| [SSH from Windows to Ubuntu](labs/02-ssh-windows-to-ubuntu/) | Remote access setup, connectivity checks and practical troubleshooting notes. | Procedure and troubleshooting evidence |
-| [Linux Wi-Fi driver fix](labs/01-linux-wifi-driver-fix/) | Hardware and operating-system troubleshooting with a clear verification step. | Investigation notes and outcome |
+## 🟡 Currently In Progress
 
-## Technical areas covered
+### Lab 01 — Linux Wi-Fi Driver Fix
 
-- Windows 11 and Windows Server fundamentals.
-- Linux / Ubuntu administration and troubleshooting.
-- TCP/IP, DNS, DHCP, SSH and Windows Firewall.
-- Active Directory: domain services, client joins, users, groups, OUs, Group Policy and permissions.
-- Endpoint security, access control and Defender fundamentals.
-- Python and PowerShell for support-oriented automation.
-- ITSM concepts, ticket quality, prioritisation and service-focused communication.
+A Linux troubleshooting case focused on identifying a wireless adapter, investigating kernel and driver information, installing the appropriate driver or firmware, and verifying connectivity.
 
-## My troubleshooting approach
+The case is currently **in progress**, with practical evidence still being completed.
 
-Every completed case study aims to make the reasoning visible rather than presenting only a list of commands:
+➡️ **[Open Lab 01 →](labs/01-linux-wifi-driver-fix/)**
 
-1. **Define the impact and reproduce the issue.**
-2. **Collect evidence** from symptoms, logs, configuration and user context.
-3. **Test hypotheses** and narrow the problem to its root cause.
-4. **Apply the smallest appropriate fix.**
-5. **Verify the original failure is resolved.**
-6. **Document the result** so another technician can understand and repeat the work.
+## 📋 Roadmap
 
-## Repository navigation
+The following are planned practical case studies. They are **not presented as completed projects**:
 
-| Area | Purpose |
-|---|---|
-| [`labs/`](labs/) | Main portfolio case studies. |
-| [`tools/`](tools/) | Small support-oriented utilities, including subnet and permissions calculators. |
-| [`infrastructure-analysis/`](infrastructure-analysis/) | Scenario-based infrastructure and operational analysis. |
-| [`docs/`](docs/) | Supporting technical notes and scripts. |
-| [`archive/`](archive/) | Earlier practice retained as historical work. |
-| [`reference/`](reference/) | CompTIA A+ study reference material, separate from the portfolio case studies. |
+- Windows → Ubuntu SSH connectivity
+- Python System Health Checker
+- Windows Update troubleshooting
+- Active Directory offline logon / cached credentials
+- DNS troubleshooting
+- Active Directory client join and authentication
+- Active Directory users, groups and OUs
+- Group Policy and NTFS permissions
+- Windows network connectivity
+- DHCP and DNS services
+- Windows Firewall
+- Endpoint security
+- Access control
+- ITSM ticketing
 
-## Current learning
+## 🔧 Technical Areas
 
-I am currently preparing for **CompTIA A+ Core 1 and Core 2**, with a target of October 2026. This repository is not a study guide: it is the practical evidence of how I investigate, solve and document technical problems while developing that knowledge.
+**Windows:** Windows 11, Windows Server, PowerShell, Windows troubleshooting, Windows Update, Windows Firewall
 
-## About the author
+**Networking:** TCP/IP, DNS, DHCP, network connectivity, SSH, ports and firewall rules
 
-I am Jose Aparicio, an aspiring IT Support professional based in Málaga, Spain. My background in hospitality operations has trained me to prioritise incidents, communicate clearly, stay calm under pressure and follow problems through to resolution.
+**Active Directory:** AD DS, Domain Controllers, DNS integration, users, groups, OUs, Group Policy, NTFS permissions and authentication
 
-- [GitHub profile](https://github.com/anudoranador87)
+**Linux:** Ubuntu, command line, drivers, kernel modules, SSH, system troubleshooting and Active Directory integration
+
+**Security:** Endpoint security, Windows Defender, access control, least privilege, permissions, firewall configuration and authentication
+
+## 🛠️ Tools
+
+`PowerShell` · `Command Prompt` · `diskpart` · `ipconfig` · `netsh` · `ping` · `nslookup` · `Rufus` · `Server Manager` · `Active Directory Users and Computers` · `Group Policy Management` · `DNS Manager` · `Ubuntu` · `realmd` · `SSSD`
+
+## 🔎 Troubleshooting Approach
+
+```text
+Identify the problem
+        ↓
+Gather evidence
+        ↓
+Form a hypothesis
+        ↓
+Test the hypothesis
+        ↓
+Apply the fix
+        ↓
+Verify the result
+        ↓
+Document the solution
+```
+
+The objective is to document **why the problem occurred, how it was isolated and how the solution was verified**.
+
+## 📁 Repository Structure
+
+```text
+it-support-labs/
+├── labs/
+├── tools/
+├── infrastructure-analysis/
+├── docs/
+├── archive/
+└── reference/
+```
+
+The `labs/` directory contains both current practical work and planned case studies. Each lab README identifies its current status.
+
+## 📚 Documentation Standard
+
+Completed case studies are documented with evidence such as:
+
+- Objective
+- Environment
+- Scenario
+- Investigation
+- Commands and tools
+- Evidence
+- Troubleshooting steps
+- Root cause
+- Fix
+- Verification
+
+Only completed work is presented as completed portfolio evidence.
+
+## 🎯 Current Focus
+
+Building practical IT Support experience around:
+
+**Windows → Networking → Active Directory → Security → Troubleshooting → ITSM**
+
+## 🔗 Other Projects
+
+- [GitHub Profile](https://github.com/anudoranador87)
 - [LinkedIn](https://www.linkedin.com/in/joseaparicio87/)
-- [Interactive portfolio](https://anudoranador87.github.io/JoseMaria-Frontend-Portfolio/)
-- [365-Day Dev Journey](https://anudoranador87.github.io/Mi-Camino-Web-365/)
-- [Email](mailto:josemaparicio87@gmail.com)
+- [Interactive Portfolio](https://anudoranador87.github.io/JoseMaria-Frontend-Portfolio/)
+- [Development Journey](https://anudoranador87.github.io/Mi-Camino-Web-365/)
 
-> Open to IT Support, Technical Support, Help Desk and Desktop Support opportunities — Málaga, hybrid or remote.
+## 📍 Málaga, Spain
+
+Target roles: **IT Support · Technical Support · Help Desk · Desktop Support**
+
+> **Build. Troubleshoot. Verify. Document.**
