@@ -44,6 +44,8 @@ The case is currently **in progress**, with practical evidence still being compl
 
 The repository will grow through a small number of practical case studies. New labs will be added only when the work is actually performed and can be documented with evidence.
 
+The supporting [technical notes](notes/) contain my personal study material on Active Directory, networking, DNS, DHCP, troubleshooting, Windows, PowerShell and Python automation.
+
 Next focus areas:
 
 - Windows troubleshooting
