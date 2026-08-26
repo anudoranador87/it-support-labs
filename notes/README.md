@@ -11,6 +11,7 @@ This section contains my own study notes for IT Support, system administration a
 | [DNS and DHCP](dns-and-dhcp.md) | Name resolution, AD DNS, DHCP, DORA, APIPA and practical checks. |
 | [Troubleshooting methodology](troubleshooting-methodology.md) | Scope, evidence, hypotheses, testing, safe remediation and escalation. |
 | [Windows and PowerShell](windows-powershell.md) | Support commands, account lockout, GPO troubleshooting, recovery and hardening. |
+| [Python automation](python-automation.md) | Files, CSV, regex, subprocess, testing and safe system automation. |
 
 ## How to use these notes
 
