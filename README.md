@@ -42,22 +42,19 @@ The case is currently **in progress**, with practical evidence still being compl
 
 ## 📋 Roadmap
 
-The following are planned practical case studies. They are **not presented as completed projects**:
+The repository will grow through a small number of practical case studies. New labs will be added only when the work is actually performed and can be documented with evidence.
 
-- Windows → Ubuntu SSH connectivity
-- Python System Health Checker
-- Windows Update troubleshooting
-- Active Directory offline logon / cached credentials
-- DNS troubleshooting
-- Active Directory client join and authentication
-- Active Directory users, groups and OUs
-- Group Policy and NTFS permissions
-- Windows network connectivity
-- DHCP and DNS services
-- Windows Firewall
-- Endpoint security
-- Access control
-- ITSM ticketing
+Next focus areas:
+
+- Windows troubleshooting
+- Network troubleshooting
+- DNS / DHCP
+- Linux troubleshooting
+- ITSM / Help Desk
+
+Active Directory tasks will be added to the existing Windows Server project when they logically belong to the same environment, rather than creating unnecessary separate labs.
+
+➡️ **[View the focused roadmap →](LABS-ROADMAP.md)**
 
 ## 🔧 Technical Areas
 
@@ -69,7 +66,7 @@ The following are planned practical case studies. They are **not presented as co
 
 **Linux:** Ubuntu, command line, drivers, kernel modules, SSH, system troubleshooting and Active Directory integration
 
-**Security:** Endpoint security, Windows Defender, access control, least privilege, permissions, firewall configuration and authentication
+**Security:** Endpoint security, access control, least privilege, permissions, firewall configuration and authentication
 
 ## 🛠️ Tools
 
@@ -100,14 +97,18 @@ The objective is to document **why the problem occurred, how it was isolated and
 ```text
 it-support-labs/
 ├── labs/
+│   ├── 01-linux-wifi-driver-fix/
+│   └── 07-windows-server-uefi-gpt-ad-ds/
 ├── tools/
 ├── infrastructure-analysis/
 ├── docs/
 ├── archive/
-└── reference/
+├── reference/
+├── study-notes/
+└── templates/
 ```
 
-The `labs/` directory contains both current practical work and planned case studies. Each lab README identifies its current status.
+The `labs/` directory contains only the current practical projects. Historical material remains in `archive/`.
 
 ## 📚 Documentation Standard
 
