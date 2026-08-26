@@ -19,7 +19,7 @@ The work is aligned with my transition into **IT Support, Technical Support, Hel
 
 ## Selected case studies
 
-These are the strongest examples for a recruiter reviewing the portfolio first:
+
 
 | Case study | What it shows | Evidence |
 |---|---|---|
