@@ -240,6 +240,50 @@ A successful result should return `192.168.1.50`. The command-output screenshot 
 
 > The screenshots are embedded with relative Markdown image paths, so GitHub renders them directly inside this README rather than displaying them as ordinary text links.
 
+
+## 6. Ubuntu client joined to Active Directory
+
+This section documents a simple Linux client integration test. The Ubuntu laptop used the Domain Controller at `192.168.1.200` as its DNS server and joined the `lab.local` domain with `realmd` and `SSSD`.
+
+### DNS configuration
+
+The Wi-Fi connection `MIWIFI2.4` was configured to use `192.168.1.200` as its DNS server. This is required because the Active Directory DNS zone and its service records are hosted on the Domain Controller.
+
+![Ubuntu Wi-Fi connection configured with the Active Directory DNS server](img/ubuntu-ad/05-dns-configuration.png)
+
+The final DNS check confirmed that `lab.local` resolves to `192.168.1.200`.
+
+![Ubuntu resolving lab.local through 192.168.1.200](img/ubuntu-ad/04-dns-final-verification.png)
+
+The LDAP service record and the server hostname were also resolved successfully:
+
+![Ubuntu resolving the Active Directory LDAP SRV record and WINSERVER-JOSE](img/ubuntu-ad/03-dns-srv-and-server-resolution.png)
+
+### Domain discovery and join
+
+The domain was discovered with `realm discover`. The result confirmed the Kerberos realm `LAB.LOCAL`, the domain `lab.local`, the Active Directory server software and the SSSD client.
+
+![Successful realm discovery for lab.local](img/ubuntu-ad/06-realm-discover.png)
+
+The Ubuntu laptop was then joined with `realm join`. The command created the computer account `JOSE-X550JF`, configured the Kerberos keytab and restarted SSSD.
+
+![Successful Ubuntu domain join](img/ubuntu-ad/01-realm-join-completed.png)
+
+Finally, `realm list` confirmed that the computer is configured as a Kerberos member of `lab.local` and that logins from the realm are allowed.
+
+![Ubuntu realm list confirming the lab.local membership](img/ubuntu-ad/02-realm-list.png)
+
+The main commands used for this validation were:
+
+```bash
+sudo realm -v discover lab.local
+sudo realm join -v lab.local -U Administrator
+sudo pam-auth-update --enable mkhomedir
+realm list
+```
+
+This evidence proves DNS resolution, domain discovery and successful machine enrollment. A separate screenshot of a normal domain-user login or `id usuario@lab.local` would be the next optional improvement; it is not claimed here because it is not included in the supplied evidence.
+
 ---
 
 [Back to the IT Support Labs portfolio](../../README.md)
