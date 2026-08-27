@@ -30,16 +30,6 @@ It documents:
 
 ➡️ **[Open Lab 07 →](labs/07-windows-server-uefi-gpt-ad-ds/)**
 
-## 🟡 Currently In Progress
-
-### Lab 01 — Linux Wi-Fi Driver Fix
-
-A Linux troubleshooting case focused on identifying a wireless adapter, investigating kernel and driver information, installing the appropriate driver or firmware, and verifying connectivity.
-
-The case is currently **in progress**, with practical evidence still being completed.
-
-➡️ **[Open Lab 01 →](labs/01-linux-wifi-driver-fix/)**
-
 ## 📋 Roadmap
 
 The repository will grow through a small number of practical case studies. New labs will be added only when the work is actually performed and can be documented with evidence.
@@ -74,6 +64,14 @@ Active Directory tasks will be added to the existing Windows Server project when
 
 `PowerShell` · `Command Prompt` · `diskpart` · `ipconfig` · `netsh` · `ping` · `nslookup` · `Rufus` · `Server Manager` · `Active Directory Users and Computers` · `Group Policy Management` · `DNS Manager` · `Ubuntu` · `realmd` · `SSSD`
 
+## 🧰 Reusable Support Tool
+
+### Network Diagnostics — PowerShell
+
+A reusable PowerShell diagnostic tool that collects adapter, gateway, DNS and selected TCP connectivity results as structured objects. It is **refactored and awaiting practical validation in the personal lab** before being presented as completed portfolio evidence.
+
+➡️ **[View tool documentation →](docs/README-network-diagnostics.md)**
+
 ## 🔎 Troubleshooting Approach
 
 ```text
@@ -99,8 +97,10 @@ The objective is to document **why the problem occurred, how it was isolated and
 ```text
 it-support-labs/
 ├── labs/
-│   ├── 01-linux-wifi-driver-fix/
-│   └── 07-windows-server-uefi-gpt-ad-ds/
+│   ├── 07-windows-server-uefi-gpt-ad-ds/
+│   └── 08-ad-ds-multi-dc-tailwindtraders/  # initial empty structure
+├── drafts/
+│   └── linux-wifi-driver-fix/
 ├── tools/
 ├── infrastructure-analysis/
 ├── docs/
@@ -110,7 +110,7 @@ it-support-labs/
 └── templates/
 ```
 
-The `labs/` directory contains only the current practical projects. Historical material remains in `archive/`.
+The `labs/` directory contains completed case studies and approved empty structures for future hands-on labs. Only completed work is featured in the portfolio section. Unstarted case ideas remain in `drafts/`, while historical material remains in `archive/`.
 
 ## 📚 Documentation Standard
 

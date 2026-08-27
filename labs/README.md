@@ -1,6 +1,6 @@
 # IT Support Labs
 
-This directory contains the practical case studies currently being built for the portfolio.
+This directory contains completed case studies and empty structures for future hands-on work. Only completed and verified work is featured as portfolio evidence.
 
 ## 🟢 Portfolio
 
@@ -10,15 +10,15 @@ This directory contains the practical case studies currently being built for the
 
 The main infrastructure project in the repository, covering Windows Server installation, UEFI/GPT troubleshooting, networking, DNS, Active Directory Domain Services, users and groups, Group Policy, NTFS permissions and Ubuntu integration.
 
-### [Lab 01 — Linux Wi-Fi Driver Fix](01-linux-wifi-driver-fix/)
+## 🟡 Initial structures
 
-**In progress**
+### Lab 08 — Active Directory Domain Services Multi-DC
 
-A Linux hardware and driver troubleshooting case. Practical evidence is still being completed.
+An empty folder structure exists for a future hands-on lab. No virtual machines, configurations, scripts, evidence or results have been added yet.
 
 ## 📋 Future Labs
 
-New case studies will be added only when there is a practical scenario to build, troubleshoot and document.
+New case studies will be added only when there is a practical scenario to build, troubleshoot and document. Unstarted case ideas are kept in [`../drafts/`](../drafts/) and are not presented as completed evidence.
 
 The current focus areas are:
 
