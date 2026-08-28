@@ -17,11 +17,15 @@ Demostrar capacidades de gestión de identidad y acceso en un entorno de dominio
 ## Requisitos verificados (Fase 0)
 
 Antes de levantar el entorno, se comprobó que el host cumple con los recursos necesarios:
-- **RAM**: Se requieren 16 GB mínimo para correr fluidamente 2 DCs y el host. (Verificado en Task Manager).
-- **Virtualización**: Habilitada en BIOS/UEFI. (Verificado en Rendimiento > CPU).
-- **Almacenamiento**: Espacio en disco suficiente para discos dinámicos de 60GB.
+- **RAM y Almacenamiento**: Se requieren 16 GB mínimo para correr fluidamente 2 DCs y el host. Se validó la memoria y el espacio en disco suficiente para discos dinámicos de 60GB.
+- **Virtualización**: Habilitada en BIOS/UEFI.
 
-*La evidencia de esta comprobación (capturas de Task Manager y `systeminfo`) está disponible en `evidence/screenshots/fase00-initial-environment.png`.*
+### Evidencia de verificación:
+*(Arriba: Información del sistema y memoria RAM | Abajo: Virtualización habilitada en BIOS/UEFI)*
+
+![System Info y RAM](evidence/screenshots/fase00-systeminfo.png)
+![Virtualización](evidence/screenshots/fase00-virtualizacion.png)
+![Espacio en disco](evidence/screenshots/fase00-disk-space.png)
 
 ## Arquitectura
 
