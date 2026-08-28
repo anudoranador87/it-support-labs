@@ -29,5 +29,13 @@ Antes de levantar el entorno, se comprobó que el host físico cumple con los re
 ![Virtualización](evidence/screenshots/fase00-virtualizacion.png)
 ![Espacio en disco](evidence/screenshots/fase00-disk-space.png)
 
+### Fase 1 — Instalación de Hyper-V
+
+Para aislar el entorno de Active Directory y simular un centro de datos local, se ha habilitado el rol de Hyper-V (hipervisor nativo de Windows) y sus herramientas de administración en el sistema operativo host.
+
+#### Evidencia de configuración:
+
+![Hyper-V habilitado](evidence/screenshots/fase01-hyperv.png)
+
 ---
 *Este proyecto está actualmente en desarrollo. Las siguientes secciones y fases se irán documentando a medida que se despliegue la infraestructura.*
