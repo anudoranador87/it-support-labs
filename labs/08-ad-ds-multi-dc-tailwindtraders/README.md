@@ -37,5 +37,15 @@ Para aislar el entorno de Active Directory y simular un centro de datos local, s
 
 ![Hyper-V habilitado](evidence/screenshots/fase01-hyperv.png)
 
+### Fase 2 — Configuración de rutas de Hyper-V
+
+Para garantizar un rendimiento óptimo de las máquinas virtuales, se definieron las rutas de almacenamiento de los discos virtuales y archivos de configuración.
+
+> **Decisión técnica:** Se mantuvieron las rutas por defecto de Hyper-V en la unidad A:, elegida por ser la de mayor capacidad y velocidad del equipo.
+
+#### Evidencia de configuración:
+
+![Rutas de Hyper-V configuradas](evidence/screenshots/fase02-rutas-hyperv.png)
+
 ---
 *Este proyecto está actualmente en desarrollo. Las siguientes secciones y fases se irán documentando a medida que se despliegue la infraestructura.*
