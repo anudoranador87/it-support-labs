@@ -113,3 +113,32 @@ Los comandos utilizados durante esta fase se han guardado en:
 ```text
 scripts/setup-network.ps1
 ```
+### Fase 4 — Creación de TAILWIND-DC1
+
+Con la red virtual `NATSwitch` ya operativa, el siguiente paso fue aprovisionar la primera máquina virtual que actuará como Domain Controller del bosque `tailwindtraders.internal`.
+
+#### Configuración realizada
+
+La VM se creó mediante el asistente **New Virtual Machine** de Hyper-V Manager, con los siguientes parámetros:
+
+| Parámetro | Configuración |
+|---|---|
+| Nombre | `TAILWIND-DC1` |
+| Generación | `Generation 2` |
+| Memoria asignada | `4096 MB` |
+| Red virtual | `NATSwitch` |
+| Disco virtual | Dinámico, tamaño por defecto |
+| Fuente de instalación | ISO de Windows Server 2022 |
+
+#### Decisión técnica
+
+Se eligió **Generation 2** en lugar de Generation 1 porque es el requisito de arranque UEFI/Secure Boot necesario para instalar Windows Server 2022 de forma compatible con las funciones de seguridad modernas del sistema operativo.
+
+#### Evidencia
+
+**Captura — Resumen del asistente New Virtual Machine**
+
+![TAILWIND-DC1 — Resumen de creación](evidence/screenshots/Fase04-TAILWIND-DC1.png)
+
+> La captura muestra el resumen final del asistente, confirmando Generation 2, 4096 MB de RAM, la red `NATSwitch` seleccionada y la ISO de Windows Server 2022 como origen de instalación.
+
