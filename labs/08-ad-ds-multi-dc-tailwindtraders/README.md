@@ -105,9 +105,17 @@ Esta separación resulta especialmente útil para un laboratorio de **Active Dir
   Tu navegador no admite la reproducción de vídeo.
 </video>
 
+#### Evidencia
+
+**Vídeo — Creación y verificación de la red virtual NAT**
+
+[![NAT Virtual Network — Hyper-V | IT Support Lab](https://img.youtube.com/vi/TNneEzF2-Q8/maxresdefault.jpg)](https://youtu.be/TNneEzF2-Q8)
+
 > El vídeo muestra la creación de `NATSwitch`, la configuración de la dirección IP `10.10.10.1` y la creación de la red NAT `10.10.10.0/24`, seguida de las comprobaciones realizadas mediante PowerShell.
 
-[▶️ Ver el vídeo directamente](evidence/videos/LABNATVIRTUAL_compressed.mp4)
+📺 **[Ver vídeo completo en YouTube](https://youtu.be/TNneEzF2-Q8)**
+
+📁 **Artefacto técnico:** `scripts/setup-network.ps1`
 
 #### Artefacto técnico
 
