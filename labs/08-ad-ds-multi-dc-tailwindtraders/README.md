@@ -179,3 +179,24 @@ Ethernet adapter Ethernet:
 
 ![IP estática configurada en DC1](evidence/screenshots/fase05-ip-estatica-dc1.png)
 
+
+
+### Fase 7 — Instalación del rol AD DS
+
+Con el servidor ya renombrado a `TAILWIND-DC1`, se instaló el rol de Active Directory Domain Services mediante el asistente **Add Roles and Features** de Server Manager.
+
+#### Decisión técnica
+
+Es importante distinguir entre **instalar el rol** y **promocionar el servidor**: instalar el rol únicamente copia al servidor los binarios y componentes necesarios de AD DS, igual que instalar cualquier otro software — la máquina sigue siendo un servidor miembro normal, sin dominio. Promocionar el servidor (Fase 8) es el paso independiente que realmente crea el bosque, configura la base de datos de Active Directory e instala DNS. Separar ambas operaciones permite instalar el software con antelación sin comprometer todavía la configuración del servidor.
+
+#### Evidencia
+
+**Captura — Selección del rol AD DS**
+
+![Selección de Active Directory Domain Services](evidence/screenshots/fase07-seleccion-rol-adds.png)
+
+**Captura — Instalación completada**
+
+![Instalación del rol AD DS completada en TAILWIND-DC1](evidence/screenshots/fase07-instalacion-completada.png)
+
+> La primera captura muestra la selección del rol Active Directory Domain Services en el asistente. La segunda confirma que la instalación finalizó correctamente en `TAILWIND-DC1`, mostrando el enlace para promocionar el servidor a controlador de dominio (paso correspondiente a la Fase 8).
