@@ -142,3 +142,40 @@ Se eligió **Generation 2** en lugar de Generation 1 porque es el requisito de a
 
 > La captura muestra el resumen final del asistente, confirmando Generation 2, 4096 MB de RAM, la red `NATSwitch` seleccionada y la ISO de Windows Server 2022 como origen de instalación.
 
+### Fase 5 — Configuración de IP estática en DC1
+
+Con la VM `TAILWIND-DC1` ya instalada, se le asignó una dirección IP estática dentro de la red `10.10.10.0/24` creada en la Fase 3, requisito indispensable antes de promocionar el servidor a Domain Controller.
+
+#### Configuración realizada
+
+| Parámetro | Valor |
+|---|---|
+| Dirección IP | `10.10.10.10` |
+| Máscara de subred | `255.255.255.0` |
+| Puerta de enlace | `10.10.10.1` |
+| DNS preferido | `127.0.0.1` |
+
+#### Decisión técnica
+
+Se configuró una IP estática en lugar de dejar el adaptador en DHCP porque un Domain Controller no puede depender de una dirección que cambie: los clientes del dominio, los registros DNS y la replicación entre DCs necesitan una IP estable y predecible en todo momento.
+
+El DNS preferido se apuntó a `127.0.0.1` (localhost) en lugar de a un DNS externo, anticipando que este servidor asumirá el rol de DNS Server del dominio en la Fase 8, al promocionarse como Domain Controller.
+
+#### Verificación
+
+Se confirmó la configuración mediante `ipconfig /all` en PowerShell:
+
+```text
+Ethernet adapter Ethernet:
+   IPv4 Address. . . . . . . . . . . : 10.10.10.10(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 10.10.10.1
+   DNS Servers . . . . . . . . . . . : 127.0.0.1
+```
+
+#### Evidencia
+
+**Captura — Propiedades IPv4 configuradas**
+
+![IP estática configurada en DC1](evidence/screenshots/fase05-ip-estatica-dc1.png)
+
