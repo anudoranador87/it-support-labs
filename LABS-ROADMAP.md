@@ -2,38 +2,53 @@
 
 This roadmap keeps the portfolio focused on practical IT Support skills rather than a fixed number of labs.
 
-## Current work
+## 🟢 Current Work
 
 | Project | Status |
 |---|---|
-| Windows Server & Active Directory Environment | 🟢 Completed |
-| Linux Wi-Fi Driver Fix | 🟡 In progress |
+| Active Directory — Multi-DC Environment | 🟢 In progress |
 
-## Next case studies
+The current project extends the Windows Server and Active Directory work into a virtualized multi-DC environment using Hyper-V.
 
-The next labs will be created only when the practical work is actually performed and can be documented with evidence.
+Current work includes:
 
-### 1. Windows Troubleshooting
+- Host requirements verification
+- Hyper-V installation
+- Hyper-V storage configuration
+- Virtual NAT networking
+- PowerShell network configuration
+- Network verification
+- Windows Server 2022 virtual machines
+- Active Directory Domain Services
+- Multiple Domain Controllers
+- DNS and identity management
+- Security and delegation
+
+## Next Focus Areas
+
+The next practical case studies will be created only when the corresponding work is actually performed and can be documented with evidence.
+
+### Windows Troubleshooting
 
 A realistic Windows support case covering diagnosis, commands, system evidence, remediation and verification.
 
-### 2. Network Troubleshooting
+### Network Troubleshooting
 
 A practical connectivity case covering TCP/IP, DNS/DHCP and network diagnosis.
 
-### 3. Linux Troubleshooting
+### Linux Troubleshooting
 
 A Linux support scenario documented from problem identification through verification.
 
-### 4. ITSM / Help Desk
+### ITSM / Help Desk
 
 A realistic support ticket showing investigation, prioritisation, troubleshooting, resolution and documentation.
 
-## Active Directory direction
+## Active Directory Direction
 
-The existing Windows Server and Active Directory environment can be extended when the corresponding practical work is performed. New AD tasks will be added to the main project where they logically belong instead of creating unnecessary separate labs.
+The current Active Directory environment will continue to be extended as additional practical tasks are performed. Related AD work will remain part of the existing infrastructure project when it logically belongs to the same environment.
 
-## Portfolio rule
+## Portfolio Rule
 
 A project is marked **Completed** only when it has been executed, verified and documented with sufficient evidence to explain the work in an interview.
 
