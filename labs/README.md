@@ -1,26 +1,39 @@
 # IT Support Labs
 
-This directory contains the practical case studies currently being built for the portfolio.
+This directory contains the practical case studies documented for the portfolio.
 
-## 🟢 Portfolio
+## 🟢 Current Project
 
-### [Lab 07 — Windows Server & Active Directory Environment](07-windows-server-uefi-gpt-ad-ds/)
-
-**Completed**
-
-The main infrastructure project in the repository, covering Windows Server installation, UEFI/GPT troubleshooting, networking, DNS, Active Directory Domain Services, users and groups, Group Policy, NTFS permissions and Ubuntu integration.
-
-### [Lab 01 — Linux Wi-Fi Driver Fix](01-linux-wifi-driver-fix/)
+### [Active Directory — Multi-DC Environment](08-ad-ds-multi-dc-tailwindtraders/)
 
 **In progress**
 
-A Linux hardware and driver troubleshooting case. Practical evidence is still being completed.
+The current infrastructure project, focused on building a Windows Server 2022 Active Directory environment with Hyper-V, virtual NAT networking and multiple Domain Controllers.
 
-## 📋 Future Labs
+Current work includes:
+
+- Hyper-V virtualization
+- Virtual NAT networking
+- Windows Server 2022
+- Active Directory Domain Services
+- DNS
+- Multiple Domain Controllers
+- Users, groups and OUs
+- Delegation and permissions
+- Security policies
+- Troubleshooting and verification
+
+## 📚 Existing Practical Work
+
+The `labs/` directory also contains previously documented practical work covering Windows Server, Active Directory and Linux troubleshooting.
+
+Project numbering is kept only in the underlying folder names for file organization and existing paths. It is not used as the public portfolio structure.
+
+## 📋 Future Work
 
 New case studies will be added only when there is a practical scenario to build, troubleshoot and document.
 
-The current focus areas are:
+Current focus areas include:
 
 - Windows troubleshooting
 - Network troubleshooting
@@ -29,10 +42,11 @@ The current focus areas are:
 - Active Directory
 - Security
 - ITSM / Help Desk
+- PowerShell automation
 
 Planned work is not presented as completed portfolio evidence.
 
-## Documentation standard
+## Documentation Standard
 
 Each completed case study should include:
 
