@@ -24,7 +24,7 @@ The project covers:
 - Security policies
 - Troubleshooting and verification
 
-➡️ **[Open current project →](labs/08-ad-ds-multi-dc-tailwindtraders/)**
+➡️ **[Open current project →](labs/active-directory-multi-dc)**
 
 ## 📚 Technical Areas
 
