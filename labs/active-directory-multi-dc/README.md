@@ -1,165 +1,168 @@
 # Active Directory Domain Services — Multi-DC Environment
 
-> Despliegue de un dominio Windows Server 2022 con dos Domain Controllers, gestión de identidades, delegación y políticas de seguridad, sobre Hyper-V.
+**🌐 Language:** **English** | [Español](README.es.md)
 
-## Contexto (Situation)
+> Deployment of a Windows Server 2022 domain with two Domain Controllers, identity management, delegation, and security policies, on Hyper-V.
 
-Proyecto de laboratorio basado en **Microsoft Applied Skills — AZ-1008**, diseñado como pieza de portfolio profesional para demostrar competencias reales en administración de Active Directory Domain Services. Forma parte de la transición profesional hacia IT Support, complementando la formación teórica con implementación práctica.
+## Context (Situation)
 
-## Objetivo (Task)
+Lab project based on **Microsoft Applied Skills — AZ-1008**, designed as a professional portfolio piece to demonstrate real-world skills in Active Directory Domain Services administration. Part of a professional transition into IT Support, complementing theoretical training with hands-on implementation.
 
-El objetivo final de este laboratorio es desplegar y gestionar una infraestructura virtualizada completa que incluya:
-- Despliegue de un bosque AD DS con dos Domain Controllers (Alta Disponibilidad).
-- Gestión de OUs, usuarios, grupos y delegación de permisos (Principio de Mínimo Privilegio).
-- Implementación de políticas de seguridad (FGPP, restricción NTLM, auditoría).
+## Objective (Task)
 
----
-
-## Progreso del Proyecto (Action)
-
-### Fase 0 — Requisitos verificados
-
-Antes de levantar el entorno, se comprobó que el host físico cumple con los recursos necesarios para virtualizar la infraestructura planificada:
-- **RAM y Almacenamiento**: Se validó que el equipo dispone de memoria suficiente (mínimo 16 GB recomendados para correr fluidamente 2 DCs y el host) y espacio en disco libre para soportar discos dinámicos de 60GB.
-- **Virtualización**: Se confirmó que la virtualización por hardware (Intel VT-x / AMD-V) está habilitada en la BIOS/UEFI.
-
-#### Evidencia de verificación:
-
-![System Info y RAM](evidence/screenshots/fase00-systeminfo.png)
-![Virtualización](evidence/screenshots/fase00-virtualizacion.png)
-![Espacio en disco](evidence/screenshots/fase00-disk-space.png)
-
-### Fase 1 — Instalación de Hyper-V
-
-Para aislar el entorno de Active Directory y simular un centro de datos local, se ha habilitado el rol de Hyper-V (hipervisor nativo de Windows) y sus herramientas de administración en el sistema operativo host.
-
-#### Evidencia de configuración:
-
-![Hyper-V habilitado](evidence/screenshots/fase01-hyperv.png)
-
-### Fase 2 — Configuración de rutas de Hyper-V
-
-Para garantizar un rendimiento óptimo de las máquinas virtuales, se definieron las rutas de almacenamiento de los discos virtuales y archivos de configuración.
-
-> **Decisión técnica:** Se mantuvieron las rutas por defecto de Hyper-V en la unidad A:, elegida por ser la de mayor capacidad y velocidad del equipo.
-
-#### Evidencia de configuración:
-
-![Rutas de Hyper-V configuradas](evidence/screenshots/fase02-rutas-hyperv.png)
+The end goal of this lab is to deploy and manage a complete virtualized infrastructure including:
+- Deployment of an AD DS forest with two Domain Controllers (High Availability).
+- Management of OUs, users, groups, and permission delegation (Principle of Least Privilege).
+- Implementation of security policies (FGPP, NTLM restriction, auditing).
 
 ---
-*Este proyecto está actualmente en desarrollo. Las siguientes secciones y fases se irán documentando a medida que se despliegue la infraestructura.*
 
-### Fase 3 — Creación de la red virtual NAT
+## Project Progress (Action)
 
-Una vez preparado Hyper-V, el siguiente paso fue crear la red virtual que utilizarán las máquinas del laboratorio.
+### Phase 0 — Requirements verified
 
-Para mantener el entorno aislado de la red física del equipo, se creó un **switch virtual de tipo Internal** denominado `NATSwitch` y posteriormente se configuró una red privada `10.10.10.0/24` con NAT.
+Before standing up the environment, the physical host was checked against the resources needed for the planned virtualized infrastructure:
+- **RAM and Storage**: Confirmed the machine has sufficient memory (16 GB minimum recommended to run 2 DCs and the host smoothly) and enough free disk space to support 60 GB dynamic disks.
+- **Virtualization**: Confirmed hardware virtualization (Intel VT-x / AMD-V) is enabled in the BIOS/UEFI.
 
-#### Configuración realizada
+#### Verification evidence:
 
-La red se creó mediante PowerShell ejecutado como administrador, utilizando tres comandos principales:
+![System Info and RAM](evidence/screenshots/fase00-systeminfo.png)
+![Virtualization](evidence/screenshots/fase00-virtualizacion.png)
+![Disk space](evidence/screenshots/fase00-disk-space.png)
 
-1. **Crear el switch virtual**
+### Phase 1 — Hyper-V installation
 
-   Se creó un switch virtual de tipo `Internal` llamado `NATSwitch`.
+To isolate the Active Directory environment and simulate a local data center, the Hyper-V role (Windows' native hypervisor) and its management tools were enabled on the host operating system.
 
-2. **Asignar la dirección IP al adaptador virtual**
+#### Configuration evidence:
 
-   Se configuró la dirección `10.10.10.1/24` en el adaptador virtual asociado al switch.
+![Hyper-V enabled](evidence/screenshots/fase01-hyperv.png)
 
-3. **Crear la regla NAT**
+### Phase 2 — Hyper-V path configuration
 
-   Se creó una red NAT para permitir que las máquinas virtuales puedan acceder a redes externas a través del host, manteniendo al mismo tiempo aislada la infraestructura del laboratorio.
+To ensure optimal virtual machine performance, storage paths for virtual disks and configuration files were defined.
 
-La configuración resultante utiliza la siguiente red:
+> **Technical decision:** Default Hyper-V paths were kept on drive A:, chosen for being the machine's highest-capacity and fastest drive.
 
-| Parámetro | Configuración |
+#### Configuration evidence:
+
+![Hyper-V paths configured](evidence/screenshots/fase02-rutas-hyperv.png)
+
+---
+*This project is currently in progress. The following sections and phases will be documented as the infrastructure is deployed.*
+
+### Phase 3 — Virtual NAT network creation
+
+With Hyper-V ready, the next step was creating the virtual network to be used by the lab's machines.
+
+To keep the environment isolated from the machine's physical network, an **Internal-type virtual switch** named `NATSwitch` was created, followed by a private `10.10.10.0/24` network configured with NAT.
+
+#### Configuration performed
+
+The network was created via PowerShell run as administrator, using three main commands:
+
+1. **Create the virtual switch**
+
+   An `Internal`-type virtual switch named `NATSwitch` was created.
+
+2. **Assign the IP address to the virtual adapter**
+
+   The address `10.10.10.1/24` was configured on the virtual adapter associated with the switch.
+
+3. **Create the NAT rule**
+
+   A NAT network was created to allow virtual machines to reach external networks through the host, while keeping the lab infrastructure isolated.
+
+The resulting configuration uses the following network:
+
+| Parameter | Configuration |
 |---|---|
-| Red | `10.10.10.0/24` |
+| Network | `10.10.10.0/24` |
 | Gateway | `10.10.10.1` |
-| Switch virtual | `NATSwitch` |
-| Tipo de switch | `Internal` |
-| NAT | Configurado |
+| Virtual switch | `NATSwitch` |
+| Switch type | `Internal` |
+| NAT | Configured |
 
-#### Verificación
+#### Verification
 
-Una vez creada la infraestructura de red, se utilizaron comandos de PowerShell para comprobar que el switch virtual y la configuración IP habían quedado correctamente establecidos.
+Once the network infrastructure was created, PowerShell commands were used to confirm that the virtual switch and IP configuration had been correctly established.
 
-La verificación confirmó la existencia de `NATSwitch` y de la dirección `10.10.10.1` asociada a la red virtual.
+Verification confirmed the existence of `NATSwitch` and the address `10.10.10.1` associated with the virtual network.
 
-#### Decisión técnica
+#### Technical decision
 
-Se eligió una red **Internal + NAT** en lugar de conectar directamente las máquinas virtuales a la red física mediante un switch externo.
+An **Internal + NAT** network was chosen instead of connecting the virtual machines directly to the physical network via an external switch.
 
-Esto permite mantener el laboratorio separado de la red doméstica o de producción, mientras que las máquinas virtuales pueden seguir teniendo conectividad hacia el exterior cuando sea necesaria.
+This keeps the lab separated from the home or production network, while still allowing the virtual machines to have outbound connectivity when needed.
 
-Esta separación resulta especialmente útil para un laboratorio de **Active Directory**, ya que permite trabajar con servidores, DNS, políticas y configuraciones de red sin modificar directamente la infraestructura física.
+This separation is especially useful for an **Active Directory** lab, since it allows working with servers, DNS, policies, and network configurations without directly modifying the physical infrastructure.
 
-#### Evidencia
+#### Evidence
 
-**Vídeo — Creación y verificación de la red virtual NAT**
+**Video — Creating and verifying the virtual NAT network**
 
 [![NAT Virtual Network — Hyper-V | IT Support Lab](https://img.youtube.com/vi/TNneEzF2-Q8/maxresdefault.jpg)](https://youtu.be/TNneEzF2-Q8)
 
-> El vídeo muestra la creación de `NATSwitch`, la configuración de la dirección IP `10.10.10.1` y la creación de la red NAT `10.10.10.0/24`, seguida de las comprobaciones realizadas mediante PowerShell.
+> The video shows the creation of `NATSwitch`, configuration of the IP address `10.10.10.1`, and creation of the `10.10.10.0/24` NAT network, followed by the checks performed via PowerShell.
 
-📺 **[Ver vídeo completo en YouTube](https://youtu.be/TNneEzF2-Q8)**
+📺 **[Watch the full video on YouTube](https://youtu.be/TNneEzF2-Q8)**
 
-#### Artefacto técnico
+#### Technical artifact
 
-Los comandos de creación y verificación se han guardado en el script de PowerShell [setup-network.ps1](scripts/setup-network.ps1).
-### Fase 4 — Creación de TAILWIND-DC1
+The creation and verification commands have been saved in the PowerShell script [setup-network.ps1](scripts/setup-network.ps1).
 
-Con la red virtual `NATSwitch` ya operativa, el siguiente paso fue aprovisionar la primera máquina virtual que actuará como Domain Controller del bosque `tailwindtraders.internal`.
+### Phase 4 — Creating TAILWIND-DC1
 
-#### Configuración realizada
+With the `NATSwitch` virtual network already operational, the next step was provisioning the first virtual machine that will act as the Domain Controller for the `tailwindtraders.internal` forest.
 
-La VM se creó mediante el asistente **New Virtual Machine** de Hyper-V Manager, con los siguientes parámetros:
+#### Configuration performed
 
-| Parámetro | Configuración |
+The VM was created using Hyper-V Manager's **New Virtual Machine** wizard, with the following parameters:
+
+| Parameter | Configuration |
 |---|---|
-| Nombre | `TAILWIND-DC1` |
-| Generación | `Generation 2` |
-| Memoria asignada | `4096 MB` |
-| Red virtual | `NATSwitch` |
-| Disco virtual | Dinámico, tamaño por defecto |
-| Fuente de instalación | ISO de Windows Server 2022 |
+| Name | `TAILWIND-DC1` |
+| Generation | `Generation 2` |
+| Assigned memory | `4096 MB` |
+| Virtual network | `NATSwitch` |
+| Virtual disk | Dynamic, default size |
+| Installation source | Windows Server 2022 ISO |
 
-#### Decisión técnica
+#### Technical decision
 
-Se eligió **Generation 2** en lugar de Generation 1 porque es el requisito de arranque UEFI/Secure Boot necesario para instalar Windows Server 2022 de forma compatible con las funciones de seguridad modernas del sistema operativo.
+**Generation 2** was chosen instead of Generation 1 because it is the UEFI/Secure Boot requirement needed to install Windows Server 2022 in a way compatible with the operating system's modern security features.
 
-#### Evidencia
+#### Evidence
 
-**Captura — Resumen del asistente New Virtual Machine**
+**Screenshot — New Virtual Machine wizard summary**
 
-![TAILWIND-DC1 — Resumen de creación](evidence/screenshots/Fase04-TAILWIND-DC1.png)
+![TAILWIND-DC1 — Creation summary](evidence/screenshots/Fase04-TAILWIND-DC1.png)
 
-> La captura muestra el resumen final del asistente, confirmando Generation 2, 4096 MB de RAM, la red `NATSwitch` seleccionada y la ISO de Windows Server 2022 como origen de instalación.
+> The screenshot shows the wizard's final summary, confirming Generation 2, 4096 MB of RAM, the `NATSwitch` network selected, and the Windows Server 2022 ISO as the installation source.
 
-### Fase 5 — Configuración de IP estática en DC1
+### Phase 5 — Static IP configuration on DC1
 
-Con la VM `TAILWIND-DC1` ya instalada, se le asignó una dirección IP estática dentro de la red `10.10.10.0/24` creada en la Fase 3, requisito indispensable antes de promocionar el servidor a Domain Controller.
+With the `TAILWIND-DC1` VM already installed, a static IP address was assigned within the `10.10.10.0/24` network created in Phase 3, an essential requirement before promoting the server to Domain Controller.
 
-#### Configuración realizada
+#### Configuration performed
 
-| Parámetro | Valor |
+| Parameter | Value |
 |---|---|
-| Dirección IP | `10.10.10.10` |
-| Máscara de subred | `255.255.255.0` |
-| Puerta de enlace | `10.10.10.1` |
-| DNS preferido | `127.0.0.1` |
+| IP address | `10.10.10.10` |
+| Subnet mask | `255.255.255.0` |
+| Default gateway | `10.10.10.1` |
+| Preferred DNS | `127.0.0.1` |
 
-#### Decisión técnica
+#### Technical decision
 
-Se configuró una IP estática en lugar de dejar el adaptador en DHCP porque un Domain Controller no puede depender de una dirección que cambie: los clientes del dominio, los registros DNS y la replicación entre DCs necesitan una IP estable y predecible en todo momento.
+A static IP was configured instead of leaving the adapter on DHCP because a Domain Controller cannot depend on an address that changes: domain clients, DNS records, and replication between DCs all require a stable, predictable IP address at all times.
 
-El DNS preferido se apuntó a `127.0.0.1` (localhost) en lugar de a un DNS externo, anticipando que este servidor asumirá el rol de DNS Server del dominio en la Fase 8, al promocionarse como Domain Controller.
+The preferred DNS was pointed to `127.0.0.1` (localhost) instead of an external DNS, anticipating that this server would take on the domain's DNS Server role in Phase 8, upon being promoted to Domain Controller.
 
-#### Verificación
+#### Verification
 
-Se confirmó la configuración mediante `ipconfig /all` en PowerShell:
+The configuration was confirmed via `ipconfig /all` in PowerShell:
 
 ```text
 Ethernet adapter Ethernet:
@@ -169,76 +172,74 @@ Ethernet adapter Ethernet:
    DNS Servers . . . . . . . . . . . : 127.0.0.1
 ```
 
-#### Evidencia
+#### Evidence
 
-**Captura — Propiedades IPv4 configuradas**
+**Screenshot — Configured IPv4 properties**
 
-![IP estática configurada en DC1](evidence/screenshots/fase05-ip-estatica-dc1.png)
+![Static IP configured on DC1](evidence/screenshots/fase05-ip-estatica-dc1.png)
 
+### Phase 7 — AD DS role installation
 
+With the server already renamed to `TAILWIND-DC1`, the Active Directory Domain Services role was installed via Server Manager's **Add Roles and Features** wizard.
 
-### Fase 7 — Instalación del rol AD DS
+#### Technical decision
 
-Con el servidor ya renombrado a `TAILWIND-DC1`, se instaló el rol de Active Directory Domain Services mediante el asistente **Add Roles and Features** de Server Manager.
+It's important to distinguish between **installing the role** and **promoting the server**: installing the role only copies the necessary AD DS binaries and components to the server, just like installing any other software — the machine remains a regular member server, with no domain. Promoting the server (Phase 8) is the separate step that actually creates the forest, configures the Active Directory database, and installs DNS. Separating both operations allows installing the software ahead of time without yet committing to the server's configuration.
 
-#### Decisión técnica
+#### Evidence
 
-Es importante distinguir entre **instalar el rol** y **promocionar el servidor**: instalar el rol únicamente copia al servidor los binarios y componentes necesarios de AD DS, igual que instalar cualquier otro software — la máquina sigue siendo un servidor miembro normal, sin dominio. Promocionar el servidor (Fase 8) es el paso independiente que realmente crea el bosque, configura la base de datos de Active Directory e instala DNS. Separar ambas operaciones permite instalar el software con antelación sin comprometer todavía la configuración del servidor.
+**Screenshot — AD DS role selection**
 
-#### Evidencia
+![Active Directory Domain Services role selection](evidence/screenshots/fase07-seleccion-rol-adds.png)
 
-**Captura — Selección del rol AD DS**
+**Screenshot — Installation completed**
 
-![Selección de Active Directory Domain Services](evidence/screenshots/fase07-seleccion-rol-adds.png)
+![AD DS role installation completed on TAILWIND-DC1](evidence/screenshots/fase07-instalacion-completada.png)
 
-**Captura — Instalación completada**
+> The first screenshot shows the Active Directory Domain Services role selection in the wizard. The second confirms the installation finished successfully on `TAILWIND-DC1`, showing the link to promote the server to domain controller (corresponding to Phase 8).
 
-![Instalación del rol AD DS completada en TAILWIND-DC1](evidence/screenshots/fase07-instalacion-completada.png)
+### Phase 8 — Promoting TAILWIND-DC1 to Domain Controller
 
-> La primera captura muestra la selección del rol Active Directory Domain Services en el asistente. La segunda confirma que la instalación finalizó correctamente en `TAILWIND-DC1`, mostrando el enlace para promocionar el servidor a controlador de dominio (paso correspondiente a la Fase 8).
+After installing the Active Directory Domain Services role in Phase 7, `TAILWIND-DC1` was still a standalone server: it had the AD DS components, but hosted no domain. In this phase, the promotion was carried out, creating the directory, configuring integrated DNS, and turning the server into the infrastructure's first **Domain Controller**.
 
-### Fase 8 — Promoción de TAILWIND-DC1 a Domain Controller
+#### Configuration performed
 
-Tras instalar el rol de Active Directory Domain Services en la Fase 7, `TAILWIND-DC1` todavía era un servidor independiente: disponía de los componentes de AD DS, pero no alojaba ningún dominio. En esta fase se realizó la promoción que crea el directorio, configura DNS integrado y convierte el servidor en el primer **Domain Controller** de la infraestructura.
+From the Server Manager notification, **Promote this server to a domain controller** was launched. Since the lab had no pre-existing Active Directory infrastructure, **Add a new forest** was selected and the root domain `tailwindtraders.internal` was created.
 
-#### Configuración realizada
-
-Desde la notificación de Server Manager se inició **Promote this server to a domain controller**. Como el laboratorio no contaba con una infraestructura de Active Directory previa, se seleccionó **Add a new forest** y se creó el dominio raíz `tailwindtraders.internal`.
-
-| Parámetro | Configuración aplicada | Motivo |
+| Parameter | Configuration applied | Reason |
 |---|---|---|
-| Tipo de despliegue | Nuevo bosque | `TAILWIND-DC1` es el primer DC del laboratorio. |
-| Dominio raíz | `tailwindtraders.internal` | Identifica el espacio de nombres interno de Active Directory. |
-| Nivel funcional de bosque y dominio | Windows Server 2016 | Es suficiente para los objetivos del laboratorio y mantiene compatibilidad con el diseño planteado. |
-| DNS Server | Instalado | AD DS utiliza DNS para localizar controladores de dominio y servicios del directorio. |
-| Global Catalog | Habilitado | El primer DC debe actuar como catálogo global para las consultas del bosque. |
-| Nombre NetBIOS | `TAILWINDTRADERS` | Permite utilizar el formato corto de inicio de sesión `TAILWINDTRADERS\Administrator`. |
-| Rutas de AD DS | Predeterminadas | Para este entorno de laboratorio no se requieren discos independientes para NTDS, logs o SYSVOL. |
+| Deployment type | New forest | `TAILWIND-DC1` is the lab's first DC. |
+| Root domain | `tailwindtraders.internal` | Identifies Active Directory's internal namespace. |
+| Forest and domain functional level | Windows Server 2016 | Sufficient for the lab's objectives and maintains compatibility with the planned design. |
+| DNS Server | Installed | AD DS uses DNS to locate domain controllers and directory services. |
+| Global Catalog | Enabled | The first DC must act as the global catalog for forest-wide queries. |
+| NetBIOS name | `TAILWINDTRADERS` | Allows using the short logon format `TAILWINDTRADERS\Administrator`. |
+| AD DS paths | Default | This lab environment doesn't require separate disks for NTDS, logs, or SYSVOL. |
 
-Durante el asistente se definió también una contraseña de **Directory Services Restore Mode (DSRM)**. Esta credencial es exclusiva del modo de recuperación de los servicios de directorio y no equivale a la contraseña habitual de administrador del dominio; debe conservarse de forma segura y no se publica en el repositorio.
+During the wizard, a **Directory Services Restore Mode (DSRM)** password was also set. This credential is exclusive to directory services recovery mode and is not the same as the regular domain administrator password; it must be kept secure and is not published in the repository.
 
-#### Advertencia de delegación DNS
+#### DNS delegation warning
 
-La comprobación de requisitos previos puede mostrar una advertencia indicando que no es posible crear una delegación DNS. En este caso es un comportamiento esperado: se está creando un bosque nuevo en una red aislada y no existe una zona DNS padre externa que deba delegar `tailwindtraders.internal`. No fue un error bloqueante, por lo que se continuó con la instalación.
+The prerequisites check may show a warning stating that a DNS delegation cannot be created. This is expected behavior in this case: a new forest is being created on an isolated network, and there is no external parent DNS zone that needs to delegate `tailwindtraders.internal`. It was not a blocking error, so the installation proceeded.
 
-Al finalizar, Windows configuró AD DS, DNS, SYSVOL y los servicios relacionados; el servidor se reinició automáticamente para completar la promoción.
+Upon completion, Windows configured AD DS, DNS, SYSVOL, and related services; the server restarted automatically to complete the promotion.
 
-#### Verificación posterior al reinicio
+#### Post-restart verification
 
-La pantalla de inicio de sesión muestra **Sign-in to: TAILWINDTRADERS**, lo que confirma que el servidor ya reconoce el contexto del dominio creado. A partir de este punto es posible autenticarse con la cuenta de dominio `TAILWINDTRADERS\Administrator` y administrar el bosque mediante las herramientas de Active Directory.
+The sign-in screen shows **Sign-in to: TAILWINDTRADERS**, confirming the server now recognizes the context of the created domain. From this point on, it is possible to authenticate with the domain account `TAILWINDTRADERS\Administrator` and manage the forest using Active Directory tools.
 
-#### Evidencia
+#### Evidence
 
-**Vídeo — Promoción de TAILWIND-DC1 a Domain Controller**
+**Video — Promoting TAILWIND-DC1 to Domain Controller**
 
-[![Promoción de TAILWIND-DC1 a Domain Controller](https://img.youtube.com/vi/g94RQIU15MM/maxresdefault.jpg)](https://youtu.be/g94RQIU15MM)
+[![Promoting TAILWIND-DC1 to Domain Controller](https://img.youtube.com/vi/g94RQIU15MM/maxresdefault.jpg)](https://youtu.be/g94RQIU15MM)
 
-> El vídeo documenta la creación del bosque `tailwindtraders.internal`, la configuración de DNS y Global Catalog, el reinicio del servidor y el inicio de sesión con `TAILWINDTRADERS\Administrator`.
+> The video documents the creation of the `tailwindtraders.internal` forest, DNS and Global Catalog configuration, the server restart, and signing in as `TAILWINDTRADERS\Administrator`.
 
-📺 **[Ver vídeo completo en YouTube](https://youtu.be/g94RQIU15MM)**
+📺 **[Watch the full video on YouTube](https://youtu.be/g94RQIU15MM)**
 
-**Captura — Inicio de sesión en el dominio**
+**Screenshot — Domain sign-in screen**
 
-![Pantalla de inicio de sesión de TAILWIND-DC1 indicando el dominio TAILWINDTRADERS](evidence/screenshots/fase08-inicio-sesion-dominio.webp)
+![TAILWIND-DC1 sign-in screen showing the TAILWINDTRADERS domain](evidence/screenshots/fase08-inicio-sesion-dominio.webp)
 
-> La captura posterior al reinicio evidencia que `TAILWIND-DC1` ya ha sido promocionado: la interfaz indica que el inicio de sesión se realizará en el dominio `TAILWINDTRADERS`, en lugar de contra una cuenta local del servidor.
+> The post-restart screenshot shows `TAILWIND-DC1` has been promoted: the interface indicates sign-in will occur against the `TAILWINDTRADERS` domain, rather than a local account on the server.
