@@ -1,0 +1,16 @@
+﻿=== DNS SRV RECORD LOOKUP ===
+
+Name                                          Type TTL Section NameTarget                            Priority Weight Po
+                                                                                                                     rt
+----                                          ---- --- ------- ----------                            -------- ------ --
+_ldap._tcp.dc._msdcs.tailwindtraders.internal SRV  600 Answer  tailwind-dc1.tailwindtraders.internal 0        100    38
+                                                                                                                     9 
+
+Name       : tailwind-dc1.tailwindtraders.internal
+QueryType  : A
+TTL        : 3600
+Section    : Additional
+IP4Address : 10.10.10.10
+
+
+

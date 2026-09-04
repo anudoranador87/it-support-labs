@@ -1,0 +1,11 @@
+﻿Replication Summary Start Time: 2026-09-04 02:17:45
+
+Beginning data collection for replication summary, this may take awhile:
+  .....
+
+Source DSA          largest delta    fails/total %%   error
+ TAILWIND-DC1              04m:22s    0 /   5    0
+
+
+Destination DSA     largest delta    fails/total %%   error
+ TIALWIND-MB1              04m:22s    0 /   5    0

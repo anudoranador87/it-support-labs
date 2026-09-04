@@ -166,4 +166,4 @@ python -m unittest -v
 
 The most relevant projects for this portfolio are a system information collector, disk-space monitor, log analyser, file organiser, CSV user report, process checker and backup helper. Each project should include a README, sample input, sample output, error handling and a verification step.
 
-The existing [Python system health checker](../labs/03-python-system-health-checker/) is the practical link between these notes and the portfolio. Future scripts can also support the Active Directory lab by generating reports from CSV input or checking DNS and system information before a domain join.
+Future Python automation can become a practical portfolio lab by generating reports from CSV input or checking DNS and system information before a domain join. Each script should be accompanied by sample input and output, safe error handling and a verification step.

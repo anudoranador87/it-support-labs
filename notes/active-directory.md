@@ -61,4 +61,4 @@ An onboarding process should create the account in the correct OU, add the user 
 
 ## Lab evidence
 
-The [Lab 07 Active Directory case study](../labs/07-windows-server-uefi-gpt-ad-ds/) demonstrates the relationship between static IP configuration, AD DNS, OUs, groups, GPOs and a Linux client joined to the domain.
+The [Active Directory case study](../labs/windows-server-uefi-gpt-ad-ds/) demonstrates the relationship between static IP configuration, AD DNS, OUs, groups, GPOs and a Linux client joined to the domain.

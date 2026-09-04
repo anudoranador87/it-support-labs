@@ -21,4 +21,4 @@ These notes are adapted from my own Notion study material and rewritten for this
 
 ## Study priority
 
-For an entry-level IT Support portfolio, the most useful order is networking and DNS first, followed by Active Directory, Windows/PowerShell and troubleshooting methodology. The [Lab 07 Active Directory case study](../labs/07-windows-server-uefi-gpt-ad-ds/) provides the current practical example connected to these notes.
+For an entry-level IT Support portfolio, the most useful order is networking and DNS first, followed by Active Directory, Windows/PowerShell and troubleshooting methodology. The [Active Directory case study](../labs/windows-server-uefi-gpt-ad-ds/) provides the current practical example connected to these notes.

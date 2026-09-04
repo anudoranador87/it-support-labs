@@ -7,7 +7,7 @@ level: intermediate
 evidence: screenshots, commands, verification
 ---
 
-# Lab 07: Windows Server and Active Directory Setup
+# Windows Server and Active Directory Setup
 
 > **A complete troubleshooting case study covering UEFI/GPT boot configuration, Windows Server installation and initial Active Directory deployment.**
 
@@ -169,7 +169,7 @@ The remaining validation is to join a second physical or virtual client to `lab.
 
 ---
 
-## Lab 07 evidence: Active Directory, GPO and DNS
+## Evidence: Active Directory, GPO and DNS
 
 The following evidence extends this case study with the completed Active Directory structure, security-group membership, a Group Policy linked to the employees OU, password-policy settings and DNS host-record configuration.
 

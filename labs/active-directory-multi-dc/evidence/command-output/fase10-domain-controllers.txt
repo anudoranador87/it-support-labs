@@ -1,0 +1,4 @@
+﻿Name         IPv4Address IsGlobalCatalog Site
+----         ----------- --------------- ----
+TAILWIND-DC1 10.10.10.10            True Default-First-Site-Name
+TIALWIND-MB1 10.10.10.20            True Default-First-Site-Name

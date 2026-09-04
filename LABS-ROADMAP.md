@@ -19,10 +19,10 @@ Current work includes:
 - PowerShell network configuration
 - Network verification
 - Windows Server 2022 virtual machines
-- Active Directory Domain Services
-- Multiple Domain Controllers
-- DNS and identity management
-- Security and delegation
+- Active Directory Domain Services and DNS on `TAILWIND-DC1`
+- First Domain Controller promoted for `tailwindtraders.internal`
+
+Next milestones for this project are preparing `TAILWIND-MBR1`, joining it to the domain, promoting it as an additional Domain Controller and verifying replication before continuing with identities, delegation and security policies.
 
 ## Next Focus Areas
 

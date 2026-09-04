@@ -229,18 +229,155 @@ Al finalizar, Windows configuró AD DS, DNS, SYSVOL y los servicios relacionados
 
 La pantalla de inicio de sesión muestra **Sign-in to: TAILWINDTRADERS**, lo que confirma que el servidor ya reconoce el contexto del dominio creado. A partir de este punto es posible autenticarse con la cuenta de dominio `TAILWINDTRADERS\\Administrator` y administrar el bosque mediante las herramientas de Active Directory.
 
+### Estado de las fases
+
+| Fase | Objetivo | Estado | Evidencia / habilidad demostrada |
+|---|---|---|---|
+| 0 | Verificar requisitos del host | Completada | Recursos, virtualización y almacenamiento validados. |
+| 1 | Instalar Hyper-V | Completada | Rol y herramientas de administración habilitados. |
+| 2 | Configurar rutas de Hyper-V | Completada | Ubicaciones de configuración y discos virtuales definidas. |
+| 3 | Crear red Internal + NAT | Completada | `NATSwitch`, red `10.10.10.0/24` y NAT verificados. |
+| 4 | Crear `TAILWIND-DC1` | Completada | VM Generation 2 conectada a `NATSwitch`. |
+| 5 | Configurar IP estática en DC1 | Completada | `10.10.10.10` y DNS local configurados. |
+| 6 | Renombrar el servidor como `TAILWIND-DC1` | Completada; evidencia pendiente | El nombre se confirma en las fases posteriores; falta documentar su ejecución como fase independiente. |
+| 7 | Instalar el rol AD DS | Completada | Capturas de selección e instalación del rol. |
+| 8 | Promover DC1 y crear el bosque | Completada | Vídeo, captura de inicio de sesión y verificaciones técnicas reproducibles. |
+| 9 | Desplegar y unir `TAILWIND-MBR1` | Completada | VM Gen 2, IP estática `10.10.10.20`, resolución DNS y unión al dominio. |
+| 10 | Promover MBR1 a segundo DC y verificar replicación | Completada | Rol AD DS, promoción en dominio existente y replicación multi-DC con 0 fallos. |
+| Próximo | Gestión de identidades y OUs | Planificado | Estructura de OUs, usuarios, grupos de seguridad y delegación de mínimo privilegio. |
+
+> Las fases planificadas no se consideran evidencia completada hasta que se ejecuten, verifiquen y documenten.
+
+#### Verificación técnica reproducible
+
+Además de comprobar el inicio de sesión, las siguientes pruebas permiten validar que AD DS y DNS funcionan en `TAILWIND-DC1`:
+
+```powershell
+Get-ADDomain | Select-Object DNSRoot, NetBIOSName, DomainMode
+Get-ADForest | Select-Object RootDomain, ForestMode
+Get-Service DNS, NTDS | Select-Object Name, Status, StartType
+Get-DnsServerZone | Select-Object ZoneName, IsDsIntegrated
+Resolve-DnsName -Type SRV _ldap._tcp.dc._msdcs.tailwindtraders.internal
+dcdiag
+```
+
+| Prueba | Confirmación esperada | Archivo de evidencia |
+|---|---|---|
+| Dominio y bosque | Se muestran `tailwindtraders.internal` y `TAILWINDTRADERS`; nivel funcional Windows Server 2016. | [`evidence/command-output/fase08-dominio-bosque.txt`](evidence/command-output/fase08-dominio-bosque.txt) |
+| Registro SRV | Resuelve `_ldap._tcp.dc._msdcs.tailwindtraders.internal` hacia DC1 (`10.10.10.10`). | [`evidence/command-output/fase08-registro-srv.txt`](evidence/command-output/fase08-registro-srv.txt) |
+| Diagnóstico de salud | `dcdiag` supera todas las pruebas de conectividad y servicios. | [`evidence/command-output/fase08-dcdiag.txt`](evidence/command-output/fase08-dcdiag.txt) |
+
 #### Evidencia
 
 **Vídeo — Promoción de TAILWIND-DC1 a Domain Controller**
 
-[Promoción de TAILWIND-DC1 a Domain Controller](https://youtu.be/g94RQIU15MM) ([image](https://img.youtube.com/vi/g94RQIU15MM/maxresdefault.jpg))
+[![Promoción de TAILWIND-DC1 a Domain Controller](https://img.youtube.com/vi/g94RQIU15MM/maxresdefault.jpg)](https://youtu.be/g94RQIU15MM)
 
-> El vídeo documenta la creación del bosque `tailwindtraders.internal`, la configuración de DNS y Global Catalog, el reinicio del servidor y el inicio de sesión con `TAILWINDTRADERS\\Administrator`.
+> El vídeo documenta la creación del bosque `tailwindtraders.internal`, la configuración de DNS y Global Catalog, el reinicio del servidor y el inicio de sesión con `TAILWINDTRADERS\Administrator`.
 
-📺 [**Ver vídeo completo en YouTube**](https://youtu.be/g94RQIU15MM)
+📺 **[Ver vídeo completo en YouTube](https://youtu.be/g94RQIU15MM)**
 
 **Captura — Inicio de sesión en el dominio**
 
-[Pantalla de inicio de sesión de TAILWIND-DC1 indicando el dominio TAILWINDTRADERS](evidence/screenshots/fase08-inicio-sesion-dominio.webp)
+![Pantalla de inicio de sesión de TAILWIND-DC1 indicando el dominio TAILWINDTRADERS](evidence/screenshots/fase08-inicio-sesion-dominio.webp)
 
 > La captura posterior al reinicio evidencia que `TAILWIND-DC1` ya ha sido promocionado: la interfaz indica que el inicio de sesión se realizará en el dominio `TAILWINDTRADERS`, en lugar de contra una cuenta local del servidor.
+
+---
+
+### Fase 9 — Aprovisionamiento y unión al dominio de TAILWIND-MBR1
+
+Para establecer la arquitectura de alta disponibilidad con múltiples controladores de dominio, se aprovisionó una segunda máquina virtual y se unió al bosque `tailwindtraders.internal`.
+
+#### Configuración realizada
+
+1. **Aprovisionamiento de la VM:**
+   - Nombre: `TAILWIND-MBR1`
+   - Generación: `Generation 2` (arranque UEFI y Secure Boot habilitado)
+   - Red virtual: `NATSwitch`
+   - Sistema operativo: Windows Server 2022 Standard (Desktop Experience)
+
+2. **Configuración de red (IPv4):**
+   - Dirección IP: `10.10.10.20`
+   - Máscara de subred: `255.255.255.0`
+   - Puerta de enlace: `10.10.10.1`
+   - **DNS preferido:** `10.10.10.10` *(imprescindible: apunta a `TAILWIND-DC1` para resolver los registros SRV internos de AD)*
+
+3. **Validación previa a la unión:**
+   - Se comprobó la conectividad IP mediante `Test-Connection 10.10.10.10`.
+   - Se validó la resolución de nombres con `Resolve-DnsName tailwindtraders.internal`, confirmando que las consultas al dominio raíz eran resueltas correctamente a través del DC1.
+
+4. **Unión al dominio:**
+   - Unión al dominio `tailwindtraders.internal` mediante credenciales administrativas (`TAILWINDTRADERS\Administrator`).
+   - Verificación de la cuenta de equipo creada en el dominio tras el reinicio automático.
+
+#### Decisión técnica
+
+Antes de intentar unir un equipo a un dominio de Active Directory, el cliente o servidor miembro **debe usar obligatoriamente el Domain Controller interno como su servidor DNS principal**. Un servidor DNS público o no configurado falla porque no conoce los registros de localización de servicios (`SRV`) de Active Directory (`_ldap._tcp.dc._msdcs.<dominio>`). Establecer la resolución DNS directa hacia DC1 garantiza que la negociación de unión al dominio se complete sin errores.
+
+#### Evidencia
+
+**Captura — Aprovisionamiento de la VM en Hyper-V**
+
+![TAILWIND-MBR1 en Hyper-V](evidence/screenshots/fase09-creacion-vm-mbr1.png)
+
+**Captura — Configuración de IP estática y DNS**
+
+![IP estática y DNS apuntando a DC1](evidence/screenshots/fase09-ip-estatica-mbr1.png)
+
+**Captura — Ejecución de unión al dominio**
+
+![Autenticación de unión al dominio](evidence/screenshots/fase09-union-dominio.png)
+
+**Captura — Inicio de sesión en el dominio desde MBR1**
+
+![Inicio de sesión en el dominio](evidence/screenshots/fase09-inicio-sesion-dominio.png)
+
+---
+
+### Fase 10 — Promoción a segundo Domain Controller y verificación de replicación
+
+Con `TAILWIND-MBR1` unido al dominio, se promocionó a Domain Controller réplica, completando la infraestructura de Alta Disponibilidad (Multi-DC).
+
+#### Configuración realizada
+
+1. **Instalación del rol AD DS:** Se instalaron los binarios de Active Directory Domain Services y las herramientas de administración remota (RSAT) mediante Server Manager.
+2. **Asistente de promoción:**
+   - Se seleccionó **"Add a domain controller to an existing domain"** indicando el dominio `tailwindtraders.internal`.
+   - Se autenticó con credenciales de administrador de dominio (`TAILWINDTRADERS\Administrator`).
+   - Se habilitaron las funciones de **Domain Name System (DNS) server** y **Global Catalog (GC)**.
+   - Se configuró la contraseña de Directory Services Restore Mode (DSRM).
+   - Se replicó la base de datos inicial (`NTDS.dit`), el esquema y la carpeta SYSVOL a través de la red virtual desde `TAILWIND-DC1`.
+
+#### Decisión técnica y Alta Disponibilidad
+
+Desplegar dos controladores de dominio elimina el punto único de fallo (SPOF) en la autenticación y resolución de identidades:
+- **Redundancia y tolerancia a fallos:** Si `TAILWIND-DC1` entra en mantenimiento programado, se reinicia o sufre caídas, `TAILWIND-MBR1` continúa procesando inicios de sesión Kerberos/NTLM y consultas DNS sin interrupción de servicio.
+- **Replicación multimaestro:** Las modificaciones realizadas en los objetos de Active Directory en cualquiera de los dos DCs se sincronizan automáticamente en el otro, manteniendo la coherencia de todo el bosque.
+- **Catálogo Global:** Al configurar ambos servidores como Catálogos Globales, las consultas de pertenencia a grupos universales y búsquedas a nivel de bosque se resuelven de forma local e inmediata.
+
+#### Verificación técnica reproducible
+
+Tras el reinicio automático posterior a la promoción, se validó el estado de salud de la replicación multimaestro mediante PowerShell:
+
+```powershell
+repadmin /replsummary
+repadmin /showrepl
+Get-ADDomainController -Filter * | Select-Object Name, IPv4Address, IsGlobalCatalog, Site
+```
+
+| Prueba | Confirmación esperada | Archivo de evidencia |
+|---|---|---|
+| Resumen de replicación | 0 fallos (`0 / 5 fails`) entre DC1 y MBR1 en todas las particiones del directorio con delta < 5 minutos. | [`evidence/command-output/fase10-replsummary.txt`](evidence/command-output/fase10-replsummary.txt) |
+| Consulta de DCs activos | Ambos controladores (`TAILWIND-DC1` y `TIALWIND-MB1`) reportados como Catálogos Globales activos en `Default-First-Site-Name`. | [`evidence/command-output/fase10-domain-controllers.txt`](evidence/command-output/fase10-domain-controllers.txt) |
+
+#### Evidencia
+
+**Captura — Instalación del rol AD DS**
+
+![Rol AD DS en MBR1](evidence/screenshots/fase10-instalacion-rol-adds.png)
+
+**Captura — Promoción a dominio existente**
+
+![Promoción a dominio existente](evidence/screenshots/fase10-promocion-segundo-dc.png)
+

@@ -17,7 +17,24 @@ The end goal of this lab is to deploy and manage a complete virtualized infrastr
 
 ---
 
-## Project Progress (Action)
+### Phase Status
+
+| Phase | Objective | Status | Evidence / Demonstrated Skill |
+|---|---|---|---|
+| 0 | Verify host requirements | Completed | Resources, virtualization, and storage validated. |
+| 1 | Install Hyper-V | Completed | Role and management tools enabled. |
+| 2 | Configure Hyper-V paths | Completed | Configuration and virtual disk paths defined. |
+| 3 | Create Internal + NAT network | Completed | `NATSwitch`, `10.10.10.0/24` network, and NAT verified. |
+| 4 | Create `TAILWIND-DC1` | Completed | Generation 2 VM connected to `NATSwitch`. |
+| 5 | Configure static IP on DC1 | Completed | `10.10.10.10` and local DNS configured. |
+| 6 | Rename server to `TAILWIND-DC1` | Completed; evidence pending | Name confirmed in subsequent phases; pending independent documentation. |
+| 7 | Install AD DS role | Completed | Role selection and installation screenshots. |
+| 8 | Promote DC1 and create forest | Completed | Video, domain logon screenshot, and technical verifications outlined below. |
+| 9 | Deploy and join `TAILWIND-MBR1` | Completed | Generation 2 VM, static IP `10.10.10.20`, DNS resolution, and domain join. |
+| 10 | Promote MBR1 to Secondary DC & Verify Replication | Completed | AD DS role, DC promotion into existing domain, and 0-fail multi-DC replication. |
+| Next | Identity Management & OUs | Planned | OUs structure, users, security groups, and least-privilege delegation. |
+
+> Planned phases are not considered completed evidence until executed, verified, and documented.
 
 ### Phase 0 — Requirements verified
 
@@ -228,6 +245,27 @@ Upon completion, Windows configured AD DS, DNS, SYSVOL, and related services; th
 
 The sign-in screen shows **Sign-in to: TAILWINDTRADERS**, confirming the server now recognizes the context of the created domain. From this point on, it is possible to authenticate with the domain account `TAILWINDTRADERS\Administrator` and manage the forest using Active Directory tools.
 
+#### Reproducible Technical Verification
+
+In addition to verifying the domain sign-in screen, the following tests validate that AD DS and DNS are fully functional on `TAILWIND-DC1`. These are executed in PowerShell with administrative privileges:
+
+```powershell
+Get-ADDomain | Select-Object DNSRoot, NetBIOSName, DomainMode
+Get-ADForest | Select-Object RootDomain, ForestMode
+Get-Service DNS, NTDS | Select-Object Name, Status, StartType
+Get-DnsServerZone | Select-Object ZoneName, IsDsIntegrated
+Resolve-DnsName -Type SRV _ldap._tcp.dc._msdcs.tailwindtraders.internal
+dcdiag
+```
+
+| Test | Expected Confirmation | Evidence File |
+|---|---|---|
+| Domain and Forest | Displays `tailwindtraders.internal` and `TAILWINDTRADERS`; functional level indicates Windows Server 2016. | [`evidence/command-output/fase08-dominio-bosque.txt`](evidence/command-output/fase08-dominio-bosque.txt) |
+| SRV Record | Resolves `_ldap._tcp.dc._msdcs.tailwindtraders.internal` to DC1 (`10.10.10.10`). | [`evidence/command-output/fase08-registro-srv.txt`](evidence/command-output/fase08-registro-srv.txt) |
+| DC Health Diagnostics | `dcdiag` passes connectivity, advertising, and core directory tests. | [`evidence/command-output/fase08-dcdiag.txt`](evidence/command-output/fase08-dcdiag.txt) |
+
+> The replication check (`repadmin /replsummary`) will be executed once `TAILWIND-MBR1` is promoted as the second Domain Controller.
+
 #### Evidence
 
 **Video — Promoting TAILWIND-DC1 to Domain Controller**
@@ -243,3 +281,101 @@ The sign-in screen shows **Sign-in to: TAILWINDTRADERS**, confirming the server 
 ![TAILWIND-DC1 sign-in screen showing the TAILWINDTRADERS domain](evidence/screenshots/fase08-inicio-sesion-dominio.webp)
 
 > The post-restart screenshot shows `TAILWIND-DC1` has been promoted: the interface indicates sign-in will occur against the `TAILWINDTRADERS` domain, rather than a local account on the server.
+
+### Phase 9 — Provisioning and Domain Join of TAILWIND-MBR1
+
+To establish a Multi-Domain Controller high-availability architecture, a second virtual machine was provisioned and joined to the `tailwindtraders.internal` forest.
+
+#### Configuration Performed
+
+1. **Virtual Machine Provisioning:**
+   - Name: `TAILWIND-MBR1`
+   - Generation: `Generation 2` (UEFI / Secure Boot enabled)
+   - Virtual Switch: `NATSwitch`
+   - OS: Windows Server 2022 Standard (Desktop Experience)
+
+2. **Network Configuration (IPv4):**
+   - IP Address: `10.10.10.20`
+   - Subnet Mask: `255.255.255.0`
+   - Default Gateway: `10.10.10.1`
+   - **Preferred DNS Server:** `10.10.10.10` *(crucial: points to `TAILWIND-DC1` to resolve internal AD SRV records)*
+
+3. **Pre-Join Validation:**
+   - ICMP and layer-3 connectivity were tested using `Test-Connection 10.10.10.10`.
+   - Name resolution was confirmed using `Resolve-DnsName tailwindtraders.internal`, verifying that queries to the root domain returned `10.10.10.10` via DC1.
+
+4. **Domain Join:**
+   - Joined to `tailwindtraders.internal` using domain administrative credentials (`TAILWINDTRADERS\Administrator`).
+   - Verified post-reboot sign-in context to confirm the computer account was created in the domain.
+
+#### Technical Decision
+
+Before attempting to join an Active Directory domain, the client or member server **must use the internal Domain Controller as its primary DNS resolver**. Using a public resolver (like 8.8.8.8) or an unconfigured gateway fails because public DNS servers cannot locate internal Active Directory Service Location (`SRV`) records (`_ldap._tcp.dc._msdcs.<domain>`). Establishing point-to-point DNS resolution against DC1 ensures the domain join negotiation succeeds seamlessly.
+
+#### Evidence
+
+**Screenshot — VM Provisioning in Hyper-V**
+
+![TAILWIND-MBR1 in Hyper-V](evidence/screenshots/fase09-creacion-vm-mbr1.png)
+
+**Screenshot — Static IP and DNS Configuration**
+
+![Static IP and DNS pointing to DC1](evidence/screenshots/fase09-ip-estatica-mbr1.png)
+
+**Screenshot — Domain Join Execution**
+
+![Domain Join Authentication](evidence/screenshots/fase09-union-dominio.png)
+
+**Screenshot — Domain Sign-in on MBR1**
+
+![Domain Sign-in](evidence/screenshots/fase09-inicio-sesion-dominio.png)
+
+---
+
+### Phase 10 — Secondary Domain Controller Promotion & Replication Verification
+
+With `TAILWIND-MBR1` joined to the domain, it was promoted to become a replica Domain Controller, completing the High Availability (Multi-DC) infrastructure.
+
+#### Configuration Performed
+
+1. **AD DS Role Installation:** Installed Active Directory Domain Services binaries and Remote Server Administration Tools (RSAT) via Server Manager.
+2. **Promotion Operation:**
+   - Selected **"Add a domain controller to an existing domain"** targeting `tailwindtraders.internal`.
+   - Authenticated using domain administrator credentials (`TAILWINDTRADERS\Administrator`).
+   - Enabled **Domain Name System (DNS) server** and **Global Catalog (GC)** roles.
+   - Configured Directory Services Restore Mode (DSRM) credentials.
+   - Initial directory database (`NTDS.dit`), schema, and SYSVOL were replicated across the virtual network from `TAILWIND-DC1`.
+
+#### Technical Decision & High Availability
+
+Deploying two Domain Controllers eliminates the single point of failure (SPOF) for identity and authentication services:
+- **Redundancy & Fault Tolerance:** If `TAILWIND-DC1` undergoes planned maintenance, unexpected downtime, or hardware faults, `TAILWIND-MBR1` continues authenticating Kerberos/NTLM logon requests and serving DNS queries.
+- **Multi-Master Replication:** Changes made to AD objects on either controller automatically replicate to the other, maintaining a consistent directory database across the forest.
+- **Global Catalog:** Designating both DCs as Global Catalogs allows forest-wide object lookups and universal group membership queries to be resolved locally by either server.
+
+#### Reproducible Technical Verification
+
+After the automatic post-promotion reboot, multi-master replication and directory health were verified via PowerShell:
+
+```powershell
+repadmin /replsummary
+repadmin /showrepl
+Get-ADDomainController -Filter * | Select-Object Name, IPv4Address, IsGlobalCatalog, Site
+```
+
+| Test | Expected Confirmation | Evidence File |
+|---|---|---|
+| Replication Summary | 0 fails (`0 / 5 fails`) across all directory partitions between DC1 and MBR1 with delta < 5 minutes. | [`evidence/command-output/fase10-replsummary.txt`](evidence/command-output/fase10-replsummary.txt) |
+| Active DCs Query | Both `TAILWIND-DC1` (`10.10.10.10`) and `TIALWIND-MB1` (`10.10.10.20`) reported as active Global Catalogs in `Default-First-Site-Name`. | [`evidence/command-output/fase10-domain-controllers.txt`](evidence/command-output/fase10-domain-controllers.txt) |
+
+#### Evidence
+
+**Screenshot — AD DS Role Installation**
+
+![AD DS Role on MBR1](evidence/screenshots/fase10-instalacion-rol-adds.png)
+
+**Screenshot — Promoting to Existing Domain**
+
+![Promotion to Existing Domain](evidence/screenshots/fase10-promocion-segundo-dc.png)
+
+

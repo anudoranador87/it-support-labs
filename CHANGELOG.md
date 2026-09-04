@@ -8,7 +8,7 @@ All notable changes to this project are documented in this file.
 
 - Replaced status-based lab folders with permanent numbered routes under `labs/`.
 - Moved historical material from the active tree to `archive/legacy-labs/`.
-- Added frontmatter metadata to all 16 active lab READMEs so status changes do not require moving folders.
+- Added frontmatter metadata to active lab READMEs so status changes do not require moving folders.
 - Added `labs/README.md` as a permanent-route index.
 - Added `templates/lab-template.md` for consistent future documentation.
 - Refocused Lab 08 on client domain join, DNS verification and user authentication, following the completed server and AD DS work in Lab 07.

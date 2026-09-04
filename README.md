@@ -2,134 +2,79 @@
 
 Hands-on IT Support practice focused on troubleshooting, Windows, Linux, networking, Active Directory, security and IT service management.
 
-This repository documents practical work through **real scenarios, troubleshooting steps, commands, evidence and verification**.
+This repository documents practical work through real scenarios, troubleshooting steps, commands, evidence and verification.
+
+## Featured work
+
+| Project | Status | Skills demonstrated | Evidence |
+|---|---|---|---|
+| [Windows Server UEFI/GPT and Active Directory](labs/windows-server-uefi-gpt-ad-ds/) | Completed | UEFI/GPT troubleshooting, Windows Server 2022, static IP, AD DS, DNS, OUs and users | Commands, screenshots and verification |
+| [Active Directory Multi-DC Environment](labs/active-directory-multi-dc/) | In progress | Hyper-V, virtual NAT, Windows Server 2022, AD DS, DNS and Domain Controller promotion | Screenshots, PowerShell artefact and video |
+| [Linux Wi-Fi Driver Fix](labs/linux-wifi-driver-fix/) | In progress | Hardware identification, kernel logs, modules and driver troubleshooting | Guided scenario and verification checklist |
+
+**[Browse all labs →](labs/README.md)**
 
 ## 🟢 Current Project
 
 ### Active Directory — Multi-DC Environment
 
-Currently building a Windows Server 2022 Active Directory environment using Hyper-V.
+Currently building a Windows Server 2022 Active Directory environment using Hyper-V. `TAILWIND-DC1` has been promoted as the first Domain Controller of the `tailwindtraders.internal` forest.
 
 The project covers:
 
-- Hyper-V virtualization
-- Virtual NAT networking
-- Windows Server 2022
-- Active Directory Domain Services (AD DS)
-- Multiple Domain Controllers
-- DNS
-- Organizational Units
-- Users and security groups
-- Delegation and permissions
-- Security policies
-- Troubleshooting and verification
+- Hyper-V virtualization and virtual NAT networking
+- Windows Server 2022 and Active Directory Domain Services (AD DS)
+- Multiple Domain Controllers and DNS
+- Organizational Units, users and security groups
+- Delegation, permissions and security policies
+- Troubleshooting, evidence and verification
 
-➡️ **[Open current project →](labs/active-directory-multi-dc)**
+**[Open current project →](labs/active-directory-multi-dc/)** · **[View the roadmap →](LABS-ROADMAP.md)**
 
-## 📚 Technical Areas
+## Skills demonstrated
 
-**Windows:** Windows 11, Windows Server, PowerShell, Windows troubleshooting, Windows Update, Windows Firewall
+| Area | Practical focus |
+|---|---|
+| Windows and Active Directory | Windows Server, UEFI/GPT, PowerShell, AD DS, DNS, OUs, groups, Group Policy and authentication |
+| Networking | TCP/IP, DNS, DHCP, NAT, virtual networking, connectivity testing, SSH and firewall checks |
+| Linux | Command line, kernel modules, drivers, SSH, system troubleshooting and Active Directory integration |
+| Support methodology | Evidence gathering, hypotheses, safe remediation, verification and documentation |
+| Security | Least privilege, access control, permissions, endpoint security and firewall configuration |
 
-**Networking:** TCP/IP, DNS, DHCP, network connectivity, SSH, ports and firewall rules, NAT and virtual networking
+## Interactive tools
 
-**Active Directory:** AD DS, Domain Controllers, DNS integration, users, groups, OUs, Group Policy, NTFS permissions and authentication
+- [IP Subnet Calculator](tools/subnet-calculator/) — IPv4/CIDR calculations and a binary visualiser.
+- [RAID Calculator](tools/raid-calculator/) — compares usable capacity and fault tolerance across RAID levels.
+- [Linux Permissions Visualizer](tools/linux-permissions-visualizer/) — explores Linux ownership and permission modes.
 
-**Linux:** Ubuntu, command line, drivers, kernel modules, SSH, system troubleshooting and Active Directory integration
-
-**Security:** Endpoint security, access control, least privilege, permissions, firewall configuration and authentication
-
-## 🛠️ Tools
-
-`PowerShell` · `Command Prompt` · `diskpart` · `ipconfig` · `netsh` · `ping` · `nslookup` · `Rufus` · `Hyper-V` · `Server Manager` · `Active Directory Users and Computers` · `Group Policy Management` · `DNS Manager` · `Ubuntu` · `realmd` · `SSSD`
-
-## 🔎 Troubleshooting Approach
+## How each case study is documented
 
 ```text
 Identify the problem
         ↓
 Gather evidence
         ↓
-Form a hypothesis
+Form and test a hypothesis
         ↓
-Test the hypothesis
-        ↓
-Apply the fix
+Apply a safe fix
         ↓
 Verify the result
         ↓
-Document the solution
+Document the outcome
 ```
 
-The objective is to document **why the problem occurred, how it was isolated and how the solution was verified**.
+Completed labs include the environment, scenario, observations, commands, root cause, remediation and reproducible verification. In-progress labs clearly distinguish completed work from planned work.
 
-## 📁 Repository Structure
+The [lab template](templates/lab-template.md) defines the standard for future case studies. Reference notes and scenario analysis are available in [notes](notes/), [reference](reference/) and [infrastructure-analysis](infrastructure-analysis/).
 
-```text
-it-support-labs/
-├── labs/
-├── tools/
-├── infrastructure-analysis/
-├── docs/
-├── archive/
-├── reference/
-├── study-notes/
-└── templates/
-```
+## Portfolio focus
 
-The `labs/` directory contains the practical projects documented in this repository. Historical or superseded material remains in `archive/`.
+Target roles: **IT Support · Technical Support · Help Desk · Desktop Support**
 
-## 📚 Documentation Standard
-
-Completed case studies are documented with evidence such as:
-
-- Objective
-- Environment
-- Scenario
-- Investigation
-- Commands and tools
-- Evidence
-- Troubleshooting steps
-- Root cause
-- Fix
-- Verification
-
-Only completed work is presented as completed portfolio evidence.
-
-## 📋 Roadmap
-
-The repository grows through practical case studies based on work that is actually performed and documented with evidence.
-
-Future focus areas include:
-
-- Windows troubleshooting
-- Network troubleshooting
-- DNS / DHCP
-- Linux troubleshooting
-- Security
-- ITSM / Help Desk
-- PowerShell automation
-
-New projects will be added when the corresponding practical work has been completed and can be supported with technical evidence.
-
-➡️ **[View roadmap →](LABS-ROADMAP.md)**
-
-## 🎯 Current Focus
-
-Building practical IT Support experience around:
-
-**Windows → Networking → Active Directory → Security → Troubleshooting → ITSM**
-
-The current practical focus is **Windows Server and Active Directory infrastructure**, including virtualization, networking, Domain Controllers, DNS, identity management and security.
-
-## 🔗 Other Projects
+Based in Málaga, Spain. The documentation is primarily in English and Spanish, reflecting the working language of each lab.
 
 - [GitHub Profile](https://github.com/anudoranador87)
 - [LinkedIn](https://www.linkedin.com/in/joseaparicio87/)
 - [Interactive Portfolio](https://anudoranador87.github.io/JoseMaria-Frontend-Portfolio/)
-- [Development Journey](https://anudoranador87.github.io/Mi-Camino-Web-365/)
-
-## 📍 Málaga, Spain
-
-Target roles: **IT Support · Technical Support · Help Desk · Desktop Support**
 
 > **Build. Troubleshoot. Verify. Document.**

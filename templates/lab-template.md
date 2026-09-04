@@ -1,6 +1,5 @@
 # Lab XX: Título del laboratorio
 
-```yaml
 ---
 lab: XX
 title: Título del laboratorio
@@ -9,7 +8,6 @@ area: windows|linux|networking|security|active-directory|itsm
 level: beginner|intermediate|advanced
 evidence: scenario and supporting notes
 ---
-```
 
 ## Objetivo
 

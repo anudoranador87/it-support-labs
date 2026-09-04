@@ -7,10 +7,10 @@ level: intermediate
 evidence: partial practical evidence
 ---
 
-# Lab 08: Linux Drivers — WiFi Fix (Real Case)
+# Linux Drivers — WiFi Fix (Real Case)
 
 **CompTIA A+ Domain:** 220-1201, Domain 1.6 (Troubleshooting OS)  
-**Level:** Advanced  
+**Level:** Intermediate
 **Time:** 60 minutes  
 **Real scenario:** WiFi adapter not recognized after a system update or fresh install.
 

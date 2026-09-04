@@ -1,0 +1,17 @@
+﻿=== AD DOMAIN ===
+
+
+DNSRoot     : tailwindtraders.internal
+NetBIOSName : TAILWINDTRADERS
+DomainMode  : Windows2016Domain
+
+
+
+=== AD FOREST ===
+
+
+RootDomain : tailwindtraders.internal
+ForestMode : Windows2016Forest
+
+
+
