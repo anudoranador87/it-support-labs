@@ -43,9 +43,11 @@ The project covers:
 
 ## Interactive tools
 
-- [IP Subnet Calculator](tools/subnet-calculator/) — IPv4/CIDR calculations and a binary visualiser.
-- [RAID Calculator](tools/raid-calculator/) — compares usable capacity and fault tolerance across RAID levels.
-- [Linux Permissions Visualizer](tools/linux-permissions-visualizer/) — explores Linux ownership and permission modes.
+| Tool | Description | Live Demo |
+|---|---|---|
+| [IP Subnet Calculator](tools/subnet-calculator/) | IPv4/CIDR calculations and binary visualizer | [🚀 Launch Demo](https://anudoranador87.github.io/it-support-labs/tools/subnet-calculator/) |
+| [RAID Calculator](tools/raid-calculator/) | Compares usable capacity, parity and fault tolerance across RAID levels | [🚀 Launch Demo](https://anudoranador87.github.io/it-support-labs/tools/raid-calculator/) |
+| [Linux Permissions Visualizer](tools/linux-permissions-visualizer/) | Explores octal/symbolic Linux ownership, modes and chmod generator | [🚀 Launch Demo](https://anudoranador87.github.io/it-support-labs/tools/linux-permissions-visualizer/) |
 
 ## How each case study is documented
 

@@ -34,6 +34,10 @@ This mini-application is built using:
 
 It follows a clean, modular structure, similar to other mini-apps in the `it-support-labs` repository, making it easy to understand and maintain.
 
+## 🔗 Live Demo
+
+- **[Try Linux Permissions Visualizer Online](https://anudoranador87.github.io/it-support-labs/tools/linux-permissions-visualizer/)**
+
 ## Installation (Local)
 
 To run this application locally:
@@ -44,7 +48,7 @@ To run this application locally:
     ```
 2.  Navigate to the application directory:
     ```bash
-    cd it-support-labs/mini-apps/linux-permissions-visualizer
+    cd it-support-labs/tools/linux-permissions-visualizer
     ```
 3.  Open `index.html` in your web browser.
 
