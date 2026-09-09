@@ -1,8 +1,38 @@
 # Active Directory Domain Services — Multi-DC Environment
 
-**🌐 Language:** **English** | [Español](README.es.md)
+[![Status: In Progress](https://img.shields.io/badge/Status-Phases%200--10%20Completed-2ea44f?style=flat-square&logo=githubactions)](README.md)
+[![Hypervisor: Hyper-V](https://img.shields.io/badge/Hypervisor-Hyper--V-0078D6?style=flat-square&logo=windows)](README.md)
+[![OS: Windows Server 2022](https://img.shields.io/badge/OS-Windows%20Server%202022-blue?style=flat-square&logo=windows)](README.md)
+[![Roles: Multi-DC HA](https://img.shields.io/badge/AD%20DS-Multi--DC%20Replication-success?style=flat-square)](README.md)
+[![Certification: AZ-1008](https://img.shields.io/badge/Applied%20Skills-AZ--1008-purple?style=flat-square)](README.md)
 
-> Deployment of a Windows Server 2022 domain with two Domain Controllers, identity management, delegation, and security policies, on Hyper-V.
+[🏠 Home](../../README.md) · [📂 All Labs](../README.md) · [📋 Roadmap](../../LABS-ROADMAP.md) · **🌐 Language:** **English** | [Español](README.es.md)
+
+---
+
+> Enterprise deployment and administration of an Active Directory Domain Services (AD DS) forest on Windows Server 2022 with two Domain Controllers in High Availability, virtual NAT networking, PowerShell management, identity structures, and security policies on Hyper-V.
+
+## Architecture Topology
+
+```mermaid
+flowchart TB
+    Internet((Internet)) --> Host
+    subgraph Host["Hyper-V Physical Host (Windows 11)"]
+        NAT["WinNAT Gateway: 10.10.10.1"]
+        Switch["Internal vSwitch: NATSwitch\nSubnet: 10.10.10.0/24"]
+        NAT --> Switch
+    end
+    Switch --> DC1["TAILWIND-DC1\n10.10.10.10 /24 (DNS: 127.0.0.1, 10.10.10.20)\nWindows Server 2022 Standard\nAD DS · Primary DNS · Global Catalog"]
+    Switch --> MBR1["TAILWIND-MBR1\n10.10.10.20 /24 (DNS: 10.10.10.10, 127.0.0.1)\nWindows Server 2022 Standard\nAD DS (Replica DC) · Secondary DNS · Global Catalog"]
+
+    DC1 <--> |"Active Directory Multi-Master Replication\nRPC / Kerberos (0 Fails Verified)"| MBR1
+
+    classDef srv fill:#d1fae5,stroke:#047857,stroke-width:2px,color:#064e3b;
+    classDef host fill:#f1f5f9,stroke:#64748b,stroke-width:1.5px,color:#334155;
+    class DC1 srv;
+    class MBR1 srv;
+    class Host host;
+```
 
 ## Context (Situation)
 
@@ -34,6 +64,7 @@ The end goal of this lab is to deploy and manage a complete virtualized infrastr
 | 10 | Promote MBR1 to Secondary DC & Verify Replication | Completed | AD DS role, DC promotion into existing domain, and 0-fail multi-DC replication. |
 | Next | Identity Management & OUs | Planned | OUs structure, users, security groups, and least-privilege delegation. |
 
+> [!NOTE]
 > Planned phases are not considered completed evidence until executed, verified, and documented.
 
 ### Phase 0 — Requirements verified

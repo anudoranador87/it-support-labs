@@ -7,29 +7,85 @@ level: intermediate
 evidence: screenshots, commands, verification
 ---
 
-# Windows Server and Active Directory Setup
+# Windows Server & Active Directory Setup
 
-> **A complete troubleshooting case study covering UEFI/GPT boot configuration, Windows Server installation and initial Active Directory deployment.**
+[![Status: Completed](https://img.shields.io/badge/Status-Completed-success?style=flat-square&logo=checkmarx)](README.md)
+[![OS: Windows Server 2022](https://img.shields.io/badge/OS-Windows%20Server%202022-0078D6?style=flat-square&logo=windows)](README.md)
+[![Role: AD DS & DNS](https://img.shields.io/badge/Roles-AD%20DS%20%7C%20DNS%20%7C%20GPO-blue?style=flat-square)](README.md)
+[![Linux: Ubuntu 22.04](https://img.shields.io/badge/Linux-Ubuntu%20Domain%20Join-E95420?style=flat-square&logo=ubuntu)](README.md)
+[![CompTIA A+](https://img.shields.io/badge/CompTIA%20A%2B-Core%201%20%26%20Core%202-red?style=flat-square)](README.md)
+
+[🏠 Home](../../README.md) · [📂 All Labs](../README.md) · [📋 Roadmap](../../LABS-ROADMAP.md)
+
+---
+
+> **A comprehensive hands-on troubleshooting case study covering UEFI/GPT boot mode resolution, Windows Server 2022 dual-boot deployment, Active Directory Domain Services (AD DS), Group Policy Objects (GPO), and hybrid Linux (Ubuntu SSSD/Realmd) domain integration.**
 
 | Field | Detail |
 |---|---|
-| **Status** | Completed and documented |
-| **Environment** | Windows Server 2022 Standard Evaluation, Desktop Experience |
-| **Focus** | UEFI/BIOS, GPT/MBR, Windows Server, AD DS and verification |
-| **Hardware** | Gigabyte motherboard · Kingston DataTraveler 2.0 USB, 16 GB |
-| **Date** | August 2026 |
+| **Status** | ![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square) Fully verified and documented with evidence |
+| **Environment** | Windows Server 2022 Standard Evaluation (Desktop Experience) + Ubuntu Linux |
+| **Focus** | UEFI vs. BIOS/MBR, GPT Partitions, AD DS, DNS Zones, GPOs, SSSD Realm Join |
+| **Hardware** | Gigabyte Motherboard · Kingston DataTraveler 2.0 (16 GB) · Client Laptop |
+| **Domain** | `lab.local` (NetBIOS: `LAB`) |
 
-## Executive summary
+## Lab Architecture Topology
+
+```mermaid
+flowchart TD
+    subgraph PhysicalLAN["Physical Network / Local Subnet (192.168.1.0/24)"]
+        Router["Default Gateway\n192.168.1.1"]
+        
+        subgraph WinServer["Windows Server 2022 (WINSERVER-JOSE)"]
+            DC["Domain Controller: lab.local\nStatic IP: 192.168.1.200\nAD DS · DNS · GPO"]
+            OU1["OU: Empleados\n- JoseAparicio\n- Test Users"]
+            OU2["OU: Equipos\n- PC01 (DNS A Record)\n- JOSE-X550JF (Ubuntu)"]
+            OU3["OU: Grupos\n- Reception_Staff"]
+            GPO["GPO: Password Policy\n- Min length: 10 chars\n- Max age: 30 days\n- Complexity: Enabled"]
+            
+            DC --> OU1
+            DC --> OU2
+            DC --> OU3
+            GPO -.->|Linked to| OU1
+        end
+
+        subgraph LinuxClient["Ubuntu Linux Client (JOSE-X550JF)"]
+            SSSD["realmd + SSSD\nDNS: 192.168.1.200\nKerberos Realm: LAB.LOCAL"]
+        end
+
+        Router <--> WinServer
+        Router <--> LinuxClient
+        LinuxClient <-->|Kerberos Auth / LDAP SRV| WinServer
+    end
+
+    classDef srv fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1;
+    classDef client fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e;
+    class WinServer srv;
+    class LinuxClient client;
+```
+
+## Executive Summary
 
 The Windows Server installation repeatedly failed with a GPT partition-style error. The issue was not a defective target disk: the installation media had been created in MBR/Legacy mode while the internal disks used GPT. After the boot mode, installation media and target disk were aligned to UEFI/GPT, Windows Server installed successfully alongside the existing Windows 11 system.
 
-The server was then renamed, configured with a static IP address and promoted to a domain controller for the `lab.local` forest. Active Directory Domain Services was verified through Active Directory Users and Computers, including the creation of the `Empleados` OU and the `JoseAparicio` domain user.
+The server was then renamed, configured with a static IP address (`192.168.1.200`) and promoted to a domain controller for the `lab.local` forest. Active Directory Domain Services was verified through Active Directory Users and Computers, including the creation of the `Empleados` OU, security group `Reception_Staff`, linked password-policy GPO, DNS A records, and joining an Ubuntu Linux client via `realmd`/`SSSD`.
 
-## Problem and impact
+## Problem & Root Cause Breakdown
+
+```mermaid
+flowchart LR
+    A["❌ Boot Error:\n'Windows cannot be installed to this disk.\nSelected disk is of GPT partition style'"] --> B{"Root Cause Analysis"}
+    B --> C["1. Installation USB Format\nCreated as MBR / Legacy"]
+    B --> D["2. Target Hard Disk\nFormatted as GPT"]
+    B --> E["3. Firmware Boot Entry\nSelected Legacy boot entry in BIOS"]
+    
+    C & D & E --> F["✅ Remediation Plan\n1. Recreate USB with Rufus as GPT / UEFI (non-CSM)\n2. Reset BIOS defaults (CMOS reset) & disable CSM\n3. Boot specifically from UEFI USB partition"]
+```
 
 The installer displayed the following message for every selected disk:
 
-> Windows cannot be installed to this disk. The selected disk is of the GPT partition style.
+> [!WARNING]
+> *Windows cannot be installed to this disk. The selected disk is of the GPT partition style.*
 
 Changing the selected disk did not resolve the error. This indicated a configuration mismatch between the installer boot mode and the partition style of the target disk rather than a problem with one particular disk.
 

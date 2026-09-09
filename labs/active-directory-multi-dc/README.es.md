@@ -1,8 +1,38 @@
-# Active Directory Domain Services — Multi-DC Environment
+# Active Directory Domain Services — Entorno Multi-DC
 
-**🌐 Idioma:** [English](README.md) | **Español**
+[![Estado: En Progreso](https://img.shields.io/badge/Estado-Fases%200--10%20Completadas-2ea44f?style=flat-square&logo=githubactions)](README.es.md)
+[![Hipervisor: Hyper-V](https://img.shields.io/badge/Hipervisor-Hyper--V-0078D6?style=flat-square&logo=windows)](README.es.md)
+[![SO: Windows Server 2022](https://img.shields.io/badge/SO-Windows%20Server%202022-blue?style=flat-square&logo=windows)](README.es.md)
+[![Roles: Multi-DC HA](https://img.shields.io/badge/AD%20DS-Replicaci%C3%B3n%20Multi--DC-success?style=flat-square)](README.es.md)
+[![Certificación: AZ-1008](https://img.shields.io/badge/Applied%20Skills-AZ--1008-purple?style=flat-square)](README.es.md)
 
-> Despliegue de un dominio Windows Server 2022 con dos Domain Controllers, gestión de identidades, delegación y políticas de seguridad, sobre Hyper-V.
+[🏠 Inicio](../../README.md) · [📂 Todos los Labs](../README.md) · [📋 Roadmap](../../LABS-ROADMAP.md) · **🌐 Idioma:** [English](README.md) | **Español**
+
+---
+
+> Despliegue y administración empresarial de un bosque Active Directory Domain Services (AD DS) en Windows Server 2022 con dos Domain Controllers en Alta Disponibilidad, red virtual NAT, PowerShell, estructuras de identidad y directivas de seguridad en Hyper-V.
+
+## Arquitectura de Red y Roles
+
+```mermaid
+flowchart TB
+    Internet((Internet)) --> Host
+    subgraph Host["Host Físico Hyper-V (Windows 11)"]
+        NAT["WinNAT Gateway: 10.10.10.1"]
+        Switch["vSwitch Interno: NATSwitch\nSubred: 10.10.10.0/24"]
+        NAT --> Switch
+    end
+    Switch --> DC1["TAILWIND-DC1\n10.10.10.10 /24 (DNS: 127.0.0.1, 10.10.10.20)\nWindows Server 2022 Standard\nAD DS · DNS Primario · Global Catalog"]
+    Switch --> MBR1["TAILWIND-MBR1\n10.10.10.20 /24 (DNS: 10.10.10.10, 127.0.0.1)\nWindows Server 2022 Standard\nAD DS (DC Réplica) · DNS Secundario · Global Catalog"]
+
+    DC1 <--> |"Replicación Multimaestro de Active Directory\nRPC / Kerberos (0 Errores Verificado)"| MBR1
+
+    classDef srv fill:#d1fae5,stroke:#047857,stroke-width:2px,color:#064e3b;
+    classDef host fill:#f1f5f9,stroke:#64748b,stroke-width:1.5px,color:#334155;
+    class DC1 srv;
+    class MBR1 srv;
+    class Host host;
+```
 
 ## Contexto (Situation)
 
@@ -29,9 +59,9 @@ Antes de levantar el entorno, se comprobó que el host físico cumple con los re
 
 #### Evidencia de verificación:
 
-[System Info y RAM](evidence/screenshots/fase00-systeminfo.png)
-[Virtualización](evidence/screenshots/fase00-virtualizacion.png)
-[Espacio en disco](evidence/screenshots/fase00-disk-space.png)
+![System Info y RAM](evidence/screenshots/fase00-systeminfo.png)
+![Virtualización](evidence/screenshots/fase00-virtualizacion.png)
+![Espacio en disco](evidence/screenshots/fase00-disk-space.png)
 
 ### Fase 1 — Instalación de Hyper-V
 
@@ -39,17 +69,18 @@ Para aislar el entorno de Active Directory y simular un centro de datos local, s
 
 #### Evidencia de configuración:
 
-[Hyper-V habilitado](evidence/screenshots/fase01-hyperv.png)
+![Hyper-V habilitado](evidence/screenshots/fase01-hyperv.png)
 
 ### Fase 2 — Configuración de rutas de Hyper-V
 
 Para garantizar un rendimiento óptimo de las máquinas virtuales, se definieron las rutas de almacenamiento de los discos virtuales y archivos de configuración.
 
+> [!NOTE]
 > **Decisión técnica:** Se mantuvieron las rutas por defecto de Hyper-V en la unidad A:, elegida por ser la de mayor capacidad y velocidad del equipo.
 
 #### Evidencia de configuración:
 
-[Rutas de Hyper-V configuradas](evidence/screenshots/fase02-rutas-hyperv.png)
+![Rutas de Hyper-V configuradas](evidence/screenshots/fase02-rutas-hyperv.png)
 
 ---
 
