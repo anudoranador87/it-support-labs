@@ -6,6 +6,15 @@
 [![Roles: Multi-DC HA](https://img.shields.io/badge/AD%20DS-Multi--DC%20Replication-success?style=flat-square)](README.md)
 [![Certification: AZ-1008](https://img.shields.io/badge/Applied%20Skills-AZ--1008-purple?style=flat-square)](README.md)
 
+## 🏆 Microsoft Applied Skills
+
+**Administer Active Directory Domain Services**  
+Microsoft Learn · Lab-based credential
+
+This project aligns with the hands-on skills assessed by the Microsoft Applied Skills credential, including AD DS deployment, Domain Controller configuration, AD topology, AD DS object management, Group Policy, and security administration.
+
+**[View verified Microsoft credential →](https://learn.microsoft.com/api/credentials/share/es-es/JosemariaAparicioPortillo-6505/ABD3679EBC76C5DB?sharingId=BEB98820D4F8219)**
+
 [🏠 Home](../../README.md) · [📂 All Labs](../README.md) · [📋 Roadmap](../../LABS-ROADMAP.md) · **🌐 Language:** **English** | [Español](README.es.md)
 
 ---
@@ -261,7 +270,7 @@ From the Server Manager notification, **Promote this server to a domain controll
 | Forest and domain functional level | Windows Server 2016 | Sufficient for the lab's objectives and maintains compatibility with the planned design. |
 | DNS Server | Installed | AD DS uses DNS to locate domain controllers and directory services. |
 | Global Catalog | Enabled | The first DC must act as the global catalog for forest-wide queries. |
-| NetBIOS name | `TAILWINDTRADERS` | Allows using the short logon format `TAILWINDTRADERS\Administrator`. |
+| NetBIOS name | `TAILWINDTRADERS` | Allows using the short logon format `TAILWINDTRADERS\\Administrator`. |
 | AD DS paths | Default | This lab environment doesn't require separate disks for NTDS, logs, or SYSVOL. |
 
 During the wizard, a **Directory Services Restore Mode (DSRM)** password was also set. This credential is exclusive to directory services recovery mode and is not the same as the regular domain administrator password; it must be kept secure and is not published in the repository.
@@ -274,7 +283,7 @@ Upon completion, Windows configured AD DS, DNS, SYSVOL, and related services; th
 
 #### Post-restart verification
 
-The sign-in screen shows **Sign-in to: TAILWINDTRADERS**, confirming the server now recognizes the context of the created domain. From this point on, it is possible to authenticate with the domain account `TAILWINDTRADERS\Administrator` and manage the forest using Active Directory tools.
+The sign-in screen shows **Sign-in to: TAILWINDTRADERS**, confirming the server now recognizes the context of the created domain. From this point on, it is possible to authenticate with the domain account `TAILWINDTRADERS\\Administrator` and manage the forest using Active Directory tools.
 
 #### Reproducible Technical Verification
 
@@ -303,7 +312,7 @@ dcdiag
 
 [![Promoting TAILWIND-DC1 to Domain Controller](https://img.youtube.com/vi/g94RQIU15MM/maxresdefault.jpg)](https://youtu.be/g94RQIU15MM)
 
-> The video documents the creation of the `tailwindtraders.internal` forest, DNS and Global Catalog configuration, the server restart, and signing in as `TAILWINDTRADERS\Administrator`.
+> The video documents the creation of the `tailwindtraders.internal` forest, DNS and Global Catalog configuration, the server restart, and signing in as `TAILWINDTRADERS\\Administrator`.
 
 📺 **[Watch the full video on YouTube](https://youtu.be/g94RQIU15MM)**
 
@@ -336,7 +345,7 @@ To establish a Multi-Domain Controller high-availability architecture, a second 
    - Name resolution was confirmed using `Resolve-DnsName tailwindtraders.internal`, verifying that queries to the root domain returned `10.10.10.10` via DC1.
 
 4. **Domain Join:**
-   - Joined to `tailwindtraders.internal` using domain administrative credentials (`TAILWINDTRADERS\Administrator`).
+   - Joined to `tailwindtraders.internal` using domain administrative credentials (`TAILWINDTRADERS\\Administrator`).
    - Verified post-reboot sign-in context to confirm the computer account was created in the domain.
 
 #### Technical Decision
@@ -371,8 +380,8 @@ With `TAILWIND-MBR1` joined to the domain, it was promoted to become a replica D
 
 1. **AD DS Role Installation:** Installed Active Directory Domain Services binaries and Remote Server Administration Tools (RSAT) via Server Manager.
 2. **Promotion Operation:**
-   - Selected **"Add a domain controller to an existing domain"** targeting `tailwindtraders.internal`.
-   - Authenticated using domain administrator credentials (`TAILWINDTRADERS\Administrator`).
+   - Selected **\"Add a domain controller to an existing domain\"** targeting `tailwindtraders.internal`.
+   - Authenticated using domain administrator credentials (`TAILWINDTRADERS\\Administrator`).
    - Enabled **Domain Name System (DNS) server** and **Global Catalog (GC)** roles.
    - Configured Directory Services Restore Mode (DSRM) credentials.
    - Initial directory database (`NTDS.dit`), schema, and SYSVOL were replicated across the virtual network from `TAILWIND-DC1`.
@@ -408,5 +417,3 @@ Get-ADDomainController -Filter * | Select-Object Name, IPv4Address, IsGlobalCata
 **Screenshot — Promoting to Existing Domain**
 
 ![Promotion to Existing Domain](evidence/screenshots/fase10-promocion-segundo-dc.png)
-
-
