@@ -7,6 +7,7 @@
 [![Hyper-V](https://img.shields.io/badge/Virtualization-Hyper--V-0078D6?style=flat-square&logo=windows )](labs/active-directory-multi-dc/)
 [![Linux](https://img.shields.io/badge/Linux-Ubuntu%20%7C%20Troubleshooting-E95420?style=flat-square&logo=ubuntu )](labs/linux-wifi-driver-fix/)
 [![PowerShell](https://img.shields.io/badge/Automation-PowerShell%20%7C%20Bash-5391FE?style=flat-square&logo=powershell )](tools/)
+[![Microsoft Learn Credential](https://img.shields.io/badge/Microsoft%20Learn-Credential-5C2D91?style=flat-square&logo=microsoft )](https://learn.microsoft.com/api/credentials/share/es-es/JosemariaAparicioPortillo-6505/ABD3679EBC76C5DB?sharingId=BEB98820D4F8219)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square )](LICENSE)
 
 ---
@@ -151,4 +152,11 @@ flowchart TD
     D --> E["5. Plan and apply the correction"]
     E --> F["6. Verify system functionality"]
     F --> G["7. Document root cause and lessons learned"]
+```
+
+---
+
+## Professional Credentials
+
+- [Microsoft Learn credential](https://learn.microsoft.com/api/credentials/share/es-es/JosemariaAparicioPortillo-6505/ABD3679EBC76C5DB?sharingId=BEB98820D4F8219)
 
