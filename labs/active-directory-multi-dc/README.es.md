@@ -6,6 +6,15 @@
 [![Roles: Multi-DC HA](https://img.shields.io/badge/AD%20DS-Replicaci%C3%B3n%20Multi--DC-success?style=flat-square)](README.es.md)
 [![Certificación: AZ-1008](https://img.shields.io/badge/Applied%20Skills-AZ--1008-purple?style=flat-square)](README.es.md)
 
+## 🏆 Microsoft Applied Skills
+
+**Administer Active Directory Domain Services**  
+Microsoft Learn · Credencial práctica basada en laboratorio
+
+Este proyecto está alineado con las competencias prácticas evaluadas por la credencial Microsoft Applied Skills, incluyendo el despliegue de AD DS, configuración de Domain Controllers, topología de AD, gestión de objetos AD DS, Group Policy y administración de seguridad.
+
+**[Ver credencial Microsoft verificada →](https://learn.microsoft.com/api/credentials/share/es-es/JosemariaAparicioPortillo-6505/ABD3679EBC76C5DB?sharingId=BEB98820D4F8219)**
+
 [🏠 Inicio](../../README.md) · [📂 Todos los Labs](../README.md) · [📋 Roadmap](../../LABS-ROADMAP.md) · **🌐 Idioma:** [English](README.md) | **Español**
 
 ---
@@ -108,13 +117,13 @@ La red se creó mediante PowerShell ejecutado como administrador, utilizando tre
 
 La configuración resultante utiliza la siguiente red:
 
-| Parámetro Configuración  |                 |
-| ------------------------ | --------------- |
-| Red                      | `10.10.10.0/24` |
-| Gateway                  | `10.10.10.1`    |
-| Switch virtual           | `NATSwitch`     |
-| Tipo de switch           | `Internal`      |
-| NAT                      | Configurado     |
+| Parámetro Configuración | |
+|---|---|
+| Red | `10.10.10.0/24` |
+| Gateway | `10.10.10.1` |
+| Switch virtual | `NATSwitch` |
+| Tipo de switch | `Internal` |
+| NAT | Configurado |
 
 #### Verificación
 
@@ -152,14 +161,14 @@ Con la red virtual `NATSwitch` ya operativa, el siguiente paso fue aprovisionar 
 
 La VM se creó mediante el asistente **New Virtual Machine** de Hyper-V Manager, con los siguientes parámetros:
 
-| Parámetro Configuración  |                              |
-| ------------------------ | ---------------------------- |
-| Nombre                   | `TAILWIND-DC1`               |
-| Generación               | `Generation 2`               |
-| Memoria asignada         | `4096 MB`                    |
-| Red virtual              | `NATSwitch`                  |
-| Disco virtual            | Dinámico, tamaño por defecto |
-| Fuente de instalación    | ISO de Windows Server 2022   |
+| Parámetro | Configuración |
+|---|---|
+| Nombre | `TAILWIND-DC1` |
+| Generación | `Generation 2` |
+| Memoria asignada | `4096 MB` |
+| Red virtual | `NATSwitch` |
+| Disco virtual | Dinámico, tamaño por defecto |
+| Fuente de instalación | ISO de Windows Server 2022 |
 
 #### Decisión técnica
 
@@ -179,12 +188,12 @@ Con la VM `TAILWIND-DC1` ya instalada, se le asignó una dirección IP estática
 
 #### Configuración realizada
 
-| Parámetro Valor   |                 |
-| ----------------- | --------------- |
-| Dirección IP      | `10.10.10.10`   |
+| Parámetro | Valor |
+|---|---|
+| Dirección IP | `10.10.10.10` |
 | Máscara de subred | `255.255.255.0` |
-| Puerta de enlace  | `10.10.10.1`    |
-| DNS preferido     | `127.0.0.1`     |
+| Puerta de enlace | `10.10.10.1` |
+| DNS preferido | `127.0.0.1` |
 
 #### Decisión técnica
 
@@ -238,15 +247,15 @@ Tras instalar el rol de Active Directory Domain Services en la Fase 7, `TAILWIND
 
 Desde la notificación de Server Manager se inició **Promote this server to a domain controller**. Como el laboratorio no contaba con una infraestructura de Active Directory previa, se seleccionó **Add a new forest** y se creó el dominio raíz `tailwindtraders.internal`.
 
-| Parámetro Configuración aplicada Motivo  |                            |                                                                                                     |
-| ---------------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------- |
-| Tipo de despliegue                       | Nuevo bosque               | `TAILWIND-DC1` es el primer DC del laboratorio.                                                     |
-| Dominio raíz                             | `tailwindtraders.internal` | Identifica el espacio de nombres interno de Active Directory.                                       |
-| Nivel funcional de bosque y dominio      | Windows Server 2016        | Es suficiente para los objetivos del laboratorio y mantiene compatibilidad con el diseño planteado. |
-| DNS Server                               | Instalado                  | AD DS utiliza DNS para localizar controladores de dominio y servicios del directorio.               |
-| Global Catalog                           | Habilitado                 | El primer DC debe actuar como catálogo global para las consultas del bosque.                        |
-| Nombre NetBIOS                           | `TAILWINDTRADERS`          | Permite utilizar el formato corto de inicio de sesión `TAILWINDTRADERS\\Administrator`.              |
-| Rutas de AD DS                           | Predeterminadas            | Para este entorno de laboratorio no se requieren discos independientes para NTDS, logs o SYSVOL.    |
+| Parámetro | Configuración aplicada | Motivo |
+|---|---|---|
+| Tipo de despliegue | Nuevo bosque | `TAILWIND-DC1` es el primer DC del laboratorio. |
+| Dominio raíz | `tailwindtraders.internal` | Identifica el espacio de nombres interno de Active Directory. |
+| Nivel funcional de bosque y dominio | Windows Server 2016 | Es suficiente para los objetivos del laboratorio y mantiene compatibilidad con el diseño planteado. |
+| DNS Server | Instalado | AD DS utiliza DNS para localizar controladores de dominio y servicios del directorio. |
+| Global Catalog | Habilitado | El primer DC debe actuar como catálogo global para las consultas del bosque. |
+| Nombre NetBIOS | `TAILWINDTRADERS` | Permite utilizar el formato corto de inicio de sesión `TAILWINDTRADERS\\Administrator`. |
+| Rutas de AD DS | Predeterminadas | Para este entorno de laboratorio no se requieren discos independientes para NTDS, logs o SYSVOL. |
 
 Durante el asistente se definió también una contraseña de **Directory Services Restore Mode (DSRM)**. Esta credencial es exclusiva del modo de recuperación de los servicios de directorio y no equivale a la contraseña habitual de administrador del dominio; debe conservarse de forma segura y no se publica en el repositorio.
 
@@ -304,7 +313,7 @@ dcdiag
 
 [![Promoción de TAILWIND-DC1 a Domain Controller](https://img.youtube.com/vi/g94RQIU15MM/maxresdefault.jpg)](https://youtu.be/g94RQIU15MM)
 
-> El vídeo documenta la creación del bosque `tailwindtraders.internal`, la configuración de DNS y Global Catalog, el reinicio del servidor y el inicio de sesión con `TAILWINDTRADERS\Administrator`.
+> El vídeo documenta la creación del bosque `tailwindtraders.internal`, la configuración de DNS y Global Catalog, el reinicio del servidor y el inicio de sesión con `TAILWINDTRADERS\\Administrator`.
 
 📺 **[Ver vídeo completo en YouTube](https://youtu.be/g94RQIU15MM)**
 
@@ -339,7 +348,7 @@ Para establecer la arquitectura de alta disponibilidad con múltiples controlado
    - Se validó la resolución de nombres con `Resolve-DnsName tailwindtraders.internal`, confirmando que las consultas al dominio raíz eran resueltas correctamente a través del DC1.
 
 4. **Unión al dominio:**
-   - Unión al dominio `tailwindtraders.internal` mediante credenciales administrativas (`TAILWINDTRADERS\Administrator`).
+   - Unión al dominio `tailwindtraders.internal` mediante credenciales administrativas (`TAILWINDTRADERS\\Administrator`).
    - Verificación de la cuenta de equipo creada en el dominio tras el reinicio automático.
 
 #### Decisión técnica
@@ -374,8 +383,8 @@ Con `TAILWIND-MBR1` unido al dominio, se promocionó a Domain Controller réplic
 
 1. **Instalación del rol AD DS:** Se instalaron los binarios de Active Directory Domain Services y las herramientas de administración remota (RSAT) mediante Server Manager.
 2. **Asistente de promoción:**
-   - Se seleccionó **"Add a domain controller to an existing domain"** indicando el dominio `tailwindtraders.internal`.
-   - Se autenticó con credenciales de administrador de dominio (`TAILWINDTRADERS\Administrator`).
+   - Se seleccionó **\"Add a domain controller to an existing domain\"** indicando el dominio `tailwindtraders.internal`.
+   - Se autenticó con credenciales de administrador de dominio (`TAILWINDTRADERS\\Administrator`).
    - Se habilitaron las funciones de **Domain Name System (DNS) server** y **Global Catalog (GC)**.
    - Se configuró la contraseña de Directory Services Restore Mode (DSRM).
    - Se replicó la base de datos inicial (`NTDS.dit`), el esquema y la carpeta SYSVOL a través de la red virtual desde `TAILWIND-DC1`.
@@ -411,4 +420,3 @@ Get-ADDomainController -Filter * | Select-Object Name, IPv4Address, IsGlobalCata
 **Captura — Promoción a dominio existente**
 
 ![Promoción a dominio existente](evidence/screenshots/fase10-promocion-segundo-dc.png)
-
