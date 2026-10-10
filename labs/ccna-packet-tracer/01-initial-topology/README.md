@@ -1,6 +1,6 @@
 # Lab 01 — Initial Topology
 
-**Status:** Planned — not started  
+**Status:** In progress — conceptual sketch added; Packet Tracer build pending  
 **Course reference:** Jeremy's CCNA course, Lab 1  
 **Tool:** Cisco Packet Tracer
 
@@ -20,7 +20,7 @@ _Add my own steps and observations while completing the lab._
 
 ## Screenshots
 
-Add screenshots I capture myself to the `screenshots/` folder and embed them here, for example:
+Add screenshots and original study notes to the `screenshots/` folder and embed them here. The image above is a preliminary hand-drawn sketch; Packet Tracer screenshots will be added after I build the lab. For example:
 
 ```markdown
 ![Initial topology](./screenshots/initial-topology.png)
