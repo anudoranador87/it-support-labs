@@ -10,9 +10,14 @@ To be completed after reviewing the lab instructions. Record the specific skills
 
 ## Topology
 
-_Not built yet._
+### Initial conceptual sketch
+This is my own preliminary, hand-drawn interpretation of the network before building anything in Packet Tracer. It is a thinking aid, not the completed lab topology or a verified representation of the course instructions. The attacker is shown as an external threat connected to the Internet.
 
-Add a short description of the devices, connections, and layout after building the topology in Packet Tracer.
+![Hand-drawn conceptual network topology](./screenshots/conceptual-topology-sketch.png)
+
+The Packet Tracer topology, actual cabling, and device/interface details will be documented separately after I build and verify the exercise.
+
+_Not built in Packet Tracer yet._
 
 ## Steps and Notes
 
