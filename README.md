@@ -114,6 +114,16 @@ A Linux troubleshooting case focused on identifying wireless hardware, analysing
 
 ---
 
+## CCNA Networking Labs
+
+**Status:** Planned — Lab 01 has not been started yet
+
+A dedicated space for hands-on CCNA 200-301 practice using Cisco Packet Tracer. Each lab will be rebuilt, tested, and documented with my own notes, screenshots, verification steps, and troubleshooting findings.
+
+[Browse CCNA Packet Tracer Labs](labs/ccna-packet-tracer/)
+
+---
+
 ## Help Desk and Support Projects
 
 Additional projects related to support workflows, endpoint diagnostics and technical operations:
