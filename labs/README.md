@@ -18,6 +18,8 @@ Practical, scenario-driven IT Support case studies with real command outputs, st
 | 🌐 [Active Directory Multi-DC Environment](active-directory-multi-dc/) | [![In Progress](https://img.shields.io/badge/Phases%200--10%20Done-yellow?style=flat-square)](active-directory-multi-dc/) | Hyper-V Virtualization<br>Windows Server 2022 | Virtual NAT switch setup, automated DC promotion, multi-DC multi-master replication with 0 failures, and enterprise identity management. | 🎥 Video, PowerShell, Evidence |
 | 🐧 [Linux Wi-Fi Driver & Kernel Fix](linux-wifi-driver-fix/) | [![In Progress](https://img.shields.io/badge/In%20Progress-yellow?style=flat-square)](linux-wifi-driver-fix/) | Linux / Ubuntu Desktop<br>Hardware & Kernel | Diagnosing unrecognised wireless controllers, inspecting `dmesg`, managing kernel modules with `modprobe`/`lsmod`, DKMS compilation. | 📝 Guide, Checklist, Commands |
 
+| 🌐 [CCNA Packet Tracer Labs](ccna-packet-tracer/) | Planned — not started | Cisco Packet Tracer | CCNA 200-301 networking practice, with topology files, personal notes, screenshots, and verification evidence added as each lab is completed. | Planned |
+
 ## 📊 Status Guidelines
 
 * ![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square) **Completed:** Fully executed, verified on physical/virtual lab environments, and documented with complete reproducible evidence.
