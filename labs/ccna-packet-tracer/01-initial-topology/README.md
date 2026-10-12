@@ -1,50 +1,71 @@
-# Lab 01 — Initial Topology
+# Lab 1: Topología inicial (CCNA · Jeremy's IT Lab, Día 1)
 
-**Status:** In progress — conceptual sketch added; Packet Tracer build pending  
-**Course reference:** Jeremy's CCNA course, Lab 1  
-**Tool:** Cisco Packet Tracer
+Primer laboratorio de mi preparación del CCNA con Cisco Packet Tracer. El objetivo es reproducir un diagrama de red completo **sin configurar ningún dispositivo**, practicando el manejo del programa: elegir el modelo correcto de cada equipo, nombrarlos, cablearlos y organizar el diagrama.
 
-## Objective
+## Objetivo
 
-To be completed after reviewing the lab instructions. Record the specific skills and concepts this exercise is intended to practise.
+Reproducir en Packet Tracer el diagrama de red de dos sedes (Nueva York y Tokio) conectadas a través de Internet, con un portátil que representa una amenaza externa conectada a Internet.
 
-## Topology
+## Boceto previo
 
-### Initial conceptual sketch
-This is my own preliminary, hand-drawn interpretation of the network before building anything in Packet Tracer. It is a thinking aid, not the completed lab topology or a verified representation of the course instructions. The attacker is shown as an external threat connected to the Internet.
+Antes de abrir Packet Tracer dibujé un boceto conceptual a mano para entender la topología.
 
-![Hand-drawn conceptual network topology](./screenshots/conceptual-topology-sketch.png)
+![Boceto conceptual](./screenshots/conceptual-topology-sketch.png)
 
-The Packet Tracer topology, actual cabling, and device/interface details will be documented separately after I build and verify the exercise.
+## Topología
 
-_Not built in Packet Tracer yet._
+- **Nueva York:** PC1, PC2, SRV1 y SRV2 → SW1 → R1 → FW1 → Nube Internet
+- **Tokio:** Nube Internet → FW2 → R2 → SW2
+- **Atacante:** portátil conectado directamente a la nube Internet
 
-## Steps and Notes
+![Topología final](./screenshots/topologia-final.png.webp)
 
-_Add my own steps and observations while completing the lab._
+## Material
 
-## Screenshots
+| Cantidad | Dispositivo | Modelo |
+|---|---|---|
+| 2 | Routers (R1, R2) | Cisco 2911 |
+| 2 | Switches (SW1, SW2) | Catalyst 2960 |
+| 2 | Firewalls (FW1, FW2) | ASA 5505 |
+| 2 | PCs (PC1, PC2) | PC-PT |
+| 2 | Servidores (SRV1, SRV2) | Server-PT |
+| 1 | Portátil (Atacante) | Laptop-PT |
+| 1 | Nube Internet | Cloud-PT-Empty |
 
-Add screenshots and original study notes to the `screenshots/` folder and embed them here. The image above is a preliminary hand-drawn sketch; Packet Tracer screenshots will be added after I build the lab. For example:
+## Pasos
 
-```markdown
-![Initial topology](./screenshots/initial-topology.png)
-```
+1. Activar las etiquetas de los dispositivos y subir el tamaño de fuente (Options > Preferences).
+2. Elegir la categoría y el modelo de cada dispositivo.
+3. Renombrar los equipos: PC1, PC2, SW1, R1, FW1, R2, FW2, SW2, SRV1, SRV2 y Atacante.
+4. Conectar los equipos con la opción de conexión automática (*Automatically Choose Connection Type*).
+5. Marcar las dos zonas con elipses y notas de texto (NUEVA YORK y TOKIO).
+6. Comprobar que todos los enlaces del diagrama están conectados.
 
-## Verification
+## Dificultades y solución
 
-_To be filled in after testing the topology. Record the checks performed and their actual results._
+**1. La nube solo tenía un puerto.**  
+La nube Cloud-PT trae un único puerto Ethernet de serie y FW1 ya lo ocupaba, así que no dejaba conectar FW2 ni el Atacante. Lo resolví usando una **Cloud-PT-Empty**: la apagué, le añadí tres módulos Ethernet (uno para FW1, otro para FW2 y otro para el Atacante) y la volví a encender.
 
-## Troubleshooting Log
+**2. Modelo de router equivocado.**  
+Empecé con un router 1941, pero el enunciado pedía un **2911**. Lo sustituí por el modelo correcto.
 
-| Symptom / issue | Evidence and checks | Resolution | Result |
-|---|---|---|---|
-| _Add if encountered_ | | | |
+**3. Enlaces en rojo.**  
+Varios enlaces aparecen con triángulos rojos. Es el comportamiento esperado: los puertos de routers y firewalls están apagados por defecto y este laboratorio no incluye configuración.
 
-## Key Takeaways
+**4. Marcar las zonas.**  
+Me costó encontrar cómo etiquetar Nueva York y Tokio. Lo resolví dibujando elipses con la herramienta de formas y añadiendo el texto con *Place Note*.
 
-_Add what I learned, what was unclear, and what I need to review._
+**5. Diferencia entre mis apuntes y el boceto.**  
+Mis apuntes escribían la parte de Tokio como "Internet → R2 → FW2 → SW2", pero el boceto dibuja FW2 delante de R2. Seguí el boceto: Nube → FW2 → R2 → SW2.
 
----
+## Qué aprendí
 
-**Completion criteria:** The topology has been built by me, screenshots and notes have been added, and any required checks have been performed and documented.
+- Cada modelo de dispositivo tiene sus propios puertos y módulos, y hay que elegirlos con cuidado desde el principio.
+- Los puertos de routers y firewalls están apagados por defecto; los enlaces en rojo no siempre son un error.
+- La nube de Packet Tracer necesita módulos añadidos cuando hay que conectar varios equipos.
+
+## Archivos
+
+- `Lab1_Topologia_Inicial.pkt`: archivo de Packet Tracer
+- `screenshots/topologia-final.png.webp`: captura de la topología terminada
+- `screenshots/conceptual-topology-sketch.png`: boceto previo hecho a mano
