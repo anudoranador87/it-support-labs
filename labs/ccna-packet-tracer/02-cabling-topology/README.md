@@ -1,5 +1,7 @@
 # Lab 2: Cableado de la topología (CCNA · Packet Tracer)
 
+> 🇬🇧 [English version](./README_EN.md)
+
 Laboratorio de cableado con Cisco Packet Tracer. El objetivo es conectar todos los dispositivos de una topología ya dada, eligiendo en cada enlace el tipo de cable adecuado según los equipos que une y la distancia. No se configura ningún dispositivo: ni IPs, ni rutas, ni interfaces.
 
 ## Objetivo

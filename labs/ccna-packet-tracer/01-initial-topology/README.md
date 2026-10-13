@@ -1,5 +1,7 @@
 # Lab 1: Topología inicial (CCNA · Jeremy's IT Lab, Día 1)
 
+> 🇬🇧 [English version](./README_EN.md)
+
 Primer laboratorio de mi preparación del CCNA con Cisco Packet Tracer. El objetivo es reproducir un diagrama de red completo **sin configurar ningún dispositivo**, practicando el manejo del programa: elegir el modelo correcto de cada equipo, nombrarlos, cablearlos y organizar el diagrama.
 
 ## Objetivo
