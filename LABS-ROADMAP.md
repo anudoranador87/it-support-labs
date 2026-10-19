@@ -6,43 +6,40 @@ This roadmap keeps the portfolio focused on practical IT Support skills rather t
 
 | Project | Status |
 |---|---|
-| Active Directory — Multi-DC Environment | 🟢 In progress |
+| Active Directory — Multi-DC Environment | 🟢 In progress (Phases 0–10 done) |
+| Incident HD-1 — DNS Misconfiguration | ✅ Completed |
+| CCNA 200-301 Packet Tracer | 🟢 In progress (Labs 01 & 02 done) |
 
-The current project extends the Windows Server and Active Directory work into a virtualized multi-DC environment using Hyper-V.
+The current Active Directory project extends the Windows Server and Active Directory work into a virtualized multi-DC environment using Hyper-V.
 
-Current work includes:
+Current work completed includes:
 
 - Host requirements verification
-- Hyper-V installation
-- Hyper-V storage configuration
-- Virtual NAT networking
-- PowerShell network configuration
-- Network verification
-- Windows Server 2022 virtual machines
-- Active Directory Domain Services and DNS on `TAILWIND-DC1`
+- Hyper-V installation and storage configuration
+- Virtual NAT networking and PowerShell configuration
+- Windows Server 2022 virtual machines (`TAILWIND-DC1` and `TAILWIND-MBR1`)
+- Active Directory Domain Services and DNS deployment
 - First Domain Controller promoted for `tailwindtraders.internal`
+- Replica Domain Controller promoted (`TAILWIND-MBR1`) with multi-master replication verified (0 fails)
 
-Next milestones for this project are preparing `TAILWIND-MBR1`, joining it to the domain, promoting it as an additional Domain Controller and verifying replication before continuing with identities, delegation and security policies.
+Next milestones for this project are identity management, organizational units (OUs), security groups, and least-privilege delegation.
 
 ## Next Focus Areas
 
-The next practical case studies will be created only when the corresponding work is actually performed and can be documented with evidence.
+The practical case studies are created as the work is executed and documented with evidence.
+
+### Network Troubleshooting & ITSM / Help Desk
+
+- ✅ **[HD-1: Unable to Access Websites (DNS Misconfiguration)](labs/01-dns-misconfiguration/):** Completed realistic L1 support case covering symptom diagnosis, distinguishing IP connectivity from DNS resolution, remediation via `netsh`/`ipconfig /flushdns`, and documentation.
+- Further realistic network and ticketing scenarios covering DHCP lease issues, gateway misconfigurations, and multi-tier escalation will follow.
 
 ### Windows Troubleshooting
 
 A realistic Windows support case covering diagnosis, commands, system evidence, remediation and verification.
 
-### Network Troubleshooting
-
-A practical connectivity case covering TCP/IP, DNS/DHCP and network diagnosis.
-
 ### Linux Troubleshooting
 
 A Linux support scenario documented from problem identification through verification.
-
-### ITSM / Help Desk
-
-A realistic support ticket showing investigation, prioritisation, troubleshooting, resolution and documentation.
 
 ## Active Directory Direction
 

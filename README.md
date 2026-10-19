@@ -114,9 +114,27 @@ A Linux troubleshooting case focused on identifying wireless hardware, analysing
 
 ---
 
+### 4. HD-1: Unable to Access Websites (DNS Misconfiguration)
+
+**Status:** Completed
+
+A realistic Level 1 IT Support scenario on a Windows 11 workstation running on Hyper-V, managed as an incident ticket in Jira Service Management.
+
+**Demonstrated skills:**
+
+- Troubleshooting methodology: isolating IP connectivity (`ping`) from name resolution (`nslookup`)
+- Diagnosing DNS timeouts caused by misconfigured resolvers (RFC 5737 test address)
+- Command-line network remediation using elevated `netsh` and `ipconfig /flushdns`
+- End-to-end browser and DNS verification
+- Service desk documentation with full technical evidence
+
+[Open the HD-1 Support Case](labs/01-dns-misconfiguration/)
+
+---
+
 ## CCNA Networking Labs
 
-**Status:** Planned — Lab 01 has not been started yet
+**Status:** In Progress — Labs 01 & 02 completed
 
 A dedicated space for hands-on CCNA 200-301 practice using Cisco Packet Tracer. Each lab will be rebuilt, tested, and documented with my own notes, screenshots, verification steps, and troubleshooting findings.
 
