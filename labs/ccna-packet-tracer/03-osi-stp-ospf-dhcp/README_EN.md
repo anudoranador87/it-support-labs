@@ -12,8 +12,9 @@ Build a network with two separate LANs (one for a server and one for a client) l
 - Static addressing on a server.
 - DHCP service and relay between different subnets.
 - Connectivity verification with `ping`.
+- DHCP working through a relay between two subnets.
+- STP and BPDU observation in Simulation Mode.
 - OSPF preparation (pending).
-- STP observation in Simulation Mode (pending).
 
 ## Why I put the server and the PC in different LANs
 
@@ -106,7 +107,11 @@ What this command does: when R1 receives a DHCP broadcast on G0/1, it converts i
 
 ![DHCP relay on R1](evidence/10-r1-dhcp-relay.png)
 
-**End-to-end DHCP assignment to PC1 is still pending verification.**
+**Verified:** PC1 received `192.168.2.2/24` through DHCP, with gateway `192.168.2.1` and DNS server `8.8.8.8`. This confirms that both DHCP and R1's relay work across the two subnets.
+
+![Successful DHCP lease on PC1](evidence/12-pc1-dhcp-success.png)
+
+> Configuration note: the current server evidence shows the pool starting at `192.168.2.1`; the intended lab range is `192.168.2.10`–`192.168.2.59`. This should be corrected before saving the final project so the gateway address is not included in the pool range.
 
 ## Router Configuration — why each command
 
@@ -203,6 +208,32 @@ The first ping failed and the next four succeeded. This happens because of ARP r
 
 ![R2 ping to R1](evidence/06-r2-ping-r1.png)
 
+### Test 3 — Stable R2 to R1 ping
+
+After the initial ARP entry was resolved, I repeated `ping 10.0.0.1` from R2 and received 5 of 5 replies (0% loss). The `10.0.0.0/30` inter-router link is stable.
+
+I also tested `ping 192.168.2.1` from R2. It failed because R2 does not yet have a route to the client LAN, which is expected before configuring OSPF or a static route.
+
+![Stable R2 to R1 ping](evidence/11-r2-ping-r1-stable.png)
+
+### Test 4 — PC1 to its gateway and the server
+
+PC1 successfully reached both its default gateway (`192.168.2.1`) and SRV1 (`192.168.1.2`) with 4 of 4 replies. This verifies inter-subnet routing through R1.
+
+![PC1 connectivity](evidence/13-pc1-connectivity.png)
+
+### STP observation in Simulation Mode
+
+With only STP enabled in the Simulation Mode filters, the Event List displayed STP BPDUs sent by SW1 and SW2 to connected devices. No port was blocked, which is correct: this topology has no redundant Layer 2 link for STP to block.
+
+[STP BPDU simulation video](evidence/14-stp-bpdu-simulation.mp4)
+
+### DHCP Simulation Mode issue
+
+I separately cleared events, filtered DHCP and ARP, changed PC1 between static addressing and DHCP, and attempted a lease renewal. Packet Tracer did not add DHCP events to the Simulation panel, despite the successful lease and connectivity tests.
+
+This is recorded as a Packet Tracer display/simulation issue, **not** a DHCP relay failure. Capturing the `Discover`, `Offer`, `Request`, and `ACK` sequence remains an investigation item.
+
 ## Difficulties and solutions
 
 **1. I forgot `no shutdown` on an interface.**
@@ -221,24 +252,34 @@ At first I thought I could configure several interfaces at once. You cannot. You
 **4. The first ping failing because of ARP.**
 I explained this above. It is not an error, but the first time I saw it I thought something was misconfigured.
 
+**5. Unsupported `show` command syntax in the Packet Tracer IOS image.**
+I tried `show running-config interface GigabitEthernet0/1` from privileged mode and with `do` from configuration mode. This Packet Tracer IOS 15.1 image returned `Invalid input`. Using the full `show running-config` output and locating the interface block manually was the compatible alternative.
+
+**6. DHCP works but no DHCP events are visible in Simulation Mode.**
+The missing events initially suggested that relay might be broken. The valid PC1 lease and successful pings to SRV1 showed otherwise. This reinforced the need to validate an apparent simulator issue against real functional evidence.
+
 ## What I learned
 
 - Router interfaces are configured one at a time. You need to know which cable goes to which port before you start.
 - `no shutdown` is mandatory on routers. Without it, the interface is administratively down and no traffic flows.
 - CLI levels matter: each command only works in its mode. If the router says "Invalid input", you are probably at the wrong level.
-- DHCP relay (`ip helper-address`) is needed when the DHCP server is on a different subnet. Without it, the client's broadcast never reaches the server.
+- DHCP relay (`ip helper-address`) is needed when the DHCP server is on a different subnet. PC1's successful lease demonstrated this in practice.
 - A `/30` subnet is the right choice for point-to-point links between routers.
+- A working router-to-router ping does not mean R2 knows R1's LANs; without OSPF or static routes, it only knows directly connected networks.
+- STP sends BPDUs even when there is no loop; a blocked port requires Layer 2 redundancy.
+- Simulator output should be cross-checked against functional tests such as a valid DHCP lease and successful pings.
 - OSPF lets routers share routes automatically instead of configuring them by hand; I have not implemented it yet.
 
 ## Remaining work
 
-- [ ] Repeat the R2-to-R1 ping to confirm stable connectivity.
+- [x] Repeat the R2-to-R1 ping to confirm stable connectivity.
 - [ ] Configure OSPF on R1 and R2.
 - [ ] Verify OSPF neighbour adjacency and learned routes.
-- [ ] Set PC1 to DHCP and verify it receives an IP, gateway and DNS.
-- [ ] Test connectivity from PC1 to its gateway and SRV1.
-- [ ] Inspect DHCP message exchanges in Simulation Mode.
-- [ ] Observe STP and identify BPDUs.
+- [x] Set PC1 to DHCP and verify it receives an IP, gateway and DNS.
+- [x] Test connectivity from PC1 to its gateway and SRV1.
+- [ ] Investigate why Simulation Mode does not show DHCP messages despite a successful lease.
+- [x] Observe STP and identify BPDUs.
+- [ ] Change the DHCP pool start address to `192.168.2.10` and renew the lease before saving the final version.
 - [ ] Save the final Packet Tracer project and complete the evidence set.
 
 ## Evidence
@@ -257,3 +298,7 @@ All screenshots are in [`evidence/`](evidence/). The Packet Tracer project file 
 | `08-srv1-ping-r1.png` | SRV1 ping to default gateway |
 | `09-srv1-dhcp-pool-config.png` | DHCP pool on SRV1 |
 | `10-r1-dhcp-relay.png` | DHCP relay (`ip helper-address`) on R1 |
+| `11-r2-ping-r1-stable.png` | Second R2 → R1 ping, 5/5 replies |
+| `12-pc1-dhcp-success.png` | Successful DHCP lease on PC1 |
+| `13-pc1-connectivity.png` | PC1 reaches its gateway and SRV1 |
+| `14-stp-bpdu-simulation.mp4` | Simulation Mode showing STP BPDUs |

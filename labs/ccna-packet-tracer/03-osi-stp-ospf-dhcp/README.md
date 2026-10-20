@@ -12,8 +12,9 @@ Construir una red con dos LANs separadas (una de servidor y otra de cliente), un
 - Direccionamiento estático en un servidor.
 - Servicio DHCP y relay entre subredes distintas.
 - Verificación de conectividad con `ping`.
+- DHCP funcional mediante relay entre dos subredes.
+- Observación de STP y BPDUs en modo simulación.
 - Preparación para OSPF (pendiente).
-- Observación de STP en modo simulación (pendiente).
 
 ## Por qué separé el servidor del PC
 
@@ -106,7 +107,11 @@ Lo que hace este comando: cuando R1 recibe un broadcast DHCP en G0/1, lo convier
 
 ![DHCP relay en R1](evidence/10-r1-dhcp-relay.png)
 
-**La asignación de IP a PC1 todavía está pendiente de verificar.**
+**Verificación realizada:** PC1 recibió mediante DHCP `192.168.2.2/24`, gateway `192.168.2.1` y DNS `8.8.8.8`. La prueba confirma que el servicio DHCP y el relay de R1 funcionan entre ambas subredes.
+
+![Concesión DHCP correcta en PC1](evidence/12-pc1-dhcp-success.png)
+
+> Nota de configuración: la evidencia actual del servidor muestra el inicio del pool como `192.168.2.1`; el rango previsto para el laboratorio es `192.168.2.10`–`192.168.2.59`. Antes de guardar la versión definitiva del proyecto, se debe ajustar ese valor para no incluir la dirección del gateway dentro del rango del pool.
 
 ## Configuración de los routers — por qué cada comando
 
@@ -203,6 +208,34 @@ El primer ping falló y los cuatro siguientes funcionaron. Esto pasa por la reso
 
 ![R2 ping a R1](evidence/06-r2-ping-r1.png)
 
+### Prueba 3 — Ping estable de R2 a R1
+
+Repetí `ping 10.0.0.1` después de resolver la entrada ARP inicial y recibí 5 respuestas de 5 (0% de pérdida). El enlace `10.0.0.0/30` entre R1 y R2 es estable.
+
+También probé desde R2 `ping 192.168.2.1`; falló porque R2 todavía no tiene una ruta hacia la LAN del cliente. Es el comportamiento esperado antes de configurar OSPF o una ruta estática.
+
+![Ping estable de R2 a R1](evidence/11-r2-ping-r1-stable.png)
+
+### Prueba 4 — PC1 al gateway y al servidor
+
+Desde PC1, los pings a `192.168.2.1` y a `192.168.1.2` devolvieron 4 respuestas de 4 (0% de pérdida). Esto confirma que PC1 llega a su gateway y que R1 enruta correctamente entre la LAN del cliente y la LAN del servidor.
+
+![Conectividad de PC1](evidence/13-pc1-connectivity.png)
+
+### Observación de STP en Simulation Mode
+
+En Simulation Mode filtré el protocolo **STP** y avancé los eventos con `Capture/Forward`. El panel *Event List* mostró BPDUs de tipo `STP` enviadas por SW1 y SW2 hacia sus dispositivos conectados.
+
+No apareció ningún puerto bloqueado, lo cual es correcto para esta topología: no contiene enlaces redundantes de Capa 2 que STP necesite bloquear. La prueba demuestra la emisión periódica de BPDUs, no una convergencia ante un bucle.
+
+[Vídeo de la simulación STP y las BPDUs](evidence/14-stp-bpdu-simulation.mp4)
+
+### Incidencia de Simulation Mode con DHCP
+
+Intenté capturar la secuencia DHCP por separado: limpié los eventos, filtré DHCP y ARP, cambié PC1 entre configuración estática y DHCP y también intenté renovar la concesión. Packet Tracer no añadió eventos DHCP al panel de simulación, aunque la concesión se completó correctamente y las pruebas de conectividad funcionaron.
+
+Por tanto, esta limitación queda registrada como una incidencia de visualización de Packet Tracer, **no** como un fallo del DHCP relay. Queda pendiente investigarla para obtener una captura de `Discover`, `Offer`, `Request` y `ACK`.
+
 ## Dificultades y solución
 
 **1. Olvidé `no shutdown` en una interfaz.**
@@ -221,24 +254,34 @@ Al principio pensaba que podía configurar varias interfaces de golpe. No. Hay q
 **4. El primer ping que falla por ARP.**
 Ya lo expliqué arriba. No es un error, pero la primera vez que lo vi pensé que algo estaba mal configurado.
 
+**5. Comandos `show` no admitidos por la imagen IOS de Packet Tracer.**
+Intenté consultar una sola interfaz con `show running-config interface GigabitEthernet0/1`, tanto desde el modo privilegiado como usando `do` desde configuración. Esta imagen IOS 15.1 de Packet Tracer marcó `Invalid input`. La solución fue usar `show running-config` completo y localizar manualmente el bloque de la interfaz. El problema no era la interfaz ni el relay, sino una limitación de sintaxis de la imagen simulada.
+
+**6. DHCP correcto, pero sin eventos DHCP visibles en Simulation Mode.**
+La ausencia de eventos llevó inicialmente a pensar que el relay no funcionaba. Sin embargo, PC1 recibió una concesión válida (`192.168.2.2`, gateway y DNS) y alcanzó SRV1 mediante ping. Aprendí a contrastar una vista de simulación con evidencias funcionales antes de concluir que una configuración está rota.
+
 ## Qué aprendí
 
 - Las interfaces de un router se configuran de una en una. Hay que saber qué cable va a qué puerto antes de empezar.
 - `no shutdown` es obligatorio en los routers. Sin él, la interfaz está administrativamente apagada y no pasa tráfico.
 - Los niveles del CLI importan: cada comando solo funciona en su modo. Si el router dice "Invalid input", probablemente estoy en el nivel equivocado.
-- DHCP relay (`ip helper-address`) es necesario cuando el servidor DHCP está en otra subred. Sin él, el broadcast del cliente no llega al servidor.
+- DHCP relay (`ip helper-address`) es necesario cuando el servidor DHCP está en otra subred. La concesión correcta de PC1 lo demostró en la práctica.
 - La subred `/30` es lo adecuado para enlaces punto a punto entre routers.
+- Un ping correcto entre routers no implica que R2 conozca las LAN de R1: sin OSPF o rutas estáticas, R2 solo conoce sus redes directamente conectadas.
+- STP genera BPDUs incluso sin bucles; para ver un puerto bloqueado hace falta una topología con redundancia de Capa 2.
+- Los resultados funcionales deben contrastarse con la simulación, ya que Packet Tracer puede no mostrar todos los eventos esperados.
 - OSPF permite que los routers compartan rutas automáticamente en vez de configurarlas a mano; todavía no lo he implementado.
 
 ## Trabajo pendiente
 
-- [ ] Repetir el ping de R2 a R1 para confirmar conectividad estable.
+- [x] Repetir el ping de R2 a R1 para confirmar conectividad estable.
 - [ ] Configurar OSPF en R1 y R2.
 - [ ] Verificar vecindad OSPF y rutas aprendidas.
-- [ ] Activar DHCP en PC1 y verificar que recibe IP, gateway y DNS.
-- [ ] Probar conectividad de PC1 a su gateway y a SRV1.
-- [ ] Inspeccionar los mensajes DHCP en modo simulación.
-- [ ] Observar STP e identificar BPDUs.
+- [x] Activar DHCP en PC1 y verificar que recibe IP, gateway y DNS.
+- [x] Probar conectividad de PC1 a su gateway y a SRV1.
+- [ ] Investigar por qué Simulation Mode no muestra los mensajes DHCP pese a una concesión correcta.
+- [x] Observar STP e identificar BPDUs.
+- [ ] Ajustar el inicio del pool DHCP a `192.168.2.10` y renovar la concesión antes de guardar la versión definitiva.
 - [ ] Guardar el proyecto final y completar las capturas.
 
 ## Evidencias
@@ -257,3 +300,7 @@ Todas las capturas están en [`evidence/`](evidence/). El archivo de Packet Trac
 | `08-srv1-ping-r1.png` | Ping de SRV1 a su gateway |
 | `09-srv1-dhcp-pool-config.png` | Pool DHCP en SRV1 |
 | `10-r1-dhcp-relay.png` | DHCP relay (`ip helper-address`) en R1 |
+| `11-r2-ping-r1-stable.png` | Segundo ping R2 → R1, 5/5 respuestas |
+| `12-pc1-dhcp-success.png` | Concesión DHCP correcta para PC1 |
+| `13-pc1-connectivity.png` | PC1 alcanza su gateway y SRV1 |
+| `14-stp-bpdu-simulation.mp4` | Simulation Mode mostrando BPDUs STP |
