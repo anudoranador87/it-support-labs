@@ -30,16 +30,24 @@ The practical case studies are created as the work is executed and documented wi
 
 ### Network Troubleshooting & ITSM / Help Desk
 
-- ✅ **[HD-1: Unable to Access Websites (DNS Misconfiguration)](labs/01-dns-misconfiguration/):** Completed realistic L1 support case covering symptom diagnosis, distinguishing IP connectivity from DNS resolution, remediation via `netsh`/`ipconfig /flushdns`, and documentation.
-- Further realistic network and ticketing scenarios covering DHCP lease issues, gateway misconfigurations, and multi-tier escalation will follow.
+HD-1 is the **first case in a planned series**, not a standalone help-desk project. New scenarios will remain planned until they have been executed, verified and documented.
+
+- ✅ **[HD-1: Website access failure — DNS misconfiguration](labs/01-dns-misconfiguration/):** Documents a simulated L1 case separating IP connectivity from DNS resolution, correcting the resolver and validating recovery.
+- 🗓️ **HD-002: No Internet connection** — isolate local IP, DHCP, gateway and upstream connectivity.
+- 🗓️ **HD-003: Printer appears offline** — inspect device state, print queue, spooler and connectivity.
+- 🗓️ **HD-004: Low disk space** — identify disk usage, assess safe cleanup and verify free space.
+- 🗓️ **HD-005: Shared-folder access denied** — distinguish share permissions from NTFS permissions and apply least privilege.
+- 🗓️ **HD-006: Password reset request** — practise identity verification, secure handling and user communication.
+
+**Series hub:** [Help Desk Simulation](https://github.com/anudoranador87/help-desk-simulation), where individual ticket records and evidence will be maintained.
 
 ### Windows Troubleshooting
 
-A realistic Windows support case covering diagnosis, commands, system evidence, remediation and verification.
+Add further Windows client incidents after they are executed and documented, prioritising Event Viewer, services, updates and application troubleshooting where the evidence supports the diagnosis.
 
 ### Linux Troubleshooting
 
-A Linux support scenario documented from problem identification through verification.
+Continue the Linux Wi-Fi investigation with reproducible hardware discovery, kernel/module evidence, and a verified outcome. Do not mark chipset-specific fixes complete until tested.
 
 ## Active Directory Direction
 
@@ -51,4 +59,4 @@ A project is marked **Completed** only when it has been executed, verified and d
 
 > The portfolio grows from completed practical work — not from a target number of labs.
 
-**Study focus:** CompTIA A+ Core 1 and Core 2 — October 2026.
+**Study focus:** CCNA preparation alongside practical IT Support and Windows/Linux troubleshooting labs.
