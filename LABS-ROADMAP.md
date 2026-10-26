@@ -8,7 +8,7 @@ This roadmap keeps the portfolio focused on practical IT Support skills rather t
 |---|---|
 | Active Directory — Multi-DC Environment | 🟢 In progress (Phases 0–10 done) |
 | Incident HD-1 — DNS Misconfiguration | ✅ Completed |
-| CCNA 200-301 Packet Tracer | 🟢 In progress (Labs 01 & 02 done) |
+| CCNA 200-301 Packet Tracer | 🟢 In progress (Labs 01, 02 & 04 done; Lab 03 in progress) |
 
 The current Active Directory project extends the Windows Server and Active Directory work into a virtualized multi-DC environment using Hyper-V.
 

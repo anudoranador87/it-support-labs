@@ -134,7 +134,7 @@ A realistic Level 1 IT Support scenario on a Windows 11 workstation running on H
 
 ## CCNA Networking Labs
 
-**Status:** In Progress — Labs 01 & 02 completed
+**Status:** In Progress — Labs 01, 02 & 04 completed (Lab 03 in progress)
 
 A dedicated space for hands-on CCNA 200-301 practice using Cisco Packet Tracer. Each lab will be rebuilt, tested, and documented with my own notes, screenshots, verification steps, and troubleshooting findings.
 
