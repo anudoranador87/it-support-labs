@@ -21,6 +21,20 @@ Este proyecto está alineado con las competencias prácticas evaluadas por la cr
 
 > Despliegue y administración empresarial de un bosque Active Directory Domain Services (AD DS) en Windows Server 2022 con dos Domain Controllers en Alta Disponibilidad, red virtual NAT, PowerShell, estructuras de identidad y directivas de seguridad en Hyper-V.
 
+## Evidencias de un vistazo
+
+Este laboratorio es un caso técnico en evolución. La arquitectura y los ejemplos de comandos describen las comprobaciones; solo debe considerarse verificado aquello respaldado por una captura o salida de comandos enlazada.
+
+| Área | Qué comprobar | Evidencia / comando |
+|---|---|---|
+| Dominio y bosque | DNS root y nombre NetBIOS correctos | Get-ADDomain, Get-ADForest |
+| Descubrimiento DNS | Resuelven los registros SRV de los Domain Controllers | Resolve-DnsName para _ldap._tcp.dc._msdcs.tailwindtraders.internal |
+| Salud del DC | Pasan las pruebas principales de conectividad y directorio | dcdiag |
+| Replicación Multi-DC | Se identifican socios de replicación y errores | repadmin /replsummary, repadmin /showrepl |
+| Inventario de DCs | Aparecen ambos controladores y su estado de Global Catalog | Get-ADDomainController -Filter * |
+
+**Criterio de evidencia:** diferenciar entre *configurado*, *probado correctamente* y *planificado*. Que un comando aparezca en el README no demuestra que se haya ejecutado con éxito; las afirmaciones de finalización deben apoyarse en la salida o captura correspondiente. No publiques contraseñas, secretos de recuperación, tokens ni credenciales.
+
 ## Arquitectura de Red y Roles
 
 ```mermaid
