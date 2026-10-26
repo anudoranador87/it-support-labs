@@ -20,6 +20,7 @@ Each lab will contain my own topology, notes, configuration details, screenshots
 | 02 | [Cabling Topology](./02-cabling-topology/) | Cable types (copper straight-through, crossover, fiber) and physical connections | [![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square)](./02-cabling-topology/) |
 | 03 | [OSI Model, STP, OSPF & DHCP](./03-osi-stp-ospf-dhcp/) | IPv4 addressing, DHCP pool & relay, OSPF routing, STP observation | [![In Progress](https://img.shields.io/badge/In%20Progress-yellow?style=flat-square)](./03-osi-stp-ospf-dhcp/) |
 | 04 | [VLANs & 802.1Q Trunk](./04-vlan-trunk/) | VLAN creation, access/trunk ports, PDU frame inspection (802.1Q tag), troubleshooting | [![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square)](./04-vlan-trunk/) |
+| 05 | [Router-on-a-Stick](./05-router-on-a-stick/) | Inter-VLAN routing, 802.1Q subinterfaces, TTL analysis (128 vs 127), troubleshooting | [![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square)](./05-router-on-a-stick/) |
 
 ## Documentation Approach
 
