@@ -1,190 +1,164 @@
+![IT Support Labs — Infrastructure Blue](assets/infrastructure-blue-banner.svg)
+
 # IT Support & Systems Administration Labs
 
-> Practical IT Support and Systems Administration portfolio focused on Windows Server, Active Directory, Hyper-V, Linux, networking and structured troubleshooting.
+Hands-on IT portfolio focused on **support troubleshooting, Windows systems administration, Linux and networking**. Projects document the problem, the work performed, the evidence available and the checks used to validate the result.
 
-[![Windows Server](https://img.shields.io/badge/Windows%20Server-2022-0078D6?style=flat-square&logo=windows )](labs/)
-[![Active Directory](https://img.shields.io/badge/Active%20Directory-AD%20DS%20%7C%20DNS%20%7C%20GPO-0078D6?style=flat-square )](labs/active-directory-multi-dc/)
-[![Hyper-V](https://img.shields.io/badge/Virtualization-Hyper--V-0078D6?style=flat-square&logo=windows )](labs/active-directory-multi-dc/)
-[![Linux](https://img.shields.io/badge/Linux-Ubuntu%20%7C%20Troubleshooting-E95420?style=flat-square&logo=ubuntu )](labs/linux-wifi-driver-fix/)
-[![PowerShell](https://img.shields.io/badge/Automation-PowerShell%20%7C%20Bash-5391FE?style=flat-square&logo=powershell )](tools/)
-[![Microsoft Learn Credential](https://img.shields.io/badge/Microsoft%20Learn-Credential-5C2D91?style=flat-square&logo=microsoft )](https://learn.microsoft.com/api/credentials/share/es-es/JosemariaAparicioPortillo-6505/ABD3679EBC76C5DB?sharingId=BEB98820D4F8219)
-[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square )](LICENSE)
+This repository contains personal labs and simulated support scenarios—not professional employment experience.
+
+**[Featured projects](#featured-projects)** · **[Support](#support-and-troubleshooting)** · **[Systems](#systems-administration)** · **[Networking](#networking-and-ccna)** · **[Tools](#tools-and-demos)**
 
 ---
 
-## About This Repository
+## Featured Projects
 
-This repository documents hands-on IT Support and Systems Administration practice through realistic scenarios, infrastructure labs, technical notes and interactive utilities.
+### 🖥️ Active Directory Multi-DC Environment
+**Windows Server 2022 · Hyper-V · AD DS · DNS · PowerShell**
 
-Each project focuses on more than simply applying a fix. The documentation explains:
+Build and document a virtualised domain environment with two domain controllers on an isolated NAT network.
 
-- The initial situation and symptoms
-- The evidence collected
-- The technical hypotheses considered
-- The investigation and troubleshooting process
-- The solution applied
-- The verification performed
-- The confirmed root cause
-- The lessons learned and next steps
+- **Evidence:** VM and network setup, domain-controller promotion, and replication checks.
+- **Current status:** In progress. Phases 0–10 are documented as completed; identity-management and security work remains planned.
+- **Explore:** [English README](labs/active-directory-multi-dc/README.md) · [Spanish README](labs/active-directory-multi-dc/README.es.md)
 
-The goal is to build a practical and interview-ready portfolio based on executed, verified and documented work.
+### 🛠️ HD-1 — Website Access Failure
+**IT Support L1 · Windows 11 · DNS · Jira Service Management**
 
----
+A simulated incident where a workstation cannot open websites because its configured DNS resolver does not answer. The case documents how IP connectivity and name resolution were isolated, the DNS setting was corrected, and browser/DNS behaviour was checked again.
 
-## Featured Labs
+- **Evidence:** Diagnostic output, fault-state screenshots, remediation commands and recovery evidence.
+- **Important context:** The requester, organisation and ticket are fictional; this is a deliberately introduced lab fault.
+- **Explore:** [Incident walkthrough](labs/01-dns-misconfiguration/README.md) · [Evidence folder](labs/01-dns-misconfiguration/evidence/)
 
-### 1. Active Directory Multi-DC Environment
+### 🌐 VLANs → Router-on-a-Stick
+**Cisco Packet Tracer · VLAN 10/20 · 802.1Q · Inter-VLAN routing**
 
-**Status:** In progress — Phases 0–10 completed and verified
+Two connected labs show the progression from Layer 2 VLAN separation to Layer 3 communication through router subinterfaces. Both include connectivity checks and deliberate troubleshooting scenarios.
 
-A virtualized Windows Server 2022 environment built with Hyper-V and an isolated NAT network.
-
-**Demonstrated skills:**
-
-- Hyper-V Generation 2 virtual machines
-- Internal virtual switch and WinNAT
-- Static IP configuration
-- Active Directory Domain Services
-- Integrated DNS
-- Domain Controller promotion
-- Multi-DC replication
-- PowerShell network configuration
-- Replication verification with `repadmin`
-- Identity management and least-privilege planning
-
-**Current environment:**
-
-- `TAILWIND-DC1` — `10.10.10.10`
-- `TAILWIND-MBR1` — `10.10.10.20`
-- Domain: `tailwindtraders.internal`
-- Network: `10.10.10.0/24`
-- Virtual switch: `NATSwitch`
-- Replication result: `0 failures`
-
-**Next focus:**
-
-- Organizational Units
-- Users and security groups
-- Role-based administration
-- Fine-Grained Password Policies
-- Permission delegation
-- Auditing and recovery testing
-
-[Open the Active Directory Multi-DC Lab](labs/active-directory-multi-dc/) · [Español](labs/active-directory-multi-dc/README.es.md)
+- **Lab 04 — VLANs & 802.1Q trunk:** [English walkthrough](labs/ccna-packet-tracer/04-vlan-trunk/README_EN.md) · [Packet Tracer file](labs/ccna-packet-tracer/04-vlan-trunk/04_VLAN_Trunk.pkt)
+- **Lab 05 — Router-on-a-Stick:** [English walkthrough](labs/ccna-packet-tracer/05-router-on-a-stick/README_EN.md) · [Packet Tracer file](labs/ccna-packet-tracer/05-router-on-a-stick/05_Router_on_a_Stick.pkt)
+- **Explore all labs:** [CCNA Packet Tracer index](labs/ccna-packet-tracer/README.md)
 
 ---
 
-### 2. Windows Server UEFI/GPT and Active Directory
+## Support and Troubleshooting
 
-**Status:** Completed
+### HD-1 DNS incident
 
-A practical Windows Server and Linux integration project covering boot configuration, storage, networking, Active Directory and domain joining.
+The case separates general IP connectivity from DNS name resolution, records the incorrect resolver, documents the remediation and lists the verification performed. It also calls out unrelated observations and evidence limitations instead of presenting them as part of the confirmed root cause.
 
-**Demonstrated skills:**
+![Browser recovery evidence from the DNS troubleshooting case](labs/01-dns-misconfiguration/evidence/03-recovery-browser.png)
 
-- UEFI/GPT troubleshooting
-- Windows Server 2022 installation
-- Static IP configuration
-- Active Directory Domain Services
-- DNS configuration
-- Group Policy password policies
-- Linux domain integration with SSSD
-- Technical verification through screenshots, logs and command output
-
-[Open the Windows Server Lab](labs/windows-server-uefi-gpt-ad-ds/)
+**Related resources:** [Full case study](labs/01-dns-misconfiguration/README.md) · [Help Desk Simulation repository](https://github.com/anudoranador87/help-desk-simulation)
 
 ---
 
-### 3. Linux Wi-Fi Driver and Kernel Troubleshooting
+## Systems Administration
 
-**Status:** In progress
+### Windows Server UEFI/GPT and Active Directory
+**Windows Server 2022 · AD DS · DNS · Group Policy · Ubuntu / SSSD**
 
-A Linux troubleshooting case focused on identifying wireless hardware, analysing kernel information and resolving driver-related issues.
+A hands-on case study covering UEFI/GPT installation troubleshooting, Windows Server setup, domain services, organisational units, a security group, a password-policy GPO, DNS records and Linux domain integration.
 
-**Demonstrated skills:**
+- **Status:** Documented as completed in the lab README.
+- **Explore:** [Windows Server lab and evidence](labs/windows-server-uefi-gpt-ad-ds/README.md)
 
-- Hardware identification with `lspci` and `lsusb`
-- Kernel log analysis with `dmesg`
-- Kernel module management with `modprobe` and `lsmod`
-- DKMS driver compilation
-- Device and driver verification
-- Step-by-step troubleshooting documentation
+### Active Directory Multi-DC
 
-[Open the Linux Wi-Fi Driver Lab](labs/linux-wifi-driver-fix/)
+The multi-domain-controller lab complements the Windows Server case with Hyper-V networking, domain-controller deployment and replication verification.
 
----
-
-### 4. HD-1: Unable to Access Websites (DNS Misconfiguration)
-
-**Status:** Completed
-
-A realistic Level 1 IT Support scenario on a Windows 11 workstation running on Hyper-V, managed as an incident ticket in Jira Service Management.
-
-**Demonstrated skills:**
-
-- Troubleshooting methodology: isolating IP connectivity (`ping`) from name resolution (`nslookup`)
-- Diagnosing DNS timeouts caused by misconfigured resolvers (RFC 5737 test address)
-- Command-line network remediation using elevated `netsh` and `ipconfig /flushdns`
-- End-to-end browser and DNS verification
-- Service desk documentation with full technical evidence
-
-[Open the HD-1 Support Case](labs/01-dns-misconfiguration/)
+- **Explore:** [Architecture and phase evidence](labs/active-directory-multi-dc/README.md)
 
 ---
 
-## CCNA Networking Labs
+## Networking and CCNA
 
-**Status:** In Progress — Labs 01, 02, 04 & 05 completed (Lab 03 in progress)
+The Packet Tracer portfolio progresses from initial topology and cabling to routing and switching concepts. The current index identifies Labs 01, 02, 04 and 05 as completed, with Lab 03 still in progress.
 
-A dedicated space for hands-on CCNA 200-301 practice using Cisco Packet Tracer. Each lab will be rebuilt, tested, and documented with my own notes, screenshots, verification steps, and troubleshooting findings.
+### Lab 04 — VLANs and 802.1Q
 
-[Browse CCNA Packet Tracer Labs](labs/ccna-packet-tracer/)
+![Final VLAN and trunk topology from Packet Tracer Lab 04](labs/ccna-packet-tracer/04-vlan-trunk/img/02-23-topologia-final.png)
+
+**What it demonstrates:** VLAN creation, access-port assignment, trunk verification, same-VLAN connectivity, expected isolation between VLANs, 802.1Q frame inspection and recovery from controlled faults.
+
+[Read the English walkthrough](labs/ccna-packet-tracer/04-vlan-trunk/README_EN.md)
+
+### Lab 05 — Router-on-a-Stick
+
+**What it demonstrates:** Router subinterfaces, <code>encapsulation dot1q</code>, default gateways, inter-VLAN connectivity, <code>ping</code>/<code>tracert</code> verification and troubleshooting of configuration faults.
+
+[Read the English walkthrough](labs/ccna-packet-tracer/05-router-on-a-stick/README_EN.md) · [Open the Packet Tracer file](labs/ccna-packet-tracer/05-router-on-a-stick/05_Router_on_a_Stick.pkt)
+
+> CCNA is a study and practice objective, not a certification claim.
 
 ---
 
-## Help Desk and Support Projects
+## Linux Troubleshooting
 
-Additional projects related to support workflows, endpoint diagnostics and technical operations:
+### Wi-Fi Driver and Kernel Module Investigation
 
-| Project | Description |
-|---|---|
-| [Help Desk Simulation](https://github.com/anudoranador87/help-desk-simulation ) | Simulated IT Help Desk incidents documented through Jira-style tickets, Hyper-V troubleshooting and technical evidence. |
-| [Endpoint Health Toolkit](https://github.com/anudoranador87/endpoint-health-toolkit ) | Read-only Windows and Linux endpoint diagnostics for support-oriented health reports. |
-| [Hotel Sentinel](https://github.com/anudoranador87/hotel-sentinel ) | Infrastructure monitoring concept designed for hospitality environments. |
+A Linux troubleshooting guide covering hardware identification (<code>lspci</code>, <code>lsusb</code>), kernel logs (<code>dmesg</code>), module inspection (<code>lsmod</code>), driver installation concepts and connectivity verification.
+
+**Status:** In progress; the repository marks the practical evidence as partial. The documented workflow should not be interpreted as proof that every chipset-specific remediation has been completed.
+
+[Open the Linux Wi-Fi lab](labs/linux-wifi-driver-fix/README.md)
 
 ---
 
-## Interactive IT Support Tools
+## Tools and Demos
 
-Small browser-based utilities created to support common networking, storage and Linux administration tasks.
+Small browser-based utilities for common technical tasks. These links point to the published GitHub Pages demos.
 
-| Tool | Description | Live Demo |
+| Tool | Purpose | Demo |
 |---|---|---|
-| **IP Subnet Calculator** | IPv4 CIDR breakdown, network address, broadcast address, usable hosts and binary visualization. | [Launch tool](https://anudoranador87.github.io/it-support-labs/tools/subnet-calculator/ ) |
-| **RAID Storage Calculator** | Compares capacity, fault tolerance, performance and parity overhead for common RAID configurations. | [Launch tool](https://anudoranador87.github.io/it-support-labs/tools/raid-calculator/ ) |
-| **Linux Permissions Visualizer** | Converts symbolic and octal permissions and generates the corresponding `chmod` command. | [Launch tool](https://anudoranador87.github.io/it-support-labs/tools/linux-permissions-visualizer/ ) |
+| **IP Subnet Calculator** | IPv4/CIDR breakdown, network and broadcast addresses, host range and binary visualisation. | [Open tool](https://anudoranador87.github.io/it-support-labs/tools/subnet-calculator/) |
+| **RAID Storage Calculator** | Compare usable capacity, redundancy and trade-offs across RAID levels. | [Open tool](https://anudoranador87.github.io/it-support-labs/tools/raid-calculator/) |
+| **Linux Permissions Visualizer** | Convert symbolic and octal permissions and generate a <code>chmod</code> command. | [Open tool](https://anudoranador87.github.io/it-support-labs/tools/linux-permissions-visualizer/) |
 
-[Browse all tools](tools/)
+[Browse tool source folders](tools/)
+
+### Related projects
+
+- [Help Desk Simulation](https://github.com/anudoranador87/help-desk-simulation) — incident-style support practice and technical evidence.
+- [Endpoint Health Toolkit](https://github.com/anudoranador87/endpoint-health-toolkit) — read-only endpoint diagnostics for Windows and Linux.
+- [Hotel Sentinel](https://github.com/anudoranador87/hotel-sentinel) — infrastructure-monitoring concept for hospitality environments.
 
 ---
 
-## Troubleshooting Methodology
+## Troubleshooting Method
 
-Each practical case study follows a structured support lifecycle:
+The case studies use a structured workflow, adapting the steps to the actual problem and available evidence.
 
-```mermaid
+~~~mermaid
 flowchart TD
-    A["1. Identify the problem"] --> B["2. Gather symptoms and evidence"]
-    B --> C["3. Establish probable causes"]
-    C --> D["4. Test the hypotheses"]
-    D --> E["5. Plan and apply the correction"]
-    E --> F["6. Verify system functionality"]
-    F --> G["7. Document root cause and lessons learned"]
-```
+    A["Identify the symptom"] --> B["Collect evidence"]
+    B --> C["Form a hypothesis"]
+    C --> D["Test and isolate the cause"]
+    D --> E["Apply a controlled fix"]
+    E --> F["Verify the result"]
+    F --> G["Document findings and limitations"]
+    classDef step fill:#101827,stroke:#22D3EE,color:#FFFFFF
+    class A,B,C,D,E,F,G step
+~~~
 
 ---
 
-## Professional Credentials
+## Skills and Credentials
 
-- [Microsoft Learn credential](https://learn.microsoft.com/api/credentials/share/es-es/JosemariaAparicioPortillo-6505/ABD3679EBC76C5DB?sharingId=BEB98820D4F8219)
+**Technical areas represented in the documented labs**
 
+- **IT Support:** incident-style documentation, command-line diagnostics, DNS troubleshooting and verification.
+- **Systems:** Windows Server, Hyper-V, AD DS, DNS, Group Policy and domain integration.
+- **Networking:** IPv4 addressing, VLANs, 802.1Q trunks, router subinterfaces and connectivity testing.
+- **Linux:** hardware discovery, kernel logs, modules and driver troubleshooting concepts.
+- **Tools:** PowerShell, Windows networking commands, Linux CLI and Cisco IOS CLI.
+
+**Credential**
+
+- [Microsoft Applied Skills: Administer Active Directory Domain Services — view credential](https://learn.microsoft.com/api/credentials/share/es-es/JosemariaAparicioPortillo-6505/ABD3679EBC76C5DB?sharingId=BEB98820D4F8219)
+
+**Other repository navigation:** [All labs](labs/) · [Lab roadmap](LABS-ROADMAP.md) · [Changelog](CHANGELOG.md) · [MIT License](LICENSE)
+
+---
+
+*Portfolio projects are personal learning work. Completion status and claims should be read alongside the evidence and limitations documented in each lab.*
