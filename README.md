@@ -8,6 +8,13 @@ This repository contains personal labs and simulated support scenarios—not pro
 
 **[Featured projects](#featured-projects)** · **[Support](#support-and-troubleshooting)** · **[Systems](#systems-administration)** · **[Networking](#networking-and-ccna)** · **[Tools](#tools-and-demos)**
 
+## About the Author
+
+Aspiring IT Support Specialist / Junior Systems Administrator based in Málaga, Spain.
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/joseaparicio87/)
+- 💻 [GitHub Profile](https://github.com/anudoranador87)
+
 ---
 
 ## Featured Projects
