@@ -18,7 +18,7 @@ This repository contains personal labs and simulated support scenarios—not pro
 Build and document a virtualised domain environment with two domain controllers on an isolated NAT network.
 
 - **Evidence:** VM and network setup, domain-controller promotion, and replication checks.
-- **Current status:** In progress. Phases 0–10 are documented as completed; identity-management and security work remains planned.
+- **Current status:** In progress. Phases 0–10 are marked completed, although the lab notes that evidence for one phase is still pending; identity-management and security work remains planned.
 - **Explore:** [English README](labs/active-directory-multi-dc/README.md) · [Spanish README](labs/active-directory-multi-dc/README.es.md)
 
 ### 🛠️ HD-1 — Website Access Failure
