@@ -43,15 +43,26 @@ Two connected labs show the progression from Layer 2 VLAN separation to Layer 3 
 
 ## Support and Troubleshooting
 
-### HD-1 DNS incident
+### HD-1 — First case in a growing support series
 
-The case separates general IP connectivity from DNS name resolution, records the incorrect resolver, documents the remediation and lists the verification performed. It also calls out unrelated observations and evidence limitations instead of presenting them as part of the confirmed root cause.
+**HD-1 is the first documented support case, not the whole help-desk portfolio.** The aim is to build a collection of distinct L1 scenarios, each with its own symptom, investigation, evidence, resolution and verification. Future cases will remain planned until they have actually been executed and documented.
 
 ![Browser recovery evidence from the DNS troubleshooting case](labs/01-dns-misconfiguration/evidence/03-recovery-browser.png)
 
-**Related resources:** [Full case study](labs/01-dns-misconfiguration/README.md) · [Help Desk Simulation repository](https://github.com/anudoranador87/help-desk-simulation)
+| Scenario | Skills practised | Status |
+|---|---|---|
+| [HD-1 — Website access failure caused by DNS](labs/01-dns-misconfiguration/README.md) | DNS vs IP connectivity, ipconfig, resolver checks, cache flush and verification | Documented case |
+| [HD-002 — No Internet connection](https://github.com/anudoranador87/help-desk-simulation/blob/main/tickets/HD-002-no-internet-connection.md) | IP configuration, gateway, DHCP lease and connectivity isolation | Planned |
+| [HD-003 — Printer appears offline](https://github.com/anudoranador87/help-desk-simulation/blob/main/tickets/HD-003-printer-offline.md) | Queue, device state, spooler and connectivity checks | Planned |
+| [HD-004 — Low disk space](https://github.com/anudoranador87/help-desk-simulation/blob/main/tickets/HD-004-disk-full-low-disk-space.md) | Storage investigation, safe cleanup and post-cleanup verification | Planned |
+| [HD-005 — Shared-folder access denied](https://github.com/anudoranador87/help-desk-simulation/blob/main/tickets/HD-005-access-denied-shared-folder.md) | Share vs NTFS permissions and least privilege | Planned |
+| [HD-006 — Password reset request](https://github.com/anudoranador87/help-desk-simulation/blob/main/tickets/HD-006-password-reset-request.md) | Identity verification, secure process and ticket documentation | Planned |
 
----
+**Support-series home:** [Help Desk Simulation repository](https://github.com/anudoranador87/help-desk-simulation) · [Support roadmap](LABS-ROADMAP.md)
+
+The DNS case separates general IP connectivity from name resolution, records the configured resolver, documents the remediation and lists the verification performed. Unrelated observations and evidence limitations are kept separate from the confirmed cause.
+
+> These are personal labs and simulated incidents. A scenario stays **Planned** until it has been performed, verified and supported by evidence; planned cases are not presented as completed experience.
 
 ## Systems Administration
 
