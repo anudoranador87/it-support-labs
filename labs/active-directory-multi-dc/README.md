@@ -21,6 +21,20 @@ This project aligns with the hands-on skills assessed by the Microsoft Applied S
 
 > Enterprise deployment and administration of an Active Directory Domain Services (AD DS) forest on Windows Server 2022 with two Domain Controllers in High Availability, virtual NAT networking, PowerShell management, identity structures, and security policies on Hyper-V.
 
+## Evidence at a glance
+
+This lab is an evolving technical case study. The architecture and command examples explain the intended checks; each item below should be considered verified only where the linked evidence exists.
+
+| Area | Verification to look for | Evidence / command |
+|---|---|---|
+| Domain and forest | Correct DNS root and NetBIOS name | Get-ADDomain, Get-ADForest |
+| DNS service discovery | Domain Controller SRV records resolve | Resolve-DnsName for _ldap._tcp.dc._msdcs.tailwindtraders.internal |
+| Core DC health | Connectivity, advertising and directory tests pass | dcdiag |
+| Multi-DC replication | Replication partners and failures are visible | repadmin /replsummary, repadmin /showrepl |
+| DC inventory | Both controllers and their Global Catalog status are listed | Get-ADDomainController -Filter * |
+
+**Evidence standard:** distinguish *configured*, *tested successfully*, and *planned*. A command shown in the documentation is not itself proof that it was run successfully; use the linked output or screenshot to support completion claims. Never publish passwords, recovery secrets, tokens or other credentials.
+
 ## Architecture Topology
 
 ```mermaid

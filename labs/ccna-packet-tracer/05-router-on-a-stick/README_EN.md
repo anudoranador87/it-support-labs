@@ -14,6 +14,28 @@ Fifth block of my networking portfolio (CCNA). In the previous lab, two separate
 
 ---
 
+## Quick technical summary
+
+| Check | Expected result | What it demonstrates |
+|---|---|---|
+| PC1 → PC3 (192.168.10.13) | Success; TTL remains 128 in this simulation | Same-VLAN traffic is switched at Layer 2 |
+| PC1 → gateway (192.168.10.1) | Success | VLAN 10 gateway is reachable |
+| PC1 → PC2 (192.168.20.12) | Success after ARP resolution; TTL 127 | Traffic is routed between VLANs |
+| show ip route on R1 | Connected routes for 192.168.10.0/24 and 192.168.20.0/24 | Both subinterfaces are routing endpoints |
+| show interfaces gi0/0.20 | Encapsulation is 802.1Q VLAN 20 | Checks the VLAN tag configured on the subinterface |
+
+**Fast diagnostic commands**
+
+```text
+show interfaces trunk
+show ip interface brief
+show ip route
+show interfaces gi0/0.10
+show interfaces gi0/0.20
+```
+
+If the interfaces are up but inter-VLAN traffic fails, check the switch trunk, each subinterface's dot1q VLAN ID, endpoint IP settings and default gateways. **Up/up by itself does not prove the VLAN encapsulation is correct.**
+
 ## 🎯 Objectives
 
 - Connect a router to the existing topology using a single physical link to SW1.

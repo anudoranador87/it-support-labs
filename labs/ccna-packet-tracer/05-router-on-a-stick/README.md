@@ -14,6 +14,28 @@ Quinto bloque de mi portfolio de redes (CCNA). En el laboratorio anterior dejamo
 
 ---
 
+## Resumen técnico rápido
+
+| Comprobación | Resultado esperado | Qué demuestra |
+|---|---|---|
+| PC1 → PC3 (192.168.10.13) | Correcto; TTL 128 en esta simulación | El tráfico de la misma VLAN se conmuta en capa 2 |
+| PC1 → gateway (192.168.10.1) | Correcto | La puerta de enlace de VLAN 10 responde |
+| PC1 → PC2 (192.168.20.12) | Correcto tras resolver ARP; TTL 127 | El router enruta entre VLANs |
+| show ip route en R1 | Rutas conectadas para 192.168.10.0/24 y 192.168.20.0/24 | Las dos subinterfaces participan en el routing |
+| show interfaces gi0/0.20 | Encapsulación 802.1Q VLAN 20 | Verifica el ID de VLAN configurado |
+
+**Comandos rápidos de diagnóstico**
+
+```text
+show interfaces trunk
+show ip interface brief
+show ip route
+show interfaces gi0/0.10
+show interfaces gi0/0.20
+```
+
+Si las interfaces están up/up pero falla la comunicación entre VLANs, reviso el trunk, el ID de VLAN en cada subinterfaz, las IPs de los equipos y sus gateways. **Up/up no demuestra por sí solo que la encapsulación sea correcta.**
+
 ## 🎯 Objetivo
 
 - Conectar un router a la topología previa mediante un único enlace físico hacia SW1.

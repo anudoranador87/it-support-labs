@@ -14,6 +14,27 @@ Cuarto bloque de mi portfolio de redes (CCNA). En este lab configuro dos VLANs e
 
 ---
 
+## Resumen técnico rápido
+
+| Comprobación | Resultado esperado | Qué demuestra |
+|---|---|---|
+| PC1 → PC3 (192.168.10.13) | Correcto | La VLAN 10 atraviesa el trunk |
+| PC2 → PC4 (192.168.20.14) | Correcto | La VLAN 20 atraviesa el trunk |
+| PC1 → PC2 (192.168.20.12) | Falla intencionadamente | Las VLAN distintas necesitan routing de capa 3 |
+| show interfaces trunk | Gi0/1 aparece como trunk 802.1Q | El enlace entre switches funciona como troncal |
+| Simulation Mode | La etiqueta 802.1Q identifica la VLAN en el trunk | Permite observar cómo se transporta la VLAN |
+
+**Comandos rápidos de diagnóstico**
+
+```text
+show vlan brief
+show interfaces trunk
+show interfaces fa0/1 switchport
+show running-config
+```
+
+Primero compruebo que las VLAN existen y que el trunk está operativo; después reviso la VLAN de acceso asignada al puerto del equipo. Que el enlace esté activo no demuestra por sí solo que la VLAN sea correcta.
+
 ## 🎯 Objetivo
 
 - Crear las VLAN 10 (VENTAS) y 20 (IT) en los dos switches.

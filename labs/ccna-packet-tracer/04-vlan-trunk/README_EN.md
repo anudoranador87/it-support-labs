@@ -14,6 +14,27 @@ Fourth block of my networking portfolio (CCNA). In this lab I configure two VLAN
 
 ---
 
+## Quick technical summary
+
+| Check | Expected result | Why it matters |
+|---|---|---|
+| PC1 → PC3 (192.168.10.13) | Success | VLAN 10 crosses the trunk |
+| PC2 → PC4 (192.168.20.14) | Success | VLAN 20 crosses the trunk |
+| PC1 → PC2 (192.168.20.12) | Failure by design | Different VLANs need Layer 3 routing |
+| show interfaces trunk | Gi0/1 is trunking with 802.1Q | Confirms the inter-switch link is operating as a trunk |
+| Simulation Mode on the trunk | 802.1Q tag identifies VLAN 10 or 20 | Shows VLAN identification on trunk traffic |
+
+**Fast diagnostic commands**
+
+```text
+show vlan brief
+show interfaces trunk
+show interfaces fa0/1 switchport
+show running-config
+```
+
+Use the first two commands to check whether VLANs exist and whether the trunk is operational. Use the switchport detail to confirm the access VLAN on an endpoint port. A successful link status alone does not prove that VLAN membership is correct.
+
 ## 🎯 Objective
 
 - Create VLAN 10 (VENTAS) and VLAN 20 (IT) on both switches.
