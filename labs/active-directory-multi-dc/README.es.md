@@ -3,7 +3,7 @@
 [![Estado: En Progreso](https://img.shields.io/badge/Estado-Fases%200--10%20Completadas-2ea44f?style=flat-square&logo=githubactions)](README.es.md)
 [![Hipervisor: Hyper-V](https://img.shields.io/badge/Hipervisor-Hyper--V-0078D6?style=flat-square&logo=windows)](README.es.md)
 [![SO: Windows Server 2022](https://img.shields.io/badge/SO-Windows%20Server%202022-blue?style=flat-square&logo=windows)](README.es.md)
-[![Roles: Multi-DC HA](https://img.shields.io/badge/AD%20DS-Replicaci%C3%B3n%20Multi--DC-success?style=flat-square)](README.es.md)
+[![Roles: replicación AD DS](https://img.shields.io/badge/AD%20DS-Replicaci%C3%B3n%20Multi--DC-success?style=flat-square)](README.es.md)
 [![Certificación: AZ-1008](https://img.shields.io/badge/Applied%20Skills-AZ--1008-purple?style=flat-square)](README.es.md)
 
 ## 🏆 Microsoft Applied Skills
@@ -19,7 +19,7 @@ Este proyecto está alineado con las competencias prácticas evaluadas por la cr
 
 ---
 
-> Despliegue y administración empresarial de un bosque Active Directory Domain Services (AD DS) en Windows Server 2022 con dos Domain Controllers en Alta Disponibilidad, red virtual NAT, PowerShell, estructuras de identidad y directivas de seguridad en Hyper-V.
+> Despliegue y administración empresarial de un bosque Active Directory Domain Services (AD DS) en Windows Server 2022 con dos Domain Controllers que aportan redundancia de AD DS y DNS dentro de un único host Hyper-V, red virtual NAT, PowerShell, estructuras de identidad y directivas de seguridad en Hyper-V.
 
 ## Evidencias de un vistazo
 
@@ -65,7 +65,7 @@ Proyecto de laboratorio basado en **Microsoft Applied Skills — AZ-1008**, dise
 
 El objetivo final de este laboratorio es desplegar y gestionar una infraestructura virtualizada completa que incluya:
 
-- Despliegue de un bosque AD DS con dos Domain Controllers (Alta Disponibilidad).
+- Despliegue de un bosque AD DS con dos Domain Controllers para replicación AD DS y redundancia de servicios dentro del mismo host físico Hyper-V.
 - Gestión de OUs, usuarios, grupos y delegación de permisos (Principio de Mínimo Privilegio).
 - Implementación de políticas de seguridad (FGPP, restricción NTLM, auditoría).
 
@@ -341,7 +341,7 @@ dcdiag
 
 ### Fase 9 — Aprovisionamiento y unión al dominio de TIALWIND-MB1
 
-Para establecer la arquitectura de alta disponibilidad con múltiples controladores de dominio, se aprovisionó una segunda máquina virtual y se unió al bosque `tailwindtraders.internal`.
+Para añadir redundancia del servicio de directorio, se aprovisionó una segunda máquina virtual y se unió al bosque `tailwindtraders.internal`.
 
 #### Configuración realizada
 
@@ -391,7 +391,7 @@ Antes de intentar unir un equipo a un dominio de Active Directory, el cliente o 
 
 ### Fase 10 — Promoción a segundo Domain Controller y verificación de replicación
 
-Con `TIALWIND-MB1` unido al dominio, se promocionó a Domain Controller réplica, completando la infraestructura de Alta Disponibilidad (Multi-DC).
+Con `TIALWIND-MB1` unido al dominio, se promocionó a Domain Controller réplica, completando la configuración de replicación AD DS con dos controladores. Esto aporta redundancia de servicio, no alta disponibilidad frente a la caída del host físico.
 
 #### Configuración realizada
 
