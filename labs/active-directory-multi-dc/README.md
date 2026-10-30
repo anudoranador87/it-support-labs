@@ -1,6 +1,6 @@
 # Active Directory Domain Services — Multi-DC Environment
 
-[![Status: In Progress](https://img.shields.io/badge/Status-Phases%200--10%20Completed-2ea44f?style=flat-square&logo=githubactions)](README.md)
+[![Status: In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square&logo=githubactions)](README.md)
 [![Hypervisor: Hyper-V](https://img.shields.io/badge/Hypervisor-Hyper--V-0078D6?style=flat-square&logo=windows)](README.md)
 [![OS: Windows Server 2022](https://img.shields.io/badge/OS-Windows%20Server%202022-blue?style=flat-square&logo=windows)](README.md)
 [![Roles: Multi-DC replication](https://img.shields.io/badge/AD%20DS-Multi--DC%20Replication-success?style=flat-square)](README.md)
