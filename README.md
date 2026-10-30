@@ -44,6 +44,7 @@ Two connected labs show the progression from Layer 2 VLAN separation to Layer 3 
 
 - **Lab 04 — VLANs & 802.1Q trunk:** [English walkthrough](labs/ccna-packet-tracer/04-vlan-trunk/README_EN.md) · [Packet Tracer file](labs/ccna-packet-tracer/04-vlan-trunk/04_VLAN_Trunk.pkt)
 - **Lab 05 — Router-on-a-Stick:** [English walkthrough](labs/ccna-packet-tracer/05-router-on-a-stick/README_EN.md) · [Packet Tracer file](labs/ccna-packet-tracer/05-router-on-a-stick/05_Router_on_a_Stick.pkt)
+- **Lab 07 — Static Routing & Floating Failover:** [Spanish walkthrough](labs/ccna-packet-tracer/07-static-routing/README.md) · [Packet Tracer file](labs/ccna-packet-tracer/07-static-routing/07_Routing_Estatico.pkt)
 - **Explore all labs:** [CCNA Packet Tracer index](labs/ccna-packet-tracer/README.md)
 
 ---
@@ -91,7 +92,7 @@ The multi-domain-controller lab complements the Windows Server case with Hyper-V
 
 ## Networking and CCNA
 
-The Packet Tracer portfolio progresses from initial topology and cabling to routing and switching concepts. The current index identifies Labs 01, 02, 04 and 05 as completed, with Lab 03 still in progress.
+The Packet Tracer portfolio progresses from initial topology and cabling to routing and switching concepts. Labs 01, 02, 04, 05, 06 and 07 are documented as completed; Lab 03 remains in progress.
 
 ### Lab 04 — VLANs and 802.1Q
 
