@@ -3,7 +3,7 @@
 [![Estado: En Progreso](https://img.shields.io/badge/Estado-Fases%200--10%20Completadas-2ea44f?style=flat-square&logo=githubactions)](README.es.md)
 [![Hipervisor: Hyper-V](https://img.shields.io/badge/Hipervisor-Hyper--V-0078D6?style=flat-square&logo=windows)](README.es.md)
 [![SO: Windows Server 2022](https://img.shields.io/badge/SO-Windows%20Server%202022-blue?style=flat-square&logo=windows)](README.es.md)
-[![Roles: Multi-DC HA](https://img.shields.io/badge/AD%20DS-Replicaci%C3%B3n%20Multi--DC-success?style=flat-square)](README.es.md)
+[![Roles: replicación AD DS](https://img.shields.io/badge/AD%20DS-Replicaci%C3%B3n%20Multi--DC-success?style=flat-square)](README.es.md)
 [![Certificación: AZ-1008](https://img.shields.io/badge/Applied%20Skills-AZ--1008-purple?style=flat-square)](README.es.md)
 
 ## 🏆 Microsoft Applied Skills
@@ -19,7 +19,7 @@ Este proyecto está alineado con las competencias prácticas evaluadas por la cr
 
 ---
 
-> Despliegue y administración empresarial de un bosque Active Directory Domain Services (AD DS) en Windows Server 2022 con dos Domain Controllers en Alta Disponibilidad, red virtual NAT, PowerShell, estructuras de identidad y directivas de seguridad en Hyper-V.
+> Despliegue y administración empresarial de un bosque Active Directory Domain Services (AD DS) en Windows Server 2022 con dos Domain Controllers que aportan redundancia de AD DS y DNS dentro de un único host Hyper-V, red virtual NAT, PowerShell, estructuras de identidad y directivas de seguridad en Hyper-V.
 
 ## Evidencias de un vistazo
 
@@ -46,7 +46,7 @@ flowchart TB
         NAT --> Switch
     end
     Switch --> DC1["TAILWIND-DC1\n10.10.10.10 /24 (DNS: 127.0.0.1, 10.10.10.20)\nWindows Server 2022 Standard\nAD DS · DNS Primario · Global Catalog"]
-    Switch --> MBR1["TAILWIND-MBR1\n10.10.10.20 /24 (DNS: 10.10.10.10, 127.0.0.1)\nWindows Server 2022 Standard\nAD DS (DC Réplica) · DNS Secundario · Global Catalog"]
+    Switch --> MBR1["TIALWIND-MB1\n10.10.10.20 /24 (DNS: 10.10.10.10, 127.0.0.1)\nWindows Server 2022 Standard\nAD DS (DC Réplica) · DNS Secundario · Global Catalog"]
 
     DC1 <--> |"Replicación Multimaestro de Active Directory\nRPC / Kerberos (0 Errores Verificado)"| MBR1
 
@@ -65,7 +65,7 @@ Proyecto de laboratorio basado en **Microsoft Applied Skills — AZ-1008**, dise
 
 El objetivo final de este laboratorio es desplegar y gestionar una infraestructura virtualizada completa que incluya:
 
-- Despliegue de un bosque AD DS con dos Domain Controllers (Alta Disponibilidad).
+- Despliegue de un bosque AD DS con dos Domain Controllers para replicación AD DS y redundancia de servicios dentro del mismo host físico Hyper-V.
 - Gestión de OUs, usuarios, grupos y delegación de permisos (Principio de Mínimo Privilegio).
 - Implementación de políticas de seguridad (FGPP, restricción NTLM, auditoría).
 
@@ -296,7 +296,7 @@ La pantalla de inicio de sesión muestra **Sign-in to: TAILWINDTRADERS**, lo que
 | 6 | Renombrar el servidor como `TAILWIND-DC1` | Completada; evidencia pendiente | El nombre se confirma en las fases posteriores; falta documentar su ejecución como fase independiente. |
 | 7 | Instalar el rol AD DS | Completada | Capturas de selección e instalación del rol. |
 | 8 | Promover DC1 y crear el bosque | Completada | Vídeo, captura de inicio de sesión y verificaciones técnicas reproducibles. |
-| 9 | Desplegar y unir `TAILWIND-MBR1` | Completada | VM Gen 2, IP estática `10.10.10.20`, resolución DNS y unión al dominio. |
+| 9 | Desplegar y unir `TIALWIND-MB1` | Completada | VM Gen 2, IP estática `10.10.10.20`, resolución DNS y unión al dominio. |
 | 10 | Promover MBR1 a segundo DC y verificar replicación | Completada | Rol AD DS, promoción en dominio existente y replicación multi-DC con 0 fallos. |
 | Próximo | Gestión de identidades y OUs | Planificado | Estructura de OUs, usuarios, grupos de seguridad y delegación de mínimo privilegio. |
 
@@ -339,14 +339,14 @@ dcdiag
 
 ---
 
-### Fase 9 — Aprovisionamiento y unión al dominio de TAILWIND-MBR1
+### Fase 9 — Aprovisionamiento y unión al dominio de TIALWIND-MB1
 
-Para establecer la arquitectura de alta disponibilidad con múltiples controladores de dominio, se aprovisionó una segunda máquina virtual y se unió al bosque `tailwindtraders.internal`.
+Para añadir redundancia del servicio de directorio, se aprovisionó una segunda máquina virtual y se unió al bosque `tailwindtraders.internal`.
 
 #### Configuración realizada
 
 1. **Aprovisionamiento de la VM:**
-   - Nombre: `TAILWIND-MBR1`
+   - Nombre: `TIALWIND-MB1`
    - Generación: `Generation 2` (arranque UEFI y Secure Boot habilitado)
    - Red virtual: `NATSwitch`
    - Sistema operativo: Windows Server 2022 Standard (Desktop Experience)
@@ -373,7 +373,7 @@ Antes de intentar unir un equipo a un dominio de Active Directory, el cliente o 
 
 **Captura — Aprovisionamiento de la VM en Hyper-V**
 
-![TAILWIND-MBR1 en Hyper-V](evidence/screenshots/fase09-creacion-vm-mbr1.png)
+![TIALWIND-MB1 en Hyper-V](evidence/screenshots/fase09-creacion-vm-mbr1.png)
 
 **Captura — Configuración de IP estática y DNS**
 
@@ -391,7 +391,7 @@ Antes de intentar unir un equipo a un dominio de Active Directory, el cliente o 
 
 ### Fase 10 — Promoción a segundo Domain Controller y verificación de replicación
 
-Con `TAILWIND-MBR1` unido al dominio, se promocionó a Domain Controller réplica, completando la infraestructura de Alta Disponibilidad (Multi-DC).
+Con `TIALWIND-MB1` unido al dominio, se promocionó a Domain Controller réplica, completando la configuración de replicación AD DS con dos controladores. Esto aporta redundancia de servicio, no alta disponibilidad frente a la caída del host físico.
 
 #### Configuración realizada
 
@@ -403,12 +403,13 @@ Con `TAILWIND-MBR1` unido al dominio, se promocionó a Domain Controller réplic
    - Se configuró la contraseña de Directory Services Restore Mode (DSRM).
    - Se replicó la base de datos inicial (`NTDS.dit`), el esquema y la carpeta SYSVOL a través de la red virtual desde `TAILWIND-DC1`.
 
-#### Decisión técnica y Alta Disponibilidad
+#### Decisión técnica y redundancia de servicios
 
-Desplegar dos controladores de dominio elimina el punto único de fallo (SPOF) en la autenticación y resolución de identidades:
-- **Redundancia y tolerancia a fallos:** Si `TAILWIND-DC1` entra en mantenimiento programado, se reinicia o sufre caídas, `TAILWIND-MBR1` continúa procesando inicios de sesión Kerberos/NTLM y consultas DNS sin interrupción de servicio.
-- **Replicación multimaestro:** Las modificaciones realizadas en los objetos de Active Directory en cualquiera de los dos DCs se sincronizan automáticamente en el otro, manteniendo la coherencia de todo el bosque.
-- **Catálogo Global:** Al configurar ambos servidores como Catálogos Globales, las consultas de pertenencia a grupos universales y búsquedas a nivel de bosque se resuelven de forma local e inmediata.
+Dos controladores de dominio aportan redundancia del servicio de directorio mientras ambas VM y el host físico estén operativos. Esto no constituye alta disponibilidad completa de la infraestructura: ambas VM se ejecutan en el mismo host Hyper-V, por lo que un fallo del host, almacenamiento, alimentación o hipervisor puede dejar fuera de servicio a los dos controladores.
+
+- **Redundancia de servicio:** Un segundo DC proporciona otro punto de autenticación de dominio y DNS, sujeto a la configuración DNS de los clientes y al estado de la replicación.
+- **Replicación multimaestro:** Los cambios realizados en objetos de Active Directory en cualquiera de los DC se replican al otro. La salida capturada de `repadmin /replsummary` registra 0 fallos en los enlaces probados en ese momento; no garantiza la salud continua o futura.
+- **Global Catalog:** Ambos controladores aparecen como Global Catalog en el inventario capturado.
 
 #### Verificación técnica reproducible
 
