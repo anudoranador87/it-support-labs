@@ -46,7 +46,7 @@ flowchart TB
         NAT --> Switch
     end
     Switch --> DC1["TAILWIND-DC1\n10.10.10.10 /24 (DNS: 127.0.0.1, 10.10.10.20)\nWindows Server 2022 Standard\nAD DS · DNS Primario · Global Catalog"]
-    Switch --> MBR1["TAILWIND-MBR1\n10.10.10.20 /24 (DNS: 10.10.10.10, 127.0.0.1)\nWindows Server 2022 Standard\nAD DS (DC Réplica) · DNS Secundario · Global Catalog"]
+    Switch --> MBR1["TIALWIND-MB1\n10.10.10.20 /24 (DNS: 10.10.10.10, 127.0.0.1)\nWindows Server 2022 Standard\nAD DS (DC Réplica) · DNS Secundario · Global Catalog"]
 
     DC1 <--> |"Replicación Multimaestro de Active Directory\nRPC / Kerberos (0 Errores Verificado)"| MBR1
 
@@ -296,7 +296,7 @@ La pantalla de inicio de sesión muestra **Sign-in to: TAILWINDTRADERS**, lo que
 | 6 | Renombrar el servidor como `TAILWIND-DC1` | Completada; evidencia pendiente | El nombre se confirma en las fases posteriores; falta documentar su ejecución como fase independiente. |
 | 7 | Instalar el rol AD DS | Completada | Capturas de selección e instalación del rol. |
 | 8 | Promover DC1 y crear el bosque | Completada | Vídeo, captura de inicio de sesión y verificaciones técnicas reproducibles. |
-| 9 | Desplegar y unir `TAILWIND-MBR1` | Completada | VM Gen 2, IP estática `10.10.10.20`, resolución DNS y unión al dominio. |
+| 9 | Desplegar y unir `TIALWIND-MB1` | Completada | VM Gen 2, IP estática `10.10.10.20`, resolución DNS y unión al dominio. |
 | 10 | Promover MBR1 a segundo DC y verificar replicación | Completada | Rol AD DS, promoción en dominio existente y replicación multi-DC con 0 fallos. |
 | Próximo | Gestión de identidades y OUs | Planificado | Estructura de OUs, usuarios, grupos de seguridad y delegación de mínimo privilegio. |
 
@@ -339,14 +339,14 @@ dcdiag
 
 ---
 
-### Fase 9 — Aprovisionamiento y unión al dominio de TAILWIND-MBR1
+### Fase 9 — Aprovisionamiento y unión al dominio de TIALWIND-MB1
 
 Para establecer la arquitectura de alta disponibilidad con múltiples controladores de dominio, se aprovisionó una segunda máquina virtual y se unió al bosque `tailwindtraders.internal`.
 
 #### Configuración realizada
 
 1. **Aprovisionamiento de la VM:**
-   - Nombre: `TAILWIND-MBR1`
+   - Nombre: `TIALWIND-MB1`
    - Generación: `Generation 2` (arranque UEFI y Secure Boot habilitado)
    - Red virtual: `NATSwitch`
    - Sistema operativo: Windows Server 2022 Standard (Desktop Experience)
@@ -373,7 +373,7 @@ Antes de intentar unir un equipo a un dominio de Active Directory, el cliente o 
 
 **Captura — Aprovisionamiento de la VM en Hyper-V**
 
-![TAILWIND-MBR1 en Hyper-V](evidence/screenshots/fase09-creacion-vm-mbr1.png)
+![TIALWIND-MB1 en Hyper-V](evidence/screenshots/fase09-creacion-vm-mbr1.png)
 
 **Captura — Configuración de IP estática y DNS**
 
@@ -391,7 +391,7 @@ Antes de intentar unir un equipo a un dominio de Active Directory, el cliente o 
 
 ### Fase 10 — Promoción a segundo Domain Controller y verificación de replicación
 
-Con `TAILWIND-MBR1` unido al dominio, se promocionó a Domain Controller réplica, completando la infraestructura de Alta Disponibilidad (Multi-DC).
+Con `TIALWIND-MB1` unido al dominio, se promocionó a Domain Controller réplica, completando la infraestructura de Alta Disponibilidad (Multi-DC).
 
 #### Configuración realizada
 
