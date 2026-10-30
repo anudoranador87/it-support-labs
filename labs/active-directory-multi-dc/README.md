@@ -400,12 +400,13 @@ With `TIALWIND-MB1` joined to the domain, it was promoted to become a replica Do
    - Configured Directory Services Restore Mode (DSRM) credentials.
    - Initial directory database (`NTDS.dit`), schema, and SYSVOL were replicated across the virtual network from `TAILWIND-DC1`.
 
-#### Technical Decision & High Availability
+#### Technical Decision & Service Redundancy
 
-Deploying two Domain Controllers eliminates the single point of failure (SPOF) for identity and authentication services:
-- **Redundancy & Fault Tolerance:** If `TAILWIND-DC1` undergoes planned maintenance, unexpected downtime, or hardware faults, `TIALWIND-MB1` continues authenticating Kerberos/NTLM logon requests and serving DNS queries.
-- **Multi-Master Replication:** Changes made to AD objects on either controller automatically replicate to the other, maintaining a consistent directory database across the forest.
-- **Global Catalog:** Designating both DCs as Global Catalogs allows forest-wide object lookups and universal group membership queries to be resolved locally by either server.
+Two Domain Controllers provide directory-service redundancy while both VMs and the physical host are running. This is not full infrastructure high availability: both VMs run on the same physical Hyper-V host, so a host, storage, power or hypervisor failure can take down both controllers.
+
+- **Service redundancy:** A second DC provides an additional endpoint for domain authentication and DNS, subject to client DNS configuration and replication health.
+- **Multi-master replication:** Changes made to AD objects on either controller replicate to the other. The captured `repadmin /replsummary` output records 0 failures for the tested replication links at that time; it does not guarantee continuous or future health.
+- **Global Catalog:** Both controllers are reported as Global Catalogs in the captured DC inventory.
 
 #### Reproducible Technical Verification
 
