@@ -318,7 +318,7 @@ dcdiag
 | SRV Record | Resolves `_ldap._tcp.dc._msdcs.tailwindtraders.internal` to DC1 (`10.10.10.10`). | [`evidence/command-output/fase08-registro-srv.txt`](evidence/command-output/fase08-registro-srv.txt) |
 | DC Health Diagnostics | `dcdiag` passes connectivity, advertising, and core directory tests. | [`evidence/command-output/fase08-dcdiag.txt`](evidence/command-output/fase08-dcdiag.txt) |
 
-> The replication check (`repadmin /replsummary`) will be executed once `TIALWIND-MB1` is promoted as the second Domain Controller.
+> The replication check (`repadmin /replsummary`) is documented in Phase 10 after `TIALWIND-MB1` was promoted as the second Domain Controller.
 
 #### Evidence
 
@@ -338,7 +338,7 @@ dcdiag
 
 ### Phase 9 — Provisioning and Domain Join of TIALWIND-MB1
 
-To establish a Multi-Domain Controller high-availability architecture, a second virtual machine was provisioned and joined to the `tailwindtraders.internal` forest.
+To add directory-service redundancy, a second virtual machine was provisioned and joined to the `tailwindtraders.internal` forest. Both domain controllers run as virtual machines on the same physical Hyper-V host.
 
 #### Configuration Performed
 
@@ -388,7 +388,7 @@ Before attempting to join an Active Directory domain, the client or member serve
 
 ### Phase 10 — Secondary Domain Controller Promotion & Replication Verification
 
-With `TIALWIND-MB1` joined to the domain, it was promoted to become a replica Domain Controller, completing the High Availability (Multi-DC) infrastructure.
+With `TIALWIND-MB1` joined to the domain, it was promoted as a replica Domain Controller, completing the two-controller AD DS replication setup. This design does not protect against failure of the shared physical host.
 
 #### Configuration Performed
 
@@ -402,7 +402,7 @@ With `TIALWIND-MB1` joined to the domain, it was promoted to become a replica Do
 
 #### Technical Decision & Service Redundancy
 
-Two Domain Controllers provide directory-service redundancy while both VMs and the physical host are running. This is not full infrastructure high availability: both VMs run on the same physical Hyper-V host, so a host, storage, power or hypervisor failure can take down both controllers.
+Two Domain Controllers provide directory-service redundancy while both VMs and the physical host are running. Because both VMs share one physical Hyper-V host, a host, storage, power or hypervisor failure can take down both controllers.
 
 - **Service redundancy:** A second DC provides an additional endpoint for domain authentication and DNS, subject to client DNS configuration and replication health.
 - **Multi-master replication:** Changes made to AD objects on either controller replicate to the other. The captured `repadmin /replsummary` output records 0 failures for the tested replication links at that time; it does not guarantee continuous or future health.
