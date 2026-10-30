@@ -403,12 +403,13 @@ Con `TAILWIND-MBR1` unido al dominio, se promocionó a Domain Controller réplic
    - Se configuró la contraseña de Directory Services Restore Mode (DSRM).
    - Se replicó la base de datos inicial (`NTDS.dit`), el esquema y la carpeta SYSVOL a través de la red virtual desde `TAILWIND-DC1`.
 
-#### Decisión técnica y Alta Disponibilidad
+#### Decisión técnica y redundancia de servicios
 
-Desplegar dos controladores de dominio elimina el punto único de fallo (SPOF) en la autenticación y resolución de identidades:
-- **Redundancia y tolerancia a fallos:** Si `TAILWIND-DC1` entra en mantenimiento programado, se reinicia o sufre caídas, `TAILWIND-MBR1` continúa procesando inicios de sesión Kerberos/NTLM y consultas DNS sin interrupción de servicio.
-- **Replicación multimaestro:** Las modificaciones realizadas en los objetos de Active Directory en cualquiera de los dos DCs se sincronizan automáticamente en el otro, manteniendo la coherencia de todo el bosque.
-- **Catálogo Global:** Al configurar ambos servidores como Catálogos Globales, las consultas de pertenencia a grupos universales y búsquedas a nivel de bosque se resuelven de forma local e inmediata.
+Dos controladores de dominio aportan redundancia del servicio de directorio mientras ambas VM y el host físico estén operativos. Esto no constituye alta disponibilidad completa de la infraestructura: ambas VM se ejecutan en el mismo host Hyper-V, por lo que un fallo del host, almacenamiento, alimentación o hipervisor puede dejar fuera de servicio a los dos controladores.
+
+- **Redundancia de servicio:** Un segundo DC proporciona otro punto de autenticación de dominio y DNS, sujeto a la configuración DNS de los clientes y al estado de la replicación.
+- **Replicación multimaestro:** Los cambios realizados en objetos de Active Directory en cualquiera de los DC se replican al otro. La salida capturada de `repadmin /replsummary` registra 0 fallos en los enlaces probados en ese momento; no garantiza la salud continua o futura.
+- **Global Catalog:** Ambos controladores aparecen como Global Catalog en el inventario capturado.
 
 #### Verificación técnica reproducible
 
