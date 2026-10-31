@@ -8,11 +8,11 @@ This roadmap keeps the portfolio focused on practical IT Support skills rather t
 |---|---|
 | Active Directory — Multi-DC Environment | 🟢 In progress (Phases 0–10 done) |
 | Incident HD-1 — DNS Misconfiguration | ✅ Completed |
-| CCNA 200-301 Packet Tracer | 🟢 In progress (Labs 01, 02, 04 & 05 done; Lab 03 in progress) |
+| CCNA 200-301 Packet Tracer | 🟢 In progress (Labs 01, 02, 04, 05, 06 & 07 completed; Lab 03 in progress) |
 
 The current Active Directory project extends the Windows Server and Active Directory work into a virtualized multi-DC environment using Hyper-V.
 
-Current work completed includes:
+Completed scope (Phases 0–10) includes:
 
 - Host requirements verification
 - Hyper-V installation and storage configuration
@@ -22,7 +22,7 @@ Current work completed includes:
 - First Domain Controller promoted for `tailwindtraders.internal`
 - Replica Domain Controller promoted (`TAILWIND-MBR1`) with multi-master replication verified (0 fails)
 
-Next milestones for this project are identity management, organizational units (OUs), security groups, and least-privilege delegation.
+**Still planned:** identity management, additional organizational units (OUs), users, security groups, and least-privilege delegation. These planned extensions do not change the completed Hyper-V, networking, DC deployment and replication work.
 
 ## Next Focus Areas
 
