@@ -11,7 +11,6 @@ evidence: partial practical evidence
 
 [![Status: In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square&logo=git)](README.md)
 [![OS: Linux / Ubuntu](https://img.shields.io/badge/OS-Linux%20%7C%20Ubuntu-E95420?style=flat-square&logo=ubuntu)](README.md)
-[![CompTIA A+](https://img.shields.io/badge/CompTIA%20A%2B-220--1201%20Domain%201.6-red?style=flat-square)](README.md)
 [![Category: Hardware & Kernel](https://img.shields.io/badge/Category-Hardware%20%26%20Kernel%20Modules-blue?style=flat-square)](README.md)
 
 [🏠 Home](../../README.md) · [📂 All Labs](../README.md) · [📋 Roadmap](../../LABS-ROADMAP.md)
@@ -22,7 +21,7 @@ evidence: partial practical evidence
 
 | Field | Detail |
 |---|---|
-| **CompTIA A+ Objective** | Core 1 (220-1201) Domain 1.6 — Given a scenario, troubleshoot OS & hardware issues |
+| **Focus** | Linux hardware and operating-system troubleshooting |
 | **Level** | Intermediate |
 | **Target OS** | Ubuntu Desktop / Debian-based distributions |
 | **Real Scenario** | Wi-Fi adapter absent from NetworkManager/settings post-update or fresh OS install |
