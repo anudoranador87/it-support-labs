@@ -1,6 +1,6 @@
 # ==============================================================================
 #   QUICK NETWORK DIAGNOSTICS & SYSTEM AUDIT -- POWERSHELL SUPPORT TOOL
-#   IT Support Labs -- aligned with CompTIA A+ Core 1
+#   IT Support Labs -- network diagnostics and system audit
 # ==============================================================================
 # Description: Evaluates local network configuration, pings gateway, tests DNS
 #              (including hotel.local AD checks), pings public WAN, and checks
