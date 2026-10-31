@@ -25,7 +25,7 @@ Aspiring IT Support Specialist / Junior Systems Administrator based in Málaga, 
 Build and document a virtualised domain environment with two domain controllers on an isolated NAT network.
 
 - **Evidence:** VM and network setup, domain-controller promotion, and replication checks.
-- **Current status:** In progress. Phases 0–10 are marked completed, although the lab notes that evidence for one phase is still pending; identity-management and security work remains planned.
+- **Current status:** In progress overall. Hyper-V host setup, the internal NAT network, both Windows Server VMs, DC1/DC2 promotion and multi-DC replication checks (0 failures) are completed and documented. Phase 6 is confirmed by later phases, although its separate rename screenshot is still pending. Further identity-management work (OUs, users, groups and delegation) remains planned.
 - **Explore:** [English README](labs/active-directory-multi-dc/README.md) · [Spanish README](labs/active-directory-multi-dc/README.es.md)
 
 ### 🛠️ HD-1 — Website Access Failure
@@ -104,7 +104,7 @@ The Packet Tracer portfolio progresses from initial topology and cabling to rout
 
 ### Lab 05 — Router-on-a-Stick
 
-**What it demonstrates:** Router subinterfaces, <code>encapsulation dot1q</code>, default gateways, inter-VLAN connectivity, <code>ping</code>/<code>tracert</code> verification and troubleshooting of configuration faults.
+**What it demonstrates:** Router subinterfaces, <code>encapsulation dot1q</code>, default gateways, inter-VLAN connectivity, <code>ping</code>/<code>tracert</code> verification and troubleshooting of configuration faults. These are completed Packet Tracer exercises, not merely planned topics.
 
 [Read the English walkthrough](labs/ccna-packet-tracer/05-router-on-a-stick/README_EN.md) · [Open the Packet Tracer file](labs/ccna-packet-tracer/05-router-on-a-stick/05_Router_on_a_Stick.pkt)
 
@@ -167,8 +167,8 @@ flowchart TD
 **Technical areas represented in the documented labs**
 
 - **IT Support:** incident-style documentation, command-line diagnostics, DNS troubleshooting and verification.
-- **Systems:** Windows Server, Hyper-V, AD DS, DNS, Group Policy and domain integration.
-- **Networking:** IPv4 addressing, VLANs, 802.1Q trunks, router subinterfaces and connectivity testing.
+- **Systems:** Windows Server 2022, Hyper-V virtual machines and NAT networking, AD DS, DNS, OUs, security groups, a linked password-policy GPO, and Ubuntu domain integration.
+- **Networking:** IPv4 addressing, VLANs, access/trunk ports, IEEE 802.1Q tagging, Router-on-a-Stick, static/default/summary routes, floating static-route failover and connectivity testing.
 - **Linux:** hardware discovery, kernel logs, modules and driver troubleshooting concepts.
 - **Tools:** PowerShell, Windows networking commands, Linux CLI and Cisco IOS CLI.
 
