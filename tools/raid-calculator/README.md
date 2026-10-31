@@ -1,7 +1,7 @@
 # RAID Calculator
 
-> Mini app built while studying the **Storage Devices** domain of the CompTIA A+ certification.
-> Mini-aplicación construida mientras estudiaba el dominio de **Dispositivos de Almacenamiento** de la certificación CompTIA A+.
+> Mini app built to practise RAID storage concepts and compare capacity and fault-tolerance trade-offs.
+> Miniaplicación construida para practicar conceptos de almacenamiento RAID y comparar capacidad y tolerancia a fallos.
 
 🔗 **Live Demo:** [GitHub Pages Live App](https://anudoranador87.github.io/it-support-labs/tools/raid-calculator/) · [CodePen Alternative](https://codepen.io/Jose-Aparicio-the-encoder/pen/zxNopvV)
 
@@ -19,7 +19,7 @@ A vanilla JavaScript calculator that, given a number of drives, a drive size, a 
 - A visual row of disks representing the array
 
 ### Why I built it
-I kept getting RAID levels confused when studying for CompTIA A+ — specifically *why* RAID 5 only loses one drive's worth of capacity, or *why* RAID 10 needs an even number of drives. Reading the theory wasn't enough, so I built a small tool that forces me to encode the actual math for each level (0, 1, 5, 6, 10). Writing the logic made the trade-offs click in a way memorizing a table never did.
+I kept getting RAID levels confused when learning RAID storage concepts — specifically *why* RAID 5 only loses one drive's worth of capacity, or *why* RAID 10 needs an even number of drives. Reading the theory wasn't enough, so I built a small tool that forces me to encode the actual math for each level (0, 1, 5, 6, 10). Writing the logic made the trade-offs click in a way memorizing a table never did.
 
 ### RAID levels supported
 | Level | Usable space | Fault tolerance |
@@ -42,7 +42,7 @@ I kept getting RAID levels confused when studying for CompTIA A+ — specificall
 - Running the render function once on load so the UI isn't empty before the first user interaction
 
 ### Key Features Implemented
-- **Full CompTIA Validation:** Checks drive requirements (e.g., RAID 5 min 3, RAID 6 min 4, RAID 10 min 4 & even) with active warning alerts.
+- **RAID Configuration Validation:** Checks drive requirements (e.g., RAID 5 min 3, RAID 6 min 4, RAID 10 min 4 & even) with active warning alerts.
 - **Advanced Block Visualization:** Renders physical drives with real block mapping (Stripes, Mirrors, and rotating Parity P/Q blocks) to visually explain how data is stored.
 - **Bilingual Interface:** Toggle interface instantly between Spanish and English.
 - **Clean Architecture:** Refactored business calculations and UI rendering to use a single configuration lookup object as a single source of truth.
@@ -61,7 +61,7 @@ Un calculador en JavaScript puro que, a partir del número de discos, el tamaño
 - Una fila visual de discos representando el array
 
 ### Por qué lo construí
-Me costaba diferenciar los niveles RAID estudiando para CompTIA A+ — sobre todo entender *por qué* RAID 5 solo pierde la capacidad de un disco, o *por qué* RAID 10 necesita un número par de discos. Leer la teoría no era suficiente, así que construí una herramienta pequeña que me obliga a codificar las matemáticas reales de cada nivel (0, 1, 5, 6, 10). Escribir la lógica hizo que las compensaciones de cada nivel encajaran de una forma que memorizar una tabla nunca consiguió.
+Me costaba diferenciar los niveles RAID aprendiendo conceptos de almacenamiento RAID — sobre todo entender *por qué* RAID 5 solo pierde la capacidad de un disco, o *por qué* RAID 10 necesita un número par de discos. Leer la teoría no era suficiente, así que construí una herramienta pequeña que me obliga a codificar las matemáticas reales de cada nivel (0, 1, 5, 6, 10). Escribir la lógica hizo que las compensaciones de cada nivel encajaran de una forma que memorizar una tabla nunca consiguió.
 
 ### Niveles RAID soportados
 | Nivel | Espacio útil | Tolerancia a fallos |
@@ -84,7 +84,7 @@ Me costaba diferenciar los niveles RAID estudiando para CompTIA A+ — sobre tod
 - Ejecutar la función de render una vez al cargar la página, para que la UI no esté vacía antes de la primera interacción
 
 ### Características Clave Implementadas
-- **Validación Completa CompTIA:** Comprobación automática de requisitos (RAID 5 mín. 3, RAID 6 mín. 4, RAID 10 mín. 4 y par) con alertas interactivas.
+- **Validación de configuración RAID:** Comprobación automática de requisitos (RAID 5 mín. 3, RAID 6 mín. 4, RAID 10 mín. 4 y par) con alertas interactivas.
 - **Diagrama de Bloques Avanzado:** Muestra los discos físicos con la distribución real de bloques (bandas de datos, réplicas espejo y paridades rotativas P/Q) para entender gráficamente el almacenamiento.
 - **Interfaz Bilingüe:** Cambio instantáneo entre español e inglés.
 - **Arquitectura Limpia:** Refactorización completa utilizando un único objeto de configuración como fuente de verdad para cálculos y descripciones.
