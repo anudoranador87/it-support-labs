@@ -13,7 +13,6 @@ evidence: screenshots, commands, verification
 [![OS: Windows Server 2022](https://img.shields.io/badge/OS-Windows%20Server%202022-0078D6?style=flat-square&logo=windows)](README.md)
 [![Role: AD DS & DNS](https://img.shields.io/badge/Roles-AD%20DS%20%7C%20DNS%20%7C%20GPO-blue?style=flat-square)](README.md)
 [![Linux: Ubuntu 22.04](https://img.shields.io/badge/Linux-Ubuntu%20Domain%20Join-E95420?style=flat-square&logo=ubuntu)](README.md)
-[![CompTIA A+](https://img.shields.io/badge/CompTIA%20A%2B-Core%201%20%26%20Core%202-red?style=flat-square)](README.md)
 
 [🏠 Home](../../README.md) · [📂 All Labs](../README.md) · [📋 Roadmap](../../LABS-ROADMAP.md)
 
