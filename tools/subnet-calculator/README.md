@@ -1,7 +1,7 @@
 # IP Subnet Calculator
 
-> Mini app built to master the **IP Addressing & Subnetting** domain of the CompTIA A+ certification.
-> Mini-aplicación construida para dominar el dominio de **Direccionamiento IP y Subneteo** de la certificación CompTIA A+.
+> Mini app built to practise IPv4 addressing, CIDR notation and subnetting.
+> Miniaplicación construida para practicar direccionamiento IPv4, notación CIDR y subnetting.
 
  🔗 **Live Demo:** [Try Subnet Calculator Online](https://anudoranador87.github.io/it-support-labs/tools/subnet-calculator/)
 
@@ -20,7 +20,7 @@ An interactive, vanilla JavaScript calculator that parses any IPv4 address and C
 - **Interactive Binary Visualizer:** Groups the 32 bits of the IP and Mask into 4 distinct octets. Color-codes the bits dynamically: Blue for **Network Bits** and Orange for **Host Bits**. Sliding the CIDR bar dynamically changes the bit allocation!
 
 ### Why I built it
-Subnetting is famously one of the most challenging parts of network configuration in the CompTIA A+ exam. I wanted to build a visual learning aid that explicitly shows how a subnet mask "splits" a 32-bit IP address into its Network (routing) and Host (device) portions. Coding the bit-masking arithmetic directly solidified my understanding of binary logic, CIDR values, and private IP boundaries.
+Subnetting is famously one of the most challenging parts of network configuration in networking study and practice. I wanted to build a visual learning aid that explicitly shows how a subnet mask "splits" a 32-bit IP address into its Network (routing) and Host (device) portions. Coding the bit-masking arithmetic directly solidified my understanding of binary logic, CIDR values, and private IP boundaries.
 
 ### Tech Stack
 - HTML5
@@ -42,7 +42,7 @@ Una calculadora interactiva construida en JavaScript puro que procesa cualquier 
 - **Visualizador Binario Interactivo:** Divide las direcciones en 4 octetos binarios. Pinta en Azul los **Bits de Red** y en Naranja los **Bits de Host**. Al deslizar la barra CIDR, se observa en vivo cómo varía la asignación y máscara de bits.
 
 ### Por qué lo construí
-El subneteo de direcciones es uno de los temas del examen CompTIA A+ Core 1 que más suele costar memorizar. Quería construir una herramienta visual interactiva que ilustrara gráficamente cómo la máscara "enmascara" los bits para dividir una IP en su porción de red (enrutamiento) y porción de host (dispositivo). Codificar la aritmética binaria reforzó mi dominio de las clases de red, las máscaras y las subredes.
+El subneteo de direcciones es uno de los temas al estudiar redes y subnetting que más suele costar memorizar. Quería construir una herramienta visual interactiva que ilustrara gráficamente cómo la máscara "enmascara" los bits para dividir una IP en su porción de red (enrutamiento) y porción de host (dispositivo). Codificar la aritmética binaria reforzó mi dominio de las clases de red, las máscaras y las subredes.
 
 ### Stack Técnico
 - HTML5
