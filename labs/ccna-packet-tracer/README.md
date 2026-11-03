@@ -23,6 +23,7 @@ Each lab will contain my own topology, notes, configuration details, screenshots
 | 05 | [Router-on-a-Stick](./05-router-on-a-stick/) | Inter-VLAN routing, 802.1Q subinterfaces, TTL analysis (128 vs 127), troubleshooting | [![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square)](./05-router-on-a-stick/) |
 | 06 | [Subnetting y VLSM](./06-subnetting-vlsm/) | VLSM design, IP addressing plan, static routing, asymmetric routing fault | [![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square)](./06-subnetting-vlsm/) |
 | 07 | [Static Routing & Floating Failover](./07-static-routing/) | Next-hop and exit-interface routes, `/25` summary, default route, floating route (AD 200), failover, and troubleshooting | [![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square)](./07-static-routing/) |
+| 08 | [DHCP Server & DHCP Relay](./08-dhcp/) | Multi-VLAN pools, exclusions, DHCP Relay (`ip helper-address`), failover behavior, static client coexistence, and troubleshooting | [![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square)](./08-dhcp/) |
 
 ## Documentation Approach
 
