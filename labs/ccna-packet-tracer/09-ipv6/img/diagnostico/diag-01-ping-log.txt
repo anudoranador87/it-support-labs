@@ -1,0 +1,22 @@
+C:\>ping 192.168.50.120
+Pinging 192.168.50.120 with 32 bytes of data:
+Request timed out. (x4)
+Ping statistics for 192.168.50.120:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)
+
+C:\>ping 192.168.50.64
+Reply from 192.168.50.1 (x4)   <- la .64 es la red de IT, no un equipo; respuesta de .1 (anomalía, no concluyente)
+Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)
+
+C:\>ping 192.168.50.1
+Reply from 192.168.50.1 (x4)
+Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)
+
+C:\>ping 192.168.50.113
+Reply from 192.168.50.113 (x4), TTL=254
+Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)
+
+C:\>ping 192.168.50.118
+Request timed out.   <- primer paquete perdido (ARP, normal)
+Reply from 192.168.50.118: bytes=32 time<1ms TTL=126 (x3)
+Packets: Sent = 4, Received = 3, Lost = 1 (25% loss)

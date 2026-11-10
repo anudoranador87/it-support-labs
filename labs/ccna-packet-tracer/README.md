@@ -24,6 +24,7 @@ Each lab will contain my own topology, notes, configuration details, screenshots
 | 06 | [Subnetting y VLSM](./06-subnetting-vlsm/) | VLSM design, IP addressing plan, static routing, asymmetric routing fault | [![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square)](./06-subnetting-vlsm/) |
 | 07 | [Static Routing & Floating Failover](./07-static-routing/) | Next-hop and exit-interface routes, `/25` summary, default route, floating route (AD 200), failover, and troubleshooting | [![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square)](./07-static-routing/) |
 | 08 | [DHCP Server & DHCP Relay](./08-dhcp/) | Multi-VLAN pools, exclusions, DHCP Relay (`ip helper-address`), failover behavior, static client coexistence, and troubleshooting | [![Completed](https://img.shields.io/badge/Completed-2ea44f?style=flat-square)](./08-dhcp/) |
+| 09 | [IPv6 Dual Stack](./09-ipv6/) | SLAAC, stateless and stateful DHCPv6, static IPv6 routing, floating failover, and troubleshooting | [![In Progress](https://img.shields.io/badge/In%20Progress-yellow?style=flat-square)](./09-ipv6/) |
 
 ## Documentation Approach
 
